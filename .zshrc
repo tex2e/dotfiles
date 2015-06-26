@@ -38,6 +38,8 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' completer _complete _approximate
 zstyle ':completion:*' matcher-list '' 'm:{A-Z}={a-z}' '+m:{a-z}={A-Z}' \
 	'r:|[-_.]=*' 'm:to=2'
+zstyle ':completion:*:manuals' separate-sections true
+
 zstyle ':completion:*:ruby:*' file-patterns '*.rb:ruby\ script *(-/):dir'
 zstyle ':completion:*:python:*' file-patterns '*.py:python\ script *(-/):dir'
 zstyle ':completion:*:platex:*' file-patterns '*.tex:tex --kanji=utf8:option *(-/):dir'
