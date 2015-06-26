@@ -70,13 +70,11 @@ autoload -U colors; colors
 function rprompt-git-current-branch {
 	local name st color
 
-	if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
-		return
-	fi
+	[[ "$PWD" =~ '/\.git(/.*)?$' ]] && return
+
 	name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
-	if [[ -z $name ]]; then
-		return
-	fi
+	[[ -z $name ]] && return
+
 	st=`git status 2> /dev/null`
 	if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
 		color=${fg[green]}
