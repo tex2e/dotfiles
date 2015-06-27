@@ -20,7 +20,8 @@ alias ls='ls -F' la='ls -A' ll='ls -lA'
 alias .='source'
 alias ...='../..'
 alias zshrc='. ~/.zshrc' zshenv='. ~/.zshenv'
-alias push='git push' pull='git pull' commit='git commit' add='git add' status='git status'
+alias push='git push' pull='git pull' commit='git commit -m '
+alias add='git add' status='git status' diff='git diff'
 mkdircd () { mkdir -p "$@" && cd "$*[-1]" }
 mkdirpu () { mkdir -p "$@" && pushd "$*[-1]" }
 alias dirs='dirs -v'
