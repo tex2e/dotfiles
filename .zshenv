@@ -7,6 +7,8 @@ cdpath=(
 	.. ~ ~/Documents ~/Documents/pgm
 	~/Library/Application\ Support/Sublime\ Text\ 2/
 )
+# functions path
+fpath=($fpath ~/.dotfiles/zsh/function)
 
 # export shell variable
 export CC=clang

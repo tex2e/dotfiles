@@ -1,0 +1,6 @@
+#compdef foo
+_arguments : \
+	'-x[eXclude]' \
+	'-file[Specify input file]:Input file:_files' \
+	'*:argument:(foo bar baz qux quux quuux)'
+	

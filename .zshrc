@@ -24,7 +24,7 @@ alias zshrc='. ~/.zshrc'
 alias zshenv='. ~/.zshenv'
 mkdircd () { mkdir -p "$@" && cd "$*[-1]" }
 mkdirpu () { mkdir -p "$@" && pushd "$*[-1]" }
-alias push=pushd pop=popd dirs='dirs -v'
+alias dirs='dirs -v'
 
 # Suffix aliases
 alias -s rb=ruby py=python
