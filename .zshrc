@@ -1,7 +1,7 @@
 
 ###
 # Set Shell variable
-HISTSIZE=1000 HISTFILE=~/.zsh_history SAVEHIST=180
+HISTSIZE=1000 HISTFILE=~/.zsh_history SAVEHIST=$HISTSIZE
 PROMPT="${HOST%%.*}:%2(L.#%L .)%1~ %# "
 RPROMPT='[%~]'
 
@@ -16,13 +16,10 @@ alias copy='cp -ip' del='rm -i' move='mv'
 alias fullreset='echo "\ec\ec"'
 h () { history $* | less }
 alias ja='LANG=ja_JP.UTF-8'
-alias ls='ls -F'
-alias la='ls -A'
-alias ll='ls -lA'
+alias ls='ls -F' la='ls -A' ll='ls -lA'
 alias .='source'
 alias ...='../..'
-alias zshrc='. ~/.zshrc'
-alias zshenv='. ~/.zshenv'
+alias zshrc='. ~/.zshrc' zshenv='. ~/.zshenv'
 alias push='git push' pull='git pull' commit='git commit' add='git add' status='git status'
 mkdircd () { mkdir -p "$@" && cd "$*[-1]" }
 mkdirpu () { mkdir -p "$@" && pushd "$*[-1]" }
