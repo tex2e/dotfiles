@@ -2,8 +2,9 @@
 ###
 # Set Shell variable
 HISTSIZE=1000 HISTFILE=~/.zsh_history SAVEHIST=$HISTSIZE
-PROMPT="${HOST%%.*}:%(2L.#%L .)%1~ %# "
-RPROMPT='[%~]'
+# 
+PROMPT=$'%(6~|[%~]\n|)${HOST%%.*}:%(2L.#%L .)%1~ %# '
+RPROMPT=$'%(6~||%~)'
 
 # Set Shell options
 setopt auto_cd auto_remove_slash auto_name_dirs
@@ -108,9 +109,7 @@ function rprompt-git-current-branch {
 
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
-
-RPROMPT='[`rprompt-git-current-branch`%~]'
-
+RPROMPT='%(6~,,[)`rprompt-git-current-branch`'"$RPROMPT"'%(6~,,])'
 
 
 
