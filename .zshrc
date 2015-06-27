@@ -2,7 +2,7 @@
 ###
 # Set Shell variable
 HISTSIZE=1000 HISTFILE=~/.zsh_history SAVEHIST=$HISTSIZE
-PROMPT="${HOST%%.*}:%2(L.#%L .)%1~ %# "
+PROMPT="${HOST%%.*}:%(2L.#%L .)%1~ %# "
 RPROMPT='[%~]'
 
 # Set Shell options
