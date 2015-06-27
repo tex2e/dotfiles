@@ -2,7 +2,8 @@
 ###
 # Set Shell variable
 HISTSIZE=1000 HISTFILE=~/.zsh_history SAVEHIST=$HISTSIZE
-# 
+# スラッシュが5つ以内なら右プロンプトに表示
+# 6つ以上なら左プロンプトを2行に分けてその1行目に表示
 PROMPT=$'%(6~|[%~]\n|)${HOST%%.*}:%(2L.#%L .)%1~ %# '
 RPROMPT=$'%(6~||%~)'
 
