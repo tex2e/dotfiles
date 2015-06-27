@@ -14,14 +14,31 @@ setopt cdable_vars sh_word_split auto_param_keys pushd_ignore_dups
 # Alias and functions
 alias copy='cp -ip' del='rm -i' move='mv'
 alias fullreset='echo "\ec\ec"'
-h () { history $* | less }
 alias ja='LANG=ja_JP.UTF-8'
 alias ls='ls -F' la='ls -A' ll='ls -lA'
 alias .='source'
 alias ...='../..'
-alias zshrc='. ~/.zshrc' zshenv='. ~/.zshenv'
-alias push='git push' pull='git pull' commit='git commit -m '
-alias add='git add' status='git status' diff='git diff'
+alias zshrc='. ~/.zshrc'
+alias zshenv='. ~/.zshenv'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g L="| less"
+alias -g M="| most"
+alias -g LL="2>&1 | less"
+alias -g CA="2>&1 | cat -A"
+alias -g NE="2> /dev/null"
+alias -g NUL="> /dev/null 2>&1"
+alias -g P="2>&1| pygmentize -l pytb"
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+
+alias push='git push'
+alias pull='git pull'
+alias commit='git commit -m '
+alias add='git add'
+alias status='git status'
+alias diff='git diff'
 mkdircd () { mkdir -p "$@" && cd "$*[-1]" }
 mkdirpu () { mkdir -p "$@" && pushd "$*[-1]" }
 alias dirs='dirs -v'
