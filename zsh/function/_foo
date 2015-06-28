@@ -1,6 +1,18 @@
 #compdef foo
+
+local context state line
+typeset -A opt_args
+
 _arguments : \
 	'-x[eXclude]' \
 	'-file[Specify input file]:Input file:_files' \
-	'*:argument:(foo bar baz qux quux quuux)'
-	
+	'-t[Terminal Type]:Terminal type:->terminal' \
+	'*:argument:(foo bar baz qux quux quuux)' \
+
+case "$state" in
+	terminal )
+		local tc terms
+		terms=({/etc,/usr/share/misc}/termcap)
+		_describe -t terminal "Terminal type" terms
+		;;
+esac
