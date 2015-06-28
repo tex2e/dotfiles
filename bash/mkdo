@@ -29,8 +29,8 @@ done
 
 # shift $((OPTIND - 1))
 
-compile="make ${FILE}${VALUE_C}"
-execute="${FILE}${VALUE_E}${VALUE_O}"
+compile="make '${FILE}'${VALUE_C}"
+execute="'${FILE}'${VALUE_E}${VALUE_O}"
 
 echo "$execute" | grep -e '^\./' -e '^~/' -e '^/' || execute="./$execute"
 
