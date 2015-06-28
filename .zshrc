@@ -8,7 +8,8 @@ PROMPT=$'%(6~|[%~]\n|)${HOST%%.*}:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%}
 RPROMPT=$'%(6~||%~)'
 
 # Set Shell options
-setopt auto_cd auto_remove_slash auto_name_dirs
+#setopt auto_cd
+setopt auto_remove_slash auto_name_dirs
 setopt extended_history hist_ignore_dups hist_ignore_space prompt_subst
 setopt extended_glob list_types no_beep always_last_prompt
 setopt cdable_vars sh_word_split auto_param_keys pushd_ignore_dups
@@ -19,7 +20,9 @@ alias fullreset='echo "\ec\ec"'
 alias ja='LANG=ja_JP.UTF-8'
 alias ls='ls -F' la='ls -A' ll='ls -lA'
 alias .='source'
-alias ...='../..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias zshrc='. ~/.zshrc'
 alias zshenv='. ~/.zshenv'
 alias -g H='| head'
