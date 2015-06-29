@@ -2,10 +2,10 @@
 ###
 # Set Shell variable
 HISTSIZE=1000 HISTFILE=~/.zsh_history SAVEHIST=$HISTSIZE
-# スラッシュが5つ以内なら右プロンプトに表示
-# 6つ以上なら左プロンプトを2行に分けてその1行目に表示
-PROMPT=$'%(6~|[%~]\n|)%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
-RPROMPT=$'%(6~||%~)'
+# スラッシュが7つ以内なら右プロンプトに表示
+# 8つ以上なら左プロンプトを2行に分けてその1行目に表示
+PROMPT=$'%(8~|[%~]\n|)%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
+RPROMPT=$'%(8~||[%~])'
 
 # Set Shell options
 #setopt auto_cd
@@ -107,12 +107,12 @@ function rprompt-git-current-branch {
 		color=${fg[red]}
 	fi
 
-	echo "%{$color%}$name%{$reset_color%} "
+	echo "* %{$color%}$name%{$reset_color%} "
 }
 
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
-RPROMPT='%(6~,,[)`rprompt-git-current-branch`'"$RPROMPT"'%(6~,,])'
+RPROMPT='`rprompt-git-current-branch`'$RPROMPT
 
 
 
