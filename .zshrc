@@ -40,7 +40,7 @@ alias ff='find . -type f -name'
 alias gitlog='git log --oneline --decorate --graph'
 alias push='git push'
 alias pull='git pull'
-alias commit='git commit -m '
+alias commit='git commit'
 alias add='git add'
 alias status='git status'
 alias diff='git diff'
@@ -68,6 +68,7 @@ zstyle ':completion:*:platex:*' file-patterns '*.tex:tex --kanji=utf8:option *(-
 zstyle ':completion:*:dvi*:*' file-patterns '*.dvi:dvi *(-/):dir'
 zstyle ':completion:*:open:*' file-patterns '*.pdf:pdf *(-/):dir' '*:all-files'
 zstyle ':completion:*:date:*' fake '+%Y-%m-%d'
+zstyle ':completion:*:make:*' file-patterns '*(./):files'
 
 autoload -Uz compinit && compinit
 ###
