@@ -12,7 +12,7 @@ fpath=($fpath ~/.dotfiles/zsh/function)
 
 # export shell variable
 case `uname` in
-	Darwin ) # mac ox
+	Darwin ) # mac os
 		export CC=clang
 		export CXX=clang++
 		;;
