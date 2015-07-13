@@ -21,6 +21,7 @@ case `uname` in
 		export CXX=gcc
 		;;
 esac
+export EDITOR=vim
 ###
 
 
