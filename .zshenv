@@ -4,7 +4,7 @@
 typeset -U path
 path=($path ~/.script)
 cdpath=(
-	.. ~ ~/Documents ~/Documents/pgm
+	~ ~/Documents ~/Documents/pgm
 	~/Library/Application\ Support/Sublime\ Text\ 2/
 )
 # functions path
