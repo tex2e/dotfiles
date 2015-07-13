@@ -11,8 +11,16 @@ cdpath=(
 fpath=($fpath ~/.dotfiles/zsh/function)
 
 # export shell variable
-export CC=clang
-export CXX=clang++
+case `uname` in
+	Darwin ) # mac os
+		export CC=clang
+		export CXX=clang++
+		;;
+	Linux )
+		export CC=gcc
+		export CXX=gcc
+		;;
+esac
 ###
 
 
