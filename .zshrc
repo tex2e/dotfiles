@@ -14,6 +14,9 @@ setopt extended_history hist_ignore_dups hist_ignore_space prompt_subst
 setopt extended_glob list_types no_beep always_last_prompt
 setopt cdable_vars sh_word_split auto_param_keys pushd_ignore_dups
 
+# Set Keybind
+bindkey -e
+
 # Alias and functions
 alias copy='cp -ip' del='rm -i' move='mv'
 alias fullreset='echo "\ec\ec"'
