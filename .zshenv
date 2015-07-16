@@ -2,11 +2,8 @@
 ###
 # Setup command search path
 typeset -U path
-path=($path ~/.script)
-cdpath=(
-	~ ~/Documents ~/Documents/pgm
-	~/Library/Application\ Support/Sublime\ Text\ 2/
-)
+path=($path ~/.script ~/.dotfiles/bash)
+cdpath=(~ ~/Documents ~/Documents/pgm)
 # functions path
 fpath=($fpath ~/.dotfiles/zsh/function)
 
