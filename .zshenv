@@ -31,3 +31,8 @@ if which pyenv > /dev/null; then
     # export PATH=${PYENV_ROOT}/shims:${PATH}
     eval "$(pyenv init -)";
 fi
+
+
+# todo
+todo -l 2> /dev/null
+
