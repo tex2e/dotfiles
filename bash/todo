@@ -1,0 +1,46 @@
+#!/bin/bash
+# 
+# todo -- management todo list
+# 
+
+function usage() {
+	echo "usage: todo [-l | --list]"
+	echo "usage: todo -m <message>"
+	echo "usage: todo -d <lineno>"
+	exit 0
+}
+
+todo_file="$HOME/.todo"
+[[ -f $todo_file ]] || touch $todo_file
+
+function list {
+	if [[ -s $todo_file ]]; then
+		echo 'todo list : '
+		cat -n $todo_file
+	else
+		echo 'nothing to do' 1>&2
+	fi
+}
+function add {
+	echo "todo << $OPTARG"
+	echo "$OPTARG" >> $todo_file
+}
+function delete {
+	echo -n 'done >> '
+	sed -n ${OPTARG}p $todo_file
+	sed -i -e "${OPTARG}d" $todo_file
+}
+
+[[ $# == 0 ]] && list
+
+while getopts lm:d: OPT ; do
+	case $OPT in
+		l ) list ;;
+		m ) add ;;
+		d ) delete ;;
+		* ) usage ;;
+	esac
+done
+
+
+
