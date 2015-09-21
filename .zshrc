@@ -1,7 +1,9 @@
 
 ###
 # Set Shell variable
-HISTSIZE=1000 HISTFILE=~/.zsh_history SAVEHIST=$HISTSIZE
+HISTSIZE=1000
+HISTFILE=~/.zsh_history
+SAVEHIST=100000
 # スラッシュが7つ以内なら右プロンプトに表示
 # 8つ以上なら左プロンプトを2行に分けてその1行目に表示
 PROMPT=$'%(8~|[%~]\n|)%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
@@ -13,6 +15,7 @@ setopt auto_remove_slash auto_name_dirs
 setopt extended_history hist_ignore_dups hist_ignore_space prompt_subst
 setopt extended_glob list_types no_beep always_last_prompt
 setopt cdable_vars sh_word_split auto_param_keys pushd_ignore_dups
+setopt share_history
 
 # Set Keybind
 bindkey -e
