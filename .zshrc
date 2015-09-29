@@ -2,12 +2,12 @@
 ###
 # Set Shell variable
 HISTSIZE=1000
-HISTFILE=~/.zsh_history
+HISTFILE='~/.zsh_history'
 SAVEHIST=100000
-# スラッシュが7つ以内なら右プロンプトに表示
-# 8つ以上なら左プロンプトを2行に分けてその1行目に表示
-PROMPT=$'%(8~|[%~]\n|)%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
-RPROMPT=$'%(8~||[%~])'
+# スラッシュが6つ以内なら右プロンプトに表示
+# 6つ以上なら左プロンプトを2行に分けてその1行目に表示
+PROMPT=$'%(6~|[%~]\n|)%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
+RPROMPT=$'%(6~||[%~])'
 
 # Set Shell options
 #setopt auto_cd
@@ -27,32 +27,16 @@ alias ja='LANG=ja_JP.UTF-8'
 alias ls='ls -F' la='ls -A' ll='ls -lA'
 alias tree='tree -F'
 alias .='source'
-alias -g ..='..'
 alias -g ...='../..'
 alias -g ....='../../..'
 alias zshrc='. ~/.zshrc'
 alias zshenv='. ~/.zshenv'
-alias -g H='| head'
-alias -g T='| tail'
-alias -g G='| grep'
-alias -g L="| less"
-alias -g M="| most"
-alias -g LL="2>&1 | less"
-alias -g CA="2>&1 | cat -A"
-alias -g NE="2> /dev/null"
-alias -g NUL="> /dev/null 2>&1"
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 alias gitlog='git log --oneline --decorate --graph'
-alias push='git push'
-alias pull='git pull'
-alias commit='git commit'
-alias add='git add'
-alias status='git status'
-alias diff='git diff'
 mkdircd () { mkdir -p "$@" && cd "$*[-1]" }
 mkdirpu () { mkdir -p "$@" && pushd "$*[-1]" }
-alias dirs='dirs -v'
+take () { mkdircd "$@" }
 
 # Suffix aliases
 alias -s rb=ruby py=python
@@ -74,18 +58,18 @@ zstyle ':completion:*:platex:*' file-patterns '*.tex:tex --kanji=utf8:option *(-
 zstyle ':completion:*:dvi*:*' file-patterns '*.dvi:dvi *(-/):dir'
 zstyle ':completion:*:open:*' file-patterns '*.pdf:pdf *(-/):dir' '*:all-files'
 zstyle ':completion:*:date:*' fake '+%Y-%m-%d'
-zstyle ':completion:*:make:*' file-patterns '*(./):files'
+zstyle ':completion:*:make:*' file-patterns '*.c:files' '*.cpp:files'
 zstyle ':completion:*:subl:*' file-patterns '*.*:files' '*:files'
 
 autoload -Uz compinit && compinit
 ###
 
 
-# c compile and execute
-function runcpp () {
-	g++ -x c $1 && shift && ./a.out $@
-}
-alias -s {c,cpp}=runcpp
+# # c compile and execute
+# function runcpp () {
+	# g++ -x c $1 && shift && ./a.out $@
+# }
+# alias -s {c,cpp}=runcpp
 
 
 # Git status
