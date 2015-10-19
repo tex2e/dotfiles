@@ -2,8 +2,9 @@
 ###
 # Setup command search path
 typeset -U path
-path=($path ~/.script ~/.dotfiles/bash)
+path=($path /usr/local/sbin ~/.script ~/.dotfiles/bash)
 cdpath=(~ ~/Documents ~/Documents/pgm)
+
 # functions path
 fpath=($fpath ~/.dotfiles/zsh/function)
 
@@ -23,7 +24,8 @@ export EDITOR=vim
 
 
 # ruby
-eval "$(rbenv init - zsh)"
+path=(~/.rbenv/shims $path)
+eval "$(/usr/local/bin/rbenv init - zsh)"
 
 # python
 if which pyenv > /dev/null; then
