@@ -37,6 +37,7 @@ alias gitlog='git log --oneline --decorate --graph'
 mkdircd () { mkdir -p "$@" && cd "$*[-1]" }
 mkdirpu () { mkdir -p "$@" && pushd "$*[-1]" }
 take () { mkdircd "$@" }
+haskell () { ghc --make ./$1 && ./$1 }
 
 # Suffix aliases
 alias -s rb=ruby py=python
@@ -106,7 +107,6 @@ function rprompt-git-current-branch {
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
 RPROMPT='`rprompt-git-current-branch`'$RPROMPT
-
 
 
 
