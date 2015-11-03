@@ -23,6 +23,7 @@ bindkey -e
 # Alias and functions
 alias copy='cp -ip' del='rm -i' move='mv'
 alias fullreset='echo "\ec\ec"'
+alias en='LANG=en_US.UTF-8'
 alias ja='LANG=ja_JP.UTF-8'
 alias ls='ls -F' la='ls -A' ll='ls -lA'
 alias tree='tree -F'
@@ -36,8 +37,6 @@ alias ff='find . -type f -name'
 alias gitlog='git log --oneline --decorate --graph'
 mkdircd () { mkdir -p "$@" && cd "$*[-1]" }
 mkdirpu () { mkdir -p "$@" && pushd "$*[-1]" }
-take () { mkdircd "$@" }
-haskell () { ghc --make ./$1 && ./$1 }
 
 # Suffix aliases
 alias -s rb=ruby py=python
@@ -64,13 +63,6 @@ zstyle ':completion:*:subl:*' file-patterns '*.*:files' '*:files'
 
 autoload -Uz compinit && compinit
 ###
-
-
-# # c compile and execute
-# function runcpp () {
-	# g++ -x c $1 && shift && ./a.out $@
-# }
-# alias -s {c,cpp}=runcpp
 
 
 # Git status
