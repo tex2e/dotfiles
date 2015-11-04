@@ -1,4 +1,7 @@
 
+# inherited from .bashrc
+source .bashrc
+
 ###
 # Set Shell variable
 HISTSIZE=1000
@@ -25,16 +28,17 @@ alias copy='cp -ip' del='rm -i' move='mv'
 alias fullreset='echo "\ec\ec"'
 alias en='LANG=en_US.UTF-8'
 alias ja='LANG=ja_JP.UTF-8'
-alias ls='ls -F' la='ls -A' ll='ls -lA'
+# alias ls='ls -F' la='ls -A' ll='ls -lA'
 alias tree='tree -F'
 alias .='source'
 alias -g ...='../..'
 alias -g ....='../../..'
+alias -g .....='../../../..'
 alias zshrc='. ~/.zshrc'
 alias zshenv='. ~/.zshenv'
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
-alias gitlog='git log --oneline --decorate --graph'
+# alias fd='find . -type d -name'
+# alias ff='find . -type f -name'
+# alias gitlog='git log --oneline --decorate --graph'
 mkdircd () { mkdir -p "$@" && cd "$*[-1]" }
 mkdirpu () { mkdir -p "$@" && pushd "$*[-1]" }
 
