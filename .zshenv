@@ -3,7 +3,7 @@
 # Setup command search path
 typeset -U path
 path=($path /usr/local/bin /usr/local/sbin ~/.script ~/.dotfiles/bash)
-cdpath=(~ ~/Documents ~/Documents/pgm)
+cdpath=(~ ~/Documents/pgm)
 
 # functions path
 fpath=($fpath ~/.dotfiles/zsh/function)
@@ -16,7 +16,7 @@ case `uname` in
 		;;
 	Linux )
 		export CC=gcc
-		export CXX=gcc
+		export CXX=g++
 		;;
 esac
 export EDITOR=vim
