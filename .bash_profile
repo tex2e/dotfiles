@@ -8,7 +8,7 @@ case `uname` in
 		export SUBL="~/Library/Application\ Support/Sublime\ Text\ 2/Packages/"
 		;;
 	Linux )
-		
+		setxkbmap -option ctrl:nocaps
 		;;
 esac
 
