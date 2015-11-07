@@ -8,6 +8,7 @@ case `uname` in
 		export SUBL="~/Library/Application\ Support/Sublime\ Text\ 2/Packages/"
 		;;
 	Linux )
+		# change caps lock keybind to ctrl
 		setxkbmap -option ctrl:nocaps
 		;;
 esac
