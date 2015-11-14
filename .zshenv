@@ -38,5 +38,7 @@ fi
 
 
 # todo
-todo -l 2> /dev/null
+if which todo > /dev/null; then
+	todo -l
+fi
 
