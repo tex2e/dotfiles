@@ -3,7 +3,7 @@
 # Setup command search path
 typeset -U path
 path=($path /usr/local/bin /usr/local/sbin ~/.script ~/.dotfiles/bash)
-cdpath=(~ ~/Documents/pgm)
+cdpath=($cdpath ~ ~/Documents/pgm)
 
 # functions path
 fpath=($fpath ~/.dotfiles/zsh/function)
