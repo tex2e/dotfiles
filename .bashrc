@@ -29,7 +29,7 @@ case `uname` in
 		:
 		;;
 	Linux )
-		source .ubuntu.bashrc
+		source ~/.ubuntu.bashrc
 
 		# # create .xmodmap file
 		# xmodmap -pke> "~/.xmodmap" 
