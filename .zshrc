@@ -1,6 +1,6 @@
 
 # inherited from .bashrc
-source .bashrc
+source ~/.bashrc
 
 ###
 # Set Shell variable
@@ -83,9 +83,11 @@ function rprompt-git-current-branch {
 
 	[[ "$PWD" =~ '/\.git(/.*)?$' ]] && return
 
+	# branch name
 	name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
 	[[ -z $name ]] && return
 
+	# set color
 	st=`git status 2> /dev/null`
 	if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
 		color=${fg[green]}
@@ -97,7 +99,15 @@ function rprompt-git-current-branch {
 		color=${fg[red]}
 	fi
 
-	echo "* %{$color%}$name%{$reset_color%} "
+	# git diff origin
+	origin_diff=
+	if [[ $(git diff $(git remote)/master HEAD) = "" ]]; then
+		origin_diff='*'
+	else
+		origin_diff='(*)'
+	fi
+
+	echo "${origin_diff} %{$color%}$name%{$reset_color%} "
 }
 
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
