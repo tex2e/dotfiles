@@ -5,7 +5,7 @@ SHELL = /bin/sh
 
 ### how to make PDF from TEX ###
 # 
-# to make PDF from TeX, type
+# to make PDF from TeX, type:
 # 
 #     make init
 #     make pdf

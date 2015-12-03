@@ -1,5 +1,13 @@
 #! /bin/bash
 
+# to use this to create tex enviroment, type:
+# 
+#     texenv
+#     make init
+# 
+# further infomation is in ${TEXENV_DIR}/Makefile.mk
+# 
+
 TEXENV_DIR="$HOME/.dotfiles/bash/texenvs"
 
 cat << EOF > "$PWD"/Makefile
