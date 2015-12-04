@@ -59,8 +59,10 @@ init:
 		yes q | $(TEX) $<; \
 	done
 	@for i in `seq 1 3`; do \
-		if grep -F 'Rerun to get cross-references right.' $(<:.tex=).log; then \
-			yes q | $(TEX) $<; else exit 0; \
+		if grep -F 'Rerun to get cross-references right.' $(<:.tex=.log); then \
+			yes q | $(TEX) $<; \
+		else \
+			exit 0; \
 		fi; \
 	done
 
@@ -77,6 +79,5 @@ clean:
 
 distclean: clean
 	$(RM) $(PDF_FILE)
-
 
 
