@@ -99,12 +99,14 @@ function rprompt-git-current-branch {
 		color=${fg[red]}
 	fi
 
-	# git diff origin
-	origin_diff=
-	if [[ $(git diff $(git remote)/master HEAD) = "" ]]; then
-		origin_diff='*'
-	else
-		origin_diff='(*)'
+	# git diff origin/master HEAD
+	origin_diff='*'
+	git_remotes=($(git remote))
+	if [[ ${#git_remotes[@]} != 0 ]]; then
+		git_remote=$(echo $git_remotes | cut -d ' ' -f 1)
+		if [[ $(git diff $git_remote/master HEAD) != "" ]]; then
+			origin_diff='(*)'
+		fi
 	fi
 
 	echo "${origin_diff} %{$color%}$name%{$reset_color%} "
