@@ -15,6 +15,9 @@ TEXENV_DIR="$HOME/.dotfiles/bash/texenvs"
 
 option=${1:-null}
 
+#
+# create Makefile
+#
 if [ $# = 0 ] || [ $option = make ]; then
 	printf 'writing Makefile ... '
 	# begin writing
@@ -35,6 +38,9 @@ EOF
 	exit 0
 fi
 
+#
+# create Rakefile if specified
+#
 if [ $option = rake ]; then
 	printf 'writing Rakefile ... '
 	# begin writing
