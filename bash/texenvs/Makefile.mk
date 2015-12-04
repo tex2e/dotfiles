@@ -51,7 +51,7 @@ COMPILE_CNT := 1
 
 all: pdf
 
-init:
+original_init:
 	@mkdir images 2>/dev/null && touch report.tex || printf "nothing to be done\n"
 
 %.dvi: %.tex
