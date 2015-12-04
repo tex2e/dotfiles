@@ -6,8 +6,8 @@ source_files = Rake::FileList['*.tex']
 task :default => :pdf
 
 desc 'Create empty directory'
-task :init do
-	mkdir 'images'
+task :original_init do
+	mkdir 'images' rescue true
 	touch 'report.tex'
 end
 

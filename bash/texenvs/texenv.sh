@@ -28,7 +28,12 @@ include \$(TEXENV_DIR)/Makefile.mk
 
 .PHONY: init pdf clean distclean
 
-init pdf clean distclean:
+init: OUTPUT = report.tex
+init: original_init
+	@printf 'OUTPUT=%s\n' \$(OUTPUT)
+	cp -i $TEXENV_DIR/template.tex \$(PWD)/\$(OUTPUT) || true
+
+pdf clean distclean:
 
 selfupdate:
 	texenv
@@ -48,6 +53,13 @@ if [ $option = rake ]; then
 # This Rakefile is generated automatically by $SCRIPT
 TEXENV_DIR = '${TEXENV_DIR}'
 import "#{TEXENV_DIR}/Rakefile.rb"
+
+desc 'write template tex file'
+task :init => :original_init do
+	output_file = ENV['OUTPUT'] || 'report.tex'
+	puts "OUTPUT=#{output_file}"
+	sh "cp -i $TEXENV_DIR/template.tex \$PWD/#{output_file} || true"
+end
 
 desc 'update self'
 task :selfupdate do
