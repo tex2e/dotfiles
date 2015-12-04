@@ -21,7 +21,7 @@ if [ $# = 0 ] || [ $option = make ]; then
 	cat << EOF > "$PWD"/Makefile
 # This Makefile is generated automatically by $SCRIPT
 TEXENV_DIR=${TEXENV_DIR}
-include \$(TEXENV_DIR)/Makefile.make
+include \$(TEXENV_DIR)/Makefile
 
 .PHONY: init pdf clean distclean
 
@@ -41,7 +41,7 @@ if [ $option = rake ]; then
 	cat << EOF > "$PWD"/Rakefile
 # This Rakefile is generated automatically by $SCRIPT
 TEXENV_DIR = '${TEXENV_DIR}'
-import "#{TEXENV_DIR}/Rakefile.rake"
+import "#{TEXENV_DIR}/Rakefile"
 
 desc 'update self'
 task :selfupdate do
