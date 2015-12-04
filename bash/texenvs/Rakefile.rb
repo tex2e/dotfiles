@@ -45,4 +45,3 @@ end
 
 # rake clobber
 CLOBBER.include(source_files.ext('.pdf'))
-
