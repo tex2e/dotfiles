@@ -14,7 +14,7 @@ SHELL = /bin/sh
 ### Commands
 # 
 # + init
-#     create directory 'images'. if cannot creating it, print 'nothing to be done'.
+#     create directory images/ and write latex template file.
 # 
 # + pdf
 #     create pdf from tex file.
@@ -40,6 +40,8 @@ SHELL = /bin/sh
 #  └── report.tex
 # 
 
+TEXENV_DIR := "$(HOME)/.dotfiles/bash/texenvs"
+
 TEX := platex -recorder
 
 TEX_FILE := $(wildcard *.tex)
@@ -47,12 +49,26 @@ PDF_FILE := $(patsubst %.tex, %.pdf, $(TEX_FILE))
 
 COMPILE_CNT := 1
 
-.PHONY: init pdf open clean distclean
+.PHONY: help init pdf open clean distclean
+.SILENT: help
 
 all: pdf
 
-original_init:
-	@mkdir images 2>/dev/null && touch report.tex || printf "nothing to be done\n"
+help:
+	echo 'make init      - create a directory images/ and write a tmeplate tex file'
+	echo 'make pdf       - create pdf from tex file.'
+	echo 'make open      - create pdf and open it.'
+	echo 'make clean     - remove any temporary products such as .aux, .log and .dvi.'
+	echo 'make distclean - remove any generated file.'
+
+init: OUTPUT = report.tex
+init:
+	@printf 'creating directory images/ ... '
+	@mkdir images 2>/dev/null && echo 'done' || echo 'file exist'
+	
+	@echo 'writing template tex file ... '
+	@echo 'OUTPUT='$(OUTPUT)
+	cp -i $(TEXENV_DIR)/template.tex $(PWD)/$(OUTPUT) || true
 
 %.dvi: %.tex
 	@for i in `seq 1 $(COMPILE_CNT)`; do \

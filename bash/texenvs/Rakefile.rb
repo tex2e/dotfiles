@@ -1,14 +1,19 @@
 
-tex_cmd = 'platex'
+TEXENV_DIR = "~/.dotfiles/bash/texenvs"
+
+tex_cmd = 'platex -recorder'
 source_files = Rake::FileList['*.tex']
 
 
 task :default => :pdf
 
-desc 'Create empty directory'
-task :original_init do
+desc 'Create directory images/ and latex template file.'
+task :init do
 	mkdir 'images' rescue true
-	touch 'report.tex'
+
+	output_file = ENV['OUTPUT'] || 'report.tex'
+	puts "OUTPUT=#{output_file}"
+	sh "cp -i #{TEXENV_DIR}/template.tex $PWD/#{output_file} || true"
 end
 
 rule '.dvi' => '.tex' do |t|
@@ -38,7 +43,7 @@ end
 require 'rake/clean'
 
 # rake clean
-generated = %W(.log .tex .aux .dvi)
+generated = %W(.log .dvi .aux .fls)
 generated.each do |extention|
 	CLEAN.include(source_files.ext(extention))
 end
