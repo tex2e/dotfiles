@@ -32,10 +32,10 @@ rule '.pdf' => '.dvi' do |t|
 	sh "dvipdfmx -d5 #{t.source}"
 end
 
-desc 'Create pdf from dvi file'
+desc 'Create pdf from dvi file.'
 task :pdf => source_files.ext('.pdf')
 
-desc 'Create pdf and open it'
+desc 'Create pdf and open it.'
 task :open => source_files.ext('.pdf') do |t|
 	sh "open #{t.prerequisites.join(' ')}"
 end
