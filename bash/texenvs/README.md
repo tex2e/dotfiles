@@ -35,7 +35,9 @@ To use this to create a pdf, type `make pdf`.
 
 Available commands are as follows:
 
-- `make init      ` - create a directory images/ and write a tmeplate tex file
+- `make init      ` - create a directory images/ and write a template tex file (default name is report.tex).
+    When current directory has a same name, it ask that "overwrite a file (y/n)".
+- `make init OUTPUT=filename.tex` - specify a filename to write a template.
 - `make pdf       ` - create pdf from tex file.
 - `make open      ` - create pdf and open it.
 - `make clean     ` - remove any temporary products such as .aux, .log and .dvi.
@@ -54,7 +56,9 @@ Available commands are as follows:
 
 - `rake clean  `  - remove any temporary products.
 - `rake clobber`  - remove any generated file.
-- `rake init   `  - create directory images/ and latex template file.
+- `rake init   `  - create directory images/ and latex template file (default name is report.tex). 
+    When current directory has a same name, it ask that "overwrite a file (y/n)".
+- `rake init OUTPUT=filename.tex` - specify a filename to write a template.
 - `rake open   `  - create pdf and open it.
 - `rake pdf    `  - create pdf from dvi file.
 - `rake --tasks`  - show available commands.
@@ -63,7 +67,7 @@ template.tex
 ------------
 
 This template.tex will be set a latex template.
-Typing `make init`, the script writes a latex template file (copied the template.tex) in your directory.
+Typing `make init`, the script writes a latex template file (copied the template.tex) in current directory.
 
 
 
