@@ -18,7 +18,7 @@ After running a command `texenv`, `make init` and `make pdf`, a directory which 
 
     .
     ├── Makefile -> ~/.dotfiles/bash/texenvs/Makefile.mk
-    ├── Rakefile -> ~/.dotfiles/bash/texenvs/Rakefile.rb
+    ├── Rakefile -> ~/.dotfiles/bash/texenvs/Rakefile.rb  # when type `texenv rake`
     ├── images/
     ├── report.aux
     ├── report.dvi
@@ -57,11 +57,12 @@ Available commands are as follows:
 - `rake init   `  - create directory images/ and latex template file.
 - `rake open   `  - create pdf and open it.
 - `rake pdf    `  - create pdf from dvi file.
+- `rake --tasks`  - show available commands.
 
 template.tex
 ------------
 
-This template.tex will be set a latex template in template.tex.
+This template.tex will be set a latex template.
 Typing `make init`, the script writes a latex template file (copied the template.tex) in your directory.
 
 
