@@ -6,7 +6,7 @@ path=($path /usr/local/bin /usr/local/sbin ~/.script ~/.dotfiles/bash)
 cdpath=($cdpath ~ ~/Documents ~/Documents/pgm)
 
 # functions path
-fpath=($fpath ~/.dotfiles/zsh/function)
+fpath=($fpath /usr/local/share/zsh-completions ~/.dotfiles/zsh/function)
 
 # export shell variable
 case `uname` in
