@@ -5,7 +5,7 @@ source ~/.bashrc
 ###
 # Set Shell variable
 HISTSIZE=1000
-HISTFILE='~/.zsh_history'
+HISTFILE="$HOME/.zsh_history"
 SAVEHIST=100000
 # スラッシュが6つ以内なら右プロンプトに表示
 # 6つ以上なら左プロンプトを2行に分けてその1行目に表示
