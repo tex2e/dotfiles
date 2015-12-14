@@ -32,7 +32,14 @@ case `uname` in
 		source ~/.ubuntu.bashrc
 
 		# # create .xmodmap file
-		# xmodmap -pke> "~/.xmodmap" 
+		# xmodmap -pke> "~/.xmodmap"
+		# vim ~/.xmodmap
+		#
+		#   keycode 37 = Control_L NoSymbol Control_L        #ctrl
+		#   keycode 66 = Caps_Lock NoSymbol Caps_Lock   #caps lock
+		#   clear Lock
+		#   add Control = Control_L
+		#
 		xmodmap ~/.xmodmap
 		;;
 esac
