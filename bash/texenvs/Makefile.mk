@@ -49,7 +49,7 @@ PDF_FILE := $(patsubst %.tex, %.pdf, $(TEX_FILE))
 
 COMPILE_CNT := 1
 
-.PHONY: help init pdf open clean distclean
+.PHONY: help init pdf open clean distclean rebuild
 .SILENT: help
 
 all: pdf
@@ -95,3 +95,11 @@ clean:
 
 distclean: clean
 	$(RM) $(PDF_FILE)
+
+touch::
+	touch $(TEX_FILE)
+
+rebuild: touch all
+
+
+
