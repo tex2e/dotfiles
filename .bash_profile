@@ -20,7 +20,7 @@ export PATH="${PATH}:/opt/local/bin:/opt/local/sbin"
 
 # ruby
 if which rbenv > /dev/null; then
-	path=(~/.rbenv/shims $path)
+	export path=(~/.rbenv/shims $path)
 	eval "$(rbenv init -)"
 fi
 
@@ -31,4 +31,3 @@ if which pyenv > /dev/null; then
     eval "$(pyenv init -)";
 fi
 
-. .bashrc
