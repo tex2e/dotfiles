@@ -13,12 +13,15 @@ PROMPT=$'%(6~|[%~]\n|)%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
 RPROMPT=$'%(6~||[%~])'
 
 # Set Shell options
-#setopt auto_cd
-setopt auto_remove_slash auto_name_dirs
-setopt extended_history hist_ignore_dups hist_ignore_space prompt_subst
-setopt extended_glob list_types no_beep always_last_prompt
-setopt cdable_vars sh_word_split auto_param_keys pushd_ignore_dups
-setopt share_history
+# setopt auto_cd
+setopt auto_param_slash auto_name_dirs auto_param_keys
+setopt mark_dirs list_types
+setopt extended_history hist_ignore_dups hist_ignore_space share_history
+setopt no_beep always_last_prompt
+setopt interactive_comments
+setopt cdable_vars sh_word_split pushd_ignore_dups
+setopt prompt_subst
+# setopt transient_rprompt  # set the option of hide RPROMPT to copy the string in terminal
 
 # Set Keybind
 bindkey -e
@@ -51,10 +54,12 @@ zstyle ':completion:*:descriptions' format '%B> Completing %d%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches'
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' completer _complete _approximate
+zstyle ':completion:*' completer _complete # _approximate
 zstyle ':completion:*' matcher-list '' 'm:{A-Z}={a-z}' '+m:{a-z}={A-Z}' \
 	'r:|[-_.]=*' 'm:to=2'
+zstyle ':completion:*' use-cache true
 zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
 
 zstyle ':completion:*:ruby:*' file-patterns '*.rb:ruby\ script *(-/):dir'
 zstyle ':completion:*:python:*' file-patterns '*.py:python\ script *(-/):dir'
