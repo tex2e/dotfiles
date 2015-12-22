@@ -9,8 +9,10 @@ HISTFILE="$HOME/.zsh_history"
 SAVEHIST=100000
 # スラッシュが6つ以内なら右プロンプトに表示
 # 6つ以上なら左プロンプトを2行に分けてその1行目に表示
-PROMPT=$'%(6~|[%~]\n|)%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
-RPROMPT=$'%(6~||[%~])'
+# PROMPT=$'%(6~|[%~]\n|)%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
+# RPROMPT=$'%(6~||[%~])'
+PROMPT=$'%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
+RPROMPT=$'[%~]'
 
 # Set Shell options
 # setopt auto_cd
@@ -104,15 +106,15 @@ function rprompt-git-current-branch {
 		color=${fg[red]}
 	fi
 
-	# git diff origin/master HEAD
-	origin_diff='*'
-	git_remotes=($(git remote))
-	if [[ ${#git_remotes[@]} != 0 ]]; then
-		git_remote=$(echo $git_remotes | cut -d ' ' -f 1)
-		if [[ $(git diff $git_remote/master HEAD) != "" ]]; then
-			origin_diff='(*)'
-		fi
-	fi
+	# # git diff origin/master HEAD
+	# origin_diff='*'
+	# git_remotes=($(git remote))
+	# if [[ ${#git_remotes[@]} != 0 ]]; then
+	# 	git_remote=$(echo $git_remotes | cut -d ' ' -f 1)
+	# 	if [[ $(git diff $git_remote/master HEAD) != "" ]]; then
+	# 		origin_diff='(*)'
+	# 	fi
+	# fi
 
 	echo "${origin_diff} %{$color%}$name%{$reset_color%} "
 }
