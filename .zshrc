@@ -6,7 +6,7 @@ source ~/.bashrc
 # Set Shell variable
 HISTSIZE=1000
 HISTFILE="$HOME/.zsh_history"
-SAVEHIST=100000
+SAVEHIST=10000
 # スラッシュが6つ以内なら右プロンプトに表示
 # 6つ以上なら左プロンプトを2行に分けてその1行目に表示
 # PROMPT=$'%(6~|[%~]\n|)%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
@@ -15,7 +15,7 @@ PROMPT=$'%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
 RPROMPT=$'[%~]'
 
 # Set Shell options
-# setopt auto_cd
+#setopt auto_cd
 setopt auto_param_slash auto_name_dirs auto_param_keys
 setopt mark_dirs list_types
 setopt extended_history hist_ignore_dups hist_ignore_space share_history
@@ -23,7 +23,8 @@ setopt no_beep always_last_prompt
 setopt interactive_comments
 setopt cdable_vars sh_word_split pushd_ignore_dups
 setopt prompt_subst
-# setopt transient_rprompt  # set the option of hide RPROMPT to copy the string in terminal
+# set the option of hide RPROMPT to copy the string in terminal
+#setopt transient_rprompt
 
 # Set Keybind
 bindkey -e
@@ -31,21 +32,9 @@ bindkey -e
 # Alias and functions
 alias copy='cp -ip' del='rm -i' move='mv'
 alias fullreset='echo "\ec\ec"'
-alias en='LANG=en_US.UTF-8'
-alias ja='LANG=ja_JP.UTF-8'
-# alias ls='ls -F' la='ls -A' ll='ls -lA'
-alias tree='tree -F'
 alias .='source'
-alias -g ...='../..'
-alias -g ....='../../..'
-alias -g .....='../../../..'
 alias zshrc='. ~/.zshrc'
 alias zshenv='. ~/.zshenv'
-# alias fd='find . -type d -name'
-# alias ff='find . -type f -name'
-# alias gitlog='git log --oneline --decorate --graph'
-mkdircd () { mkdir -p "$@" && cd "$*[-1]" }
-mkdirpu () { mkdir -p "$@" && pushd "$*[-1]" }
 
 # Suffix aliases
 alias -s rb=ruby py=python
@@ -122,10 +111,3 @@ function rprompt-git-current-branch {
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
 setopt prompt_subst
 RPROMPT='`rprompt-git-current-branch`'$RPROMPT
-
-
-
-
-
-
-
