@@ -47,7 +47,7 @@ zstyle ':completion:*:warnings' format 'No matches'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' completer _complete # _approximate
 zstyle ':completion:*' matcher-list '' 'm:{A-Z}={a-z}' '+m:{a-z}={A-Z}' \
-	'r:|[-_.]=*' 'm:to=2'
+  'r:|[-_.]=*' 'm:to=2'
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
@@ -75,37 +75,37 @@ autoload -Uz compinit && compinit
 autoload -U colors; colors
 
 function rprompt-git-current-branch {
-	local name st color
+  local name st color
 
-	[[ "$PWD" =~ '/\.git(/.*)?$' ]] && return
+  [[ "$PWD" =~ '/\.git(/.*)?$' ]] && return
 
-	# branch name
-	name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
-	[[ -z $name ]] && return
+  # branch name
+  name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
+  [[ -z $name ]] && return
 
-	# set color
-	st=`git status 2> /dev/null`
-	if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-		color=${fg[green]}
-	elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-		color=${fg[yellow]}
-	elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-		color=${fg_bold[red]}
-	else
-		color=${fg[red]}
-	fi
+  # set color
+  st=`git status 2> /dev/null`
+  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+    color=${fg[green]}
+  elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
+    color=${fg[yellow]}
+  elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
+    color=${fg_bold[red]}
+  else
+    color=${fg[red]}
+  fi
 
-	# # git diff origin/master HEAD
-	# origin_diff='*'
-	# git_remotes=($(git remote))
-	# if [[ ${#git_remotes[@]} != 0 ]]; then
-	# 	git_remote=$(echo $git_remotes | cut -d ' ' -f 1)
-	# 	if [[ $(git diff $git_remote/master HEAD) != "" ]]; then
-	# 		origin_diff='(*)'
-	# 	fi
-	# fi
+  # # git diff origin/master HEAD
+  # origin_diff='*'
+  # git_remotes=($(git remote))
+  # if [[ ${#git_remotes[@]} != 0 ]]; then
+  #   git_remote=$(echo $git_remotes | cut -d ' ' -f 1)
+  #   if [[ $(git diff $git_remote/master HEAD) != "" ]]; then
+  #     origin_diff='(*)'
+  #   fi
+  # fi
 
-	echo "${origin_diff} %{$color%}$name%{$reset_color%} "
+  echo "${origin_diff} %{$color%}$name%{$reset_color%} "
 }
 
 # プロンプトが表示されるたびにプロンプト文字列を評価、置換する
