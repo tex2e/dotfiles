@@ -2,7 +2,7 @@
 ###
 # Setup command search path
 typeset -U path
-path=(/usr/local/bin /usr/local/sbin $path ~/.script ~/.dotfiles/bash)
+path=(/usr/local/bin $path ~/.script ~/.dotfiles/bash)
 cdpath=(~ ~/Documents ~/Documents/pgm)
 
 # functions path
@@ -32,9 +32,9 @@ case `uname` in
 
     # python
     if which pyenv > /dev/null; then
-        export PYENV_ROOT="${HOME}/.pyenv"
-        # export PATH=${PYENV_ROOT}/shims:${PATH}
-        eval "$(pyenv init -)";
+      export PYENV_ROOT="${HOME}/.pyenv"
+      # export PATH=${PYENV_ROOT}/shims:${PATH}
+      eval "$(pyenv init -)";
     fi
 esac
 
@@ -42,4 +42,3 @@ esac
 if which todo > /dev/null; then
   todo -l
 fi
-
