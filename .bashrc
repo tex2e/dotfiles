@@ -14,12 +14,15 @@ alias bashrc='. ~/.bashrc'
 alias bash_profile='. ~/.bash_profile'
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
+alias en='LANG=en_US.UTF-8'
+alias ja='LANG=ja_JP.UTF-8'
+alias tree='tree -F'
 alias gitlog='git log --oneline --decorate --graph'
 mkdircd() {
-	mkdir -p "$@" && cd "$1"
+	mkdir -p "$1" && cd "$1"
 }
 mkdirpu() {
-	mkdir -p "$@" && pushd "$1"
+	mkdir -p "$1" && pushd "$1"
 }
 
 CLEAR='\033[0m'
@@ -37,12 +40,11 @@ case `uname` in
 		# xmodmap -pke> "~/.xmodmap"
 		# vim ~/.xmodmap
 		#
-		#   keycode 37 = Control_L NoSymbol Control_L        #ctrl
-		#   keycode 66 = Caps_Lock NoSymbol Caps_Lock   #caps lock
-		#   clear Lock
-		#   add Control = Control_L
+		#	 keycode 37 = Control_L NoSymbol Control_L   #ctrl
+		#	 keycode 66 = Caps_Lock NoSymbol Caps_Lock   #caps lock
+		#	 clear Lock
+		#	 add Control = Control_L
 		#
 		xmodmap ~/.xmodmap
 		;;
 esac
-
