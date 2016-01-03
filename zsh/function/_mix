@@ -68,9 +68,7 @@ __task_list ()
     #   loadconfig local local.hex local.rebar new run test
     # )
     tasks=(
-      archive clean compile deps deps.clean deps.compile deps.get deps.unlock
-      deps.update do escriptize help local local.install local.rebar
-      local.uninstall new run test
+      archive clean compile deps do escriptize help local new phoenix run test
     )
 
     _wanted tasks expl 'help' compadd $tasks
