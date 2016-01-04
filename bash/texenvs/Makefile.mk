@@ -96,7 +96,6 @@ clean:
 distclean: clean
 	$(RM) $(PDF_FILE)
 
-touch::
+rebuild:
 	touch $(TEX_FILE)
-
-rebuild: touch all
+	$(MAKE) pdf
