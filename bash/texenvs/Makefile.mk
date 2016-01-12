@@ -4,30 +4,30 @@ SHELL = /bin/sh
 .SUFFIXES: .pdf .tex .dvi
 
 ### how to make PDF from TEX ###
-# 
+#
 # to make PDF from TeX, type:
-# 
+#
 #     make init
 #     make pdf
-# 
+#
 
 ### Commands
-# 
+#
 # + init
 #     create directory images/ and write latex template file.
-# 
+#
 # + pdf
 #     create pdf from tex file.
-# 
+#
 # + open
 #     create pdf and open it.
-# 
+#
 # + clean
 #     delete all files such as .aux, .log and .dvi that are normally created by running make.
-# 
+#
 # + distclean
 #     delete all generated file (including .pdf).
-# 
+#
 
 # directory composed
 #  .
@@ -38,7 +38,7 @@ SHELL = /bin/sh
 #  ├── report.log
 #  ├── report.pdf
 #  └── report.tex
-# 
+#
 
 TEXENV_DIR := "$(HOME)/.dotfiles/bash/texenvs"
 
@@ -65,7 +65,7 @@ init: OUTPUT = report.tex
 init:
 	@printf 'creating directory images/ ... '
 	@mkdir images 2>/dev/null && echo 'done' || echo 'file exist'
-	
+
 	@echo 'writing template tex file ... '
 	@echo 'OUTPUT='$(OUTPUT)
 	cp -i $(TEXENV_DIR)/template.tex $(PWD)/$(OUTPUT) || true
@@ -96,10 +96,6 @@ clean:
 distclean: clean
 	$(RM) $(PDF_FILE)
 
-touch::
+rebuild:
 	touch $(TEX_FILE)
-
-rebuild: touch all
-
-
-
+	$(MAKE) pdf
