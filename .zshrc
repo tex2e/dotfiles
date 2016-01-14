@@ -7,10 +7,6 @@ source ~/.bashrc
 HISTSIZE=1000
 HISTFILE="$HOME/.zsh_history"
 SAVEHIST=10000
-# スラッシュが6つ以内なら右プロンプトに表示
-# 6つ以上なら左プロンプトを2行に分けてその1行目に表示
-# PROMPT=$'%(6~|[%~]\n|)%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
-# RPROMPT=$'%(6~||[%~])'
 PROMPT=$'%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
 RPROMPT=$'[%~]'
 
@@ -23,7 +19,7 @@ setopt no_beep always_last_prompt
 setopt interactive_comments
 setopt cdable_vars sh_word_split pushd_ignore_dups
 setopt prompt_subst
-# set the option of hide RPROMPT to copy the string in terminal
+# set the option for hiding RPROMPT to copy the string of the terminal
 #setopt transient_rprompt
 
 # Set Keybind
@@ -69,16 +65,15 @@ autoload -Uz compinit && compinit
 
 
 # Git status
-#   作業ディレクトリがクリーンなら緑
-#   追跡されていないファイルがあるときは黄色
-#   追跡されているファイルに変更があるときは赤
-#   変更あり+未追跡ファイルありで太字の赤
+#   green when working directory is clean
+#   yellow when it has untracked files
+#   red when changes are not staged for commit
+#   bold red when it has untracked files and changes are not staged
 #
-# ${fg[...]} や $reset_color をロード
+# load ${fg[...]} and $reset_color
 autoload -U colors; colors
 
 function rprompt-git-current-branch {
-
   local name st color
 
   [[ "$PWD" =~ '/\.git(/.*)?$' ]] && return
@@ -112,6 +107,6 @@ function rprompt-git-current-branch {
   echo "${origin_diff} %{$color%}$name%{$reset_color%} "
 }
 
-# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+# whenever a prompt is shown, evaluate a string of $RPROMPT and replace it
 setopt prompt_subst
 RPROMPT='`rprompt-git-current-branch`'$RPROMPT
