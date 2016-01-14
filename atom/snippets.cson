@@ -1,0 +1,122 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it here:
+# https://github.com/bevry/cson#what-is-cson
+
+'.source.coffee':
+  'Atom snippet':
+    'prefix': 'snipns'
+    'body':   """
+    '${1:name}':
+      'prefix': '$2'
+      'body':   '$3'
+    """
+
+'.source.js':
+  'each':
+    'prefix': 'each'
+    'body':   'each(function(${1:arg}) {\n\t$0\n})'
+  'anonymous func':
+    'prefix': 'fn'
+    'body':   'function($1) {\n\t$0\n}'
+  'jQuery.click':
+    'prefix': 'click'
+    'body':   'click(function() {\n\t$0\n});'
+
+'.source.elixir':
+  '|>':
+    'prefix': 'pipe'
+    'body':   '|> '
+  '->':
+    'prefix': 'arrow'
+    'body':   '->\n\t'
+  'IO.inspect':
+    'prefix': 'IO.inspect'
+    'body':   'IO.inspect'
+  'IO.puts':
+    'prefix': 'IO.puts'
+    'body':   'IO.puts'
+  'oneline if':
+    'prefix': 'if:'
+    'body':   'if $1, do: $0'
+  'oneline def':
+    'prefix': 'def:'
+    'body':   'def $1, do: $0'
+  'anonymous func':
+    'prefix': 'fn'
+    'body':   'fn ${1:arg} -> $2 end$0'
+  'anonymous func &':
+    'prefix': 'fna'
+    'body':   '&(&1$1)$0'
+  'import':
+    'prefix': 'import'
+    'body':   'import ${1:Module}$0'
+  'import only':
+    'prefix': 'import only'
+    'body':   'import ${1:Module}, only: [${2:function}: ${3:arity}]$0'
+  'import except':
+    'prefix': 'import except'
+    'body':   'import ${1:Module}, except: [${2:function}: ${3:arity}]$0'
+  'try do … rescue … end':
+    'prefix': 'rescue'
+    'body':   'try do\n\t$1\nrescue\n\te in RuntimeError -> e$2\nend$0'
+  'try do … catch … end':
+    'prefix': 'catch'
+    'body':   'try do\n\t$1\ncatch\n\tx -> "Got #{x}"$2\nend$0'
+  'receive do … end':
+    'prefix': 'receive'
+    'body':   'receive do\n  $0\nend'
+  'after ->':
+    'prefix': 'after'
+    'body':   'after ${1:time} ->\n\t$0'
+  'defimpl':
+    'prefix': 'defimpl'
+    'body':   'defimpl ${1:Module}, for: ${2:Any} do\n\t$0\nend'
+  '@doc':
+    'prefix': 'doc'
+    'body':   '@doc """$0\n"""'
+  '@moduledoc':
+    'prefix': 'mdoc'
+    'body':   '@moduledoc """$0\n"""'
+
+'.text.tex.latex':
+  'table':
+    'prefix': 'make table'
+    'body':   '''
+    \\\\begin{table}
+      \\\\centering
+      \\\\caption{${1:Caption}}
+      \\\\label{tab:${2:Label}}
+      \\\\begin{tabular}{${3:c}} \\\\toprule
+        $0 \\\\\\\\
+        \\\\midrule
+         \\\\\\\\
+         \\\\\\\\
+        \\\\bottomrule
+      \\\\end{tabular}
+    \\\\end{table}$0
+    '''
+  'figure':
+    'prefix': 'make figure'
+    'body':   '''
+    \\\\begin{figure}
+      \\\\centering
+      \\\\includegraphics[scale=${1:1.0}]{${2:image.file}}
+      \\\\caption{${3:Caption}}
+      \\\\label{fig:${4:Label}}
+    \\\\end{figure}$0
+    '''
