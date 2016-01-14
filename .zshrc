@@ -78,6 +78,7 @@ autoload -Uz compinit && compinit
 autoload -U colors; colors
 
 function rprompt-git-current-branch {
+
   local name st color
 
   [[ "$PWD" =~ '/\.git(/.*)?$' ]] && return
@@ -100,7 +101,7 @@ function rprompt-git-current-branch {
 
   # # git diff origin/master HEAD
   # origin_diff='*'
-  # git_remotes=($(git remote))
+  # git_remotes=($(git remote 2>/dev/null))
   # if [[ ${#git_remotes[@]} != 0 ]]; then
   #   git_remote=$(echo $git_remotes | cut -d ' ' -f 1)
   #   if [[ $(git diff $git_remote/master HEAD) != "" ]]; then
