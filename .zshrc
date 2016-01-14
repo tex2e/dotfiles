@@ -33,6 +33,9 @@ bindkey -e
 alias copy='cp -ip' del='rm -i' move='mv'
 alias fullreset='echo "\ec\ec"'
 alias .='source'
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
 alias zshrc='. ~/.zshrc'
 alias zshenv='. ~/.zshenv'
 
