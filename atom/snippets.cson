@@ -31,8 +31,8 @@
     'prefix': 'each'
     'body':   'each(function(${1:arg}) {\n\t$0\n})'
   'anonymous func':
-    'prefix': 'fn'
-    'body':   'function($1) {\n\t$0\n}'
+    'prefix': 'afun'
+    'body':   'function ($1) {\n\t$0\n}'
   'jQuery.click':
     'prefix': 'click'
     'body':   'click(function() {\n\t$0\n});'
@@ -83,9 +83,6 @@
   'after ->':
     'prefix': 'after'
     'body':   'after ${1:time} ->\n\t$0'
-  'defimpl':
-    'prefix': 'defimpl'
-    'body':   'defimpl ${1:Module}, for: ${2:Any} do\n\t$0\nend'
   '@doc':
     'prefix': 'doc'
     'body':   '@doc """$0\n"""'
