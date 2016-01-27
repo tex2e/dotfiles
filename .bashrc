@@ -21,10 +21,10 @@ mkdir() {
   [ "$2" = "cd" ] && cd "$1"
 }
 mkdircd() {
-  mkdir -p "$1" && cd "$1"
+  command mkdir -p "$1" && cd "$1"
 }
 mkdirpu() {
-  mkdir -p "$1" && pushd "$1"
+  command mkdir -p "$1" && pushd "$1"
 }
 
 CLEAR='\033[0m'
