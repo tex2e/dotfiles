@@ -11,6 +11,9 @@ SHELL = /bin/sh
 # + atom
 #     link to your atom/snippets.cson
 #
+# + git
+#     configure a git alias
+#
 
 .PHONY: link atom git
 
