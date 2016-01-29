@@ -36,6 +36,7 @@ git:
 	git config --global alias.ch checkout
 	git config --global alias.l log
 	git config --global alias.r remote
-	git config --global alias.ru remote update
+	git config --global alias.ru 'remote update'
 	git config --global alias.bl blame
 	git config --global alias.gr grep
+	git config --global alias.graph "log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'"
