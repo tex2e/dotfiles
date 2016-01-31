@@ -42,7 +42,7 @@ SHELL = /bin/sh
 
 TEXENV_DIR := "$(HOME)/.dotfiles/bash/texenvs"
 
-TEX := platex -recorder
+TEX := platex -recorder -shell-escape
 
 TEX_FILE := $(wildcard *.tex)
 PDF_FILE := $(patsubst %.tex, %.pdf, $(TEX_FILE))
@@ -86,6 +86,13 @@ init:
 	dvipdfmx -d5 $<
 
 pdf: $(PDF_FILE)
+
+punctuation: $(TEX_FILE)
+	@$(foreach file, $?, \
+		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > tmp~ \
+		&& cat tmp~ > "$(file)"; \
+		rm tmp~; \
+	)
 
 open: $(PDF_FILE)
 	open $(PDF_FILE)
