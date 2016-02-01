@@ -18,13 +18,21 @@
 # https://github.com/bevry/cson#what-is-cson
 
 '.source.coffee':
+  'Atom snippets':
+    'prefix': 'snip'
+    'body':   '''
+      '.source.${1:ext}'
+        '${2:name}':
+          'prefix': '$3'
+          'body':   '$4'
+    '''
   'Atom snippet':
     'prefix': 'snipns'
-    'body':   """
+    'body':   '''
     '${1:name}':
       'prefix': '$2'
       'body':   '$3'
-    """
+    '''
 
 '.source.js':
   'each':
