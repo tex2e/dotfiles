@@ -25,8 +25,19 @@ rc: $(linked_file)
 		ln -fs $(PWD)/$(file) $(HOME)/$(file); \
 	)
 
+
+ATOM_PKG_LIST := \
+	minimap \
+	file-icons \
+	sublime-style-column-selection \
+	highlight-selected \
+	minimap-highlight-selected \
+	script
+
 atom:
-	ln -s ~/.dotfiles/atom/snippets.cson ~/.atom/snippets.cson
+	-ln -s $(HOME)/.dotfiles/atom/snippets.cson $(HOME)/.atom/snippets.cson
+	apm install $(ATOM_PKG_LIST)
+
 
 git:
 	git config --global alias.s status
