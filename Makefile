@@ -43,7 +43,9 @@ git:
 	git config --global alias.s status
 	git config --global alias.b branch
 	git config --global alias.d diff
+	git config --global alias.dn 'diff --name-only'
 	git config --global alias.a add
+	git config --global alias.aa 'add --all'
 	git config --global alias.c commit
 	git config --global alias.ch checkout
 	git config --global alias.l log
@@ -51,4 +53,5 @@ git:
 	git config --global alias.ru 'remote update'
 	git config --global alias.bl blame
 	git config --global alias.gr grep
+	git config --global alias.f fetch
 	git config --global alias.graph "log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'"
