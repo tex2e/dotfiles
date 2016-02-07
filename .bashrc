@@ -16,13 +16,20 @@ alias en='LANG=en_US.UTF-8'
 alias ja='LANG=ja_JP.UTF-8'
 alias tree='tree -F'
 alias gitlog='git log --oneline --decorate --graph'
+
 mkdir() {
   command mkdir -p "$1"
-  [ "$2" = "cd" ] && cd "$1"
+  if [ "$2" = "cd" ]; then
+    cd "$1"
+  else
+    command mkdir -p "$@"
+  fi
 }
+
 mkdircd() {
   command mkdir -p "$1" && cd "$1"
 }
+
 mkdirpu() {
   command mkdir -p "$1" && pushd "$1"
 }
