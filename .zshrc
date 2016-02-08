@@ -52,6 +52,7 @@ zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
 
 zstyle ':completion:*:ruby:*' file-patterns '*.rb:ruby\ script *(-/):dir'
+zstyle ':completion:*:coffee:*' file-patterns '*.coffee:coffee\ script *(-/):dir'
 zstyle ':completion:*:python:*' file-patterns '*.py:python\ script *(-/):dir'
 zstyle ':completion:*:platex:*' file-patterns '*.tex:tex --kanji=utf8:option *(-/):dir'
 zstyle ':completion:*:dvi*:*' file-patterns '*.dvi:dvi *(-/):dir'
@@ -93,16 +94,6 @@ function rprompt-git-current-branch {
   else
     color=${fg[red]}
   fi
-
-  # # git diff origin/master HEAD
-  # origin_diff='*'
-  # git_remotes=($(git remote 2>/dev/null))
-  # if [[ ${#git_remotes[@]} != 0 ]]; then
-  #   git_remote=$(echo $git_remotes | cut -d ' ' -f 1)
-  #   if [[ $(git diff $git_remote/master HEAD) != "" ]]; then
-  #     origin_diff='(*)'
-  #   fi
-  # fi
 
   echo "${origin_diff} %{$color%}$name%{$reset_color%} "
 }
