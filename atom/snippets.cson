@@ -33,6 +33,9 @@
       'prefix': '$2'
       'body':   '$3'
     '''
+  'function':
+    'prefix': 'fun'
+    'body':   '($1) -> \n\t#$0'
 
 '.source.js':
   'each':
@@ -109,7 +112,6 @@
       \\\\begin{tabular}{${3:c}} \\\\toprule
         $0 \\\\\\\\
         \\\\midrule
-         \\\\\\\\
          \\\\\\\\
         \\\\bottomrule
       \\\\end{tabular}
