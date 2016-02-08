@@ -10,6 +10,7 @@ SHELL = /bin/sh
 #
 # + atom
 #     link to your atom/snippets.cson
+#     and install atom packages (ATOM_PKG_LIST)
 #
 # + git
 #     configure a git alias
@@ -35,7 +36,9 @@ ATOM_PKG_LIST := \
 	script
 
 atom:
+	@echo '>>> linking atom snippets'
 	-ln -s $(HOME)/.dotfiles/atom/snippets.cson $(HOME)/.atom/snippets.cson
+	@echo '>>> installing atom packages'
 	apm install $(ATOM_PKG_LIST)
 
 
