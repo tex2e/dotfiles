@@ -36,6 +36,12 @@
   'function':
     'prefix': 'fun'
     'body':   '($1) -> \n\t#$0'
+  'describe (BDD)':
+    'prefix': 'describe'
+    'body':   "describe '${1:desc}', ->\n\t#$0"
+  'it (BDD)':
+    'prefix': 'it'
+    'body':   "it 'should $1', ->\n\t#$0"
 
 '.source.js':
   'each':
