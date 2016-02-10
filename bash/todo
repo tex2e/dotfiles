@@ -5,8 +5,11 @@
 
 function usage {
 cat <<EOT
-Usage: todo [-l | -m <msg> | -d <lineno>]
+Usage:
+  todo [-l | -m <message> | -d <lineno>]
+  todo 'message' ...
 
+Options:
   -l          show all todo list
   -m message  add new todo task
   -d lineno   delete todo task
@@ -14,34 +17,41 @@ EOT
 exit 1
 }
 
-todo_file="$HOME/.todo"
-[[ -f $todo_file ]] || touch $todo_file
+TODO_FILE="$HOME/.todo"
+[[ -f $TODO_FILE ]] || touch $TODO_FILE
 
 function list {
-  if [[ -s $todo_file ]]; then
+  if [[ -s $TODO_FILE ]]; then
     echo 'todo list : '
-    cat -n $todo_file
+    cat -n $TODO_FILE
   else
     echo 'nothing to do' 1>&2
   fi
 }
+
 function add {
-  echo "todo << $OPTARG"
-  echo "$OPTARG" >> $todo_file
+  echo "todo << $1"
+  echo "$1" >> $TODO_FILE
 }
+
 function delete {
   echo -n 'done >> '
-  sed -n ${OPTARG}p $todo_file
-  sed -i -e "${OPTARG}d" $todo_file
+  sed -n ${1}p $TODO_FILE
+  sed -i -e "${1}d" $TODO_FILE
 }
 
 [[ $# == 0 ]] && list
 
 while getopts :lm:d: OPT ; do
   case $OPT in
-    l ) list ;;
-    m ) add ;;
-    d ) delete ;;
-    * ) usage ;;
+    l ) list;            shift        ;;
+    m ) add    $OPTARG;  shift; shift ;;
+    d ) delete $OPTARG;  shift; shift ;;
+    * ) usage;           exit         ;;
   esac
+done
+
+while [[ "$@" != "" ]]; do
+  add $1
+  shift
 done
