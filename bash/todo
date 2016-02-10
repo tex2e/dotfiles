@@ -52,6 +52,6 @@ while getopts :lm:d: OPT ; do
 done
 
 while [[ "$@" != "" ]]; do
-  add $1
+  add "$1"
   shift
 done
