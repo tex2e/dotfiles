@@ -1,4 +1,28 @@
 
+case `uname` in
+  Darwin ) # mac os
+    :
+    ;;
+  Linux )
+    source ~/.ubuntu.bashrc
+
+    # # create .xmodmap file
+    # xmodmap -pke > "~/.xmodmap"
+    # vim ~/.xmodmap
+    #
+    #   keycode 37 = Control_L NoSymbol Control_L   #ctrl
+    #   keycode 66 = Caps_Lock NoSymbol Caps_Lock   #caps lock
+    #   clear Lock
+    #   add Control = Control_L
+    #
+    xmodmap ~/.xmodmap
+    ;;
+esac
+
+CLEAR='\033[0m'
+BOLD='\033[1m'
+ULINE='\033[4m'
+
 # useful alias
 alias ls='ls -F'
 alias la='ls -A'
@@ -60,28 +84,54 @@ extract() {
   fi
 }
 
-alias busy="cat /dev/urandom | hexdump -C | grep "ca fe""
+new-script() {
+    cat <<'SHELLSCRIPT' > "$1"
+#!/bin/sh
+usage() {
+    cat <<HELP
+NAME:
+   $0 -- {one sentence description}
 
-CLEAR='\033[0m'
-BOLD='\033[1m'
-ULINE='\033[4m'
+SYNOPSIS:
+  $0 [-h|--help]
+  $0 [--verbose]
 
-case `uname` in
-  Darwin ) # mac os
-    :
-    ;;
-  Linux )
-    source ~/.ubuntu.bashrc
+DESCRIPTION:
+   {description here}
 
-    # # create .xmodmap file
-    # xmodmap -pke> "~/.xmodmap"
-    # vim ~/.xmodmap
-    #
-    #   keycode 37 = Control_L NoSymbol Control_L   #ctrl
-    #   keycode 66 = Caps_Lock NoSymbol Caps_Lock   #caps lock
-    #   clear Lock
-    #   add Control = Control_L
-    #
-    xmodmap ~/.xmodmap
-    ;;
-esac
+  -h  --help      Print this help.
+      --verbose   Enables verbose mode.
+
+EXAMPLE:
+  {examples if any}
+
+HELP
+}
+
+main() {
+  SCRIPT_DIR="$(cd $(dirname "$0"); pwd)"
+
+  for ARG; do
+    case "$ARG" in
+      --help) usage; exit 0;;
+      --verbose) set -x;;
+      --) break;;
+      -*)
+        OPTIND=1
+        while getopts h OPT "$ARG"; do
+          case "$OPT" in
+            h) usage; exit 0;;
+          esac
+        done
+        ;;
+    esac
+  done
+
+  # do something
+}
+
+main "$@"
+
+SHELLSCRIPT
+    chmod +x "$1"
+}
