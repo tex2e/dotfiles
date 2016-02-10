@@ -49,6 +49,7 @@ git:
 	git config --global alias.d 'diff'
 	git config --global alias.dn 'diff --name-only'
 	git config --global alias.dc 'diff --cached'
+	git config --global alias.dt 'diff HEAD^ HEAD'
 	git config --global alias.a 'add'
 	git config --global alias.aa 'add -A'
 	git config --global alias.c 'commit'
