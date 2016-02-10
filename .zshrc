@@ -7,8 +7,9 @@ source ~/.bashrc
 HISTSIZE=1000
 HISTFILE="$HOME/.zsh_history"
 SAVEHIST=10000
-PROMPT=$'%m:%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
-RPROMPT=$'[%~]'
+PROMPT=$'%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
+# RPROMPT=$'[%~]'
+RPROMPT=''
 
 # Set Shell options
 #setopt auto_cd
@@ -44,9 +45,8 @@ zstyle ':completion:*:descriptions' format '%B> Completing %d%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches'
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*' completer _complete # _approximate
-zstyle ':completion:*' matcher-list '' 'm:{A-Z}={a-z}' '+m:{a-z}={A-Z}' \
-  'r:|[-_.]=*' 'm:to=2'
+zstyle ':completion:*' completer _complete _prefix #_approximate
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z} r:|[-_.]=** m:to=2'
 zstyle ':completion:*' use-cache true
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
@@ -74,7 +74,7 @@ autoload -Uz compinit && compinit
 # load ${fg[...]} and $reset_color
 autoload -U colors; colors
 
-function rprompt-git-current-branch {
+function git-current-branch {
   local name st color
 
   [[ "$PWD" =~ '/\.git(/.*)?$' ]] && return
@@ -95,9 +95,9 @@ function rprompt-git-current-branch {
     color=${fg[red]}
   fi
 
-  echo "${origin_diff} %{$color%}$name%{$reset_color%} "
+  echo "${origin_diff} %{$color%}$name%{$reset_color%}"
 }
 
 # whenever a prompt is shown, evaluate a string of $RPROMPT and replace it
 setopt prompt_subst
-RPROMPT='`rprompt-git-current-branch`'$RPROMPT
+RPROMPT='`git-current-branch`'$RPROMPT
