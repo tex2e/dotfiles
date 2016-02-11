@@ -21,18 +21,18 @@ HELP
 }
 
 abspath() {
-  echo $(cd $1 && pwd)
+  echo $(cd "$1" && pwd)
 }
 
 git-status() {
-  repo=$1
+  repo="$1"
 
   cd "$repo"
   [[ -d "$PWD/.git" ]] || return
 
   # branch name
   branch_name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
-  [[ -z $branch_name ]] && return
+  [[ -z "$branch_name" ]] && return
 
   st=`git status 2>/dev/null`
 
@@ -57,7 +57,7 @@ git-status() {
 
 main() {
   SCRIPT_DIR="$(cd $(dirname "$0"); pwd)"
-  GIT_REPO_LIST_FILE=$HOME/.watchrepo
+  GIT_REPO_LIST_FILE="$HOME/.watchrepo"
 
   while getopts w:h OPT
   do
@@ -71,13 +71,13 @@ main() {
 
   if [[ "$VALUE_W" != '' ]]; then
     # add new repo
-    for repo in $VALUE_W; do
+    for repo in "$VALUE_W"; do
       repo=$(abspath "$repo")
       if [[ ! -d "$repo/.git" ]]; then
         echo "$repo: Not a git repository"
         continue
       fi
-      echo "$repo" >> $GIT_REPO_LIST_FILE
+      echo "$repo" >> "$GIT_REPO_LIST_FILE"
     done
     return
   fi
@@ -90,6 +90,8 @@ main() {
     done
     return
   fi
+
+  
 }
 
 main "$@"
