@@ -1,0 +1,93 @@
+#!/bin/bash
+usage() {
+    cat <<HELP
+NAME:
+   $0 -- {one sentence description}
+
+SYNOPSIS:
+  $0 [-h|--help]
+  $0 [--verbose]
+
+DESCRIPTION:
+   {description here}
+
+  -h  --help      Print this help.
+      --verbose   Enables verbose mode.
+
+EXAMPLE:
+  {examples if any}
+
+HELP
+}
+
+abspath() {
+  echo $(cd $1 && pwd)
+}
+
+GIT_REPO_LIST_FILE=$HOME/.watchrepo
+
+main() {
+  SCRIPT_DIR="$(cd $(dirname "$0"); pwd)"
+
+  while getopts w:h OPT
+  do
+    case "$OPT" in
+      h) usage; exit 0;;
+      w) VALUE_W="$VALUE_W $OPTARG"
+    esac
+  done
+
+  shift $((OPTIND - 1))
+
+  # [[ -d "$PWD/.git" ]] || return
+
+  # add new repo
+  for repo in $VALUE_W; do
+    repo=$(abspath "$repo")
+    if [[ ! -d "$repo/.git" ]]; then
+      echo "$repo: Not a git repository"
+      continue
+    fi
+    echo "$repo" >> $GIT_REPO_LIST_FILE
+  done
+
+  if [[ $# == 0 ]]; then
+    cat "$GIT_REPO_LIST_FILE" | \
+    while read repo; do
+      cd "$repo"
+      status=$(git status 2>/dev/null)
+
+      # branch name
+      branch_name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
+      [[ -z $branch_name ]] && return
+
+      st=`git status 2> /dev/null`
+
+      # set color
+      color=
+      if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+        color=green
+      elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
+        color=yellow
+      elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
+        color=bold_red
+      else
+        color=red
+      fi
+
+      # ahead or behind
+      commit=
+      if [[ -n `echo "$st" | grep "^Your branch is ahead"` ]]; then
+        commit='ahead'
+      elif [[ -n `echo "$st" | grep "^Your branch is behind"` ]]; then
+        commit='behind'
+      else
+        commit='up-to-date'
+      fi
+
+      echo "$commit $color $branch_name"
+    done
+  fi
+}
+
+main "$@"
