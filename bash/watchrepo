@@ -24,10 +24,40 @@ abspath() {
   echo $(cd $1 && pwd)
 }
 
-GIT_REPO_LIST_FILE=$HOME/.watchrepo
+git-status() {
+  repo=$1
+
+  cd "$repo"
+  [[ -d "$PWD/.git" ]] || return
+
+  # branch name
+  branch_name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
+  [[ -z $branch_name ]] && return
+
+  st=`git status 2>/dev/null`
+
+  # set color
+  color=
+  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+    color=32 # green
+  elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
+    color=33 # yellow
+  elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
+    color='1;31' # bold_red
+  else
+    color=31 # red
+  fi
+
+  st_branch=`git status --short --branch | head -n1 2>/dev/null`
+
+  repo_basename=$(basename "$repo")
+  echo -e "\033[${color}m$repo_basename\033[0m $st_branch"
+}
+
 
 main() {
   SCRIPT_DIR="$(cd $(dirname "$0"); pwd)"
+  GIT_REPO_LIST_FILE=$HOME/.watchrepo
 
   while getopts w:h OPT
   do
@@ -39,54 +69,26 @@ main() {
 
   shift $((OPTIND - 1))
 
-  # [[ -d "$PWD/.git" ]] || return
+  if [[ "$VALUE_W" != '' ]]; then
+    # add new repo
+    for repo in $VALUE_W; do
+      repo=$(abspath "$repo")
+      if [[ ! -d "$repo/.git" ]]; then
+        echo "$repo: Not a git repository"
+        continue
+      fi
+      echo "$repo" >> $GIT_REPO_LIST_FILE
+    done
+    return
+  fi
 
-  # add new repo
-  for repo in $VALUE_W; do
-    repo=$(abspath "$repo")
-    if [[ ! -d "$repo/.git" ]]; then
-      echo "$repo: Not a git repository"
-      continue
-    fi
-    echo "$repo" >> $GIT_REPO_LIST_FILE
-  done
-
+  # show repositories status
   if [[ $# == 0 ]]; then
     cat "$GIT_REPO_LIST_FILE" | \
     while read repo; do
-      cd "$repo"
-      status=$(git status 2>/dev/null)
-
-      # branch name
-      branch_name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
-      [[ -z $branch_name ]] && return
-
-      st=`git status 2> /dev/null`
-
-      # set color
-      color=
-      if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-        color=green
-      elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-        color=yellow
-      elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-        color=bold_red
-      else
-        color=red
-      fi
-
-      # ahead or behind
-      commit=
-      if [[ -n `echo "$st" | grep "^Your branch is ahead"` ]]; then
-        commit='ahead'
-      elif [[ -n `echo "$st" | grep "^Your branch is behind"` ]]; then
-        commit='behind'
-      else
-        commit='up-to-date'
-      fi
-
-      echo "$commit $color $branch_name"
+      git-status "$repo"
     done
+    return
   fi
 }
 
