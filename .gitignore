@@ -1,1 +1,5 @@
 *.zwc
+
+bash/repos/*
+!bash/repos/README.md
+!bash/repos/repo
