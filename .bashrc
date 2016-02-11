@@ -46,6 +46,12 @@ alias home='cd ~'
 alias chx='chmod 755'
 alias chr='chmod 644'
 
+# external alias
+repo_alias="$HOME/.dotfiles/bash/repos/repo_alias"
+if [[ -f "$repo_alias" ]]; then
+  source "$repo_alias"
+fi
+
 mkdir() {
   command mkdir -p "$1"
   if [ "$2" = "cd" ]; then
