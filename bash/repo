@@ -1,15 +1,17 @@
 #!/bin/bash
+
+SCRIPT_NAME=$(basename $0)
 usage() {
     cat <<HELP
 NAME:
-   $0 -- {one sentence description}
+  $SCRIPT_NAME -- show registered repositories status
 
 SYNOPSIS:
-  $0 [-h|--help]
-  $0 [--verbose]
+  $SCRIPT_NAME -a <repo>
+  $SCRIPT_NAME [<repo>]
 
 DESCRIPTION:
-   {description here}
+  {description here}
 
   -h  --help      Print this help.
       --verbose   Enables verbose mode.
@@ -54,31 +56,77 @@ git-status() {
   echo -e "\033[${color}m$repo_basename\033[0m $st_branch"
 }
 
+add-repo() {
+  for repo in $@; do
+    # add new repo to $GIT_REPO_LIST_FILE
+    if [[ ! -e "$repo" ]]; then
+      echo "$repo: No such file or directory"
+      exit
+    fi
+    if [[ ! -d "$repo/.git" ]]; then
+      echo "$repo: Not a git repository"
+      exit
+    fi
+    repo=$(abspath "$repo")
+    echo "$repo" >> "$GIT_REPO_LIST_FILE"
+
+    # add new alias to $GIT_REPO_ALIAS_FILE
+    repo_basename=$(basename $repo)
+    echo "alias $repo_basename='cd $repo'" >> "$GIT_REPO_ALIAS_FILE"
+  done
+
+  # sort and remove duplication
+  sort "$GIT_REPO_LIST_FILE"  | uniq > tmp~ && cat tmp~ > "$GIT_REPO_LIST_FILE"
+  sort "$GIT_REPO_ALIAS_FILE" | uniq > tmp~ && cat tmp~ > "$GIT_REPO_ALIAS_FILE"
+  rm tmp~
+
+  # update .bashrc
+  echo "type \"source .bashrc\" to update aliases"
+}
+
+delete-repo() {
+  for repo in $@; do
+    if [[ ! -e "$repo" ]]; then
+      echo "$repo: No such file or directory"
+      exit
+    fi
+    repo=$(abspath "$repo")
+    repo_basename=$(basename "$repo")
+    repo=$(echo "$repo" | sed -e 's,/,\\/,g' -e 's/\./\\./g')
+    repo_basename=$(echo "$repo_basename" | sed -e 's/\./\\./g')
+
+    sed -e '/^'"$repo"'$/d' "$GIT_REPO_LIST_FILE" > tmp~ && \
+    cat tmp~ > "$GIT_REPO_LIST_FILE"
+    sed -e "/^alias $repo_basename='cd $repo'/D" "$GIT_REPO_ALIAS_FILE" > tmp~ && \
+    cat tmp~ > "$GIT_REPO_ALIAS_FILE"
+  done
+}
 
 main() {
   SCRIPT_DIR="$(cd $(dirname "$0"); pwd)"
-  GIT_REPO_LIST_FILE="$HOME/.watchrepo"
+  GIT_REPO_LIST_FILE="$HOME/.dotfiles/bash/repos/watchrepo"
+  GIT_REPO_ALIAS_FILE="$HOME/.dotfiles/bash/repos/repo_alias"
 
-  while getopts w:h OPT
+  while getopts a:d:h OPT
   do
     case "$OPT" in
       h) usage; exit 0;;
-      w) VALUE_W="$VALUE_W $OPTARG"
+      a) VALUE_A="$VALUE_A $OPTARG" ;;
+      d) VALUE_D="$VALUE_D $OPTARG" ;;
     esac
   done
 
   shift $((OPTIND - 1))
 
-  if [[ "$VALUE_W" != '' ]]; then
-    # add new repo
-    for repo in "$VALUE_W"; do
-      repo=$(abspath "$repo")
-      if [[ ! -d "$repo/.git" ]]; then
-        echo "$repo: Not a git repository"
-        continue
-      fi
-      echo "$repo" >> "$GIT_REPO_LIST_FILE"
-    done
+  # add new repo
+  if [[ "$VALUE_A" != '' ]]; then
+    add-repo "$VALUE_A"
+    return
+  fi
+
+  # delete repo
+  if [[ "$VALUE_D" != '' ]]; then
+    delete-repo "$VALUE_D"
     return
   fi
 
@@ -90,8 +138,6 @@ main() {
     done
     return
   fi
-
-  
 }
 
 main "$@"
