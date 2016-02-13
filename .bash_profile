@@ -1,23 +1,12 @@
 export PS1='\h:\W \$ '
 export PS2='> '
 export CDPATH='~/Documents/pgm'
-export PATH="${PATH}:${HOME}/.script"
+export PATH="$PATH:$HOME/.dotfiles/bash"
 
 case `uname` in
   Darwin ) # mac os
-    export SUBL="~/Library/Application\ Support/Sublime\ Text\ 2/Packages/"
-    ;;
-  Linux )
     :
     ;;
-esac
-
-# MacPorts Installer addition on 2014-12-09_at_18:02:20:
-# adding an appropriate PATH variable for use with MacPorts.
-#export PATH="${PATH}:/opt/local/bin:/opt/local/sbin"
-# Finished adapting your PATH environment variable for use with MacPorts.
-
-case `uname` in
   Linux )
     # ruby
     if which rbenv > /dev/null; then
