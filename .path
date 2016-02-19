@@ -1,0 +1,8 @@
+
+export PATH="/usr/local/bin:$PATH"
+export PATH="$PATH:$HOME/.npm-packages/bin"
+export PATH="$PATH:$HOME/.dotfiles/bash"
+
+export CDPATH="$CDPATH:$HOME"
+export CDPATH="$CDPATH:$HOME/Documents"
+export CDPATH="$CDPATH:$HOME/Documents/pgm"
