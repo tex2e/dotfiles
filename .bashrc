@@ -1,10 +1,18 @@
 
+PS1='\W \$ '
+PS2='> '
+EDITOR=vim
+
 case `uname` in
   Darwin ) # mac os
-    :
+    CC=clang
+    CXX=clang++
     ;;
   Linux )
     source ~/.ubuntu.bashrc
+
+    CC=gcc
+    CXX=g++
 
     # # create .xmodmap file
     # xmodmap -pke > "~/.xmodmap"
@@ -52,21 +60,8 @@ if [[ -f "$repo_alias" ]]; then
   source "$repo_alias"
 fi
 
-mkdir() {
-  command mkdir -p "$1"
-  if [ "$2" = "cd" ]; then
-    cd "$1"
-  else
-    command mkdir -p "$@"
-  fi
-}
-
 mkdircd() {
   command mkdir -p "$1" && cd "$1"
-}
-
-mkdirpu() {
-  command mkdir -p "$1" && pushd "$1"
 }
 
 extract() {

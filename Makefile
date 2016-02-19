@@ -19,7 +19,7 @@ SHELL = /bin/sh
 .PHONY: rc atom git
 
 linked_file := \
-	.bash_profile .bashrc .ubuntu.bashrc .zshenv .zshrc .vimrc
+	.bash_profile .bashrc .ubuntu.bashrc .zshenv .zshrc .vimrc .path
 
 rc: $(linked_file)
 	@$(foreach file, $?, \
