@@ -1,6 +1,15 @@
 TeX Enviroment Initializer
 ===========================
 
+To set a directory which has TeX enviroment, type following commands:
+
+    texenv
+    make init
+    
+or one liner:
+
+    texenv && make init
+
 texenv.sh
 -----------
 
@@ -11,7 +20,7 @@ Executing this script like `texenv`, it creates a symbolic link to Makefile.mk.
 
 The possible commands are as follows:
 
-- `texenv     ` - create a symbolic link to Makefile.mk.
+- `texenv     ` - create a symbolic link to Makefile.mk. (Recommended)
 - `texenv make` - same above.
 - `texenv rake` - create a symbolic link to Rakefile.mk.
 
@@ -36,14 +45,15 @@ To use this to create a pdf, type `make pdf`.
 
 The possible commands are as follows:
 
-- `make init      ` - create a directory images/ and write a template tex file (default name is report.tex).
+- `make init       ` - create a directory images/ and write a template tex file (default name is report.tex).
     When current directory has a same name, it asks that "overwrite a file (y/n)".
 - `make init OUTPUT=filename.tex` - specify a filename to write a template.
-- `make pdf       ` - create pdf from tex file.
-- `make open      ` - create pdf and open it.
-- `make clean     ` - remove any temporary products such as .aux, .log and .dvi.
-- `make distclean ` - remove any generated file.
-- `make help      ` - print the list of available commands.
+- `make pdf        ` - create pdf from tex file.
+- `make open       ` - create pdf and open it. (Require `open` command)
+- `make punctuation` - replace "。" and "、" with "．" and "，"
+- `make clean      ` - remove any temporary products such as .aux, .log and .dvi.
+- `make distclean  ` - remove any generated file.
+- `make help       ` - print the list of available commands.
 
 Rakefile.rb
 ------------
@@ -60,7 +70,7 @@ The possible commands are as follows:
 - `rake init   `  - create directory images/ and latex template file (default name is report.tex).
     When current directory has a same name, it asks that "overwrite a file (y/n)".
 - `rake init OUTPUT=filename.tex` - specify a filename to write a template.
-- `rake open   `  - create pdf and open it.
+- `rake open   `  - create pdf and open it. (Require `open` command)
 - `rake pdf    `  - create pdf from dvi file.
 - `rake --tasks`  - print the list of available commands.
 
