@@ -5,14 +5,14 @@ EDITOR=vim
 
 case `uname` in
   Darwin ) # mac os
-    CC=clang
-    CXX=clang++
+    export CC=clang
+    export CXX=clang++
     ;;
   Linux )
     source ~/.ubuntu.bashrc
-
-    CC=gcc
-    CXX=g++
+    export CC=gcc
+    export CXX=g++
+    alias open='xdg-open'
 
     # # create .xmodmap file
     # xmodmap -pke > "~/.xmodmap"
