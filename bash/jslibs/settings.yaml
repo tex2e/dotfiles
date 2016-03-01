@@ -1,0 +1,5 @@
+
+lib:
+  jquery: http://code.jquery.com/jquery-2.2.1.min.js
+  underscore: http://underscorejs.org/underscore-min.js
+  three: http://threejs.org/build/three.min.js
