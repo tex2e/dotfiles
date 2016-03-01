@@ -23,6 +23,7 @@ SHELL = /bin/sh
 #     create pdf and open it.
 #
 # + punctuation
+#     replace "。" and "、" with "．" and "，"
 #
 # + clean
 #     delete all files such as .aux, .log and .dvi that are normally created by running make.
@@ -31,6 +32,7 @@ SHELL = /bin/sh
 #     delete all generated file (including .pdf).
 #
 # + rebuild
+#     force to build a pdf
 #
 
 # directory composed
