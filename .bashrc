@@ -49,10 +49,16 @@ alias ff='find . -type f -name'
 alias en='LANG=en_US.UTF-8'
 alias ja='LANG=ja_JP.UTF-8'
 alias tree='tree -F'
+alias tree1='tree -L 1'
+alias tree2='tree -L 2'
+alias tree3='tree -L 3'
+alias tree4='tree -L 4'
+alias tree5='tree -L 5'
 alias gitlog='git log --oneline --decorate --graph'
-alias home='cd ~'
 alias chx='chmod 755'
 alias chr='chmod 644'
+alias server='python -m SimpleHTTPServer 8000 &>/dev/null &'
+alias npmls='npm ls --depth 0'
 
 # external alias
 repo_alias="$HOME/.dotfiles/bash/repos/repo_alias"
