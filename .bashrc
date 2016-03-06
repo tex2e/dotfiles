@@ -59,6 +59,12 @@ alias chx='chmod 755'
 alias chr='chmod 644'
 alias server='python -m SimpleHTTPServer 8000 &>/dev/null &'
 alias npmls='npm ls --depth 0'
+alias npmlist='npm ls --depth 0'
+alias kill1='kill -9 %1'
+alias kill2='kill -9 %2'
+alias kill3='kill -9 %3'
+alias kill4='kill -9 %4'
+alias kill5='kill -9 %5'
 
 # external alias
 repo_alias="$HOME/.dotfiles/bash/repos/repo_alias"
