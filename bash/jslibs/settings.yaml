@@ -4,3 +4,4 @@ lib:
   underscore: http://underscorejs.org/underscore-min.js
   three: http://threejs.org/build/three.min.js
   d3: http://d3js.org/d3.v3.min.js
+  slideout: https://raw.githubusercontent.com/Mango/slideout/master/dist/slideout.min.js
