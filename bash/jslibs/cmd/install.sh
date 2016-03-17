@@ -17,6 +17,8 @@ function parse-yaml {
    return 0
 }
 
+# download <url>
+#
 # download a file from specified url.
 function download {
   if which curl &>/dev/null; then
@@ -27,6 +29,8 @@ function download {
 }
 
 # jslib install [--download-here] <library...>
+#
+# to install js library(es)
 function jslib-install {
   # get option
   local DOWNLOAD_HERE=
