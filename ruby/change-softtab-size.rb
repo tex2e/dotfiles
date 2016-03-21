@@ -1,11 +1,30 @@
 #!/usr/bin/env ruby
 
+# strip indentation
+class String
+  def dedent
+    margin = self.scan(/^ +/).map(&:size).min
+    self.gsub(/^ {#{margin}}/, '')
+  end
+end
+
 # chtabsize -- change softtab size
 #
 # SYNOPSIS
 #
 #   chtabsize <before> <after> <filename>
 #
+def usage
+  puts <<-EOS.dedent
+    Overview:
+      change softtab size
+
+    Usage:
+      chtabsize <before> <after> <filename...>
+
+  EOS
+  exit
+end
 
 # convert softtab width
 #
@@ -29,6 +48,10 @@ def convert_softtab_width(before, after, line)
 end
 
 # --- main process ---
+
+if ARGV.length == 0
+  usage
+end
 
 unless ARGV.length >= 3
   raise ArgumentError.new("wrong number of arguments (given #{ARGV.length}, expected 3..")
