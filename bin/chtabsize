@@ -1,0 +1,3 @@
+#!/bin/sh
+
+~/.dotfiles/ruby/change-softtab-size.rb $@
