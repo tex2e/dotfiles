@@ -12,7 +12,7 @@ end
 #
 # SYNOPSIS
 #
-#   chtabsize <before> <after> <filename>
+#   chtabsize <before> <after> <filename...>
 #
 def usage
   puts <<-EOS.dedent
