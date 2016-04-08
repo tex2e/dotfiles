@@ -69,12 +69,6 @@ alias kill3='kill -9 %3'
 alias kill4='kill -9 %4'
 alias kill5='kill -9 %5'
 
-# external alias
-repo_alias="$HOME/.dotfiles/bash/repos/repo_alias"
-if [[ -f "$repo_alias" ]]; then
-  source "$repo_alias"
-fi
-
 if [[ -d "$HOME/.rbenv" ]]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"

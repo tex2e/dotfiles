@@ -118,8 +118,6 @@ fakegit_clone() {
   local extract_command="tar xzf - --strip-components 1 -C $dir"
   if [ -z "$fetch_command" ] ; then
     fail "No download command found.\nPlease install one of \`svn', \`curl' or \`wget' and try again"
-
-    exit 1
   fi
   mkdir -p $dir
   log "Instaed of git, executing:\n" $fetch_command "|" $extract_command
