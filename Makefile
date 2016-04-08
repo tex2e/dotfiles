@@ -8,25 +8,41 @@ SHELL = /bin/sh
 #     After running this command, your home directory has a symbolic link
 #     which links to run-command file such as .bash_profile and .bashrc in .dotfiles/
 #
+# + rc-f
+#     create symbolic link with --force
+#
 # + atom
 #     link to your atom/snippets.cson
 #     and install atom packages (ATOM_PKG_LIST)
 #
 # + git
-#     configure a git alias
+#     set a useful git aliases
 #
 
-.PHONY: rc atom git
+.PHONY: rc rc-f atom git
 
+all:
+	@echo "Commands"
+	@echo "+ rc   -- create symbolic link"
+	@echo "+ rc-f -- create symbolic link with --force"
+	@echo "+ atom -- create atom snippets and install atom packages"
+	@echo "+ git  -- create git alias"
+
+# --- make rc ---
 linked_file := \
 	.bash_profile .bashrc .ubuntu.bashrc .zshenv .zshrc .vimrc .path
 
 rc: $(linked_file)
 	@$(foreach file, $?, \
+		ln -s $(PWD)/$(file) $(HOME)/$(file); \
+	)
+
+rc-f: $(linked_file)
+	@$(foreach file, $?, \
 		ln -fs $(PWD)/$(file) $(HOME)/$(file); \
 	)
 
-
+# --- make atom ---
 ATOM_PKG_LIST := \
 	minimap \
 	file-icons \
@@ -41,7 +57,7 @@ atom:
 	@echo '>>> installing atom packages'
 	apm install $(ATOM_PKG_LIST)
 
-
+# --- make git ---
 git:
 	git config --global alias.s 'status'
 	git config --global alias.ss 'status -s'
