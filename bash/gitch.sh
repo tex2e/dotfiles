@@ -20,64 +20,57 @@ function is_git_dir {
   if [ ! -e .git ]; then
     error "Not git repogitory, exiting"
     exit 1
-  elif [ ! -d "$(pwd)"/.git ]; then
-    error "this directory did not have a directory .git/"
+  elif [ ! -d "$PWD/.git" ]; then
+    error "this directory does not have a directory .git/"
     exit 1
   fi
 }
 
-function check_ssh_available {
-  ssh -T git@github.com
-  if [ $? = 1 ]; then
-    echo -n "SSH CONNECTION..."; success "OK"
-  else
-    echo -n "SSH CONNECTION..."; warn "Does not established"
-  fi
-}
-
 function get_origin_url {
-  origin="$(awk '/\[remote/ {getline; print $3}' "$(pwd)"/.git/config)"
+  git config remote.origin.url
 }
 
-function check_access {
-  acc="http"
-  echo $origin | grep 'http' > /dev/null || acc="ssh"
+function get_origin_access_way {
+  local access
+
+  if echo $(get_origin_url) | grep 'http' &> /dev/null; then
+    access="http"
+  else
+    access="ssh"
+  fi
+  echo $access
 }
 
-function encode {
-  if [ "$1" = "http" ]; then
-    local repo="$(echo $origin | awk -F// '{ print $2 }' | sed -e 's@github.com/@github.com:@g')"
-    new_origin="git@"$repo
-    # echo $new_origin
-  elif [ "$1" = "ssh" ]; then
-    local repo="$(echo $origin | awk -F: '{ print $2 }')"
-    new_origin="https://github.com/"$repo
-    # echo $new_origin
+function switch_origin_access_way {
+  local access_way repo new_origin_url
+
+  access_way="$(get_origin_access_way)"
+
+  if [ "$access_way" = "http" ]; then
+    repo="$(get_origin_url | awk -F// '{ print $2 }' | sed -e 's,github.com/,github.com:,g')"
+    new_origin_url="git@$repo"
+  elif [ "$access_way" = "ssh" ]; then
+    repo="$(get_origin_url | awk -F: '{ print $2 }')"
+    new_origin_url="https://github.com/$repo"
+  fi
+
+  # echo $repo
+  # echo $new_origin_url
+
+  if set_origin_url "$new_origin_url"; then
+    success "Change origin URL"
+    echo "new remote:"
+    git remote -v
   fi
 }
 
-  function set_new_origin {
-    git remote set-url origin $new_origin && {
-      success "Change origin URL"
-      echo "new remote:"
-      git remote -v
-    }
+function set_origin_url {
+  local new_origin=$1
+  git remote set-url origin "$new_origin"
+  return $?
 }
-
-if [ "$1" = "help" ] || [ "$1" = "-h" ] || [ "$1" = "-v" ]; then
-  echo -e " g\033[37;4mitch v0.1.0\033[m"
-  echo "  written by nobuyo"
-  echo "  This script is git push protocol switcher."
-  exit 0
-elif [ "$1" != "" ]; then
-  warn "Given argument(s) will be ignored."
-fi
 
 is_git_dir
-get_origin_url
-# echo $origin
-check_access
-# echo $acc
-encode $acc
-# echo $new_origin
-set_new_origin
+switch_origin_access_way
+
+exit 0
