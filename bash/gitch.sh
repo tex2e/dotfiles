@@ -44,15 +44,16 @@ function get_origin_access_way {
 function switch_origin_access_way {
   local access_way repo new_origin_url
 
-  access_way="$(get_origin_access_way)"
-
-  if [ "$access_way" = "http" ]; then
-    repo="$(get_origin_url | awk -F// '{ print $2 }' | sed -e 's,github.com/,github.com:,g')"
-    new_origin_url="git@$repo"
-  elif [ "$access_way" = "ssh" ]; then
-    repo="$(get_origin_url | awk -F: '{ print $2 }')"
-    new_origin_url="https://github.com/$repo"
-  fi
+  case "$(get_origin_access_way)" in
+    "http" )
+      repo="$(get_origin_url | awk -F// '{ print $2 }' | sed -e 's,github.com/,github.com:,g')"
+      new_origin_url="git@$repo"
+      ;;
+    "ssh" )
+      repo="$(get_origin_url | awk -F: '{ print $2 }')"
+      new_origin_url="https://github.com/$repo"
+      ;;
+  esac
 
   # echo $repo
   # echo $new_origin_url
