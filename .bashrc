@@ -5,14 +5,14 @@ EDITOR=vim
 
 case `uname` in
   Darwin ) # mac os
-    CC=clang
-    CXX=clang++
+    export CC=clang
+    export CXX=clang++
     ;;
   Linux )
     source ~/.ubuntu.bashrc
-
-    CC=gcc
-    CXX=g++
+    export CC=gcc
+    export CXX=g++
+    alias open='xdg-open'
 
     # # create .xmodmap file
     # xmodmap -pke > "~/.xmodmap"
@@ -73,6 +73,11 @@ alias kill5='kill -9 %5'
 repo_alias="$HOME/.dotfiles/bash/repos/repo_alias"
 if [[ -f "$repo_alias" ]]; then
   source "$repo_alias"
+fi
+
+if [[ -d "$HOME/.rbenv" ]]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
 fi
 
 mkdircd() {
