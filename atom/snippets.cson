@@ -17,11 +17,12 @@
 # If you are unfamiliar with CSON, you can read more about it here:
 # https://github.com/bevry/cson#what-is-cson
 
+# --- CoffeeScript ---
 '.source.coffee':
   'Atom snippets':
     'prefix': 'snip'
     'body':   '''
-      '.source.${1:ext}'
+      '.source.${1:ext}':
         '${2:name}':
           'prefix': '$3'
           'body':   '$4'
@@ -43,6 +44,7 @@
     'prefix': 'it'
     'body':   "it 'should $1', ->\n\t#$0"
 
+# --- JavaScript ---
 '.source.js':
   'each':
     'prefix': 'each'
@@ -50,10 +52,17 @@
   'anonymous func':
     'prefix': 'afun'
     'body':   'function ($1) {\n\t$0\n}'
+  'describe (BDD)':
+    'prefix': 'describe'
+    'body':   "describe('${1:desc}', () => {\n\t$0\n});"
+  'it (BDD)':
+    'prefix': 'it'
+    'body':   "it('should $1', () => {\n\t$0\n});"
   'jQuery.click':
     'prefix': 'click'
     'body':   'click(function() {\n\t$0\n});'
 
+# --- Elixir ---
 '.source.elixir':
   '|>':
     'prefix': 'pipe'
@@ -107,6 +116,51 @@
     'prefix': 'mdoc'
     'body':   '@moduledoc """$0\n"""'
 
+# --- HTML ---
+'.text.html':
+  'svg':
+    'prefix': 'svg'
+    'body':   '<svg width="${1:500px}" height="${2:100px}">\n\t$0\n</svg>'
+  'rect':
+    'prefix': 'rect'
+    'body':   '<rect x="$1" y="$2" width="$3" height="$4"/>'
+  'circle':
+    'prefix': 'circle'
+    'body':   '<circle cx="$1" cy="$2" r="$3"/>'
+  'ellipse':
+    'prefix': 'ellipse'
+    'body':   '<ellipse cx="$1" cy="$2" rx="$3" ry="$4"/>'
+  'line':
+    'prefix': 'line'
+    'body':   '<line x1="$1" y1="$2" x2="$3" y2="$4" stroke="${5:black}"/>'
+  'text':
+    'prefix': 'text'
+    'body':   '<text x="$1" y="$2">$0</text>'
+
+'.text.html .meta.tag, .text.html .embedded':
+  'width':
+    'prefix': 'width'
+    'body':   'width="$1"'
+  'height':
+    'prefix': 'height'
+    'body':   'heigh="$1"'
+  'fill':
+    'prefix': 'fill'
+    'body':   'fill="${1:color}"'
+  'opacity':
+    'prefix': 'opacity'
+    'body':   'opacity="${1:0.5}"'
+  'stroke':
+    'prefix': 'stroke'
+    'body':   'stroke="${1:color}"'
+  'stroke width':
+    'prefix': 'stroke-width'
+    'body':   'stroke-width="${1:5}px"'
+  'SVG class':
+    'prefix': 'class'
+    'body':   'class="${1:name}"'
+
+# --- LaTeX ---
 '.text.tex.latex':
   'table':
     'prefix': 'make table'

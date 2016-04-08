@@ -1,0 +1,8 @@
+
+lib:
+  jquery: http://code.jquery.com/jquery-2.2.1.min.js
+  underscore: http://underscorejs.org/underscore-min.js
+  three: http://threejs.org/build/three.min.js
+  d3: http://d3js.org/d3.v3.min.js
+  slideout: https://raw.githubusercontent.com/Mango/slideout/master/dist/slideout.min.js
+  skrollr: https://raw.githubusercontent.com/Prinzhorn/skrollr/master/dist/skrollr.min.js
