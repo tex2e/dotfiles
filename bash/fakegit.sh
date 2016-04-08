@@ -114,28 +114,16 @@ fakegit_clone() {
   local proj_name="${svn_repo##*/}"
   local dir="${2:-$proj_name}"
 
-  if type svn &>/dev/null; then
-    local svn_dir="trunk"
-    if [ "$branch_name" != "master" ] ; then
-      svn_dir="branches/${branch_name}"
-    fi
-    local svn_command="svn checkout ${svn_repo}/${svn_dir} $dir"
-    log "Instaed of git, executing:\n" "$svn_command\n"
-    echo $svn_command
-    printf "\n"
-    log "See details for GitHub Subversion support:\n" "https://github.com/blog/966-improved-subversion-client-support"
-  else
-    local fetch_command=$(fetch_command "${svn_repo}/tarball/${branch_name}" || true)
-    local extract_command="tar xzf - --strip-components 1 -C $dir"
-    if [ -z "$fetch_command" ] ; then
-      fail "No download command found.\nPlease install one of \`svn', \`curl' or \`wget' and try again"
+  local fetch_command=$(fetch_command "${svn_repo}/tarball/${branch_name}" || true)
+  local extract_command="tar xzf - --strip-components 1 -C $dir"
+  if [ -z "$fetch_command" ] ; then
+    fail "No download command found.\nPlease install one of \`svn', \`curl' or \`wget' and try again"
 
-      exit 1
-    fi
-    mkdir -p $dir
-    log "Instaed of git, executing:\n" $fetch_command "|" $extract_command
-    $fetch_command | $extract_command
+    exit 1
   fi
+  mkdir -p $dir
+  log "Instaed of git, executing:\n" $fetch_command "|" $extract_command
+  $fetch_command | $extract_command
 }
 
 fakegit_help() {
