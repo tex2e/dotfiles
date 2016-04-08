@@ -75,6 +75,11 @@ if [[ -f "$repo_alias" ]]; then
   source "$repo_alias"
 fi
 
+if [[ -d "$HOME/.rbenv" ]]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
+
 mkdircd() {
   command mkdir -p "$1" && cd "$1"
 }
