@@ -44,10 +44,10 @@ function delete {
 
 while getopts :lm:d: OPT ; do
   case $OPT in
-    l ) list;            shift        ;;
-    m ) add    $OPTARG;  shift; shift ;;
-    d ) delete $OPTARG;  shift; shift ;;
-    * ) usage;           exit         ;;
+    l ) list;              shift        ;;
+    m ) add    "$OPTARG";  shift; shift ;;
+    d ) delete "$OPTARG";  shift; shift ;;
+    * ) usage;             exit         ;;
   esac
 done
 

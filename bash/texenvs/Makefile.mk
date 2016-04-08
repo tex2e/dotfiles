@@ -22,11 +22,17 @@ SHELL = /bin/sh
 # + open
 #     create pdf and open it.
 #
+# + punctuation
+#     replace "。" and "、" with "．" and "，"
+#
 # + clean
 #     delete all files such as .aux, .log and .dvi that are normally created by running make.
 #
 # + distclean
 #     delete all generated file (including .pdf).
+#
+# + rebuild
+#     force to build a pdf
 #
 
 # directory composed
@@ -49,7 +55,7 @@ PDF_FILE := $(patsubst %.tex, %.pdf, $(TEX_FILE))
 
 COMPILE_CNT := 1
 
-.PHONY: help init pdf open clean distclean rebuild
+.PHONY: help init pdf punctuation open clean distclean rebuild
 .SILENT: help
 
 all: pdf
