@@ -47,7 +47,7 @@
 
 # Instant Usage
 #
-#       $ sh <(curl -L https://raw.github.com/TeX2e/dotfiles/bash/fakegit.sh) clone <URL>
+#       $ sh <(curl -L https://raw.github.com/TeX2e/dotfiles/master/bash/fakegit.sh) clone <URL>
 #
 
 version="1.0.0"
