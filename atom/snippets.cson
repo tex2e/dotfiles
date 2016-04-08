@@ -118,6 +118,25 @@
 
 # --- HTML ---
 '.text.html':
+  'table template':
+    'prefix': 'table-templ'
+    'body':   '''
+      <table>
+        <thead>
+          <tr><th>${1:AAA}</th><th>${2:BBB}</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>foo</td><td>123</td></tr>
+          <tr><td>bar</td><td>456</td></tr>
+        </tbody>
+      </table>
+    '''
+  'label':
+    'prefix': 'label'
+    'body':   '<label class="$1" for="$2">$0</label>'
+  'input':
+    'prefix': 'input'
+    'body':   '<input type="$1" class="$2" value="$3" />'
   'svg':
     'prefix': 'svg'
     'body':   '<svg width="${1:500px}" height="${2:100px}">\n\t$0\n</svg>'
@@ -138,6 +157,12 @@
     'body':   '<text x="$1" y="$2">$0</text>'
 
 '.text.html .meta.tag, .text.html .embedded':
+  'id':
+    'prefix': 'id'
+    'body':   'id="$1"'
+  'class':
+    'prefix': 'class'
+    'body':   'class="$1"'
   'width':
     'prefix': 'width'
     'body':   'width="$1"'
@@ -156,9 +181,6 @@
   'stroke width':
     'prefix': 'stroke-width'
     'body':   'stroke-width="${1:5}px"'
-  'SVG class':
-    'prefix': 'class'
-    'body':   'class="${1:name}"'
 
 # --- LaTeX ---
 '.text.tex.latex':
