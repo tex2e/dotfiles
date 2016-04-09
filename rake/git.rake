@@ -17,6 +17,23 @@ namespace :git do
     threads.each { |thr| thr.join }
     success("All your repos is up-to-date.")
   end
+
+  desc "fetch commits of all gir repos"
+  task :fetch do
+    threads = []
+    Dir.chdir(Dir.home) do
+      Dir['**/.git/', '.dotfiles'].each do |git_repo|
+        git_repo.sub!(/\/?.git\/?\z/, '')
+        git_repo = '.' if git_repo.empty?
+
+        threads << Thread.new(git_repo) do |git_repo|
+          fetch_commits(git_repo)
+        end
+      end
+    end
+    threads.each { |thr| thr.join }
+    success("All your repos is up-to-date.")
+  end
 end
 
 
@@ -25,6 +42,13 @@ def success(message)
   puts " \033[32m✔ \033[m#{message}"
 end
 
+def error(message)
+  puts " \033[31m✘ \033[m#{message}"
+end
+
+# git push
+# git push origin master
+#
 # if repo is ahead from remote, push the ahead commits.
 def push_commits(git_repo)
   status = `cd #{git_repo} && git status`
@@ -45,5 +69,20 @@ def push_commits(git_repo)
     puts "> #{command}"
     Kernel.system(command) unless (ENV['DRYRUN'] || ENV['dryrun']) == 'true'
     success("#{git_repo}")
+  end
+end
+
+# git fetch
+#
+# fetch commits from remote.
+def fetch_commits(git_repo)
+  command = "cd #{git_repo} && git fetch"
+  puts "> #{command}"
+  return if (ENV['DRYRUN'] || ENV['dryrun']) == 'true'
+  result = Kernel.system(command)
+  if result
+    success("#{git_repo}")
+  else
+    error("#{git_repo}")
   end
 end
