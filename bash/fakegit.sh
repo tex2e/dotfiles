@@ -119,7 +119,7 @@ fakegit_clone() {
   if [ -z "$fetch_command" ] ; then
     fail "No download command found.\nPlease install one of \`svn', \`curl' or \`wget' and try again"
   fi
-  mkdir -p $dir
+  mkdir -p "$dir"
   log "Instaed of git, executing:\n" $fetch_command "|" $extract_command
   $fetch_command | $extract_command
 }
