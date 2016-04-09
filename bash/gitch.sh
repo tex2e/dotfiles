@@ -16,24 +16,35 @@ function success {
   printf " \033[32m✔ \033[m%s...\033[32mOK\033[m\n" "$*"
 }
 
+# is_git_dir
+#
+# return true if working dir is a git repository.
 function is_git_dir {
   if [ ! -e .git ]; then
-    error "Not git repogitory, exiting"
-    exit 1
+    error "Not a git repogitory"
+    return 1
   elif [ ! -d "$PWD/.git" ]; then
     error "this directory does not have a directory .git/"
-    exit 1
+    return 1
   fi
 }
 
-function get_origin_url {
-  git config remote.origin.url
+# get_remote_url <remote>
+#
+# get the specified remote URL (default remote is origin)
+function get_remote_url {
+  local origin=${1:-origin}
+  git config remote."$origin".url
 }
 
-function get_origin_access_way {
+# get_remote_access_way <remote>
+#
+# get the remote access way, http or ssh (default remote is origin)
+function get_remote_access_way {
   local access
+  local origin=${1:-origin}
 
-  if echo $(get_origin_url) | grep 'http' &> /dev/null; then
+  if echo $(get_remote_url "$origin") | grep 'http' &> /dev/null; then
     access="http"
   else
     access="ssh"
@@ -41,45 +52,57 @@ function get_origin_access_way {
   echo $access
 }
 
-function switch_origin_access_way {
-  local access_way repo new_origin_url
+# switch_remote_access_way <remote>
+#
+# switch the remote access way, http <=> ssh (default remote is origin)
+function switch_remote_access_way {
+  local access_way repo new_remote_url
+  local origin=${1:-origin}
 
-  case "$(get_origin_access_way)" in
+  case "$(get_remote_access_way "$origin")" in
     "http" )
-      repo="$(get_origin_url | awk -F// '{ print $2 }' | sed -e 's,github.com/,github.com:,g')"
-      new_origin_url="git@$repo"
+      repo="$(get_remote_url "$origin" | awk -F// '{ print $2 }' | sed -e 's,github.com/,github.com:,g')"
+      new_remote_url="git@$repo"
       ;;
     "ssh" )
-      repo="$(get_origin_url | awk -F: '{ print $2 }')"
-      new_origin_url="https://github.com/$repo"
+      repo="$(get_remote_url "$origin" | awk -F: '{ print $2 }')"
+      new_remote_url="https://github.com/$repo"
       ;;
   esac
 
   # echo $repo
-  # echo $new_origin_url
+  # echo $new_remote_url
 
-  if set_origin_url "$new_origin_url"; then
-    success "Change origin URL"
+  if set_remote_url "$origin" "$new_remote_url"; then
+    success "Change $origin URL"
     echo "new remote:"
     git remote -v
   fi
 }
 
-function set_origin_url {
-  local new_origin=$1
-  git remote set-url origin "$new_origin"
+# set_remote_url <remote> <remote-URL>
+#
+# set the remote URL
+# return true if setting is successed.
+function set_remote_url {
+  local origin=${1:-origin}
+  local new_remote_url=$2
+  git remote set-url "$origin" "$new_remote_url"
   return $?
 }
 
-if [ "$1" != "" ]; then
-  echo -e " g\033[37;4mitch v0.1.0\033[m"
-  echo "  written by nobuyo"
-  echo "  This script is git push protocol switcher."
-  echo "  type \`gitch\` without any arguments to switch it."
-  exit 0
-fi
 
-is_git_dir
-switch_origin_access_way
+case "$1" in
+  -h | --help | -v | --version )
+    echo -e " g\033[37;4mitch v0.1.0\033[m"
+    echo "  written by nobuyo"
+    echo "  This script is git push protocol switcher."
+    echo "  type \`gitch\` without any arguments to switch it."
+    exit 0
+    ;;
+esac
+
+is_git_dir || exit 1
+switch_remote_access_way "${1:-origin}"
 
 exit 0
