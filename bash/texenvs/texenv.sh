@@ -3,7 +3,7 @@
 set -u
 SCRIPT=`basename $0 .sh`
 
-# to use this to create tex enviroment, type:
+# to use this to create tex environment, type:
 #
 #     texenv
 #     make init
