@@ -18,8 +18,14 @@ SHELL = /bin/sh
 # + git
 #     set a useful git aliases
 #
+# + rake
+#     create ~/.rake directory and set global rakefile
+#
+# + rake-f
+#     create ~/.rake with --force
+#
 
-.PHONY: rc rc-f atom git
+.PHONY: rc rc-f atom git rake rake-f
 
 all:
 	@echo "Commands"
@@ -94,3 +100,10 @@ git:
 	git config --global alias.smi 'submodule init'
 	git config --global alias.smu 'submodule update'
 	git config --global alias.smf 'submodule foreach'
+
+# --- make rake ---
+rake:
+	ln -s "$(PWD)/rake/" "$(HOME)/.rake"
+
+rake-f:
+	ln -fs "$(PWD)/rake/" "$(HOME)/.rake"

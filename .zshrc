@@ -20,6 +20,7 @@ setopt no_beep always_last_prompt
 setopt interactive_comments
 setopt cdable_vars sh_word_split pushd_ignore_dups
 setopt prompt_subst
+unsetopt nomatch # for rake arguments like: `rake subcomand[args]`
 # set the option for hiding RPROMPT to copy the string of the terminal
 #setopt transient_rprompt
 
