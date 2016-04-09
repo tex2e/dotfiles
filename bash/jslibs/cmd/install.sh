@@ -28,15 +28,15 @@ function download {
   fi
 }
 
-# jslib install [--download-here] <library...>
+# jslib install <library...>
 #
 # to install js library(es)
 function jslib-install {
-  # get option
-  local DOWNLOAD_HERE=
-  if [[ "$1" = '--here' ]] || [[ "$1" = '-h' ]]; then
-    DOWNLOAD_HERE=1  # set true
-  fi
+  local download_here='.'
+  test -d "js/lib/" && download_here="js/lib/"
+  test -d "javascript/lib/" && download_here="javascript/lib/"
+  test -d "javascripts/lib/" && download_here="javascripts/lib/"
+  cd "$download_here"
 
   # get setting file
   local jslibs=$(parse-yaml $JSLIB_SETTINGS_YAML)
@@ -46,12 +46,6 @@ function jslib-install {
     # if library is not jot downed to the setting file, skip it.
     install_url=$(echo "$jslibs" | grep -e '\blib_'"$library"'\b' | cut -f 2)
     test "$install_url" = "" && continue
-
-    # if DOWNLOAD_HERE is false
-    if [[ DOWNLOAD_HERE = 0 ]]; then
-      # default path is ./js/lib/lib_name.js
-      mkdir -p js/lib/ && cd js/lib
-    fi
 
     local install_filename=$(basename "$install_url")
     echo "install to $PWD/$install_filename"
