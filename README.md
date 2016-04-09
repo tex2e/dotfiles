@@ -61,7 +61,7 @@ Scripts
 
 #### SYNOPSIS
 
-    todo [-l]
+    todo
     todo -m <message>
     todo -d <number>
 
@@ -154,6 +154,8 @@ further infomation is in [bash/htmlenvs](https://github.com/TeX2e/dotfiles/blob/
 
 #### Usage
 
+`jslib` downloads a specified javascript library.
+
     > jslib install jquery
 
 #### settings
@@ -174,6 +176,8 @@ further infomation is in [bash/htmlenvs](https://github.com/TeX2e/dotfiles/blob/
     chtabsize <from-width> <to-width> <file...>
 
 #### Usage
+
+`chtabsize` changes a soft tab size. following example is changing from 4 to 2.
 
     > chtabsize 4 2 sample.rb
 
@@ -221,6 +225,8 @@ further infomation is in [bash/htmlenvs](https://github.com/TeX2e/dotfiles/blob/
 
 #### Usage
 
+`fakegit` provides only "clone" command like `git clone`
+
     > fakegit clone https://github.com/hnw/fakegit
 
 
@@ -229,5 +235,7 @@ further infomation is in [bash/htmlenvs](https://github.com/TeX2e/dotfiles/blob/
 [code](https://github.com/TeX2e/dotfiles/blob/master/bash/color.sh)
 
 #### Usage
+
+`color` shows cheat sheet of color code.
 
     > color
