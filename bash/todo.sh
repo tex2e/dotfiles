@@ -1,13 +1,12 @@
 #!/bin/bash
 #
-# todo -- management todo list
+# todo -- todo list management system
 #
 
 function usage {
 cat <<EOT
 Usage:
   todo [-l | -m <message> | -d <lineno>]
-  todo 'message' ...
 
 Options:
   -l          show all todo list
@@ -42,6 +41,7 @@ function delete {
 }
 
 [[ $# == 0 ]] && list
+[[ $# == 1 ]] && usage
 
 while getopts :lm:d: OPT ; do
   case $OPT in
@@ -50,9 +50,4 @@ while getopts :lm:d: OPT ; do
     d ) delete "$OPTARG";  shift; shift ;;
     * ) usage;             exit         ;;
   esac
-done
-
-while [[ "$@" != "" ]]; do
-  add "$1"
-  shift
 done
