@@ -18,6 +18,7 @@ namespace :git do
     success("All your repos is up-to-date.")
   end
 
+  # rake git:fetch
   desc "fetch commits of all gir repos"
   task :fetch do
     threads = []
