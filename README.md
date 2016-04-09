@@ -54,6 +54,10 @@ Usage:
 Scripts
 ----------
 
+To use scripts, export PATH:
+
+    export PATH="$PATH:$HOME/.dotfiles/bin"
+
 
 ### todo(1) -- task management system
 
