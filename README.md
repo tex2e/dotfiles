@@ -2,7 +2,7 @@
 
 
 Installation
-------------
+-------------
 
 ~~~ bash
 git clone https://github.com/TeX2e/dotfiles
@@ -11,15 +11,25 @@ cd .dotfiles/
 make rc
 ~~~
 
-if `git` command is not installed, type following:
+if `git` command is not installed, type following instead of `git clone ...`:
 
 ~~~bash
 sh <(curl -L https://raw.github.com/TeX2e/dotfiles/master/bash/fakegit.sh) \
     clone https://github.com/TeX2e/dotfiles
-mv dotfiles/ .dotfiles/
-cd .dotfiles/
-make rc
 ~~~
+
+
+Directories
+------------
+
+    .
+    ├── Makefile       # create symlinks or config settings
+    ├── atom/          # atom settings
+    ├── bash/          # bash scripts
+    ├── bin/           # executable (symlinks)
+    ├── rake/          # global rakefiles
+    ├── ruby/          # ruby scripts
+    └── zsh/           # zsh settings
 
 
 Makefile
@@ -110,6 +120,7 @@ To use scripts, export PATH:
     writing template tex file ...
     OUTPUT=report.tex
     cp -i "~/.dotfiles/bash/texenvs"/template.tex ~/path/to/dir/report.tex || true
+
     > tree
     .
     ├── Makefile -> ~/.dotfiles/bash/texenvs/Makefile.mk
@@ -134,6 +145,7 @@ further infomation is in [bash/texenvs](https://github.com/TeX2e/dotfiles/blob/m
     writing css/normalize.css ... done
     writing css/common.css ... done
     writing js/main.js ... done
+
     > tree
     .
     ├── css/
@@ -161,6 +173,17 @@ further infomation is in [bash/htmlenvs](https://github.com/TeX2e/dotfiles/blob/
 `jslib` downloads a specified javascript library.
 
     > jslib install jquery
+    install to path/to/dir/jquery-2.2.1.min.js
+
+if current directory has `js/lib/` or `javascript/lib/` directory, downloads to there.
+
+    > tree
+    .
+    └── javascript/
+        └── lib/
+
+    > jslib install jquery
+    install to path/to/dir/javascript/lib/jquery-2.2.1.min.js
 
 #### settings
 
@@ -192,17 +215,19 @@ further infomation is in [bash/htmlenvs](https://github.com/TeX2e/dotfiles/blob/
 
 #### SYNOPSIS
 
-    gitch [<branch>]
+    gitch [<remote>]
 
 #### Usage
 
 `gitch` switch the access protocol between https and ssh.
+default remote is "origin".
 
     > git remote -v
     github	git@github.com:TeX2e/test (fetch)
     github	git@github.com:TeX2e/test (push)
     origin	https://github.com/TeX2e/test (fetch)
     origin	https://github.com/TeX2e/test (push)
+
     > gitch
      ✔ Change origin URL...OK
     new remote:
@@ -210,6 +235,7 @@ further infomation is in [bash/htmlenvs](https://github.com/TeX2e/dotfiles/blob/
     github	git@github.com:TeX2e/test (push)
     origin	git@github.com:TeX2e/test (fetch)
     origin	git@github.com:TeX2e/test (push)
+
     > gitch github
      ✔ Change origin URL...OK
     new remote:
