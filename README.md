@@ -57,7 +57,7 @@ Scripts
 
 ### todo(1) -- task management system
 
-[bash/todo.sh](https://github.com/TeX2e/dotfiles/blob/master/bash/todo.sh)
+[code](https://github.com/TeX2e/dotfiles/blob/master/bash/todo.sh)
 
 #### SYNOPSIS
 
@@ -120,10 +120,6 @@ further infomation is in [bash/texenvs](https://github.com/TeX2e/dotfiles/blob/m
 ### htmlenv(1) -- init html environment
 
 [code](https://github.com/TeX2e/dotfiles/blob/master/bash/htmlenvs/htmlenv.sh)
-
-#### SYNOPSIS
-
-    htmlenv
 
 #### Usage
 
@@ -195,24 +191,24 @@ further infomation is in [bash/htmlenvs](https://github.com/TeX2e/dotfiles/blob/
 `gitch` switch the access protocol between https and ssh.
 
     > git remote -v
-    github	https://github.com/TeX2e/test (fetch)
-    github	https://github.com/TeX2e/test (push)
+    github	git@github.com:TeX2e/test (fetch)
+    github	git@github.com:TeX2e/test (push)
     origin	https://github.com/TeX2e/test (fetch)
     origin	https://github.com/TeX2e/test (push)
     > gitch
+     ✔ Change origin URL...OK
+    new remote:
+    github	git@github.com:TeX2e/test (fetch)
+    github	git@github.com:TeX2e/test (push)
+    origin	git@github.com:TeX2e/test (fetch)
+    origin	git@github.com:TeX2e/test (push)
+    > gitch github
      ✔ Change origin URL...OK
     new remote:
     github	https://github.com/TeX2e/test (fetch)
     github	https://github.com/TeX2e/test (push)
     origin	git@github.com:TeX2e/test (fetch)
     origin	git@github.com:TeX2e/test (push)
-    > gitch
-     ✔ Change origin URL...OK
-    new remote:
-    github	https://github.com/TeX2e/test (fetch)
-    github	https://github.com/TeX2e/test (push)
-    origin	https://github.com/TeX2e/test (fetch)
-    origin	https://github.com/TeX2e/test (push)
 
 
 ### fakegit(1) -- do "git clone" without git
@@ -226,3 +222,12 @@ further infomation is in [bash/htmlenvs](https://github.com/TeX2e/dotfiles/blob/
 #### Usage
 
     > fakegit clone https://github.com/hnw/fakegit
+
+
+### color(1) -- color code cheat sheet
+
+[code](https://github.com/TeX2e/dotfiles/blob/master/bash/color.sh)
+
+#### Usage
+
+    > color
