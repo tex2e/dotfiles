@@ -18,12 +18,12 @@ exit 1
 }
 
 TODO_FILE="$HOME/.todo"
-[[ -f $TODO_FILE ]] || touch $TODO_FILE
+[[ -f "$TODO_FILE" ]] || touch "$TODO_FILE"
 
 function list {
-  if [[ -s $TODO_FILE ]]; then
+  if [[ -s "$TODO_FILE" ]]; then
     echo 'todo list : '
-    cat -n $TODO_FILE
+    cat -n "$TODO_FILE"
   else
     echo 'nothing to do' 1>&2
   fi
@@ -31,13 +31,14 @@ function list {
 
 function add {
   echo "todo << $1"
-  echo "$1" >> $TODO_FILE
+  echo "$1" >> "$TODO_FILE"
 }
 
 function delete {
   echo -n 'done >> '
-  sed -n ${1}p $TODO_FILE
-  sed -i -e "${1}d" $TODO_FILE
+  sed -n "${1}p" "$TODO_FILE"
+  sed -i -e "${1}d" "$TODO_FILE"
+  rm "$TODO_FILE-e"
 }
 
 [[ $# == 0 ]] && list
