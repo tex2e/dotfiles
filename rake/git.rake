@@ -6,7 +6,7 @@ namespace :git do
     threads = []
     Dir.chdir(Dir.home) do
       Dir['**/.git/', '.dotfiles/'].each do |git_repo|
-        git_repo.sub!(/\/?.git\/?\z/, '')
+        git_repo.sub!(/\/?\.git\/?\z/, '')
         git_repo = '.' if git_repo.empty?
 
         threads << Thread.new(git_repo) do |git_repo|
@@ -24,7 +24,7 @@ namespace :git do
     threads = []
     Dir.chdir(Dir.home) do
       Dir['**/.git/', '.dotfiles/'].each do |git_repo|
-        git_repo.sub!(/\/?.git\/?\z/, '')
+        git_repo.sub!(/\/?\.git\/?\z/, '')
         git_repo = '.' if git_repo.empty?
 
         threads << Thread.new(git_repo) do |git_repo|
