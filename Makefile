@@ -95,6 +95,7 @@ atom:
 # --- make vim ---
 vim:
 	ln $(OPTION) -s "$(PWD)/vim/.vimrc" "$(HOME)/.vimrc"
+	ln $(OPTION) -s "$(PWD)/vim/.vim/" "$(HOME)/.vim"
 
 vim-f:
 	$(MAKE) vim OPTION='-f'
