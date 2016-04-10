@@ -5,7 +5,7 @@ namespace :git do
   task :push do
     threads = []
     Dir.chdir(Dir.home) do
-      Dir['**/.git/', '.dotfiles'].each do |git_repo|
+      Dir['**/.git/', '.dotfiles/'].each do |git_repo|
         git_repo.sub!(/\/?.git\/?\z/, '')
         git_repo = '.' if git_repo.empty?
 
