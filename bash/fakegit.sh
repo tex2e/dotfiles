@@ -148,17 +148,17 @@ fakegit_help() {
 
 command="$1"
 case "$command" in
-  "" | "-h" | "--help" )
-    echo -e "fakegit ${version}\n$(fakegit_help)" >&2
-    ;;
-  * )
-    command_path="$(command -v "fakegit_$command" || true)"
-    if [ -z "$command_path" ]; then
-      echo "fakegit: Unsupported command \`$command'" >&2
-      exit 1
-    fi
+"" | "-h" | "--help" )
+  echo -e "fakegit ${version}\n$(fakegit_help)" >&2
+  ;;
+* )
+  command_path="$(command -v "fakegit_$command" || true)"
+  if [ -z "$command_path" ]; then
+    echo "fakegit: Unsupported command \`$command'" >&2
+    exit 1
+  fi
 
-    shift 1
-    "$command_path" "$@"
+  shift 1
+  "$command_path" "$@"
   ;;
 esac
