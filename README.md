@@ -8,7 +8,7 @@ Installation
 git clone https://github.com/TeX2e/dotfiles
 mv dotfiles/ .dotfiles/
 cd .dotfiles/
-make rc
+make zsh
 ~~~
 
 if `git` command is not installed, type following instead of `git clone ...`:
@@ -29,6 +29,7 @@ Directories
     ├── bin/           # executable (symlinks)
     ├── rake/          # global rakefiles
     ├── ruby/          # ruby scripts
+    ├── vim/           # vim settings
     └── zsh/           # zsh settings
 
 
@@ -37,19 +38,32 @@ Makefile
 
 Usage:
 
-    make rc atom git rake
+    make zsh
 
-+ `rc`
-    create symbolic links.
-    After running this command, your home directory has a symbolic link
-    which links to run-command file such as .bash_profile and .bashrc in .dotfiles/
++ `path`
+    create symlinks which link to .path which contains exported PATH list
 
-+ `rc-f`
-    create symbolic link with --force
++ `path-f`
+    do `make path` with --force
+
++ `bash`
+    create symlinks which link to .bash_profile and .bashrc into home dir
+
++ `bash-f`
+    do `make bash` with --force
+
++ `zsh`
+    create symlinks which link to .zshenv and .zshrc into home dir
+
++ `zsh-f`
+    do `make zsh` with --force
 
 + `atom`
     link to your atom/snippets.cson
     and install atom packages (ATOM_PKG_LIST)
+
++ `vim`
+    create vim settings
 
 + `git`
     set a useful git aliases
@@ -58,7 +72,8 @@ Usage:
     create ~/.rake directory and set global rakefile
 
 + `rake-f`
-    create ~/.rake with --force
+    do `make rake` with --force
+
 
 
 Scripts
