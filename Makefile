@@ -3,17 +3,31 @@ SHELL = /bin/sh
 
 ### Commands
 #
-# + rc
-#     create symbolic links.
-#     After running this command, your home directory has a symbolic link
-#     which links to run-command file such as .bash_profile and .bashrc in .dotfiles/
+# + path
+#     create symlinks which link to .path which contains exported PATH list
 #
-# + rc-f
-#     create symbolic link with --force
+# + path-f
+#     do `make path` with --force
+#
+# + bash
+#     create symlinks which link to .bash_profile and .bashrc into home dir
+#
+# + bash-f
+#     do `make bash` with --force
+#
+# + zsh
+#     create symlinks which link to .zshenv and .zshrc into home dir
+#
+# + zsh-f
+#     do `make zsh` with --force
+#
 #
 # + atom
 #     link to your atom/snippets.cson
 #     and install atom packages (ATOM_PKG_LIST)
+#
+# + vim
+#     create vim settings
 #
 # + git
 #     set a useful git aliases
@@ -22,31 +36,45 @@ SHELL = /bin/sh
 #     create ~/.rake directory and set global rakefile
 #
 # + rake-f
-#     create ~/.rake with --force
+#     do `make rake` with --force
 #
 
-.PHONY: rc rc-f atom git rake rake-f
+.PHONY: path path-f bash bash-f zsh zsh-f atom vim git rake rake-f
 
 all:
 	@echo "Commands"
-	@echo "+ rc   -- create symbolic link"
-	@echo "+ rc-f -- create symbolic link with --force"
-	@echo "+ atom -- create atom snippets and install atom packages"
-	@echo "+ git  -- create git alias"
+	@echo "+ path  -- create symlinks which link to .path which contains exported PATH list"
+	@echo "+ bash  -- create symlinks which link to .bash_profile and .bashrc into home dir"
+	@echo "+ zsh   -- create symlinks which link to .zshenv and .zshrc into home dir"
+	@echo "+ atom  -- link to your atom/snippets.cson and install atom packages (ATOM_PKG_LIST)"
+	@echo "+ vim   -- create vim settings"
+	@echo "+ git   -- set a useful git aliases"
+	@echo "+ rake  -- create ~/.rake directory and set global rakefile"
 
-# --- make rc ---
-linked_file := \
-	.bash_profile .bashrc .ubuntu.bashrc .zshenv .zshrc .vimrc .path
+# --- make path ---
+path:
+	ln $(OPTION) -s "$(PWD)/.path" "$(HOME)/.path"
 
-rc: $(linked_file)
-	@$(foreach file, $?, \
-		ln -s $(PWD)/$(file) $(HOME)/$(file); \
-	)
+path-f:
+	$(MAKE) path OPTION='-f'
 
-rc-f: $(linked_file)
-	@$(foreach file, $?, \
-		ln -fs $(PWD)/$(file) $(HOME)/$(file); \
-	)
+# --- make bash ---
+bash: path
+	ln $(OPTION) -s "$(PWD)/bash/.bash_profile" "$(HOME)/.bash_profile"
+	ln $(OPTION) -s "$(PWD)/bash/.bashrc" "$(HOME)/.bashrc"
+	ln $(OPTION) -s "$(PWD)/bash/.ubuntu.bashrc" "$(HOME)/.ubuntu.bashrc"
+
+bash-f: path-f
+	$(MAKE) bash OPTION='-f'
+
+# --- make zsh ---
+zsh: bash
+	ln $(OPTION) -s "$(PWD)/zsh/.zshenv" "$(HOME)/.zshenv"
+	ln $(OPTION) -s "$(PWD)/zsh/.zshrc" "$(HOME)/.zshrc"
+
+zsh-f: bash-f
+	$(MAKE) zsh OPTION='-f'
+
 
 # --- make atom ---
 ATOM_PKG_LIST := \
@@ -62,6 +90,15 @@ atom:
 	-ln -s $(HOME)/.dotfiles/atom/snippets.cson $(HOME)/.atom/snippets.cson
 	@echo '>>> installing atom packages'
 	apm install $(ATOM_PKG_LIST)
+
+
+# --- make vim ---
+vim:
+	ln $(OPTION) -s "$(PWD)/vim/.vimrc" "$(HOME)/.vimrc"
+
+vim-f:
+	$(MAKE) vim OPTION='-f'
+
 
 # --- make git ---
 git:
@@ -101,9 +138,10 @@ git:
 	git config --global alias.smu 'submodule update'
 	git config --global alias.smf 'submodule foreach'
 
+
 # --- make rake ---
 rake:
-	ln -s "$(PWD)/rake/" "$(HOME)/.rake"
+	ln $(OPTION) -s "$(PWD)/rake/" "$(HOME)/.rake"
 
 rake-f:
-	ln -fs "$(PWD)/rake/" "$(HOME)/.rake"
+	$(MAKE) rake OPTION='-f'
