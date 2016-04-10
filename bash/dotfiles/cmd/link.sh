@@ -10,17 +10,10 @@ function dotfiles_link {
     echo "$script_path: no such a file."
     exit 1
   fi
+  chmod +x "$script_path"
 
   local link_command="cd bin/ && ln -s ../\"$script_path\" \"$command_name\""
 
-  echo $link_command
-  case $(ask_user "Are you sure to want to create symlink?") in
-  Yes )
-    eval "$link_command" &&
-    success "create bin/$command_name -> $script_path"
-    ;;
-  No )
-    echo "exiting."
-    ;;
-  esac
+  eval "$link_command" &&
+  success "create bin/$command_name -> $script_path"
 }

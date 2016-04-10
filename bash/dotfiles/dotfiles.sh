@@ -11,8 +11,6 @@ Usage:
 This script can run only at "~/.dotfiles"
 
     > dotfiles link bash/foo.sh
-    cd bin/ && ln -fs "../bash/foo.sh" "foo"
-    Are you sure to want to create symlink? (y/n) y
     ✔ create bin/foo -> bash/foo.sh
 
 HELP
