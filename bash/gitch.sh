@@ -54,7 +54,7 @@ function get_remote_access_way {
 #
 # switch the remote access way, http <=> ssh (default remote is origin)
 function switch_remote_access_way {
-  local access_way repo new_remote_url
+  local repo new_remote_url
   local origin=${1:-origin}
 
   case "$(get_remote_access_way "$origin")" in
