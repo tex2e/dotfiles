@@ -95,7 +95,6 @@ case "$1" in
     echo -e " g\033[37;4mitch v0.1.0\033[m"
     echo "  written by nobuyo"
     echo "  This script is git push protocol switcher."
-    echo "  type \`gitch\` without any arguments to switch it."
     exit 0
     ;;
 esac
