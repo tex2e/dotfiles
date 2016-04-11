@@ -14,7 +14,7 @@ namespace :git do
         end
       end
     end
-    threads.each { |thr| thr.join }
+    threads.each(&:join)
     success("All your repos is up-to-date.")
   end
 
@@ -32,7 +32,7 @@ namespace :git do
         end
       end
     end
-    threads.each { |thr| thr.join }
+    threads.each(&:join)
     success("All your repos is up-to-date.")
   end
 end
