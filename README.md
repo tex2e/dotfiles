@@ -202,7 +202,7 @@ if current directory has `js/lib/` or `javascript/lib/` directory, downloads to 
 
 #### settings
 
-`bash/jslibs/settings.yaml` has javascript library URLs.
+`bash/jslibs/settings.yml` has javascript library URLs.
 
     lib:
       jquery: http://code.jquery.com/jquery-2.2.1.min.js
