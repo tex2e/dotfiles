@@ -211,7 +211,7 @@ if current directory has `js/lib/` or `javascript/lib/` directory, downloads to 
 
 ### chtabsize(1) -- change soft tab size
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/ruby/change-softtab-size.rb)
+[code](https://github.com/TeX2e/dotfiles/blob/master/ruby/chtabsize.rb)
 
 #### SYNOPSIS
 
