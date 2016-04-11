@@ -2,7 +2,7 @@
 # js library downloading tool
 
 export JSLIB_DIR="$HOME/.dotfiles/bash/jslibs"
-export JSLIB_SETTINGS_YAML="$JSLIB_DIR/settings.yaml"
+export JSLIB_SETTINGS_YAML="$JSLIB_DIR/settings.yml"
 
 function require {
   for file in $@; do
