@@ -41,15 +41,13 @@ function get_remote_url {
 #
 # get the remote access way, http or ssh (default remote is origin)
 function get_remote_access_way {
-  local access
   local origin=${1:-origin}
 
   if echo $(get_remote_url "$origin") | grep 'http' &> /dev/null; then
-    access="http"
+    echo "http"
   else
-    access="ssh"
+    echo "ssh"
   fi
-  echo $access
 }
 
 # switch_remote_access_way <remote>
