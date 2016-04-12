@@ -14,7 +14,8 @@ make zsh
 if `git` command is not installed, type following instead of `git clone ...`:
 
 ~~~bash
-sh <(curl -L https://raw.github.com/TeX2e/dotfiles/master/bash/fakegit.sh) \
+chsh -s /bin/bash
+sh <(curl -L https://raw.githubusercontent.com/TeX2e/dotfiles/master/bash/fakegit.sh) \
     clone https://github.com/TeX2e/dotfiles
 ~~~
 
