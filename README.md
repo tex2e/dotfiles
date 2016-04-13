@@ -16,7 +16,7 @@ if `git` command is not installed, type following instead of `git clone ...`:
 ~~~bash
 chsh -s /bin/bash
 sh <(curl -L https://raw.githubusercontent.com/TeX2e/dotfiles/master/bash/fakegit.sh) \
-    clone https://github.com/TeX2e/dotfiles
+    clone https://github.com/TeX2e/dotfiles.git
 ~~~
 
 
