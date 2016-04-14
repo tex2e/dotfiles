@@ -18,10 +18,9 @@ case `uname` in
     # xmodmap -pke > "~/.xmodmap"
     # vim ~/.xmodmap
     #
-    #   keycode 37 = Control_L NoSymbol Control_L   # ctrl
-    #   keycode 66 = Caps_Lock NoSymbol Caps_Lock   # caps lock
-    #   clear Lock
-    #   add Control = Control_L
+    #     remove Lock = Caps_Lock
+    #     keysym Caps_Lock = Control_L
+    #     add Control = Control_L
     #
     if [[ -f "~/.xmodmap" ]]; then
       xmodmap ~/.xmodmap
