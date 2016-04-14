@@ -29,6 +29,9 @@ SHELL = /bin/sh
 # + vim
 #     create vim settings
 #
+# + vim-plugin
+#     download vim plugins
+#
 # + git
 #     set a useful git aliases
 #
@@ -100,6 +103,8 @@ vim:
 vim-f:
 	$(MAKE) vim OPTION='-f'
 
+vim-plugin:
+	~/.dotfiles/vim/.vim/setup.sh GIT="~/.dotfiles/bin/fakegit"
 
 # --- make git ---
 git:
