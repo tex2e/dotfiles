@@ -76,10 +76,12 @@ nnoremap sq :<C-u>wq<CR>
 " 2. List the plugins with Plug commands
 " 3. plug#end() to update &runtimepath and initialize plugin system
 "
-call plug#begin()
-Plug 'tomtom/tcomment_vim'
-Plug 'scrooloose/nerdtree'
-call plug#end()
+if executable('git')
+  call plug#begin()
+  Plug 'tomtom/tcomment_vim'
+  Plug 'scrooloose/nerdtree'
+  call plug#end()
+endif
 """"""""""""""""""""""""""""""
 
 
