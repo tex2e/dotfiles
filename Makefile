@@ -104,7 +104,8 @@ vim-f:
 	$(MAKE) vim OPTION='-f'
 
 vim-plugin:
-	~/.dotfiles/vim/.vim/setup.sh GIT="~/.dotfiles/bin/fakegit"
+	~/.dotfiles/vim/.vim/setup.sh "~/.dotfiles/bin/fakegit"
+
 
 # --- make git ---
 git:
