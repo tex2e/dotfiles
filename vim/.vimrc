@@ -41,6 +41,7 @@ inoremap [<Enter> []<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
 nnoremap tree :<C-u>NERDTree<CR>
+vnoremap comment :<C-u>TComment<CR>
 
 nnoremap s <Nop>
 nnoremap ss :<C-u>split<CR>
