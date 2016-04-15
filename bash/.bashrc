@@ -75,6 +75,16 @@ mkdircd() {
   command mkdir -p "$1" && cd "$1"
 }
 
+path() {
+  echo -e ${PATH//:/'\n'}
+}
+cdpath() {
+  echo -e ${CDPATH//:/'\n'}
+}
+fpath() {
+  echo -e ${FPATH//:/'\n'}
+}
+
 extract() {
   if [ -f "$1" ] ; then
     case "$1" in
