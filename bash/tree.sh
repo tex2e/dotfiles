@@ -77,6 +77,8 @@ function rec_dir {
 }
 
 # additonal_info <file>
+#
+# return additonal file info
 function additonal_info {
   if [[ -L "$1" ]]; then
     echo " -> $(readlink "$1")"
