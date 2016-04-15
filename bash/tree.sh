@@ -76,10 +76,6 @@ function rec_dir {
   level=$((level - 1))
 }
 
-function hoge {
-  echo "$1"
-}
-
 # additonal_info <file>
 function additonal_info {
   if [[ -L "$1" ]]; then
