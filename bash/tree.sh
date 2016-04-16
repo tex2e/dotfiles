@@ -11,7 +11,7 @@ none="   "
 tab="    "
 
 usage_exit() {
-  echo "Usage: $0 [-F] [-L level] [--] [directory...]"
+  echo "Usage: $0 [-F] [-L level] [--] [directory]"
   exit 1
 }
 
