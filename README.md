@@ -14,10 +14,18 @@ make zsh
 if `git` command is not installed, type following instead of `git clone ...`:
 
 ~~~bash
-sh <(curl -L https://raw.githubusercontent.com/TeX2e/dotfiles/master/bash/fakegit.sh) \
-    clone https://github.com/TeX2e/dotfiles.git
+function download {
+  local url=$1
+  if which wget &>/dev/null; then
+    wget "$url"
+  elif which curl &>/dev/null; then
+    curl -O "$url"
+  fi
+}
+download https://raw.githubusercontent.com/TeX2e/dotfiles/master/bash/fakegit.sh
+chmod +x ./fakegit.sh
+./fakegit.sh clone https://github.com/TeX2e/dotfiles.git
 ~~~
-
 
 Directories
 ------------
@@ -273,6 +281,68 @@ default remote is "origin".
 `fakegit` provides only "clone" command like `git clone`
 
     > fakegit clone https://github.com/hnw/fakegit
+
+
+### tree(1) -- list contents of directories in a tree-like format via shell script
+
+[code](https://github.com/TeX2e/dotfiles/blob/master/bash/tree.sh)
+
+if you can install `tree` command via package installer, it is recommended.
+
+#### SYNOPSIS
+
+    tree [-F] [-L level] [--] [directory]
+
+#### Usage
+
+`tree` shows files and directories list recursively.
+
+    > tree
+    .
+    ├── README.md
+    ├── index.html
+    └── js
+        ├── lib
+        │   └── underscore-min.js
+        └── main.js
+
+when a symbolic link is encountered, the format is like `name -> real-path`
+
+    > tree
+    .
+    └── bin
+        ├── texenv -> ../bash/texenvs/texenv.sh
+        ├── todo -> ../bash/todo.sh
+        └── tree -> ../bash/tree.sh
+
+`tree -F` append a "/" for directories, a "\*" for executable files.
+
+    > tree -F
+    .
+    └── ruby/
+        └── 2.2.3-1/
+            ├── usr/
+            │   ├── bin/
+            │   │   ├── cygruby220.dll*
+            │   │   ├── erb*
+            │   │   ├── irb*
+            │   │   └── ruby.exe*
+            │   ├── include/
+            │   │   └── ruby-2.2.0/
+            │   │       ├── ruby/
+            │   │       │   ├── backward/
+            │   │       │   ├── config.h
+            │   │       │   ├── debug.h
+    ...
+
+`tree -L <number>` specifies a max display depth of the directory tree.
+
+    > tree -F -L 3
+    .
+    └── ruby/
+        └── 2.2.3-1/
+            ├── usr/
+            └── var/
 
 
 ### color(1) -- color code cheat sheet
