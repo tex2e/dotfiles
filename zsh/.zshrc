@@ -36,7 +36,8 @@ alias -g ....='../../..'
 alias -g .....='../../../..'
 alias zshrc='. ~/.zshrc'
 alias zshenv='. ~/.zshenv'
-alias -g onbg='&>/dev/null &'
+alias -g M='| more'
+alias -g L='| less'
 
 # Suffix aliases
 alias -s rb=ruby py=python
