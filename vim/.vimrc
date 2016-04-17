@@ -1,48 +1,65 @@
 
-if has("syntax")
-  syntax on
-endif
+set nocompatible
 
-set number           "行番号の表示
-set title            "ターミナルのタイトルにファイル名を表示
+"syntax highlight
+syntax on
+highlight Comment ctermfg=gray
+set nohlsearch       "no highlight search
+
+"keyboard and mouse
+set backspace=start,eol,indent
+set whichwrap=b,s,[,],<,>,~
+set mouse=a
+
+"file
+set number
+set ruler
 set ambiwidth=double "文脈によって解釈が異なる全角文字の幅を、2に固定する
 set tabstop=4        "インデント幅
 set shiftwidth=4     "vimが自動で生成する（読み込み時など）tab幅をスペース4つ文にする
 set expandtab        "tabを半角スペースで挿入する
 set smartindent      "改行時などに、自動でインデントを設定してくれる
 set autoindent       "改行時のインデントを継続
-set mouse=a          "マウスの入力を受け付ける
-set history=100      "コマンドの履歴数
-set whichwrap=b,s,h,l,<,>,[,] "行頭行末の左右移動で行をまたぐ
-set ignorecase       "検索で大文字と小文字を区別しない
-"コマンドラインモードでTABキーによるファイル名補完を有効にする
-set wildmenu wildmode=list:full
-set autoread         "他で書き換えられた場合、自動で読み直す
-set ruler            "カーソルの位置情報を表示
-set showcmd          "入力中のステータスを表示する
-set laststatus=2     "ステータスラインの表示
-" ステータスラインのフォーマット
-set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [POS=%04l,%04v]\ [%p%%]\ [LEN=%L]
-" ステータスラインの色
-highlight StatusLine term=bold cterm=bold ctermfg=black ctermbg=gray
-set incsearch        "インクリメンタル検索を有効にする
-hi Comment ctermfg=gray "コメントアウトの部分を灰色にする
+set autoread
+set nowrap
+set scrolloff=5      " スクロールする時に下が見えるようにする
 
+"status line
+set laststatus=2
+set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [POS=%04l,%04v]\ [%p%%]\ [LEN=%L]
+highlight StatusLine term=bold cterm=bold ctermfg=black ctermbg=gray
+
+"searching
+set ignorecase
+set incsearch
+
+"command
+set history=100
+set showcmd
+set wildmenu wildmode=list:full
+
+"mapping
+inoremap <C-e> <Esc>
+inoremap jj <Esc>
 inoremap <C-h> <LEFT>
 inoremap <C-j> <DOWN>
 inoremap <C-k> <UP>
 inoremap <C-l> <RIGHT>
 inoremap <C-d> <BS>
-inoremap <C-c> <Esc>
-inoremap <C-e> <Esc>
-
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap [<Enter> []<Left><CR><ESC><S-o>
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-
+nnoremap <C-j> 2<DOWN>
+nnoremap <C-k> 2<UP>
+nnoremap <C-l> e
+vnoremap <C-j> 2<DOWN>
+vnoremap <C-k> 2<UP>
+vnoremap <C-l> e
+noremap  <S-h> ^
+noremap  <S-j> }
+noremap  <S-k> {
+noremap  <S-l> $
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 nnoremap tree :<C-u>NERDTree<CR>
 vnoremap comment :<C-u>TComment<CR>
-
 nnoremap s <Nop>
 nnoremap ss :<C-u>split<CR>
 nnoremap sv :<C-u>vsplit<CR>
@@ -59,6 +76,11 @@ nnoremap sK <C-w>K
 nnoremap sL <C-w>L
 nnoremap sH <C-w>H
 nnoremap sq :<C-u>wq<CR>
+nnoremap == gg=G''
+noremap m %
+inoremap <C-b> <ESC>:read ~/.vim/bf<CR>i
+nnoremap <C-b> :read ~/.vim/bf<CR>
+vnoremap <C-b> :w!~/.vim/bf<CR>
 
 
 """"""""""""""""""""""""""""""
@@ -81,10 +103,8 @@ call plug#begin()
 Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/nerdtree'
 call plug#end()
-""""""""""""""""""""""""""""""
 
 
-" https://sites.google.com/site/fudist/Home/vim-nihongo-ban/-vimrc-sample
 """"""""""""""""""""""""""""""
 " 挿入モード時、ステータスラインの色を変更
 """"""""""""""""""""""""""""""
