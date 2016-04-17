@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+#
+# dict - a command line dictionary for UNIX
+#
 
 import socket, sys, re
 
