@@ -4,7 +4,7 @@
 function dotfiles_link {
   local script_path=$1
   local command_basename=$(basename $script_path)
-  local command_name=$(echo $command_basename | sed -e 's/.sh//')
+  local command_name=${command_basename%.*}
 
   if ! [[ -f "$script_path" ]]; then
     echo "$script_path: no such a file."
