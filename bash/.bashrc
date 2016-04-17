@@ -65,6 +65,8 @@ alias kill2='kill -9 %2'
 alias kill3='kill -9 %3'
 alias kill4='kill -9 %4'
 alias kill5='kill -9 %5'
+alias bf="cat > ~/.vim/bf"
+alias bfcat="cat ~/.vim/bf"
 
 if [[ -d "$HOME/.rbenv" ]]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
