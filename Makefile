@@ -102,8 +102,8 @@ vim-plugin:
 
 # --- make git ---
 git:
-	ln $(OPTION) -s "$(PWD)/.gitconfig" "$(HOME)/.gitconfig"
-	ln $(OPTION) -s "$(PWD)/.gitignore_global" "$(HOME)/.gitignore_global"
+	ln $(OPTION) -s "$(PWD)/git/.gitconfig" "$(HOME)/.gitconfig"
+	ln $(OPTION) -s "$(PWD)/git/.gitignore_global" "$(HOME)/.gitignore_global"
 
 git-f:
 	$(MAKE) git OPTION='-f'
