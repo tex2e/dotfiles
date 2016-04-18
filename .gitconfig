@@ -1,0 +1,58 @@
+[user]
+	name = Mako
+	email = mnfeconicu41@gmail.com
+[core]
+	excludesfile = /Users/arakimakoto/.gitignore_global
+	editor = vim -c \"set fenc=utf-8\"
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree 2.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[credential]
+	helper = osxkeychain
+[push]
+	default = upstream
+[alias]
+	s = status
+	ss = status -s
+	b = branch
+	d = diff
+	dn = diff --name-only
+	dc = diff --cached
+	a = add
+	aa = add -A
+	c = commit
+	cm = commit -m
+	cam = commit -am
+	ch = checkout
+	chb = checkout -b
+	chm = checkout master
+	bclean = "!f() { git branch --merged ${1-master} | grep -v \" ${1-master}$\" | xargs git branch -d; }; f"
+	l = log
+	graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+	r = remote
+	rv = remote -v
+	ru = remote update
+	bl = blame
+	gr = grep -iI
+	f = fetch
+	up = !git pull --prune $@ && git submodule update --init --recursive
+	amend = commit --amend
+	amendm = commit --amend -m
+	save = !git add -A && git commit -m \"SAVEPOINT\"
+	undo = reset HEAD~1 --mixed
+	wipe = !git add -A && git commit -qm \"WIPE SAVEPOINT\" && git reset HEAD~1 --hard
+	conf = config --global -e
+	unstage = reset HEAD
+	dt = diff HEAD^ HEAD
+	config = config --global -e
+	sm = submodule
+	smi = submodule init
+	smu = submodule update
+	smf = submodule foreach
