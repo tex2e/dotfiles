@@ -35,6 +35,8 @@ Directories
     ├── atom/          # atom settings
     ├── bash/          # bash scripts
     ├── bin/           # executable (symlinks)
+    ├── git/           # git setting files
+    ├── python/        # python scripts
     ├── rake/          # global rakefiles
     ├── ruby/          # ruby scripts
     ├── vim/           # vim settings
@@ -51,20 +53,11 @@ Usage:
 + `path`
     create symlinks which link to .path which contains exported PATH list
 
-+ `path-f`
-    do `make path` with --force
-
 + `bash`
     create symlinks which link to .bash_profile and .bashrc into home dir
 
-+ `bash-f`
-    do `make bash` with --force
-
 + `zsh`
     create symlinks which link to .zshenv and .zshrc into home dir
-
-+ `zsh-f`
-    do `make zsh` with --force
 
 + `atom`
     link to your atom/snippets.cson
@@ -74,14 +67,13 @@ Usage:
     create vim settings
 
 + `git`
-    set a useful git aliases
+    create git settings
 
 + `rake`
     create ~/.rake directory and set global rakefile
 
-+ `rake-f`
-    do `make rake` with --force
-
++ `<command>-f`
+    do `make <command>` with --force
 
 
 Scripts
