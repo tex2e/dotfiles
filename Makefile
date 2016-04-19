@@ -94,6 +94,12 @@ vim-f:
 	$(MAKE) vim OPTION='-f'
 
 
+# --- make subl ---
+subl-ubuntu:
+	mkdir -p "$(HOME)/local"
+	$(HOME)/.dotfiles/bash/install-sublime3.sh "$(HOME)/local" "3083"
+
+
 # --- make git ---
 git:
 	ln $(OPTION) -s "$(PWD)/git/.gitconfig" "$(HOME)/.gitconfig"
