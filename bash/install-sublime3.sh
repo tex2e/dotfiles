@@ -30,8 +30,8 @@ function error {
 }
 
 function check_os {
-  if ! [[ "$(uname -n)" = "ubuntu" ]]; then
-    error "the nodename is not \"ubuntu\", exiting."
+  if ! [[ "$(uname)" = "Linux" ]]; then
+    error "the os name is not \"Linux\", exiting."
     exit 1
   fi
 }
