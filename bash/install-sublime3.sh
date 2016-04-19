@@ -8,14 +8,13 @@
 #
 #   -h, --help  Displays this help message.
 #
-# Report bugs to Henrique Moody <henriquemoody@gmail.com>
-#
 
 set -e
 
 if [[ "${1}" = '-h' ]] || [[ "${1}" = '--help' ]]; then
-  sed -E 's/^#\s?(.*)/\1/g' "${0}" |
-  sed -nE '/^Usage/,/^Report/p' |
+  awk '/^#!/,/^$/ { print }' "$0" |
+  sed '1d' |
+  sed -E 's/^# ?(.*)/\1/g' |
   sed "s/{script}/$(basename "${0}")/g"
   exit
 fi
@@ -26,6 +25,17 @@ declare TARGET="${1:-/usr/local}"
 declare BUILD="${2}"
 declare BITS
 
+function error {
+  echo -e "\033[31mError\033[m" "$*"
+}
+
+function check_os {
+  if ! [[ "$(uname -n)" = "ubuntu" ]]; then
+    error "the nodename is not \"ubuntu\", exiting."
+    exit 1
+  fi
+}
+
 function download {
   if which curl &>/dev/null; then
     curl -L $@
@@ -33,6 +43,10 @@ function download {
     wget -O - $@
   fi
 }
+
+# --- main ---
+
+check_os
 
 if [[ -z "${BUILD}" ]]; then
   BUILD=$(
@@ -59,7 +73,7 @@ if [[ "${CONFIRM}" = 'N' ]] || [[ "${CONFIRM}" = 'NO' ]]; then
 fi
 
 echo "Downloading Sublime Text 3"
-download "${URL}" | tar -xjC ${TARGET}
+download "${URL}" | tar -xjC "${TARGET}"
 
 # echo "Creating shortcut file"
 # cat ${TARGET}/sublime_text_3/sublime_text.desktop |
