@@ -21,7 +21,7 @@ if [[ "${1}" = '-h' ]] || [[ "${1}" = '--help' ]]; then
 fi
 
 declare URL
-declare URL_FORMAT="http://c758482.r82.cf2.rackcdn.com/sublime_text_3_build_%d_x%d.tar.bz2"
+declare URL_FORMAT="https://download.sublimetext.com/sublime_text_3_build_%d_x%d.tar.bz2"
 declare TARGET="${1:-/usr/local}"
 declare BUILD="${2}"
 declare BITS
