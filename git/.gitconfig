@@ -4,9 +4,11 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim -c \"set fenc=utf-8\"
+	autocrlf = input
+[help]
+	autocorrect = 1
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree 2.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -16,6 +18,7 @@
 	required = true
 [credential]
 	helper = osxkeychain
+	helper = cache --timeout 30000
 [push]
 	default = upstream
 [alias]
