@@ -13,7 +13,7 @@ esac
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
-if which shopt > /dev/null; then
+if which shopt &> /dev/null; then
   shopt -s histappend
 fi
 
@@ -23,7 +23,7 @@ HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-if which shopt > /dev/null; then
+if which shopt &> /dev/null; then
   shopt -s checkwinsize
 fi
 
@@ -85,9 +85,9 @@ if [ -x /usr/bin/dircolors ]; then
   #alias dir='dir --color=auto'
   #alias vdir='vdir --color=auto'
 
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
+  # alias grep='grep --color=auto'
+  # alias fgrep='fgrep --color=auto'
+  # alias egrep='egrep --color=auto'
 fi
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -106,7 +106,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if which shopt > /dev/null; then
+if which shopt &> /dev/null; then
   if ! shopt -oq posix; then
     if [ -f /usr/share/bash-completion/bash_completion ]; then
       . /usr/share/bash-completion/bash_completion
