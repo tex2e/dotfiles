@@ -13,20 +13,20 @@ case `uname` in
     export CC=gcc
     export CXX=g++
     alias open='xdg-open'
-
-    # # create .xmodmap file
-    # xmodmap -pke > "~/.xmodmap"
-    # vim ~/.xmodmap
-    #
-    #     remove Lock = Caps_Lock
-    #     keysym Caps_Lock = Control_L
-    #     add Control = Control_L
-    #
-    if [[ -f "~/.xmodmap" ]]; then
-      xmodmap ~/.xmodmap
-    fi
     ;;
 esac
+
+# # create .xmodmap file
+# xmodmap -pke > "~/.xmodmap"
+# vim ~/.xmodmap
+#
+#     remove Lock = Caps_Lock
+#     keysym Caps_Lock = Control_L
+#     add Control = Control_L
+#
+if [[ -f "~/.xmodmap" ]]; then
+  xmodmap ~/.xmodmap
+fi
 
 # useful alias
 alias ls='ls -F'
