@@ -25,6 +25,9 @@ SHELL = /bin/sh
 # + rake
 #     create ~/.rake directory and set global rakefile
 #
+# + xmodmap
+#     create xmodmap settings
+#
 # + <command>-f
 #     do `make <command>` with --force
 #
@@ -115,3 +118,11 @@ rake:
 
 rake-f:
 	$(MAKE) rake OPTION='-f'
+
+
+# --- make xmodmap ---
+xmodmap:
+	ln $(OPTION) -s "$(PWD)/xmodmap/.xmodmap" "$(HOME)/.xmodmap"
+
+xmodmap-f:
+	$(MAKE) xmodmap OPTION='-f'
