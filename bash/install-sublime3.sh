@@ -2,18 +2,21 @@
 # Usage: {script} [<option>] <target> <build>
 #
 #   target      Default target is "/usr/local".
-#   build       If not defined tries to get the build into the Sublime Text 3 website.
+#   build       build version. If not defined, tries to get the build into the
+#               Sublime Text 3 website.
 #
 # OPTIONS
 #
 #   -h, --help  Displays this help message.
 #
 
+# this script installs Sublime Text 3
+
 set -e
 
 if [[ "${1}" = '-h' ]] || [[ "${1}" = '--help' ]]; then
   # show usage
-  awk '/^#!/,/^$/ { print }' "$0" |
+  awk '/^#!/ { FLAG=1 } { if(FLAG){ print } } /^$/ { exit }' "$0" |
   sed '1d' |
   sed -E 's/^# ?(.*)/\1/g' |
   sed "s/{script}/$(basename "${0}")/g"
@@ -26,15 +29,10 @@ declare TARGET="${1:-/usr/local}"
 declare BUILD="${2}"
 declare BITS
 
+TARGET=${TARGET%/} # remove slash from the end of the path
+
 function error {
   echo -e "\033[31mError\033[m" "$*"
-}
-
-function check_os {
-  if ! [[ "$(uname)" = "Linux" ]]; then
-    error "the os name is not \"Linux\", exiting."
-    exit 1
-  fi
 }
 
 function download {
@@ -47,9 +45,14 @@ function download {
 
 # --- main ---
 
-check_os
+# check os
+if ! [[ "$(uname)" = "Linux" ]]; then
+  error "the os name is not \"Linux\", exiting."
+  exit 1
+fi
 
 if [[ -z "${BUILD}" ]]; then
+  # extract a latest build version from Sublime Text 3 website
   BUILD=$(
     download http://www.sublimetext.com/3 |
     grep '<h2>Build' |
