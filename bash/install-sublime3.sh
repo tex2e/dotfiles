@@ -1,8 +1,8 @@
 #!/bin/bash
-# Usage: {script} [ OPTIONS ] TARGET BUILD
+# Usage: {script} [<option>] <target> <build>
 #
-#   TARGET      Default target is "/usr/local".
-#   BUILD       If not defined tries to get the build into the Sublime Text 3 website.
+#   target      Default target is "/usr/local".
+#   build       If not defined tries to get the build into the Sublime Text 3 website.
 #
 # OPTIONS
 #
@@ -12,6 +12,7 @@
 set -e
 
 if [[ "${1}" = '-h' ]] || [[ "${1}" = '--help' ]]; then
+  # show usage
   awk '/^#!/,/^$/ { print }' "$0" |
   sed '1d' |
   sed -E 's/^# ?(.*)/\1/g' |
