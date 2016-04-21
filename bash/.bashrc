@@ -1,7 +1,7 @@
 
-PS1='\W \$ '
-PS2='> '
-EDITOR=vim
+: ${PS1:='\W \$ '}
+: ${PS2:='> '}
+: ${EDITOR:=vim}
 
 case `uname` in
   Darwin ) # mac os
@@ -104,6 +104,6 @@ extract() {
       *) echo "'$1' cannot be extracted via extract()" ;;
     esac
   else
-     echo "'$1' is not a valid file"
+    echo "'$1' is not a valid file"
   fi
 }
