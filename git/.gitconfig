@@ -9,7 +9,7 @@
 	autocorrect = 1
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path = ""
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree 2.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -44,7 +44,7 @@
 	dt = diff HEAD^ HEAD
 	f = fetch
 	gr = grep -iI
-	graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+	graph = log --graph --oneline --all --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
 	l = log
 	lp = log -p
 	r = remote
