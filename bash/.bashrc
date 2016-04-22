@@ -86,6 +86,10 @@ cdpath() {
 fpath() {
   echo -e ${FPATH//:/'\n'}
 }
+manpath() {
+  local MPATH="$(command manpath)"
+  echo -e ${MPATH//:/'\n'}
+}
 
 extract() {
   if [ -f "$1" ] ; then
