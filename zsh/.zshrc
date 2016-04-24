@@ -2,6 +2,11 @@
 # inherited from .bashrc
 source ~/.bashrc
 
+# show todo
+if which todo &> /dev/null; then
+  todo
+fi
+
 ###
 # Set Shell variable
 HISTSIZE=1000
