@@ -4,7 +4,6 @@ set nocompatible
 "syntax highlight
 syntax on
 highlight Comment ctermfg=gray
-set nohlsearch       "no highlight search
 
 "keyboard and mouse
 set backspace=start,eol,indent
@@ -32,6 +31,9 @@ highlight StatusLine term=bold cterm=bold ctermfg=black ctermbg=gray
 "searching
 set ignorecase
 set incsearch
+set nohlsearch       "no highlight search
+nnoremap / /\v
+nnoremap ? ?\v
 
 "command
 set history=100
@@ -75,12 +77,24 @@ nnoremap sJ <C-w>J
 nnoremap sK <C-w>K
 nnoremap sL <C-w>L
 nnoremap sH <C-w>H
-nnoremap sq :<C-u>wq<CR>
+nnoremap s= <C-w>=
+nnoremap s> <C-w>>
+nnoremap s< <C-w><
+nnoremap s+ <C-w>+
+nnoremap s- <C-w>-
 nnoremap == gg=G''
 noremap m %
 inoremap <C-b> <ESC>:read ~/.vim/bf<CR>i
 nnoremap <C-b> :read ~/.vim/bf<CR>
 vnoremap <C-b> :w!~/.vim/bf<CR>
+
+"git
+set spelllang=en,cjk                       "スペルチェック
+autocmd FileType gitcommit setlocal spell  "コミット時のスペルチェック
+autocmd FileType gitcommit startinsert
+runtime ftplugin/man.vim                   "マニュアル
+nnoremap git :<C-u>!git<Space>
+nnoremap glog :<C-u>Agit<CR>
 
 
 """"""""""""""""""""""""""""""
@@ -102,6 +116,8 @@ vnoremap <C-b> :w!~/.vim/bf<CR>
 call plug#begin()
 Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/nerdtree'
+Plug 'cohama/agit.vim', { 'commit': 'f663a12ff8868670687350d7b1bbe6d23673bc3b' }
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 
