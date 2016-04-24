@@ -45,6 +45,7 @@
 	f = fetch
 	gr = grep -iI
 	graph = log --graph --oneline --all --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+	graphp = log -p --graph --oneline --all --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
 	l = log
 	lp = log -p
 	r = remote
@@ -52,6 +53,7 @@
 	rv = remote -v
 	s = status
 	save = !git add -A && git commit -m \"SAVEPOINT\"
+	showp = show -p
 	sm = submodule
 	smf = submodule foreach
 	smi = submodule init
