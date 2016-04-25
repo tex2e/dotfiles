@@ -71,6 +71,7 @@ noremap  <S-l> $
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap tree :<C-u>NERDTree<CR>
+nnoremap shell :<C-u>VimShell<CR>
 vnoremap comment :<C-u>TComment<CR>
 nnoremap s <Nop>
 nnoremap ss :<C-u>split<CR>
@@ -128,6 +129,9 @@ Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/nerdtree'
 Plug 'cohama/agit.vim', { 'commit': 'f663a12ff8868670687350d7b1bbe6d23673bc3b' }
 Plug 'terryma/vim-multiple-cursors'
+Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/vimshell.vim'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 
