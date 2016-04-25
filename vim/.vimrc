@@ -128,6 +128,7 @@ call plug#begin()
 Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/nerdtree'
 Plug 'cohama/agit.vim', { 'commit': 'f663a12ff8868670687350d7b1bbe6d23673bc3b' }
+Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Shougo/vimproc.vim'
 Plug 'Shougo/vimshell.vim'
