@@ -104,8 +104,7 @@ set spelllang=en,cjk                       "スペルチェック
 autocmd FileType gitcommit setlocal spell  "コミット時のスペルチェック
 autocmd FileType gitcommit startinsert
 runtime ftplugin/man.vim                   "マニュアル
-nnoremap git :<C-u>!git<Space>
-nnoremap glog :<C-u>Agit<CR>
+nnoremap git :<C-u>Agit<CR>
 
 
 """"""""""""""""""""""""""""""
