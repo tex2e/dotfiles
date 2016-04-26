@@ -116,6 +116,15 @@
     'prefix': 'mdoc'
     'body':   '@moduledoc """$0\n"""'
 
+# --- C ---
+'.source.c':
+  'if':
+    'prefix': 'if'
+    'body':   'if (${1:true}) {$0}'
+  'for':
+    'prefix': 'for'
+    'body':   'for (${1:i} = 0; ${1:i} < ${2:size}; ${1:i}++) {\n\t$0\n}'
+
 # --- HTML ---
 '.text.html':
   'table template':
