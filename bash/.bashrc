@@ -24,8 +24,8 @@ esac
 #     keysym Caps_Lock = Control_L
 #     add Control = Control_L
 #
-if [[ -f "~/.xmodmap" ]]; then
-  xmodmap ~/.xmodmap
+if [[ -f "$HOME/.xmodmap" ]]; then
+  xmodmap "$HOME/.xmodmap"
 fi
 
 # useful alias
