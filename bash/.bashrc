@@ -25,7 +25,7 @@ esac
 #     add Control = Control_L
 #
 if [[ -f "$HOME/.xmodmap" ]]; then
-  xmodmap "$HOME/.xmodmap"
+  xmodmap "$HOME/.xmodmap" &> /dev/null
 fi
 
 # useful alias
