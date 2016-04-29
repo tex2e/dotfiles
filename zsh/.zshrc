@@ -66,7 +66,6 @@ zstyle ':completion:*:platex:*' file-patterns '*.tex:tex --kanji=utf8:option *(-
 zstyle ':completion:*:dvi*:*' file-patterns '*.dvi:dvi *(-/):dir'
 zstyle ':completion:*:open:*' file-patterns '*.pdf:pdf *(-/):dir' '*:all-files'
 zstyle ':completion:*:date:*' fake '+%Y-%m-%d'
-zstyle ':completion:*:make:*' file-patterns '*.c:files' '*.cpp:files'
 zstyle ':completion:*:subl:*' file-patterns '*.*:files' '*:files'
 
 autoload -Uz compinit && compinit
