@@ -71,7 +71,7 @@ noremap  <S-l> $
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 nnoremap tree :<C-u>NERDTree<CR>
-nnoremap shell :<C-u>VimShell<CR><ESC>:<C-u>set nonumber<CR>
+nnoremap vimshell :<C-u>VimShell<CR><ESC>:<C-u>set nonumber<CR>
 vnoremap comment :<C-u>TComment<CR>
 nnoremap s <Nop>
 nnoremap ss :<C-u>split<CR>
