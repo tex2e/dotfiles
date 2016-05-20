@@ -9,9 +9,6 @@ function fish_prompt -d "Write out the prompt"
     (prompt_pwd) (set_color $color) (set_color normal)
 end
 
-# load __fish_git_prompt
-__fish_git_prompt > /dev/null
-
 function fish_right_prompt -d "Write out the right prompt"
   test -d "$PWD/.git"; or return
 
@@ -33,7 +30,6 @@ function fish_right_prompt -d "Write out the right prompt"
     set color red
   end
 
-  printf '%s%s%s %s' \
-    (set_color $color) (echo $branch) (set_color normal) \
-    (__fish_git_prompt_informative_status)
+  printf '%s%s%s ' \
+    (set_color $color) $branch (set_color normal)
 end
