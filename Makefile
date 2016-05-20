@@ -32,7 +32,7 @@ SHELL = /bin/sh
 #     do `make <command>` with --force
 #
 
-.PHONY: path path-f bash bash-f zsh zsh-f atom vim git rake rake-f
+.PHONY: path path-f bash bash-f zsh zsh-f fish fish-f atom vim git rake rake-f
 
 all:
 	@echo "Commands"
@@ -71,6 +71,13 @@ zsh: bash
 zsh-f: bash-f
 	$(MAKE) zsh OPTION='-f'
 
+
+# --- make fish ---
+fish:
+	ln $(OPTION) -s "$(PWD)/fish/config.fish" "$(HOME)/.config/fish/config.fish"
+
+fish-f:
+	$(MAKE) fish OPTION='-f'
 
 # --- make atom ---
 ATOM_PKG_LIST := \
