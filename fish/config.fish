@@ -1,4 +1,8 @@
 
+function fishrc
+  fish ~/.config/fish/config.fish
+end
+
 function fish_prompt -d "Write out the prompt"
   set color $fish_color_cwd
   if test $status -ne 0
