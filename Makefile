@@ -81,10 +81,11 @@ zsh-f: bash-f
 
 
 # --- make fish ---
-fish:
+fish: alias
 	ln $(OPTION) -s "$(PWD)/fish/config.fish" "$(HOME)/.config/fish/config.fish"
+	ln $(OPTION) -s "$(PWD)/.alias" "$(HOME)/.config/fish/aliases.fish"
 
-fish-f:
+fish-f: alias-f
 	$(MAKE) fish OPTION='-f'
 
 
