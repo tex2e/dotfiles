@@ -1,4 +1,23 @@
 
+### Alias ###
+. ~/.config/fish/aliases.fish
+
+
+### Path ###
+
+if not echo $PATH | grep --quiet ".dotfiles/bin"
+  set -x PATH \
+    /usr/local/bin $PATH \
+    $HOME/.npm-packages/bin \
+    $HOME/.dotfiles/bin \
+    $HOME/local/bin \
+    $HOME/picnic-tools/bin
+end
+set -x CDPATH $HOME $HOME/Documents $HOME/Documents/pgm
+
+
+### Prompt ###
+
 function fish_prompt -d "Write out the prompt"
   set -l color $fish_color_cwd
   if test $status -ne 0
