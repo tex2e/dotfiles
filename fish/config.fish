@@ -25,11 +25,11 @@ function fish_right_prompt -d "Write out the right prompt"
 
   # set color
   set st (git status 2> /dev/null)
-  if echo "$st" | grep "^nothing to"
+  if echo "$st" | grep "nothing to"
     set color green
-  else if echo "$st" | grep "^nothing added"
+  else if echo "$st" | grep "nothing added"
     set color yellow
-  else if echo "$st" | grep "^# Untracked"
+  else if echo "$st" | grep "Untracked files"
     set color --bold red
   else
     set color red
