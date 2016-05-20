@@ -5,15 +5,34 @@
 
 ### Path ###
 
-if not echo $PATH | grep --quiet ".dotfiles/bin"
-  set -x PATH \
-    /usr/local/bin $PATH \
-    $HOME/.npm-packages/bin \
-    $HOME/.dotfiles/bin \
-    $HOME/local/bin \
-    $HOME/picnic-tools/bin
+if not contains /usr/local/bin $PATH
+  set -x PATH /usr/local/bin $PATH
 end
-set -x CDPATH $HOME $HOME/Documents $HOME/Documents/pgm
+
+# PATH
+set user_paths \
+  $HOME/.npm-packages/bin \
+  $PATH $HOME/.dotfiles/bin \
+  $PATH $HOME/local/bin \
+  $PATH $HOME/picnic-tools/bin
+
+for i in $user_paths
+  if not contains $i $PATH
+    set PATH $PATH $i
+  end
+end
+
+# CDPATH
+set user_cdpath \
+  $HOME \
+  $HOME/Documents \
+  $HOME/Documents/pgm
+
+for i in $user_cdpath
+  if not contains $i $CDPATH
+    set CDPATH $CDPATH $i
+  end
+end
 
 
 ### Prompt ###
@@ -70,21 +89,6 @@ end
 function cdpath
   set -l IFS ':'
   for p in $CDPATH
-    echo $p
-  end
-end
-
-function fpath
-  set -l IFS ':'
-  for p in $FPATH
-    echo $p
-  end
-end
-
-function manpath
-  set -l IFS ':'
-  set -l MPATH (command manpath)
-  for p in $MPATH
     echo $p
   end
 end
