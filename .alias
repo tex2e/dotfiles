@@ -1,0 +1,52 @@
+### useful alias ###
+
+# bash
+alias bashrc='. ~/.bashrc'
+alias bash_profile='. ~/.bash_profile'
+
+# zsh
+alias zshrc='. ~/.zshrc'
+alias zshenv='. ~/.zshenv'
+
+# env
+alias en='LANG=en_US.UTF-8'
+alias ja='LANG=ja_JP.UTF-8'
+
+# build in commands
+alias kill1='kill -9 %1'
+alias kill2='kill -9 %2'
+alias kill3='kill -9 %3'
+alias kill4='kill -9 %4'
+alias kill5='kill -9 %5'
+
+# basic commands
+alias ls='ls -F'
+alias la='ls -A'
+alias l.='\ls -d .*'
+alias ll='ls -l'
+alias lal='la -l'
+alias lla='ll -A'
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+alias chx='chmod 755'
+alias chr='chmod 644'
+
+# external commands
+alias tree='tree -F'
+alias tree1='tree -L 1'
+alias tree2='tree -L 2'
+alias tree3='tree -L 3'
+alias tree4='tree -L 4'
+alias tree5='tree -L 5'
+alias gitlog='git log --graph --oneline --all --decorate'
+alias gitlogp='git log -p --graph --oneline --all --decorate'
+alias server='python -m SimpleHTTPServer 8000 &>/dev/null &'
+alias npmls='npm ls --depth 0'
+alias npmlist='npm ls --depth 0'
+alias npms='npm start'
+alias npmt='npm test'
+alias npmb='npm run build'
+
+# vim
+alias bf="cat > ~/.vim/bf"
+alias bfcat="cat ~/.vim/bf"
