@@ -48,7 +48,10 @@ function fish_prompt -d "Write out the prompt"
 end
 
 function fish_right_prompt -d "Write out the right prompt"
-  test -d "$PWD/.git"; or return
+  if not git rev-parse --git-dir > /dev/null ^ /dev/null
+    # we are NOT inside a git repo
+    return
+  end
 
   # branch name
   set -l head (git symbolic-ref HEAD 2> /dev/null)
