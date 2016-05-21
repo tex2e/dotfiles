@@ -1,32 +1,48 @@
 #!/bin/bash
-# Usage: {script} [<option>] <target> <build>
+#:readme:
 #
-#   target      Default target is "/usr/local".
-#   build       build version. If not defined, tries to get the build into the
+# ## install-sublime3(1) -- install sublime on Ubuntu without sudo/root
+#
+# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/install-sublime3.sh)
+#
+# **Note: this script only runs on Ubuntu.**
+#
+# ### SYNOPSIS
+#
+#     install-sublime3 [<target> [<build>]]
+#
+# - `target`    Default target is "/usr/local".
+# - `build`     build version. If not defined, tries to get the build into the
 #               Sublime Text 3 website.
 #
-# OPTIONS
+# ### Usage
 #
-#   -h, --help  Displays this help message.
+# `install-sublime3` installs sublime text 3.
+# the sublime is installed to
 #
-
-# this script installs Sublime Text 3
+#     > install-sublime3
+#
+# you can specify the installed directory.
+#
+#     > install-sublime3 ~/usr/local
+#
+# and also you can specify the sublime build version.
+#
+#     > install-sublime3 ~/usr/local 3114
+#
 
 set -e
 
 if [[ "${1}" = '-h' ]] || [[ "${1}" = '--help' ]]; then
   # show usage
-  awk '/^#!/ { FLAG=1 } { if(FLAG){ print } } /^$/ { exit }' "$0" |
-  sed '1d' |
-  sed -E 's/^# ?(.*)/\1/g' |
-  sed "s/{script}/$(basename "${0}")/g"
+  echo "Usage: install-sublime3 [<target> [<build>]]"
   exit
 fi
 
 declare URL
 declare URL_FORMAT="https://download.sublimetext.com/sublime_text_3_build_%d_x%d.tar.bz2"
-declare TARGET="${1:-/usr/local}"
-declare BUILD="${2}"
+declare TARGET="${1:-/usr/local}" # root dir
+declare BUILD="${2}" # build version
 declare BITS
 
 TARGET=${TARGET%/} # remove slash from the end of the path

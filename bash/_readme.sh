@@ -1,6 +1,9 @@
 #!/bin/bash
-#:readme:
 #
+# This file is meta description for documentation.
+#
+
+#:readme:
 # Scripts
 # ==========
 #
