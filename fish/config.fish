@@ -25,8 +25,8 @@ end
 # CDPATH
 set user_cdpath \
   $HOME \
-  $HOME/Documents \
-  $HOME/Documents/pgm
+  # $HOME/Documents \
+  # $HOME/Documents/pgm
 
 for i in $user_cdpath
   if not contains $i $CDPATH
