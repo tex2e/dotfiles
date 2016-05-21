@@ -48,7 +48,7 @@ function fish_prompt -d "Write out the prompt"
 end
 
 function fish_right_prompt -d "Write out the right prompt"
-  if not git rev-parse --git-dir > /dev/null ^ /dev/null
+  if not git rev-parse --is-inside-work-tree > /dev/null ^ /dev/null
     # we are NOT inside a git repo
     return
   end
@@ -89,21 +89,13 @@ function fish_title
   end
   # we are sitting at the fish prompt
 
-  if not git rev-parse --git-dir > /dev/null ^ /dev/null
+  if not git rev-parse --is-inside-work-tree > /dev/null ^ /dev/null
     # we are NOT inside a git repo, so just use the working-directory
     echo (pwd)
     return
   end
   # we are inside a git directory, so use the name of the repo as the terminal title
-
-  set -l git_dir (git rev-parse --git-dir)
-  if test $git_dir = ".git"
-    # we are at the root of the git repo
-    echo (basename (pwd))
-  else
-    # we are at least one level deep in the git repo
-    echo (basename (dirname $git_dir))
-  end
+  echo (basename (git rev-parse --show-toplevel))
 end
 
 
