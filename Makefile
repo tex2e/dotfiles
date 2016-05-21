@@ -143,3 +143,11 @@ xmodmap:
 
 xmodmap-f:
 	$(MAKE) xmodmap OPTION='-f'
+
+
+### Development ###
+
+# --- make doc ---
+
+doc-bash:
+	find . -type f -name "*.sh" -exec awk '/^#:readme:/, /^$$/ { print gensub(/^# ?(:readme:)?/, "", "g", $$0) }' {} \; >> "bash/README.md"
