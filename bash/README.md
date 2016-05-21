@@ -88,7 +88,7 @@ suport for tar.bz2, tar.gz, bz2, rar, gz, tar, tbz2, tgz, zip, Z and 7z
 
 
 
-## fakegit(1) -- do "git clone" without git
+## fakegit(1) -- Emulating "git clone" with other tools
 
 [code](https://github.com/TeX2e/dotfiles/blob/master/bash/fakegit.sh)
 
