@@ -1,4 +1,20 @@
 #!/usr/bin/env ruby
+#:readme:
+#
+# ## chtabsize(1) -- change soft tab size
+#
+# [code](https://github.com/TeX2e/dotfiles/blob/master/ruby/chtabsize.rb)
+#
+# ### SYNOPSIS
+#
+#     chtabsize <from-width> <to-width> <file...>
+#
+# ### Usage
+#
+# `chtabsize` changes a soft tab size. following example is changing from 4 to 2.
+#
+#     > chtabsize 4 2 sample.rb
+#
 
 # strip indentation
 class String
@@ -8,12 +24,6 @@ class String
   end
 end
 
-# chtabsize -- change softtab size
-#
-# SYNOPSIS
-#
-#   chtabsize <before> <after> <filename...>
-#
 def usage
   puts <<-EOS.dedent
     Overview:
