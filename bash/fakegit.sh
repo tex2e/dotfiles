@@ -1,4 +1,30 @@
 #!/usr/bin/env bash
+#:readme:
+#
+# ## fakegit(1) -- do "git clone" without git
+#
+# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/fakegit.sh)
+#
+# ### SYNOPSIS
+#
+#     fakegit clone [-b <branch_name>] <GitHub Repository URL> [<directory>]
+#
+# ### DESCRIPTION
+#
+# The fakegit command provides psuedo "git clone" command only for GitHub repository,
+# which downloads files with curl, or wget.
+# This is useful for environments which is difficult to install git command.
+#
+# ### Usage
+#
+# `fakegit` provides only "clone" command like `git clone`
+#
+#     > fakegit clone https://github.com/hnw/fakegit
+#
+# ### Instant Usage
+#
+#     > bash <(curl -L https://raw.github.com/TeX2e/dotfiles/master/bash/fakegit.sh) clone <URL>
+#
 
 # The MIT License
 #
@@ -22,32 +48,6 @@
 # LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#
-
-# fakegit(1) -- Emulating "git clone" with other tools
-#
-# SYNOPSIS
-#
-#   fakegit clone [-b <branch_name>] <GitHub Repository URL> [<directory>]
-#
-# DESCRIPTION
-#
-#   The fakegit command provides psuedo "git clone" command only for GitHub repository, which downloads files with svn, curl, or wget. This is useful for environments which is difficult to installing git command.
-#
-#   To install fakegit, type as follows:
-#
-#       $ mkdir -p $HOME/bin
-#       $ export PATH=$HOME/bin:$PATH
-#       $ curl -L https://raw.github.com/hnw/fakegit/master/bin/fakegit > $HOME/bin/git
-#       $ chmod a+x $HOME/bin/git
-#       $ hash -r
-#
-#   If necessary, enable fakegit in your shell by adding $HOME/bin to your PATH and restart your shell.
-#
-
-# Instant Usage
-#
-#       $ sh <(curl -L https://raw.github.com/TeX2e/dotfiles/master/bash/fakegit.sh) clone <URL>
 #
 
 version="1.0.0"

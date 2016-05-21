@@ -1,42 +1,55 @@
 #!/bin/bash
-
+#:readme:
 #
-# ANSI Color code (16colors)
+# ## color(1) -- ANSI color code cheat sheet
 #
-#  http://ascii-table.com/ansi-escape-sequences.php
-#  http://archive.linux.or.jp/JF/JFdocs/Bash-Prompt-HOWTO-5.html
-
-# Text attributes
-#  0  All attributes off
-#  1  Bold on
-#  4  Underscore (on monochrome display adapter only)
-#  5  Blink on
-#  7  Reverse video on
-#  8  Concealed on
-
-# Foreground colors
-#  30   Black
-#  31   Red
-#  33   Brown
-#  32   Green
-#  34   Blue
-#  35   Purple
-#  36   Cyan
-#  37   White
-
-# Background colors
-#  40   Black
-#  41   Red
-#  42   Green
-#  43   Yellow
-#  44   Blue
-#  45   Magenta
-#  46   Cyan
-#  47   White
-
-###############################################################################
+# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/color.sh)
+#
+# ### Usage
+#
+# `color` shows cheat sheet of color code.
+#
+#     > color
+#
+# ### Description
+#
+# display ANSI Color code (16colors)
+#
+# #### Text attributes
+# - 0  All attributes off
+# - 1  Bold on
+# - 4  Underscore (on monochrome display adapter only)
+# - 5  Blink on
+# - 7  Reverse video on
+# - 8  Concealed on
+#
+# #### Foreground colors
+# - 30   Black
+# - 31   Red
+# - 33   Brown
+# - 32   Green
+# - 34   Blue
+# - 35   Purple
+# - 36   Cyan
+# - 37   White
+#
+# #### Background colors
+# - 40   Black
+# - 41   Red
+# - 42   Green
+# - 43   Yellow
+# - 44   Blue
+# - 45   Magenta
+# - 46   Cyan
+# - 47   White
 
 echo -e "\
+
+Syntax:
+
+  \\\\033[00m
+  \\\\033[00;00m
+    :
 
 Attribute codes:
 
