@@ -1,25 +1,41 @@
 #!/bin/bash
+#:readme:
 #
-# unzip file
-# suport tar.bz2, tar.gz, bz2, rar, gz, tar, tbz2, tgz, zip, Z and 7z file
+# ## extract(1) -- unzip file
+#
+# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/extract.sh)
+#
+# ### SYNOPSIS
+#
+#     extract <file>...
+#
+# ### Usage
+#
+# `extract` unzips file.
+#
+#     > extract foo.zip
+#
+# suport for tar.bz2, tar.gz, bz2, rar, gz, tar, tbz2, tgz, zip, Z and 7z
 #
 
-if ! [ -f "$1" ]; then
-  echo "'$1' is not a valid file"
-  exit
-fi
+for file in $@; do
+  if ! [ -f "$file" ]; then
+    echo "'$file' is not a valid file"
+    continue
+  fi
 
-case "$1" in
-  *.tar.bz2) tar xjf "$1"     ;;
-  *.tar.gz)  tar xzf "$1"     ;;
-  *.bz2)     bunzip2 "$1"     ;;
-  *.rar)     unrar e "$1"     ;;
-  *.gz)      gunzip "$1"      ;;
-  *.tar)     tar xf "$1"      ;;
-  *.tbz2)    tar xjf "$1"     ;;
-  *.tgz)     tar xzf "$1"     ;;
-  *.zip)     unzip "$1"       ;;
-  *.Z)       uncompress "$1"  ;;
-  *.7z)      7z x "$1"        ;;
-  *) echo "'$1' cannot be extracted via extract()" ;;
-esac
+  case "$file" in
+    *.tar.bz2) tar xjf "$file"     ;;
+    *.tar.gz)  tar xzf "$file"     ;;
+    *.bz2)     bunzip2 "$file"     ;;
+    *.rar)     unrar e "$file"     ;;
+    *.gz)      gunzip "$file"      ;;
+    *.tar)     tar xf "$file"      ;;
+    *.tbz2)    tar xjf "$file"     ;;
+    *.tgz)     tar xzf "$file"     ;;
+    *.zip)     unzip "$file"       ;;
+    *.Z)       uncompress "$file"  ;;
+    *.7z)      7z x "$file"        ;;
+    *) echo "'$file' cannot be extracted via extract()" ;;
+  esac
+done
