@@ -1,7 +1,35 @@
 #!/usr/bin/env bash
+
+# origin: https://github.com/hnw/fakegit
+
+# The MIT License
+#
+# Copyright (c) 2012 Yoshio HANAWA
+# Copyright (c) 2016 @TeX2e
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the
+# "Software"), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+#
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+#
+
 #:readme:
 #
-# ## fakegit(1) -- do "git clone" without git
+# ## fakegit(1) -- Emulating "git clone" with other tools
 #
 # [code](https://github.com/TeX2e/dotfiles/blob/master/bash/fakegit.sh)
 #
@@ -26,42 +54,18 @@
 #     > bash <(curl -L https://raw.github.com/TeX2e/dotfiles/master/bash/fakegit.sh) clone <URL>
 #
 
-# The MIT License
-#
-# Copyright (c) 2012 Yoshio HANAWA
-#
-# Permission is hereby granted, free of charge, to any person obtaining a
-# copy of this software and associated documentation files (the
-# "Software"), to deal in the Software without restriction, including
-# without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to
-# permit persons to whom the Software is furnished to do so, subject to
-# the following conditions:
-#
-# The above copyright notice and this permission notice shall be
-# included in all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-# OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-# WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#
-
 version="1.0.0"
 
 # -e : Exit immediately if a simple command exits with a non-zero status.
 set -e
 
 validate_url() {
-  url="$1"
+  local url="$1"
   # supports following URLs
   #  HTTP: https://github.com/*/*.git
   #  SSH:  git@github.com:*/*.git
   #  Git:  git://github.com/*/*.git
-  valid_url=$(echo "$1" | grep '^\(https://github.com/\|git@github.com:\|git://github.com/\)[^/]*/[^/]*.git$' || true)
+  local valid_url=$(echo "$1" | grep '^\(https://github.com/\|git@github.com:\|git://github.com/\)[^/]*/[^/]*.git$' || true)
   if [ -z "$valid_url" ]; then
     echo "fakegit: Specified invalid GitHub URL \`$url'" >&2
     exit 1
@@ -69,9 +73,9 @@ validate_url() {
 }
 
 fetch_command() {
-  if type curl &>/dev/null; then
+  if which curl &>/dev/null; then
     echo "curl" "-L" "$@"
-  elif type wget &>/dev/null; then
+  elif which wget &>/dev/null; then
     echo "wget" "-O-" "$@"
   fi
 }
@@ -105,7 +109,7 @@ fakegit_clone() {
     exit 1
   fi
 
-  validate_url $git_repo
+  validate_url "$git_repo"
   # Git URL -> HTTP URL
   local https_repo="${git_repo/#git:/https:}"
   # SSH URL -> HTTP URL
@@ -116,8 +120,8 @@ fakegit_clone() {
 
   local fetch_command=$(fetch_command "${svn_repo}/tarball/${branch_name}" || true)
   local extract_command="tar xzf - --strip-components 1 -C $dir"
-  if [ -z "$fetch_command" ] ; then
-    fail "No download command found.\nPlease install one of \`svn', \`curl' or \`wget' and try again"
+  if [ -z "$fetch_command" ]; then
+    fail "No download command found.\nPlease install one of \`curl' or \`wget' and try again"
   fi
   mkdir -p "$dir"
   log "Instaed of git, executing:\n" $fetch_command "|" $extract_command
