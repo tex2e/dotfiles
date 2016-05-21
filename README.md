@@ -5,10 +5,9 @@ Installation
 -------------
 
 ~~~ bash
-git clone https://github.com/TeX2e/dotfiles
-mv dotfiles/ .dotfiles/
-cd .dotfiles/
-make zsh
+git clone https://github.com/TeX2e/dotfiles .dotfiles
+cd .dotfiles
+make zsh  # optional
 ~~~
 
 if `git` command is not installed, type following instead of `git clone ...`:
