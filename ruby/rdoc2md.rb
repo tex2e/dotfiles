@@ -1,11 +1,17 @@
 #!/usr/bin/env ruby
+#:readme:
 #
-# rdoc2md -- convert rdoc to markdown
+# ## rdoc2md(1) -- convert rdoc to markdown
 #
-# Usage
+# ### SYNOPSIS
 #
-#   ruby rdoc2md.rb > README.md
-#   ruby rdoc2md.rb ABC.rdoc > abc.md
+#     rdoc2md [<rdoc file>]
+#
+# ### Usage
+#
+#     ruby rdoc2md.rb > README.md
+#     ruby rdoc2md.rb ABC.rdoc > abc.md
+#
 
 require 'rdoc'
 converter = RDoc::Markup::ToMarkdown.new
