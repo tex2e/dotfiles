@@ -1,5 +1,41 @@
 #!/bin/bash
-# git remote repo ssh/http switcher
+#:readme:
+#
+# ## gitch(1) -- ssh/https switcher on git repository
+#
+# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/gitch.sh)
+#
+# ### SYNOPSIS
+#
+#     gitch [<remote>]
+#
+# ### Usage
+#
+# `gitch` switch the access protocol between https and ssh.
+# default remote is "origin".
+#
+#     > git remote -v
+#     github	git@github.com:TeX2e/test (fetch)
+#     github	git@github.com:TeX2e/test (push)
+#     origin	https://github.com/TeX2e/test (fetch)
+#     origin	https://github.com/TeX2e/test (push)
+#
+#     > gitch
+#      ✔ Change origin URL...OK
+#     new remote:
+#     github	git@github.com:TeX2e/test (fetch)
+#     github	git@github.com:TeX2e/test (push)
+#     origin	git@github.com:TeX2e/test (fetch)
+#     origin	git@github.com:TeX2e/test (push)
+#
+#     > gitch github
+#      ✔ Change origin URL...OK
+#     new remote:
+#     github	https://github.com/TeX2e/test (fetch)
+#     github	https://github.com/TeX2e/test (push)
+#     origin	git@github.com:TeX2e/test (fetch)
+#     origin	git@github.com:TeX2e/test (push)
+#
 
 function warn {
   # color:yellow

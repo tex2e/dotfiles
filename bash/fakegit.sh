@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+# origin: https://github.com/hnw/fakegit
+
 # The MIT License
 #
 # Copyright (c) 2012 Yoshio HANAWA
+# Copyright (c) 2016 @TeX2e
 #
 # Permission is hereby granted, free of charge, to any person obtaining a
 # copy of this software and associated documentation files (the
@@ -24,30 +27,31 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-# fakegit(1) -- Emulating "git clone" with other tools
+#:readme:
 #
-# SYNOPSIS
+# ## fakegit(1) -- Emulating "git clone" with other tools
 #
-#   fakegit clone [-b <branch_name>] <GitHub Repository URL> [<directory>]
+# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/fakegit.sh)
 #
-# DESCRIPTION
+# ### SYNOPSIS
 #
-#   The fakegit command provides psuedo "git clone" command only for GitHub repository, which downloads files with svn, curl, or wget. This is useful for environments which is difficult to installing git command.
+#     fakegit clone [-b <branch_name>] <GitHub Repository URL> [<directory>]
 #
-#   To install fakegit, type as follows:
+# ### DESCRIPTION
 #
-#       $ mkdir -p $HOME/bin
-#       $ export PATH=$HOME/bin:$PATH
-#       $ curl -L https://raw.github.com/hnw/fakegit/master/bin/fakegit > $HOME/bin/git
-#       $ chmod a+x $HOME/bin/git
-#       $ hash -r
+# The fakegit command provides psuedo "git clone" command only for GitHub repository,
+# which downloads files with curl, or wget.
+# This is useful for environments which is difficult to install git command.
 #
-#   If necessary, enable fakegit in your shell by adding $HOME/bin to your PATH and restart your shell.
+# ### Usage
 #
-
-# Instant Usage
+# `fakegit` provides only "clone" command like `git clone`
 #
-#       $ sh <(curl -L https://raw.github.com/TeX2e/dotfiles/master/bash/fakegit.sh) clone <URL>
+#     > fakegit clone https://github.com/hnw/fakegit
+#
+# ### Instant Usage
+#
+#     > bash <(curl -L https://raw.github.com/TeX2e/dotfiles/master/bash/fakegit.sh) clone <URL>
 #
 
 version="1.0.0"
@@ -56,12 +60,12 @@ version="1.0.0"
 set -e
 
 validate_url() {
-  url="$1"
+  local url="$1"
   # supports following URLs
   #  HTTP: https://github.com/*/*.git
   #  SSH:  git@github.com:*/*.git
   #  Git:  git://github.com/*/*.git
-  valid_url=$(echo "$1" | grep '^\(https://github.com/\|git@github.com:\|git://github.com/\)[^/]*/[^/]*.git$' || true)
+  local valid_url=$(echo "$1" | grep '^\(https://github.com/\|git@github.com:\|git://github.com/\)[^/]*/[^/]*.git$' || true)
   if [ -z "$valid_url" ]; then
     echo "fakegit: Specified invalid GitHub URL \`$url'" >&2
     exit 1
@@ -69,9 +73,9 @@ validate_url() {
 }
 
 fetch_command() {
-  if type curl &>/dev/null; then
+  if which curl &>/dev/null; then
     echo "curl" "-L" "$@"
-  elif type wget &>/dev/null; then
+  elif which wget &>/dev/null; then
     echo "wget" "-O-" "$@"
   fi
 }
@@ -105,7 +109,7 @@ fakegit_clone() {
     exit 1
   fi
 
-  validate_url $git_repo
+  validate_url "$git_repo"
   # Git URL -> HTTP URL
   local https_repo="${git_repo/#git:/https:}"
   # SSH URL -> HTTP URL
@@ -116,8 +120,8 @@ fakegit_clone() {
 
   local fetch_command=$(fetch_command "${svn_repo}/tarball/${branch_name}" || true)
   local extract_command="tar xzf - --strip-components 1 -C $dir"
-  if [ -z "$fetch_command" ] ; then
-    fail "No download command found.\nPlease install one of \`svn', \`curl' or \`wget' and try again"
+  if [ -z "$fetch_command" ]; then
+    fail "No download command found.\nPlease install one of \`curl' or \`wget' and try again"
   fi
   mkdir -p "$dir"
   log "Instaed of git, executing:\n" $fetch_command "|" $extract_command

@@ -13,8 +13,6 @@ HISTSIZE=1000
 HISTFILE="$HOME/.zsh_history"
 SAVEHIST=10000
 PROMPT=$'%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
-# RPROMPT=$'[%~]'
-RPROMPT=''
 
 # Set Shell options
 #setopt auto_cd
@@ -26,21 +24,16 @@ setopt interactive_comments
 setopt cdable_vars sh_word_split pushd_ignore_dups
 setopt prompt_subst
 unsetopt nomatch # for rake arguments like: `rake subcomand[args]`
-# set the option for hiding RPROMPT to copy the string of the terminal
-#setopt transient_rprompt
+#setopt transient_rprompt # set the option for hiding RPROMPT to copy the string of the terminal
 
 # Set Keybind
 bindkey -e
 
 # Alias and functions
-alias copy='cp -ip' del='rm -i' move='mv'
-alias fullreset='echo "\ec\ec"'
 alias .='source'
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
-alias zshrc='. ~/.zshrc'
-alias zshenv='. ~/.zshenv'
 alias -g M='| more'
 alias -g L='| less'
 

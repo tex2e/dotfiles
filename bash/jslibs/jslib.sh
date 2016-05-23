@@ -1,5 +1,39 @@
 #!/bin/bash
-# js library downloading tool
+#:readme:
+#
+# ## jslib(1) -- javascript library install tool via shell script
+#
+# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/jslibs/jslib.sh)
+#
+# ### SYNOPSIS
+#
+#     jslib install <library>
+#
+# ### Usage
+#
+# `jslib` downloads a specified javascript library.
+#
+#     > jslib install jquery
+#     install to path/to/dir/jquery-2.2.1.min.js
+#
+# if current directory has `js/lib/` or `javascript/lib/` directory, downloads to there.
+#
+#     > tree
+#     .
+#     └── javascript/
+#         └── lib/
+#
+#     > jslib install jquery
+#     install to path/to/dir/javascript/lib/jquery-2.2.1.min.js
+#
+# ### settings
+#
+# `bash/jslibs/settings.yml` has javascript library URLs.
+#
+#     lib:
+#       jquery: http://code.jquery.com/jquery-2.2.1.min.js
+#       underscore: http://underscorejs.org/underscore-min.js
+#
 
 export JSLIB_DIR="$HOME/.dotfiles/bash/jslibs"
 export JSLIB_SETTINGS_YAML="$JSLIB_DIR/settings.yml"
