@@ -1,12 +1,39 @@
 #!/bin/bash
+#:readme:
+#
+# ## htmlenv(1) -- init html environment
+#
+# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/htmlenvs/htmlenv.sh)
+#
+# ### Usage
+#
+# `htmlenv` creates a general html structure and writes templates.
+#
+#     > htmlenv
+#     writing index.html ... done
+#     writing css/normalize.css ... done
+#     writing css/common.css ... done
+#     writing js/main.js ... done
+#
+#     > tree
+#     .
+#     ├── css/
+#     │   ├── common.css
+#     │   └── normalize.css
+#     ├── index.html
+#     └── js/
+#         ├── lib/
+#         └── main.js
+#
 
 set -u
 SCRIPT=`basename $0 .sh`
 
 HTMLENV_DIR="$HOME/.dotfiles/bash/htmlenvs"
 
-test -d js/  || mkdir js/
-test -d css/ || mkdir css/
+test -d js     || mkdir js
+test -d js/lib || mkdir js/lib
+test -d css    || mkdir css
 
 function copy () {
   printf "writing $2 ... "

@@ -1,6 +1,34 @@
 #!/bin/bash
+#:readme:
 #
-# todo -- todo list management system
+# ## todo(1) -- task management system
+#
+# ### SYNOPSIS
+#
+#     todo
+#     todo -m <message>
+#     todo -d <number>
+#
+# ### Usage
+#
+# `todo -m <message>` creates a todo task.
+#
+#     > todo -m 'Do my assignment'
+#     todo << Do my assignment
+#     > todo -m 'Clean room'
+#     todo << Clean room
+#
+# `todo` shows todo list.
+#
+#     > todo
+#     todo list :
+#          1  Do my assignment
+#          2  Clean room
+#
+# `todo -d <number>` deletes a specified todo task.
+#
+#     > todo -d 1
+#     done >> Do my assignment
 #
 
 function usage {

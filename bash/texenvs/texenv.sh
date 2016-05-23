@@ -1,15 +1,40 @@
 #!/bin/bash
+#:readme:
+#
+# ## texenv(1) -- init LaTeX environment for writing reports
+#
+# [code](https://github.com/tex2e/dotfiles/blob/master/bash/texenvs/texenv.sh)
+#
+# ### SYNOPSIS
+#
+#     texenv [make]
+#
+# ### Usage
+#
+# to create tex environment, type:
+#
+#     texenv && make init
+#
+# `texenv` creates a symbolic link to Makefile.mk
+#
+#     > texenv
+#     linking Makefile ... done
+#
+#     > make init
+#     creating directory images/ ... done
+#     writing template tex file ...
+#     OUTPUT=report.tex
+#     cp -i "~/.dotfiles/bash/texenvs"/template.tex ~/path/to/dir/report.tex || true
+#
+#     > tree
+#     .
+#     ├── Makefile -> ~/.dotfiles/bash/texenvs/Makefile.mk
+#     ├── images/
+#     └── report.tex
+#
 
 set -u
 SCRIPT=`basename $0 .sh`
-
-# to use this to create tex environment, type:
-#
-#     texenv
-#     make init
-#
-# further infomation is in ${TEXENV_DIR}/Makefile.mk
-#
 
 TEXENV_DIR="$HOME/.dotfiles/bash/texenvs"
 

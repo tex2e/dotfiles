@@ -1,15 +1,32 @@
 #!/bin/bash
-# 
-# mkdo -- Compile C file and Execute
-# 
+#:readme:
+#
+# ## mkdo(1) -- Compile C file and Execute
+#
+# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/mkdo.sh)
+#
+# ### SYNOPSIS
+#
+#     mkdo <file> [-c '<args>'] [-e '<args>'] [-o]
+#
+# ### Usage
+#
+# `mkdo` compile C file and execute it.
+#
+#     > mkdo foo
+#
+# `-c` option can specify the compiling options.
+#
+# `-e` option can specify the excution options.
+#
 
 function usage() {
-	echo "Usage: mkdo <file> [-c '<args>'] [-e '<args>'] [-o]"
-	exit 0
+  echo "Usage: mkdo <file> [-c '<args>'] [-e '<args>'] [-o]"
+  exit 0
 }
 
 if [ $# -eq 0 ]; then
-	usage
+  usage
 fi
 
 # remove extension from filename
@@ -18,13 +35,13 @@ FILE=${1%.*}
 shift 1
 
 while getopts c:e:oh OPT ; do
-	case $OPT in
-		c ) VALUE_C=" $OPTARG" ;;
-		e ) VALUE_E=" $OPTARG" ;;
-		o ) VALUE_O=" > ${FILE}.out" ;;
-		h ) usega ;;
-		* ) usage ;;
-	esac
+  case $OPT in
+    c ) VALUE_C=" $OPTARG" ;;
+    e ) VALUE_E=" $OPTARG" ;;
+    o ) VALUE_O=" > ${FILE}.out" ;;
+    h ) usega ;;
+    * ) usage ;;
+  esac
 done
 
 # shift $((OPTIND - 1))

@@ -32,7 +32,7 @@ SHELL = /bin/sh
 #     do `make <command>` with --force
 #
 
-.PHONY: path path-f bash bash-f zsh zsh-f atom vim git rake rake-f xmodmap xmodmap-f
+.PHONY: path path-f alias alias-f bash bash-f zsh zsh-f fish fish-f atom vim git rake rake-f xmodmap xmodmap-f
 
 all:
 	@echo "Commands"
@@ -53,6 +53,14 @@ path-f:
 	$(MAKE) path OPTION='-f'
 
 
+# --- make alias ---
+alias:
+	ln $(OPTION) -s "$(PWD)/.alias" "$(HOME)/.alias"
+
+alias-f:
+	$(MAKE) alias OPTION='-f'
+
+
 # --- make bash ---
 bash: path
 	ln $(OPTION) -s "$(PWD)/bash/.bash_profile" "$(HOME)/.bash_profile"
@@ -70,6 +78,15 @@ zsh: bash
 
 zsh-f: bash-f
 	$(MAKE) zsh OPTION='-f'
+
+
+# --- make fish ---
+fish: alias
+	ln $(OPTION) -s "$(PWD)/fish/config.fish" "$(HOME)/.config/fish/config.fish"
+	ln $(OPTION) -s "$(PWD)/.alias" "$(HOME)/.config/fish/aliases.fish"
+
+fish-f: alias-f
+	$(MAKE) fish OPTION='-f'
 
 
 # --- make atom ---
@@ -126,3 +143,12 @@ xmodmap:
 
 xmodmap-f:
 	$(MAKE) xmodmap OPTION='-f'
+
+
+### Development ###
+
+# --- make doc ---
+
+doc-bash:
+	cat /dev/null > "bash/README.md"
+	find . -type f -name "*.sh" -exec awk '/^#:readme:$$/, /^$$/ { print gensub(/^# ?(:readme:)?/, "", "g", $$0) }' {} \; >> "bash/README.md"
