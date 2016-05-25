@@ -18,12 +18,10 @@ case `uname` in
     ;;
 esac
 
-
 ### Execute Scripts ###
 
-if [[ -f "$HOME/.alias" ]]; then
-  source ~/.alias
-fi
+# Alias
+source ~/.alias
 
 # # create .xmodmap file
 # xmodmap -pke > "~/.xmodmap"
