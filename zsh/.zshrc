@@ -2,6 +2,9 @@
 # inherited from .bashrc
 source ~/.bashrc
 
+# Alias
+source ~/.alias
+
 # show todo
 if which todo &> /dev/null; then
   todo
