@@ -161,7 +161,13 @@ function additonal_info {
 #
 # delete indent one level from tail
 function deindent {
-  echo "$1" | rev | cut -c $((INDENT_LEVEL+1))- | rev
+  local target_str=$1
+  echo "$target_str" | rev | cut -c $((INDENT_LEVEL+1))- | rev
+  # if [[ $((${#target_str} - $INDENT_LEVEL)) -gt 0 ]]; then
+  #   echo "$target_str" | cut -c 1-$((${#target_str} - $INDENT_LEVEL))
+  # else
+  #   echo ""
+  # fi
 }
 
 # --- main ---
