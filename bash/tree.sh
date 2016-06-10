@@ -63,6 +63,8 @@
 #             └── var/
 #
 
+export LANG="ja_JP.UTF-8"
+
 INDENT_LEVEL=4
 MAX_NEST_LEVEL=8
 
