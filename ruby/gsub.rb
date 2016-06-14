@@ -14,7 +14,7 @@
 # `gsub` do global-substitute in files via Ruby regexp.
 # following example is to put all vocals in brackets in all .txt files.
 #
-#     > gsub '([aeiou])' '<\\1>' *.txt
+#     > gsub '([aeiou])' '<\\1>' */*.txt
 #
 
 require 'fileutils'
