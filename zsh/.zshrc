@@ -12,6 +12,7 @@ fi
 
 ###
 # Set Shell variable
+LANG=C
 HISTSIZE=1000
 HISTFILE="$HOME/.zsh_history"
 SAVEHIST=10000
