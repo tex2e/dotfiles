@@ -127,6 +127,16 @@
 
 # --- C ---
 '.source.c':
+  '#':
+    'prefix': '#'
+    'body':   '''
+      #include <stdio.h>
+      $1
+      int main() {
+        $0
+        return 0;
+      }
+    '''
   'if':
     'prefix': 'if'
     'body':   'if (${1:true}) {$0}'
@@ -227,3 +237,15 @@
       \\\\label{fig:${4:Label}}
     \\\\end{figure}$0
     '''
+
+# --- Makefile ---
+'.source.makefile':
+  'PHONY':
+    'prefix': 'PHONY'
+    'body':   '.PHONY:'
+  'SUFFIXES':
+    'prefix': 'SUFFIXES'
+    'body':   '.SUFFIXES:'
+  'SILENT':
+    'prefix': 'SILENT'
+    'body':   '.SILENT:'
