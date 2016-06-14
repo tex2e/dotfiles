@@ -149,10 +149,14 @@ xmodmap-f:
 
 # --- make doc ---
 
+doc: doc-bash doc-ruby
+
 doc-bash:
+	@echo "=== creating bash/README.md ==="
 	cat /dev/null > "bash/README.md"
 	find . -type f -name "*.sh" -exec awk '/^#:readme:$$/, /^$$/ { print gensub(/^# ?(:readme:)?/, "", "g", $$0) }' {} \; >> "bash/README.md"
 
 doc-ruby:
+	@echo "=== creating ruby/README.md ==="
 	cat /dev/null > "ruby/README.md"
 	find . -type f -name "*.rb" -exec awk '/^#:readme:$$/, /^$$/ { print gensub(/^# ?(:readme:)?/, "", "g", $$0) }' {} \; >> "ruby/README.md"
