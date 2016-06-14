@@ -25,6 +25,24 @@ To use scripts, export PATH:
 
 
 
+## gsub(1) -- global substitute in files
+
+[code](https://github.com/TeX2e/dotfiles/blob/master/ruby/gsub.rb)
+
+### SYNOPSIS
+
+    gsub <regex> <replacement> <file>...
+
+### Usage
+
+`gsub` do global-substitute in files via Ruby regexp.
+following example is to put all vocals in brackets in all .txt files.
+
+    > gsub '([aeiou])' '<\\1>' *.txt
+
+
+
+
 ## rdoc2md(1) -- convert rdoc to markdown
 
 ### SYNOPSIS
