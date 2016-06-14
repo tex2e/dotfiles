@@ -32,7 +32,7 @@ SHELL = /bin/sh
 #     do `make <command>` with --force
 #
 
-.PHONY: path path-f alias alias-f bash bash-f zsh zsh-f fish fish-f atom vim git rake rake-f
+.PHONY: path path-f alias alias-f bash bash-f zsh zsh-f fish fish-f atom vim git rake rake-f xmodmap xmodmap-f
 
 all:
 	@echo "Commands"

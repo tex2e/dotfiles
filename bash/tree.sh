@@ -63,13 +63,22 @@
 #             └── var/
 #
 
+export LANG="ja_JP.UTF-8"
+
 INDENT_LEVEL=4
 MAX_NEST_LEVEL=8
 
-pipe="│"
-pipet="├"
-pipefin="└"
-line="── "
+if [[ $(echo "あいうえお" | cut -c 1-2) = "あい" ]]; then
+  pipe="│"
+  pipet="├"
+  pipefin="└"
+  line="── "
+else
+  pipe="|"
+  pipet="|"
+  pipefin="\`"
+  line="-- "
+fi
 none="   "
 tab="    "
 
@@ -161,7 +170,8 @@ function additonal_info {
 #
 # delete indent one level from tail
 function deindent {
-  echo "$1" | rev | cut -c $((INDENT_LEVEL+1))- | rev
+  local target_str=$1
+  echo "$target_str" | rev | cut -c $((INDENT_LEVEL+1))- | rev
 }
 
 # --- main ---
