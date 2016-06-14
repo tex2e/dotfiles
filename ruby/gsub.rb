@@ -36,7 +36,6 @@ replacement = ARGV[1]
 files = ARGV[2..-1]
 
 files.each do |filename|
-# Dir[pattern].each do |filename|
   next unless File.file?(filename)
   print "processing #{filename} ... "
   temp = Tempfile.new("file_sub")
