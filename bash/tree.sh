@@ -68,6 +68,7 @@ export LANG="ja_JP.UTF-8"
 INDENT_LEVEL=4
 MAX_NEST_LEVEL=8
 
+# check whether cut command support for multibyte string.
 if [[ $(echo "あいうえお" | cut -c 1-2) = "あい" ]]; then
   pipe="│"
   pipet="├"
