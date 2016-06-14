@@ -25,19 +25,20 @@
 [alias]
 	a = add
 	aa = add -A
+	alias = "!git config --get-regexp '^alias' | less"
 	ap = add -p
 	amend = commit --amend
 	amendm = commit --amend -m
 	b = branch
 	bclean = "!f() { git branch --merged ${1-master} | grep -v \" ${1-master}$\" | xargs git branch -d; }; f"
 	bl = blame
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	c = commit
 	cam = commit -am
 	ch = checkout
 	chb = checkout -b
 	chm = checkout master
 	cm = commit -m
-	conf = config --global -e
 	config = config --global -e
 	d = diff
 	dc = diff --cached
@@ -46,14 +47,19 @@
 	f = fetch
 	gr = grep -iI
 	graph = log --graph --oneline --all --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
-	graphp = log -p --graph --oneline --all --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+	graphp = "!git graph -p"
 	l = log
 	lp = log -p
+	merge-span = "!f() { echo $(git log -1 $2 --merges --pretty=format:%P | cut -d' ' -f1)$1$(git log -1 $2 --merges --pretty=format:%P | cut -d' ' -f2); }; f"
+	merge-log = "!git log `git merge-span .. $1`"
+	merge-diff = "!git diff `git merge-span ... $1`"
+	merge-difftool = "!git difftool `git merge-span ... $1`"
+	publish = "!git push -u origin $(git branch-name)"
 	r = remote
 	ru = remote update
 	rv = remote -v
 	s = status
-	save = !git add -A && git commit -m \"SAVEPOINT\"
+	save = "!git add -A && git commit -m \"SAVEPOINT\""
 	showp = show -p
 	sm = submodule
 	smf = submodule foreach
@@ -61,6 +67,7 @@
 	smu = submodule update
 	ss = status -s
 	undo = reset HEAD~1 --mixed
+	unpublish = "!git push origin :$(git branch-name)"
 	unstage = reset HEAD
-	up = !git pull --prune $@ && git submodule update --init --recursive
-	wipe = !git add -A && git commit -qm \"WIPE SAVEPOINT\" && git reset HEAD~1 --hard
+	up = "!git pull --prune $@ && git submodule update --init --recursive"
+	wipe = "!git add -A && git commit -qm \"WIPE SAVEPOINT\" && git reset HEAD~1 --hard"
