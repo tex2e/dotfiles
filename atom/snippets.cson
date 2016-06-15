@@ -132,9 +132,9 @@
     'body':   '''
       #include <stdio.h>
       $1
-      int main() {
-        $0
-        return 0;
+      int main(int argc, char **argv) {
+      \t$0
+      \treturn 0;
       }
     '''
   'if':
@@ -143,6 +143,32 @@
   'for':
     'prefix': 'for'
     'body':   'for (${1:i} = 0; ${1:i} < ${2:size}; ${1:i}++) {\n\t$0\n}'
+  'while':
+    'prefix': 'while'
+    'body':   '''
+      while (1) {
+      \t$0
+      }
+    '''
+  'switch':
+    'prefix': 'switch'
+    'body':   '''
+      switch ($1) {
+      \tcase $2:
+      \t\t$0
+      \t\tbreak;
+      }
+    '''
+  'typedef':
+    'prefix': 'typedef'
+    'body':   '''
+      typedef struct $1 {
+      \tchar name[100];$0
+      } ${2:Name};
+    '''
+  'printf':
+    'prefix': 'printf'
+    'body':   'printf("%s$1\\\\n", $2);'
 
 # --- HTML ---
 '.text.html':
@@ -240,6 +266,9 @@
 
 # --- Makefile ---
 '.source.makefile':
+  'SHELL':
+    'prefix': 'SHELL'
+    'body':   'SHELL = /bin/sh'
   'PHONY':
     'prefix': 'PHONY'
     'body':   '.PHONY:'
