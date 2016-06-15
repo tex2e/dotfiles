@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 dotfiles_help() {
   cat <<HELP
   $(basename $0) -- dotfiles management system
