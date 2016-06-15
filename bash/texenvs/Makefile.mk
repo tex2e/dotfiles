@@ -103,6 +103,9 @@ punctuation: $(TEX_FILE)
 open: $(PDF_FILE)
 	open $(PDF_FILE)
 
+xdg-open: $(PDF_FILE)
+	xdg-open $(PDF_FILE)
+
 clean:
 	$(RM) *.{aux,log,dvi,fls}
 
