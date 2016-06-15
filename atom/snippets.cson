@@ -264,6 +264,16 @@
     \\\\end{figure}$0
     '''
 
+# --- ShellScript ---
+'.source.shell':
+  'forin':
+    'prefix': 'forin'
+    'body':   '''
+      for ${1:item} in \$${2:array}; do
+      \t#$0
+      done
+    '''
+
 # --- Makefile ---
 '.source.makefile':
   'SHELL':
