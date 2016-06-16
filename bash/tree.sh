@@ -5,11 +5,22 @@
 #
 # [code](tree.sh)
 #
-# if you can install `tree` command via package installer, it is recommended.
+# it is recommended to install `tree` command via package installer.
 #
 # ### SYNOPSIS
 #
 #     tree [-F] [-L level] [--] [directory]
+#
+# ### Description
+#
+# `tree` is a recursive directory listing program.
+# With no arguments, `tree` recursively lists a files in the current directory.
+# When directory argument is given, `tree` recursively lists all the files
+# in given directory.
+#
+# By default, when a symbolic link is encountered,
+# the path that the symbolic link refers to is printed after the name of the
+# link in the format: "path -> real-path"
 #
 # ### Usage
 #

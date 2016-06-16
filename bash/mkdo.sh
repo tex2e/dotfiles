@@ -9,6 +9,11 @@
 #
 #     mkdo <file> [-c '<args>'] [-e '<args>'] [-o]
 #
+# ### Description
+#
+# compile C file and execute it.
+# `mkdo foo.c` == `make foo && ./foo`
+#
 # ### Usage
 #
 # `mkdo` compile C file and execute it.
@@ -44,11 +49,10 @@ while getopts c:e:oh OPT ; do
   esac
 done
 
-# shift $((OPTIND - 1))
-
 compile="make '${FILE}'${VALUE_C}"
 execute="'${FILE}'${VALUE_E}${VALUE_O}"
 
+# If executable file is not specified as absolute path, prefix "./"
 echo "$execute" | grep -e '^\./' -e '^~/' -e '^/' || execute="./$execute"
 
 echo "> $compile"

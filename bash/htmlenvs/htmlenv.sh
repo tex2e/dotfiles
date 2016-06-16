@@ -5,9 +5,11 @@
 #
 # [code](htmlenvs/htmlenv.sh)
 #
-# ### Usage
+# ### Description
 #
 # `htmlenv` creates a general html structure and writes templates.
+#
+# ### Usage
 #
 #     > htmlenv
 #     writing index.html ... done

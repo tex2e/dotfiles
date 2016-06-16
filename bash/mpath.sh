@@ -1,6 +1,18 @@
 #!/bin/bash
+#:readme:
 #
-# show manpath at each line
+# ## mpath(1) -- split manpaths into each line
+#
+# [code](mpath.sh)
+#
+# ### SYNOPSIS
+#
+#     mpath
+#
+# ### Description
+#
+# manpath contents is difficult to read because each paths are joined with ":",
+# so split manpaths into each line and show them.
 #
 
 MPATH="$(command manpath)"

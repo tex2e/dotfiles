@@ -1,7 +1,7 @@
 #!/bin/bash
 #:readme:
 #
-# ## doc2unix(1) -- convert \r\n to \n
+# ## doc2unix(1) -- convert CRLF to LF
 #
 # [code](dos2unix.sh)
 #
@@ -9,11 +9,10 @@
 #
 #     doc2unix <file>...
 #
-# ### Usage
+# ### Description
 #
-# `doc2unix` convert \r\n to \n in the file(s).
-#
-#     > doc2unix foo.txt
+# `doc2unix` convert line breaks as CRLF to LF in the file(s).
+# This implementation is quite simple because it deletes only '\r', to put '\n'.
 #
 
 temfile=`mktemp`

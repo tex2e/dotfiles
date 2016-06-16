@@ -9,19 +9,33 @@ To use scripts, export PATH:
 
 
 
+## cdpath(1) -- split cdpaths into each line
+
+[code](cdpath.sh)
+
+### SYNOPSIS
+
+    cdpath
+
+### Description
+
+CDPATH contents is difficult to read because each paths are joined with ":",
+so split cdpaths into each line and show them.
+
+
+
+
 ## color(1) -- ANSI color code cheat sheet
 
 [code](color.sh)
 
-### Usage
+### SYNOPSIS
 
-`color` shows cheat sheet of color code.
-
-    > color
+    color
 
 ### Description
 
-display ANSI Color code (16colors)
+display ANSI Color code sheet (16colors)
 
 #### Text attributes
 - 0  All attributes off
@@ -53,7 +67,8 @@ display ANSI Color code (16colors)
 
 
 
-## doc2unix(1) -- convert \r\n to \n
+
+## doc2unix(1) -- convert CRLF to LF
 
 [code](dos2unix.sh)
 
@@ -61,11 +76,10 @@ display ANSI Color code (16colors)
 
     doc2unix <file>...
 
-### Usage
+### Description
 
-`doc2unix` convert \r\n to \n in the file(s).
-
-    > doc2unix foo.txt
+`doc2unix` convert line breaks as CRLF to LF in the file(s).
+This implementation is quite simple because it deletes only '\r', to put '\n'.
 
 
 
@@ -78,13 +92,26 @@ display ANSI Color code (16colors)
 
     extract <file>...
 
+### Description
+
+unzip file which support as follows.
+- tar.bz2
+- tar.gz
+- bz2
+- rar
+- gz
+- tar
+- tbz2
+- tgz
+- zip
+- Z
+- 7z
+
 ### Usage
 
 `extract` unzips file.
 
     > extract foo.zip
-
-suport for tar.bz2, tar.gz, bz2, rar, gz, tar, tbz2, tgz, zip, Z and 7z
 
 
 
@@ -112,6 +139,23 @@ This is useful for environments which is difficult to install git command.
 ### Instant Usage
 
     > bash <(curl -L https://raw.github.com/TeX2e/dotfiles/master/bash/fakegit.sh) clone <URL>
+
+
+
+
+## fpath(1) -- split fpaths into each line
+
+[code](fpath.sh)
+
+### SYNOPSIS
+
+    fpath
+
+### Description
+
+FPATH (zsh function path) contents is difficult to read
+because each paths are joined with ":",
+so split cdpaths into each line and show them.
 
 
 
@@ -146,10 +190,12 @@ This command is supposed use at git commit -m
 
     gitch [<remote>]
 
-### Usage
+### Description
 
-`gitch` switch the access protocol between https and ssh.
-default remote is "origin".
+Inside a git repository, switch the access protocol between https and ssh.
+With no arguments, set "origin" to remove as default.
+
+### Usage
 
     > git remote -v
     github	git@github.com:TeX2e/test (fetch)
@@ -180,9 +226,11 @@ default remote is "origin".
 
 [code](htmlenvs/htmlenv.sh)
 
-### Usage
+### Description
 
 `htmlenv` creates a general html structure and writes templates.
+
+### Usage
 
     > htmlenv
     writing index.html ... done
@@ -207,8 +255,6 @@ default remote is "origin".
 
 [code](install-sublime3.sh)
 
-**Note: this script only runs on Ubuntu.**
-
 ### SYNOPSIS
 
     install-sublime3 [<target> [<build>]]
@@ -216,6 +262,12 @@ default remote is "origin".
 - `target`    Default target is "/usr/local".
 - `build`     build version. If not defined, tries to get the build into the
               Sublime Text 3 website.
+
+### Description
+
+install sublime on Ubuntu without sudo/root.
+
+**Note: this script only runs on Ubuntu.**
 
 ### Usage
 
@@ -242,6 +294,10 @@ and also you can specify the sublime build version.
 ### SYNOPSIS
 
     jslib install <library>
+
+### Description
+
+install javascript library via shell script.
 
 ### Usage
 
@@ -279,6 +335,11 @@ if current directory has `js/lib/` or `javascript/lib/` directory, downloads to 
 
     mkdo <file> [-c '<args>'] [-e '<args>'] [-o]
 
+### Description
+
+compile C file and execute it.
+`mkdo foo.c` == `make foo && ./foo`
+
 ### Usage
 
 `mkdo` compile C file and execute it.
@@ -292,6 +353,38 @@ if current directory has `js/lib/` or `javascript/lib/` directory, downloads to 
 
 
 
+## mpath(1) -- split manpaths into each line
+
+[code](mpath.sh)
+
+### SYNOPSIS
+
+    mpath
+
+### Description
+
+manpath contents is difficult to read because each paths are joined with ":",
+so split manpaths into each line and show them.
+
+
+
+
+## path(1) -- split exported paths into each line
+
+[code](path.sh)
+
+### SYNOPSIS
+
+    path
+
+### Description
+
+PATH contents is difficult to read because each paths are joined with ":",
+so split paths into each line and show them.
+
+
+
+
 ## texenv(1) -- init LaTeX environment for writing reports
 
 [code](texenvs/texenv.sh)
@@ -299,6 +392,10 @@ if current directory has `js/lib/` or `javascript/lib/` directory, downloads to 
 ### SYNOPSIS
 
     texenv [make]
+
+### Description
+
+init LaTeX environment for writing reports.
 
 ### Usage
 
@@ -326,7 +423,7 @@ to create tex environment, type:
 
 
 
-## todo(1) -- task management system
+## todo(1) -- A command line todo manager
 
 [code](todo.sh)
 
@@ -335,6 +432,11 @@ to create tex environment, type:
     todo
     todo -m <message>
     todo -d <number>
+
+### Description
+
+`todo` is a command line todo list manager.
+It maintains a list of tasks that you want to do, allowing you to add/remove them.
 
 ### Usage
 
@@ -364,11 +466,22 @@ to create tex environment, type:
 
 [code](tree.sh)
 
-if you can install `tree` command via package installer, it is recommended.
+it is recommended to install `tree` command via package installer.
 
 ### SYNOPSIS
 
     tree [-F] [-L level] [--] [directory]
+
+### Description
+
+`tree` is a recursive directory listing program.
+With no arguments, `tree` recursively lists a files in the current directory.
+When directory argument is given, `tree` recursively lists all the files
+in given directory.
+
+By default, when a symbolic link is encountered,
+the path that the symbolic link refers to is printed after the name of the
+link in the format: "path -> real-path"
 
 ### Usage
 

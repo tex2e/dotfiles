@@ -1,7 +1,7 @@
 #!/bin/bash
 #:readme:
 #
-# ## todo(1) -- task management system
+# ## todo(1) -- A command line todo manager
 #
 # [code](todo.sh)
 #
@@ -10,6 +10,11 @@
 #     todo
 #     todo -m <message>
 #     todo -d <number>
+#
+# ### Description
+#
+# `todo` is a command line todo list manager.
+# It maintains a list of tasks that you want to do, allowing you to add/remove them.
 #
 # ### Usage
 #

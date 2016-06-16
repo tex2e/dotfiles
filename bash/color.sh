@@ -5,15 +5,13 @@
 #
 # [code](color.sh)
 #
-# ### Usage
+# ### SYNOPSIS
 #
-# `color` shows cheat sheet of color code.
-#
-#     > color
+#     color
 #
 # ### Description
 #
-# display ANSI Color code (16colors)
+# display ANSI Color code sheet (16colors)
 #
 # #### Text attributes
 # - 0  All attributes off
@@ -42,6 +40,7 @@
 # - 45   Magenta
 # - 46   Cyan
 # - 47   White
+#
 
 echo -e "\
 
