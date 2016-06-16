@@ -152,11 +152,12 @@ xmodmap-f:
 doc: doc-bash doc-ruby
 
 doc-bash:
-	@echo "=== creating bash/README.md ==="
-	cat /dev/null > "bash/README.md"
-	find bash -type f -name "*.sh" | sort | xargs awk '/^#:readme:$$/, /^$$/ { print gensub(/^# ?(:readme:)?/, "", "g", $$0) }' >> "bash/README.md"
+	LANG=bash EXT=sh $(MAKE) doc-template
 
 doc-ruby:
-	@echo "=== creating ruby/README.md ==="
-	cat /dev/null > "ruby/README.md"
-	find ruby -type f -name "*.rb" | sort | xargs awk '/^#:readme:$$/, /^$$/ { print gensub(/^# ?(:readme:)?/, "", "g", $$0) }' >> "ruby/README.md"
+	LANG=ruby EXT=rb $(MAKE) doc-template
+
+doc-template:
+	@echo "=== creating $(LANG)/README.md ==="
+	cat /dev/null > "$(LANG)/README.md"
+	find $(LANG) -type f -name "*.$(EXT)" | sort | xargs awk '/^#:readme:$$/, /^$$/ { print gensub(/^# ?(:readme:)?/, "", "g", $$0) }' >> "$(LANG)/README.md"
