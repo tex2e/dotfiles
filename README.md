@@ -1,45 +1,57 @@
 # dotfiles
 
+This is a repository with my configuration files.
+"Easy to deploy, maintain and develop" is my motto.
+
+Requires
+------------
+
+- **Git** (if you are not a sudoer, see
+  [tex2e/picnic](https://github.com/tex2e/picnic) to install git)
+- **Bash**
+- **curl** or **wget**
+- **gawk** (for making document)
+- **Vim**
+- **Ruby** >= 2.0
+- **Python** >= 2.0
+
 
 Installation
 -------------
 
 ~~~ bash
-git clone https://github.com/TeX2e/dotfiles .dotfiles
-cd .dotfiles
-make zsh  # optional
+git clone https://github.com/TeX2e/dotfiles ~/.dotfiles
+cd ~/.dotfiles
+make zsh-f
 ~~~
 
-if `git` command is not installed, type following instead of `git clone ...`:
 
-~~~bash
-function download {
-  local url=$1
-  if which wget &>/dev/null; then
-    wget "$url"
-  elif which curl &>/dev/null; then
-    curl -O "$url"
-  fi
-}
-download https://raw.githubusercontent.com/TeX2e/dotfiles/master/bash/fakegit.sh
-chmod +x ./fakegit.sh
-./fakegit.sh clone https://github.com/TeX2e/dotfiles.git
-~~~
-
-Directories
+Structure
 ------------
 
     .
-    ├── Makefile       # create symlinks or config settings
-    ├── atom/          # atom settings
-    ├── bash/          # bash scripts
-    ├── bin/           # executable (symlinks)
-    ├── git/           # git setting files
-    ├── python/        # python scripts
-    ├── rake/          # global rakefiles
-    ├── ruby/          # ruby scripts
-    ├── vim/           # vim settings
-    └── zsh/           # zsh settings
+    ├── atom/              # atom settings
+    │   └── snippets.cson
+    ├── bash/              # bash scripts
+    │   ├── .bash_profile
+    │   ├── .bashrc
+    │   └── .ubuntu.bashrc
+    ├── bin/               # executable (symlinks)
+    ├── fish/              # fish settings
+    ├── git/               # git setting files
+    ├── python/            # python scripts
+    ├── rake/              # global rakefiles
+    ├── ruby/              # ruby scripts
+    ├── vim/               # vim settings
+    │   ├── .vim/
+    │   └── .vimrc
+    ├── xmodmap/           # xmodmap settings
+    ├── zsh/               # zsh settings
+    │   ├── .zshenv
+    │   └── .zshrc
+    ├── .alias             # alias
+    ├── .path              # export PATH
+    └── Makefile           # create symlinks or config settings
 
 
 Makefile
@@ -49,8 +61,7 @@ Usage:
 
     make zsh
 
-+ `path`
-    create symlinks which link to .path which contains exported PATH list
+Rules:
 
 + `bash`
     create symlinks which link to .bash_profile and .bashrc into home dir
@@ -59,7 +70,7 @@ Usage:
     create symlinks which link to .zshenv and .zshrc into home dir
 
 + `atom`
-    link to your atom/snippets.cson
+    create atom config
     and install atom packages (ATOM_PKG_LIST)
 
 + `vim`
@@ -70,6 +81,9 @@ Usage:
 
 + `rake`
     create ~/.rake directory and set global rakefile
+
++ `xmodmap`
+    create xmodmap config
 
 + `<command>-f`
     do `make <command>` with --force
