@@ -5,8 +5,6 @@
 #
 # [code](install-sublime3.sh)
 #
-# **Note: this script only runs on Ubuntu.**
-#
 # ### SYNOPSIS
 #
 #     install-sublime3 [<target> [<build>]]
@@ -14,6 +12,12 @@
 # - `target`    Default target is "/usr/local".
 # - `build`     build version. If not defined, tries to get the build into the
 #               Sublime Text 3 website.
+#
+# ### Description
+#
+# install sublime on Ubuntu without sudo/root.
+#
+# **Note: this script only runs on Ubuntu.**
 #
 # ### Usage
 #

@@ -9,6 +9,10 @@
 #
 #     texenv [make]
 #
+# ### Description
+#
+# init LaTeX environment for writing reports.
+#
 # ### Usage
 #
 # to create tex environment, type:

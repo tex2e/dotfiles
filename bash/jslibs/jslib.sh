@@ -9,6 +9,10 @@
 #
 #     jslib install <library>
 #
+# ### Description
+#
+# install javascript library via shell script.
+#
 # ### Usage
 #
 # `jslib` downloads a specified javascript library.

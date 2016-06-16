@@ -9,10 +9,12 @@
 #
 #     gitch [<remote>]
 #
-# ### Usage
+# ### Description
 #
-# `gitch` switch the access protocol between https and ssh.
-# default remote is "origin".
+# Inside a git repository, switch the access protocol between https and ssh.
+# With no arguments, set "origin" to remove as default.
+#
+# ### Usage
 #
 #     > git remote -v
 #     github	git@github.com:TeX2e/test (fetch)

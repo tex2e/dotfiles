@@ -9,13 +9,26 @@
 #
 #     extract <file>...
 #
+# ### Description
+#
+# unzip file which support as follows.
+# - tar.bz2
+# - tar.gz
+# - bz2
+# - rar
+# - gz
+# - tar
+# - tbz2
+# - tgz
+# - zip
+# - Z
+# - 7z
+#
 # ### Usage
 #
 # `extract` unzips file.
 #
 #     > extract foo.zip
-#
-# suport for tar.bz2, tar.gz, bz2, rar, gz, tar, tbz2, tgz, zip, Z and 7z
 #
 
 for file in $@; do
