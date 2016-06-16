@@ -16,7 +16,7 @@
 #     > doc2unix foo.txt
 #
 
-tmpfile="/tmp/dos2unix~"
+temfile=`mktemp`
 trap "rm $tmpfile; exit 1" 2
 
 for file in $@; do
