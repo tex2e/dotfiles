@@ -11,7 +11,7 @@ To use scripts, export PATH:
 
 ## chtabsize(1) -- change soft tab size
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/ruby/chtabsize.rb)
+[code](chtabsize.rb)
 
 ### SYNOPSIS
 
@@ -28,7 +28,7 @@ To use scripts, export PATH:
 
 ## gsub(1) -- global substitute in files
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/ruby/gsub.rb)
+[code](gsub.rb)
 
 ### SYNOPSIS
 
@@ -45,6 +45,8 @@ following example is to put all vocals in brackets in all .txt files.
 
 
 ## rdoc2md(1) -- convert rdoc to markdown
+
+[code](rdoc2md.rb)
 
 ### SYNOPSIS
 
