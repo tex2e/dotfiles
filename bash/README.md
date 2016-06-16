@@ -397,3 +397,17 @@ when a symbolic link is encountered, the format is like `name -> real-path`
             └── var/
 
 
+
+
+## vipe(1) -- edit pipe
+
+[code](https://github.com/TeX2e/dotfiles/blob/master/bash/vipe.sh)
+
+### SYNOPSIS
+
+    command | vipe | command
+
+### DESCRIPTION
+
+vipe allows you to run your editor in the middle of a unix pipeline
+edit the data that is being piped between programs.
