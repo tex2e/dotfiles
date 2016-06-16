@@ -3,7 +3,7 @@
 #
 # ## gitch(1) -- ssh/https switcher on git repository
 #
-# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/gitch.sh)
+# [code](gitch.sh)
 #
 # ### SYNOPSIS
 #

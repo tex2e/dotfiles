@@ -3,6 +3,8 @@
 #
 # ## todo(1) -- task management system
 #
+# [code](todo.sh)
+#
 # ### SYNOPSIS
 #
 #     todo

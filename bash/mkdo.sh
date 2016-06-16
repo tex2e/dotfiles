@@ -3,7 +3,7 @@
 #
 # ## mkdo(1) -- Compile C file and Execute
 #
-# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/mkdo.sh)
+# [code](mkdo.sh)
 #
 # ### SYNOPSIS
 #

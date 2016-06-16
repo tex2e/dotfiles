@@ -11,7 +11,7 @@ To use scripts, export PATH:
 
 ## color(1) -- ANSI color code cheat sheet
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/bash/color.sh)
+[code](color.sh)
 
 ### Usage
 
@@ -55,7 +55,7 @@ display ANSI Color code (16colors)
 
 ## doc2unix(1) -- convert \r\n to \n
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/bash/dos2unix.sh)
+[code](dos2unix.sh)
 
 ### SYNOPSIS
 
@@ -72,7 +72,7 @@ display ANSI Color code (16colors)
 
 ## extract(1) -- unzip file
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/bash/extract.sh)
+[code](extract.sh)
 
 ### SYNOPSIS
 
@@ -91,7 +91,7 @@ suport for tar.bz2, tar.gz, bz2, rar, gz, tar, tbz2, tgz, zip, Z and 7z
 
 ## fakegit(1) -- Emulating "git clone" with other tools
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/bash/fakegit.sh)
+[code](fakegit.sh)
 
 ### SYNOPSIS
 
@@ -118,7 +118,7 @@ This is useful for environments which is difficult to install git command.
 
 ## gen-commit-message(1) -- generate commit message
 
-[code](bash/gen-commit-message.sh)
+[code](gen-commit-message.sh)
 
 ### Description
 
@@ -140,7 +140,7 @@ This command is supposed use at git commit -m
 
 ## gitch(1) -- ssh/https switcher on git repository
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/bash/gitch.sh)
+[code](gitch.sh)
 
 ### SYNOPSIS
 
@@ -178,7 +178,7 @@ default remote is "origin".
 
 ## htmlenv(1) -- init html environment
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/bash/htmlenvs/htmlenv.sh)
+[code](htmlenvs/htmlenv.sh)
 
 ### Usage
 
@@ -205,7 +205,7 @@ default remote is "origin".
 
 ## install-sublime3(1) -- install sublime on Ubuntu without sudo/root
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/bash/install-sublime3.sh)
+[code](install-sublime3.sh)
 
 **Note: this script only runs on Ubuntu.**
 
@@ -237,7 +237,7 @@ and also you can specify the sublime build version.
 
 ## jslib(1) -- javascript library install tool via shell script
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/bash/jslibs/jslib.sh)
+[code](jslibs/jslib.sh)
 
 ### SYNOPSIS
 
@@ -273,7 +273,7 @@ if current directory has `js/lib/` or `javascript/lib/` directory, downloads to 
 
 ## mkdo(1) -- Compile C file and Execute
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/bash/mkdo.sh)
+[code](mkdo.sh)
 
 ### SYNOPSIS
 
@@ -294,7 +294,7 @@ if current directory has `js/lib/` or `javascript/lib/` directory, downloads to 
 
 ## texenv(1) -- init LaTeX environment for writing reports
 
-[code](https://github.com/tex2e/dotfiles/blob/master/bash/texenvs/texenv.sh)
+[code](texenvs/texenv.sh)
 
 ### SYNOPSIS
 
@@ -328,6 +328,8 @@ to create tex environment, type:
 
 ## todo(1) -- task management system
 
+[code](todo.sh)
+
 ### SYNOPSIS
 
     todo
@@ -360,7 +362,7 @@ to create tex environment, type:
 
 ## tree(1) -- list contents of directories in a tree-like format via shell script
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/bash/tree.sh)
+[code](tree.sh)
 
 if you can install `tree` command via package installer, it is recommended.
 
@@ -424,7 +426,7 @@ when a symbolic link is encountered, the format is like `name -> real-path`
 
 ## vipe(1) -- edit pipe
 
-[code](https://github.com/TeX2e/dotfiles/blob/master/bash/vipe.sh)
+[code](vipe.sh)
 
 ### SYNOPSIS
 

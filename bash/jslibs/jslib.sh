@@ -3,7 +3,7 @@
 #
 # ## jslib(1) -- javascript library install tool via shell script
 #
-# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/jslibs/jslib.sh)
+# [code](jslibs/jslib.sh)
 #
 # ### SYNOPSIS
 #
