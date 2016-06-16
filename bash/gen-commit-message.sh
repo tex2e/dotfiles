@@ -42,5 +42,4 @@ if [[ ${#D_files[@]} != 0 ]]; then
   message+="delete ${D_files//$NEWLINE/, } $NEWLINE"
 fi
 
-message=$(echo "$message" | sed -e '/^$/ d')
 echo "$message"
