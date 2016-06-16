@@ -116,6 +116,28 @@ This is useful for environments which is difficult to install git command.
 
 
 
+## gen-commit-message(1) -- generate commit message
+
+[code](bash/gen-commit-message.sh)
+
+### Description
+
+generate commit message from git status.
+This command is supposed use at git commit -m
+
+### Usage
+
+    > gen-commit-message
+    create new1.sh, new2.sh
+    update foo.html, bar.css, baz.js
+    rename hage.c -> hoge.c
+    delete tmp.txt
+
+    > git commit -m "$(gen-commit-message)"
+
+
+
+
 ## gitch(1) -- ssh/https switcher on git repository
 
 [code](https://github.com/TeX2e/dotfiles/blob/master/bash/gitch.sh)
