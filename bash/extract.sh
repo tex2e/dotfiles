@@ -3,7 +3,7 @@
 #
 # ## extract(1) -- unzip file
 #
-# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/extract.sh)
+# [code](extract.sh)
 #
 # ### SYNOPSIS
 #

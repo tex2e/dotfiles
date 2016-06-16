@@ -3,7 +3,7 @@
 #
 # ## gen-commit-message(1) -- generate commit message
 #
-# [code](bash/gen-commit-message.sh)
+# [code](gen-commit-message.sh)
 #
 # ### Description
 #

@@ -3,7 +3,7 @@
 #
 # ## htmlenv(1) -- init html environment
 #
-# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/htmlenvs/htmlenv.sh)
+# [code](htmlenvs/htmlenv.sh)
 #
 # ### Usage
 #

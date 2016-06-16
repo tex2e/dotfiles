@@ -3,7 +3,7 @@
 #
 # ## install-sublime3(1) -- install sublime on Ubuntu without sudo/root
 #
-# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/install-sublime3.sh)
+# [code](install-sublime3.sh)
 #
 # **Note: this script only runs on Ubuntu.**
 #

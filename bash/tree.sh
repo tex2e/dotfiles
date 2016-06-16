@@ -3,7 +3,7 @@
 #
 # ## tree(1) -- list contents of directories in a tree-like format via shell script
 #
-# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/tree.sh)
+# [code](tree.sh)
 #
 # if you can install `tree` command via package installer, it is recommended.
 #

@@ -3,7 +3,7 @@
 #
 # ## texenv(1) -- init LaTeX environment for writing reports
 #
-# [code](https://github.com/tex2e/dotfiles/blob/master/bash/texenvs/texenv.sh)
+# [code](texenvs/texenv.sh)
 #
 # ### SYNOPSIS
 #

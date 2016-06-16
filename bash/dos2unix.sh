@@ -3,7 +3,7 @@
 #
 # ## doc2unix(1) -- convert \r\n to \n
 #
-# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/dos2unix.sh)
+# [code](dos2unix.sh)
 #
 # ### SYNOPSIS
 #

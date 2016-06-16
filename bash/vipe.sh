@@ -3,7 +3,7 @@
 #
 # ## vipe(1) -- edit pipe
 #
-# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/vipe.sh)
+# [code](vipe.sh)
 #
 # ### SYNOPSIS
 #

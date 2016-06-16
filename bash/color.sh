@@ -3,7 +3,7 @@
 #
 # ## color(1) -- ANSI color code cheat sheet
 #
-# [code](https://github.com/TeX2e/dotfiles/blob/master/bash/color.sh)
+# [code](color.sh)
 #
 # ### Usage
 #
