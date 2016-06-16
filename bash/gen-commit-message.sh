@@ -27,19 +27,19 @@ declare -a R_files=($R_file)
 message=""
 
 if [[ ${#A_files[@]} != 0 ]]; then
-  message+="new file: ${A_files//$NEWLINE/, } $NEWLINE"
+  message+="create ${A_files//$NEWLINE/, } $NEWLINE"
 fi
 
 if [[ ${#M_files[@]} != 0 ]]; then
-  message+="modifiy: ${M_files//$NEWLINE/, } $NEWLINE"
+  message+="update ${M_files//$NEWLINE/, } $NEWLINE"
 fi
 
 if [[ ${#R_files[@]} != 0 ]]; then
-  message+="rename: ${R_files//$NEWLINE/, } $NEWLINE"
+  message+="rename ${R_files//$NEWLINE/, } $NEWLINE"
 fi
 
 if [[ ${#D_files[@]} != 0 ]]; then
-  message+="delete: ${D_files//$NEWLINE/, } $NEWLINE"
+  message+="delete ${D_files//$NEWLINE/, } $NEWLINE"
 fi
 
 message=$(echo "$message" | sed -e '/^$/ d')
