@@ -1,6 +1,24 @@
 #!/bin/bash
+#:readme:
 #
-# gen-commit-message -- generate commit message from git status
+# ## gen-commit-message(1) -- generate commit message
+#
+# [code](bash/gen-commit-message.sh)
+#
+# ### Description
+#
+# generate commit message from git status.
+# This command is supposed use at git commit -m
+#
+# ### Usage
+#
+#     > gen-commit-message
+#     create new1.sh, new2.sh
+#     update foo.html, bar.css, baz.js
+#     rename hage.c -> hoge.c
+#     delete tmp.txt
+#
+#     > git commit -m "$(gen-commit-message)"
 #
 
 NEWLINE="
@@ -19,27 +37,22 @@ M_file=$(echo "$short_status" | grep '^M' | cut -c 4-)
 R_file=$(echo "$short_status" | grep '^R' | cut -c 4-)
 D_file=$(echo "$short_status" | grep '^D' | cut -c 4-)
 
-declare -a A_files=($A_file)
-declare -a M_files=($M_file)
-declare -a D_files=($D_file)
-declare -a R_files=($R_file)
-
 message=""
 
-if [[ ${#A_files[@]} != 0 ]]; then
-  message+="create ${A_files//$NEWLINE/, } $NEWLINE"
+if [[ -n $A_file ]]; then
+  message+="create ${A_file//$NEWLINE/, } $NEWLINE"
 fi
 
-if [[ ${#M_files[@]} != 0 ]]; then
-  message+="update ${M_files//$NEWLINE/, } $NEWLINE"
+if [[ -n $M_file ]]; then
+  message+="update ${M_file//$NEWLINE/, } $NEWLINE"
 fi
 
-if [[ ${#R_files[@]} != 0 ]]; then
-  message+="rename ${R_files//$NEWLINE/, } $NEWLINE"
+if [[ -n $R_file ]]; then
+  message+="rename ${R_file//$NEWLINE/, } $NEWLINE"
 fi
 
-if [[ ${#D_files[@]} != 0 ]]; then
-  message+="delete ${D_files//$NEWLINE/, } $NEWLINE"
+if [[ -n $D_file ]]; then
+  message+="delete ${D_file//$NEWLINE/, } $NEWLINE"
 fi
 
 echo "$message"
