@@ -3,7 +3,7 @@
 #
 # ## gsub(1) -- global substitute in files
 #
-# [code](https://github.com/TeX2e/dotfiles/blob/master/ruby/gsub.rb)
+# [code](gsub.rb)
 #
 # ### SYNOPSIS
 #

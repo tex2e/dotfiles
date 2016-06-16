@@ -3,6 +3,8 @@
 #
 # ## rdoc2md(1) -- convert rdoc to markdown
 #
+# [code](rdoc2md.rb)
+#
 # ### SYNOPSIS
 #
 #     rdoc2md [<rdoc file>]
