@@ -2,31 +2,36 @@
 SHELL = /bin/sh
 
 ### Commands
-#
 # + path
 #     create symlinks which link to .path which contains exported PATH list
 #
+# + alias
+#     create symlinks which link to .alias which contains useful alias list
+#
 # + bash
-#     create symlinks which link to .bash_profile and .bashrc into home dir
+#     create bash config: .bash_profile and .bashrc
 #
 # + zsh
-#     create symlinks which link to .zshenv and .zshrc into home dir
+#     create zsh config: .zshenc and .zshrc
+#
+# + fish
+#     create fish (friendly interactive shell) config
 #
 # + atom
-#     link to your atom/snippets.cson
+#     create atom config: snippets.cson
 #     and install atom packages (ATOM_PKG_LIST)
 #
 # + vim
-#     create vim settings
+#     create vim config
 #
 # + git
-#     create git settings
+#     create git config
 #
 # + rake
-#     create ~/.rake directory and set global rakefile
+#     create ~/.rake directory and create global rakefile
 #
 # + xmodmap
-#     create xmodmap settings
+#     create xmodmap config
 #
 # + <command>-f
 #     do `make <command>` with --force
@@ -35,14 +40,9 @@ SHELL = /bin/sh
 .PHONY: path path-f alias alias-f bash bash-f zsh zsh-f fish fish-f atom vim git rake rake-f xmodmap xmodmap-f
 
 all:
-	@echo "Commands"
-	@echo "+ path  -- create symlinks which link to .path which contains exported PATH list"
-	@echo "+ bash  -- create symlinks which link to .bash_profile and .bashrc into home dir"
-	@echo "+ zsh   -- create symlinks which link to .zshenv and .zshrc into home dir"
-	@echo "+ atom  -- link to your atom/snippets.cson and install atom packages (ATOM_PKG_LIST)"
-	@echo "+ vim   -- create vim settings"
-	@echo "+ git   -- set a useful git aliases"
-	@echo "+ rake  -- create ~/.rake directory and set global rakefile"
+	@echo
+	@echo "Commands:"
+	@gawk '/^### Commands$$/, /^$$/ { print gensub(/^# ?(## Commands)?/, "", "g", $$0) }' ./Makefile
 
 
 # --- make path ---
@@ -95,13 +95,12 @@ ATOM_PKG_LIST := \
 	file-icons \
 	sublime-style-column-selection \
 	highlight-selected \
-	minimap-highlight-selected \
-	script
+	minimap-highlight-selected
 
 atom:
-	@echo '>>> linking atom snippets'
-	-ln -s $(HOME)/.dotfiles/atom/snippets.cson $(HOME)/.atom/snippets.cson
-	@echo '>>> installing atom packages'
+	@echo '=== linking atom snippets ==='
+	ln -fs $(HOME)/.dotfiles/atom/snippets.cson $(HOME)/.atom/snippets.cson
+	@echo '=== installing atom packages ==='
 	apm install $(ATOM_PKG_LIST)
 
 
@@ -160,4 +159,4 @@ doc-ruby:
 doc-template:
 	@echo "=== creating $(LANG)/README.md ==="
 	cat /dev/null > "$(LANG)/README.md"
-	find $(LANG) -type f -name "*.$(EXT)" | sort | xargs awk '/^#:readme:$$/, /^$$/ { print gensub(/^# ?(:readme:)?/, "", "g", $$0) }' >> "$(LANG)/README.md"
+	find $(LANG) -type f -name "*.$(EXT)" | sort | xargs gawk '/^#:readme:$$/, /^$$/ { print gensub(/^# ?(:readme:)?/, "", "g", $$0) }' >> "$(LANG)/README.md"
