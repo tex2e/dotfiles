@@ -24,13 +24,16 @@
 	default = upstream
 [alias]
 	a = add
+	# add all files except nn-bit executable file
 	aa = "!git add -A --dry-run | cut -d' ' -f 2 | xargs file | grep -v '\\b\\d\\d-bit\\b' | cut -d':' -f 1 | xargs git add"
 	addp = add -p
+	# list all git aliases
 	alias = "!git config --get-regexp '^alias' | less"
 	ap = add -p
 	amend = commit --amend
 	amendm = commit --amend -m
 	b = branch
+	# clean merged branches
 	bclean = "!f() { git branch --merged ${1-master} | grep -v \" ${1-master}$\" | xargs git branch -d; }; f"
 	bl = blame
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
@@ -40,7 +43,9 @@
 	chb = checkout -b
 	chm = checkout master
 	cm = commit -m
+	# commit with auto-generated message
 	cmg = "!git commit -m \"$(gen-commit-message)\""
+	# commit with auto-generated message which can be editable using vim
 	cmgv = "!git commit -m \"$(gen-commit-message | vipe)\""
 	config = config --global -e
 	d = diff
@@ -62,7 +67,8 @@
 	ru = remote update
 	rv = remote -v
 	s = status
-	save = "!git add -A && git commit -m \"SAVEPOINT\""
+	# create savepoint
+	save = "!git aa && git commit -m \"SAVEPOINT\""
 	showp = show -p
 	sm = submodule
 	smf = submodule foreach
@@ -73,4 +79,5 @@
 	unpublish = "!git push origin :$(git branch-name)"
 	unstage = reset HEAD --
 	up = "!git pull --prune $@ && git submodule update --init --recursive"
-	wipe = "!git add -A && git commit -qm \"WIPE SAVEPOINT\" && git reset HEAD~1 --hard"
+	# remove savepoint
+	wipe = "!git aa && git commit -qm \"WIPE SAVEPOINT\" && git reset HEAD~1 --hard"
