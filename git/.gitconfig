@@ -24,7 +24,7 @@
 	default = upstream
 [alias]
 	a = add
-	aa = add -A
+	aa = "!git add -A --dry-run | cut -d' ' -f 2 | xargs file | grep -v '\\b\\d\\d\\-bit\\b' | cut -d':' -f 1 | xargs git add"
 	addp = add -p
 	alias = "!git config --get-regexp '^alias' | less"
 	ap = add -p
@@ -71,6 +71,6 @@
 	ss = status -s
 	undo = reset HEAD~1 --mixed
 	unpublish = "!git push origin :$(git branch-name)"
-	unstage = reset HEAD
+	unstage = reset HEAD --
 	up = "!git pull --prune $@ && git submodule update --init --recursive"
 	wipe = "!git add -A && git commit -qm \"WIPE SAVEPOINT\" && git reset HEAD~1 --hard"
