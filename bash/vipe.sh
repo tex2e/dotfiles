@@ -15,7 +15,7 @@
 # edit the data that is being piped between programs.
 #
 
-TMPFILE=`mktemp /tmp/vipe.bash`
+TMPFILE=`mktemp`
 cat > ${TMPFILE}
 vim ${TMPFILE} < /dev/tty > /dev/tty
 cat ${TMPFILE}
