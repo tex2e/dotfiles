@@ -24,7 +24,7 @@
 	default = upstream
 [alias]
 	a = add
-	aa = "!git add -A --dry-run | cut -d' ' -f 2 | xargs file | grep -v '\\b\\d\\d\\-bit\\b' | cut -d':' -f 1 | xargs git add"
+	aa = "!git add -A --dry-run | cut -d' ' -f 2 | xargs file | grep -v '\\b\\d\\d-bit\\b' | cut -d':' -f 1 | xargs git add"
 	addp = add -p
 	alias = "!git config --get-regexp '^alias' | less"
 	ap = add -p
