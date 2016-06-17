@@ -4,7 +4,7 @@
 PS1='\W \$ '
 PS2='> '
 : ${EDITOR:=vim}
-LANG=C
+LANG=C.UTF-8
 
 case `uname` in
   Darwin ) # mac os
