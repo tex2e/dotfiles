@@ -9,6 +9,27 @@ To use scripts, export PATH:
 
 
 
+## active-project(1) -- list all active projects
+
+[code](active-project.sh)
+
+### SYNOPSIS
+
+    active-project [<days>]
+
+### Description
+
+List all directories in $CDPATH that have been modified in the last N days
+and contain git repositories.
+
+### Usage
+
+    > active-project      # 90 days
+    > active-project 10   # 10 days
+
+
+
+
 ## cdpath(1) -- split cdpaths into each line
 
 [code](cdpath.sh)
