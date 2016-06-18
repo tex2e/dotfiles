@@ -31,3 +31,7 @@ def add_common_options(argument_parser):
     argument_parser.add_argument(
         '--eos', metavar='separator', default=None,
         help='End of set. Set means, all results generated from single line, in this manual.')
+
+def split(regex, string):
+    import re
+    return re.split(regex, string) if regex else string
