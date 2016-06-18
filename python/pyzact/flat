@@ -14,6 +14,18 @@
 #     seq 10 | flat
 #     1 2 3 4 5 6 7 8 9 10
 #
+#     # Comma separeted file
+#     $ cat myfile
+#     AA,AB,AC,AD
+#     BA,BB,BC,BD
+#     CA,CB,CC,CD
+#     DA,DB,DC,DD
+#
+#     # Field separator(fs) option is useful for keeping comma.
+#     $ cat myfile | flat --fs=, 8
+#     AA,AB,AC,AD,BA,BB,BC,BD
+#     CA,CB,CC,CD,DA,DB,DC,DD
+#
 
 import sys
 import argparse
@@ -33,7 +45,7 @@ parser.add_argument(
     'cols', metavar='N', type=int, nargs='?', default=float('inf'),
     help='number of cols')
 parser.add_argument(
-    '--fs', dest='delimiter', action='append', metavar='delim', default=['\n'],
+    '--fs', dest='delimiter', action='store', metavar='delim', default=' ',
     help='delimiter')
 
 args = parser.parse_args()
@@ -41,11 +53,10 @@ del sys.argv[:]
 
 # output
 array = []
-delim = '|'.join(args.delimiter)
-split_regex = re.compile('(?:%s)' % delim)
+delim_regex = re.compile('[%s]' % args.delimiter)
 
 for line in fileinput.input():
-    for item in re.split(split_regex, line.strip()):
+    for item in re.split(delim_regex, line.strip()):
         array.append(item)
         if len(array) >= args.cols:
             print(' '.join(array))
