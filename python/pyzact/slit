@@ -39,10 +39,10 @@ signal.signal(signal.SIGPIPE, sigpipe_handler)
 # Parse args
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    'rows', metavar='N', type=int, nargs='?', default=float('inf'),
+    'rows', metavar='N', type=int,
     help='number of rows')
 parser.add_argument(
-    '--fs', dest='delimiter', action='append', metavar='delim', default=['\n', ' '],
+    '--fs', dest='delimiter', action='store', metavar='delim', default=' ',
     help='delimiter')
 
 args = parser.parse_args()
@@ -50,14 +50,12 @@ del sys.argv[:]
 
 # output
 array = []
-delim = '|'.join(args.delimiter)
-split_regex = re.compile('(?:%s)' % delim)
+delim_regex = re.compile('[%s]' % args.delimiter)
 
 for line in fileinput.input():
-    for item in re.split(split_regex, line.strip()):
-        array.append(item)
+    array.extend( re.split(delim_regex, line.strip()) )
 
 for i in range(args.rows):
-    cols = math.ceil(len(array) / args.rows)
+    cols = math.ceil(len(array) / (args.rows - i))
     print(' '.join(array[:cols]))
     del array[:cols]
