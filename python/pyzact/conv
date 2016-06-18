@@ -70,6 +70,3 @@ for line in fileinput.input():
     if len(array) >= args.cols:
         print(' '.join(array))
         array.pop(0)
-
-if len(array) >= 0:
-    print(' '.join(array))
