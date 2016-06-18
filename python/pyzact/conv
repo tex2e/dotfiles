@@ -41,16 +41,17 @@
 import sys
 import argparse
 import fileinput
-import signal
+import re
 
-# catch pipe close signal
-def sigpipe_handler(e):
-    sys.exit()
+sys.path.append('lib')
+import utils
 
-signal.signal(signal.SIGPIPE, sigpipe_handler)
+utils.exit_by_sigpipe()
 
 # Parse args
 parser = argparse.ArgumentParser()
+utils.add_common_options(parser)
+
 parser.add_argument(
     'cols', type=int, nargs='?', default=float('inf'),
     help='number of cols')
@@ -58,10 +59,18 @@ parser.add_argument(
 args = parser.parse_args()
 del sys.argv[:]
 
+ifs = utils.get_ifs(args)
+ofs = utils.get_ofs(args)
+
 # output
 array = []
+ifs_regex = re.compile('[%s]' % ifs)
+
 for line in fileinput.input():
     array.append(line.strip())
     if len(array) >= args.cols:
         print(' '.join(array))
         array.pop(0)
+
+if len(array) >= 0:
+    print(' '.join(array))
