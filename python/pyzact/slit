@@ -6,7 +6,7 @@
 #
 # ### SYNOPSIS
 #
-#     slit [--fs delim] rows
+#     slit [--fs separator] rows
 #
 # ### Description
 #
@@ -54,10 +54,10 @@ ofs = utils.get_ofs(args)
 
 # output
 array = []
-delim_regex = re.compile('[%s]' % args.delimiter)
+ifs_regex = re.compile('[%s]' % ifs)
 
 for line in fileinput.input():
-    array.extend( re.split(delim_regex, line.strip()) )
+    array.extend( re.split(ifs_regex, line.strip()) )
 
 for i in range(args.rows):
     cols = math.ceil(len(array) / (args.rows - i))

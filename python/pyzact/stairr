@@ -6,7 +6,7 @@
 #
 # ### SYNOPSIS
 #
-#     stairr [-h] [--fs delim] [--eos str]
+#     stairr [-h] [--fs separator] [--eos str]
 #
 # ### Description
 #

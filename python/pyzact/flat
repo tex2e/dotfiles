@@ -6,7 +6,7 @@
 #
 # ### SYNOPSIS
 #
-#     flat [--fs delim] [cols]
+#     flat [--fs separator] [cols]
 #
 # ### Description
 #
