@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+#
+# ## stairl(1) -- stairs up to left
+#
+# [code](stairl.py3)
+#
+# ### Description
+#
+# Generate sublist of the fields. Each result matches to the left side of the original input.
+# In most cases, it looks stairs.
+#
+# ### Usage
+#
+#     $ echo A B C D | stairl
+#     A
+#     A B
+#     A B C
+#     A B C D
+#
+#     $ cat myfile2
+#     AA AB AC AD
+#     BA BB BC BD
+#     CA CB CC CD
+#
+#     # The command is executed for each line.
+#     $ cat myfile2 | stairl
+#     AA
+#     AA AB
+#     AA AB AC
+#     AA AB AC AD
+#     BA
+#     BA BB
+#     BA BB BC
+#     BA BB BC BD
+#     CA
+#     CA CB
+#     CA CB CC
+#     CA CB CC CD
+#
+#     # `eos` option is helpful if you want to know where each result is coming from.
+#     $ cat myfile2 | stairl eos=---
+#     AA
+#     AA AB
+#     AA AB AC
+#     AA AB AC AD
+#     ---
+#     BA
+#     BA BB
+#     BA BB BC
+#     BA BB BC BD
+#     ---
+#     CA
+#     CA CB
+#     CA CB CC
+#     CA CB CC CD
+#
+
+import sys
+import argparse
+import fileinput
+import signal
+import re
+
+# catch pipe close signal
+def sigpipe_handler(e):
+    sys.exit()
+
+signal.signal(signal.SIGPIPE, sigpipe_handler)
+
+# Parse args
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    'cols', metavar='N', type=int, nargs='?', default=float('inf'),
+    help='number of cols')
+parser.add_argument(
+    '--fs', dest='delimiter', action='store', metavar='delim', default=' ',
+    help='delimiter')
+parser.add_argument(
+    '--eos', dest='eos', action='store', metavar='str', default=None,
+    help='result separator')
+
+args = parser.parse_args()
+del sys.argv[:]
+
+# output
+delim_regex = re.compile('[%s]' % args.delimiter)
+
+for line in fileinput.input():
+    array = re.split(delim_regex, line.strip())
+    for i in range(1, len(array) + 1):
+        print(' '.join(array[:i]))
+    if args.eos:
+        print(args.eos)
