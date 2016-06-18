@@ -43,8 +43,8 @@ utils.exit_by_sigpipe()
 
 # Parse args
 parser = argparse.ArgumentParser()
-
 utils.add_common_options(parser)
+
 parser.add_argument(
     'cols', type=int, nargs='?', default=float('inf'),
     help='number of cols')
@@ -52,8 +52,7 @@ parser.add_argument(
 args = parser.parse_args()
 del sys.argv[:]
 
-ifs = utils.get_ifs(args)
-ofs = utils.get_ofs(args)
+ifs, ofs = utils.get_iofs(args)
 
 # output
 array = []

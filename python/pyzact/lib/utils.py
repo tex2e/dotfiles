@@ -6,6 +6,9 @@ def get_ifs(args):
 def get_ofs(args):
     return args.ofs or args.fs
 
+def get_iofs(args):
+    return (get_ifs(args), get_ofs(args))
+
 def write_eos(args):
     if args.eos:
         print(args.eos)

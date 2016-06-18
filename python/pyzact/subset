@@ -39,26 +39,25 @@ import signal
 import re
 import itertools
 
-# catch pipe close signal
-def sigpipe_handler(e):
-    sys.exit()
+sys.path.append('lib')
+import utils
 
-signal.signal(signal.SIGPIPE, sigpipe_handler)
+utils.exit_by_sigpipe()
 
 # Parse args
 parser = argparse.ArgumentParser()
-parser.add_argument(
-    '--fs', dest='delimiter', action='store', metavar='delim', default=' ',
-    help='set delimiter')
+utils.add_common_options(parser)
 
 args = parser.parse_args()
 del sys.argv[:]
 
+ifs, ofs = utils.get_iofs(args)
+
 # output
-delim_regex = re.compile('[%s]' % args.delimiter)
+ifs_regex = re.compile('[%s]' % ifs)
 
 for line in fileinput.input():
-    array = re.split(delim_regex, line.strip())
+    array = re.split(ifs_regex, line.strip())
     for i in range(1, len(array) + 1):
         for combination in itertools.combinations(array, i):
-            print(' '.join(map(str, combination)))
+            print(ofs.join(map(str, combination)))
