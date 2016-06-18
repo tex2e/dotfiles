@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
 #
-# ## stairl(1) -- stairs from left side
+# ## stairr(1) -- stairs from right side
 #
-# [code](stairl)
+# [code](stairr)
 #
 # ### SYNOPSIS
 #
-#     stairl [--fs delim] [--eos str]
+#     stairr [-h] [--fs delim] [--eos str]
 #
 # ### Description
 #
-# Generate sublist of the fields. Each result matches to the left side of the original input.
-# In most cases, it looks stairs.
+# Generate sublist of the fields.
+# Results match to the right side of the original input. In most cases, it looks stairs.
 #
 # ### Usage
 #
-#     $ echo A B C D | stairl
-#     A
-#     A B
-#     A B C
+#     $ echo A B C D | stairr
+#     D
+#     C D
+#     B C D
 #     A B C D
 #
 
@@ -52,6 +52,6 @@ delim_regex = re.compile('[%s]' % args.delimiter)
 for line in fileinput.input():
     array = re.split(delim_regex, line.strip())
     for i in range(1, len(array) + 1):
-        print(' '.join(array[:i]))
+        print(' '.join(array[len(array)-i:]))
     if args.eos:
         print(args.eos)
