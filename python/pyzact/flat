@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# ## flat(1) --
+# ## flat(1) -- flat
 #
 # [code](flat.py3)
 #
@@ -28,13 +28,12 @@ def sigpipe_handler(e):
 signal.signal(signal.SIGPIPE, sigpipe_handler)
 
 # Parse args
-parser = argparse.ArgumentParser(
-    description='Print whole the inputs as multiple rows with given number of cols.')
+parser = argparse.ArgumentParser()
 parser.add_argument(
     'cols', metavar='N', type=int, nargs='?', default=float('inf'),
     help='number of cols')
 parser.add_argument(
-    '-d', dest='delimiter', action='append', metavar='delim', default=['\n'],
+    '--fs', dest='delimiter', action='append', metavar='delim', default=['\n'],
     help='delimiter')
 
 args = parser.parse_args()
@@ -42,8 +41,8 @@ del sys.argv[:]
 
 # output
 array = []
-delim = ''.join(args.delimiter)
-split_regex = re.compile('[%s]' % delim)
+delim = '|'.join(args.delimiter)
+split_regex = re.compile('(?:%s)' % delim)
 
 for line in fileinput.input():
     for item in re.split(split_regex, line.strip()):
