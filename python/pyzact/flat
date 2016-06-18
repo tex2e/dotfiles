@@ -34,13 +34,10 @@
 import sys
 import argparse
 import fileinput
-import signal
 import re
-from math import isinf
 
 sys.path.append('lib')
 import utils
-import rb_func as rb
 
 utils.exit_by_sigpipe()
 
@@ -63,11 +60,11 @@ array = []
 ifs_regex = re.compile('[%s]' % ifs)
 
 for line in fileinput.input():
-    array.extend( re.split(ifs_regex, line.strip()) )
+    for item in re.split(ifs_regex, line.strip()):
+        array.append(item)
+        if len(array) >= args.cols:
+            print(ofs.join(array))
+            del array[:args.cols]
 
-if isinf(args.cols):
-    print(' '.join(array))
-    sys.exit(0)
-
-for subarray in rb.each_slice(args.cols, array):
-    print(' '.join(map(str, subarray)))
+if len(array) > 0:
+    print(ofs.join(array))
