@@ -36,35 +36,38 @@ import argparse
 import fileinput
 import signal
 import re
+from math import isinf
 
-# catch pipe close signal
-def sigpipe_handler(e):
-    sys.exit()
+sys.path.append('lib')
+import utils
+import rb_func as rb
 
-signal.signal(signal.SIGPIPE, sigpipe_handler)
+utils.exit_by_sigpipe()
 
 # Parse args
 parser = argparse.ArgumentParser()
+
+utils.add_common_options(parser)
 parser.add_argument(
     'cols', type=int, nargs='?', default=float('inf'),
     help='number of cols')
-parser.add_argument(
-    '--fs', dest='delimiter', action='store', metavar='delim', default=' ',
-    help='set delimiter')
 
 args = parser.parse_args()
 del sys.argv[:]
 
+ifs = utils.get_ifs(args)
+ofs = utils.get_ofs(args)
+
 # output
 array = []
-delim_regex = re.compile('[%s]' % args.delimiter)
+ifs_regex = re.compile('[%s]' % ifs)
 
 for line in fileinput.input():
-    for item in re.split(delim_regex, line.strip()):
-        array.append(item)
-        if len(array) >= args.cols:
-            print(' '.join(array))
-            del array[:args.cols]
+    array.extend( re.split(ifs_regex, line.strip()) )
 
-if len(array) > 0:
+if isinf(args.cols):
     print(' '.join(array))
+    sys.exit(0)
+
+for subarray in rb.each_slice(args.cols, array):
+    print(' '.join(map(str, subarray)))
