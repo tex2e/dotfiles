@@ -39,8 +39,7 @@ utils.add_common_options(parser)
 args = parser.parse_args()
 del sys.argv[:]
 
-ifs = utils.get_ifs(args)
-ofs = utils.get_ofs(args)
+ifs, ofs = utils.get_iofs(args)
 
 # output
 ifs_regex = re.compile('[%s]' % ifs)
