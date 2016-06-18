@@ -56,10 +56,10 @@ ifs, ofs = utils.get_iofs(args)
 
 # output
 array = []
-ifs_regex = re.compile('[%s]' % ifs)
+ifs_regex = re.compile('[%s]' % ifs) if ifs else ''
 
 for line in fileinput.input():
-    for item in re.split(ifs_regex, line.strip()):
+    for item in utils.split(ifs_regex, line.strip()):
         array.append(item)
         if len(array) >= args.cols:
             print(ofs.join(array))

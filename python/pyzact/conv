@@ -63,7 +63,7 @@ ifs, ofs = utils.get_iofs(args)
 
 # output
 array = []
-ifs_regex = re.compile('[%s]' % ifs)
+ifs_regex = re.compile('[%s]' % ifs) if ifs else ''
 
 for line in fileinput.input():
     array.append(line.strip())

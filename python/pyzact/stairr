@@ -42,10 +42,10 @@ del sys.argv[:]
 ifs, ofs = utils.get_iofs(args)
 
 # output
-ifs_regex = re.compile('[%s]' % ifs)
+ifs_regex = re.compile('[%s]' % ifs) if ifs else ''
 
 for line in fileinput.input():
-    array = re.split(ifs_regex, line.strip())
+    array = utils.split(ifs_regex, line.strip())
     for i in range(1, len(array) + 1):
         print(ofs.join(array[len(array)-i:]))
     utils.write_eos(args)
