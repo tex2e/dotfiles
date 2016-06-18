@@ -2,7 +2,11 @@
 #
 # ## flat(1) -- flat
 #
-# [code](flat.py3)
+# [code](flat)
+#
+# ### SYNOPSIS
+#
+#     flat [--fs delim] [cols]
 #
 # ### Description
 #
@@ -42,11 +46,11 @@ signal.signal(signal.SIGPIPE, sigpipe_handler)
 # Parse args
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    'cols', metavar='N', type=int, nargs='?', default=float('inf'),
+    'cols', type=int, nargs='?', default=float('inf'),
     help='number of cols')
 parser.add_argument(
     '--fs', dest='delimiter', action='store', metavar='delim', default=' ',
-    help='delimiter')
+    help='set delimiter')
 
 args = parser.parse_args()
 del sys.argv[:]

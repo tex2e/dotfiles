@@ -2,7 +2,11 @@
 #
 # ## slit(1) -- slit
 #
-# [code](slit.py3)
+# [code](slit)
+#
+# ### SYNOPSIS
+#
+#     slit [--fs delim] rows
 #
 # ### Description
 #
@@ -39,11 +43,11 @@ signal.signal(signal.SIGPIPE, sigpipe_handler)
 # Parse args
 parser = argparse.ArgumentParser()
 parser.add_argument(
-    'rows', metavar='N', type=int,
+    'rows', type=int,
     help='number of rows')
 parser.add_argument(
     '--fs', dest='delimiter', action='store', metavar='delim', default=' ',
-    help='delimiter')
+    help='set delimiter')
 
 args = parser.parse_args()
 del sys.argv[:]
