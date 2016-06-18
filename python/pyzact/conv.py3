@@ -35,6 +35,7 @@
 #
 
 import sys
+import argparse
 import fileinput
 import signal
 
@@ -44,16 +45,19 @@ def sigpipe_handler(e):
 
 signal.signal(signal.SIGPIPE, sigpipe_handler)
 
-# number of cols (default is 2)
-num = 2
-if len(sys.argv) >= 2:
-    num = int(sys.argv[1])
-    sys.argv.pop(1)
+# Parse args
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    'cols', metavar='N', type=int, nargs='?', default=float('inf'),
+    help='number of cols')
+
+args = parser.parse_args()
+del sys.argv[:]
 
 # output
 array = []
 for line in fileinput.input():
     array.append(line.strip())
-    if len(array) >= num:
+    if len(array) >= args.cols:
         print(' '.join(array))
         array.pop(0)

@@ -31,7 +31,7 @@ signal.signal(signal.SIGPIPE, sigpipe_handler)
 parser = argparse.ArgumentParser(
     description='Print whole the inputs as multiple rows with given number of cols.')
 parser.add_argument(
-    '-l', dest='cols', metavar='N', type=int, default=float('inf'),
+    'cols', metavar='N', type=int, nargs='?', default=float('inf'),
     help='number of cols')
 parser.add_argument(
     '-d', dest='delimiter', action='append', metavar='delim', default=['\n'],
