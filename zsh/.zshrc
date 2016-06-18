@@ -41,9 +41,6 @@ alias -g .....='../../../..'
 alias -g M='| more'
 alias -g L='| less'
 
-# Suffix aliases
-alias -s rb=ruby py=python
-
 # Using Completion
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*:descriptions' format '%B> Completing %d%b'
