@@ -25,33 +25,28 @@
 import sys
 import argparse
 import fileinput
-import signal
 import re
 
-# catch pipe close signal
-def sigpipe_handler(e):
-    sys.exit()
+sys.path.append('lib')
+import utils
 
-signal.signal(signal.SIGPIPE, sigpipe_handler)
+utils.exit_by_sigpipe()
 
 # Parse args
 parser = argparse.ArgumentParser()
-parser.add_argument(
-    '--fs', dest='delimiter', action='store', metavar='delim', default=' ',
-    help='set delimiter')
-parser.add_argument(
-    '--eos', dest='eos', action='store', metavar='str', default=None,
-    help='set result separator')
+utils.add_common_options(parser)
 
 args = parser.parse_args()
 del sys.argv[:]
 
+ifs = utils.get_ifs(args)
+ofs = utils.get_ofs(args)
+
 # output
-delim_regex = re.compile('[%s]' % args.delimiter)
+ifs_regex = re.compile('[%s]' % ifs)
 
 for line in fileinput.input():
-    array = re.split(delim_regex, line.strip())
+    array = re.split(ifs_regex, line.strip())
     for i in range(1, len(array) + 1):
-        print(' '.join(array[len(array)-i:]))
-    if args.eos:
-        print(args.eos)
+        print(ofs.join(array[len(array)-i:]))
+    utils.write_eos(args)
