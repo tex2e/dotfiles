@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+#
+# ## slit(1) -- slit
+#
+# [code](slit.py3)
+#
+# ### Description
+#
+# Divide whole the inputs into given number of rows.
+#
+# ### Usage
+#
+#     # Print A to Z with 3 rows.
+#     $ echo {A..Z} | slit 3
+#     A B C D E F G H I
+#     J K L M N O P Q R
+#     S T U V W X Y Z
+#
+#     # Each line's number of field is adjusted to be near each other as much as possible.
+#     $ echo A B C D | slit 3
+#     A B
+#     C
+#     D
+#
+
+import sys
+import argparse
+import fileinput
+import signal
+import re
+import math
+
+# catch pipe close signal
+def sigpipe_handler(e):
+    sys.exit()
+
+signal.signal(signal.SIGPIPE, sigpipe_handler)
+
+# Parse args
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    'rows', metavar='N', type=int, nargs='?', default=float('inf'),
+    help='number of rows')
+parser.add_argument(
+    '--fs', dest='delimiter', action='append', metavar='delim', default=['\n', ' '],
+    help='delimiter')
+
+args = parser.parse_args()
+del sys.argv[:]
+
+# output
+array = []
+delim = '|'.join(args.delimiter)
+split_regex = re.compile('(?:%s)' % delim)
+
+for line in fileinput.input():
+    for item in re.split(split_regex, line.strip()):
+        array.append(item)
+
+for i in range(args.rows):
+    cols = math.ceil(len(array) / args.rows)
+    print(' '.join(array[:cols]))
+    del array[:cols]
