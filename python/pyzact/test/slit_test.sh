@@ -1,35 +1,27 @@
 #!/bin/bash
 
 source "$(dirname $0)/utils.sh"
-SCRIPT="./conv"
+SCRIPT="./slit"
 
 echo "=== $SCRIPT ==="
 
 
-cmd="seq 10 | $SCRIPT 2"
+cmd="echo {A..Z} | $SCRIPT 3"
 expect="\
-1 2
-2 3
-3 4
-4 5
-5 6
-6 7
-7 8
-8 9
-9 10"
+A B C D E F G H I
+J K L M N O P Q R
+S T U V W X Y Z"
 actual=$(eval "$cmd")
 
 echo "> $cmd"
 gdiff <(echo "$expect") <(echo "$actual")
 
 
-cmd="yes | awk '\$0=NR' | $SCRIPT 3 | head -5"
+cmd="echo A B C D | $SCRIPT 3"
 expect="\
-1 2 3
-2 3 4
-3 4 5
-4 5 6
-5 6 7"
+A B
+C
+D"
 actual=$(eval "$cmd")
 
 echo "> $cmd"
