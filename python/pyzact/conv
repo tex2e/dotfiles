@@ -6,7 +6,7 @@
 #
 # ### SYNOPSIS
 #
-#     conv [<cols>]
+#     conv <cols>
 #
 # ### Description
 #
@@ -53,7 +53,7 @@ parser = argparse.ArgumentParser()
 utils.add_common_options(parser)
 
 parser.add_argument(
-    'cols', type=int, nargs='?', default=float('inf'),
+    'cols', type=int,
     help='number of cols')
 
 args = parser.parse_args()
@@ -68,5 +68,5 @@ ifs_regex = re.compile('[%s]' % ifs) if ifs else ''
 for line in fileinput.input():
     array.append(line.strip())
     if len(array) >= args.cols:
-        print(' '.join(array))
+        print(ofs.join(array))
         array.pop(0)
