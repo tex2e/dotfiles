@@ -1,3 +1,57 @@
-#!/bin/bash
+#!/usr/bin/env python3
+#
+# ## sublist(1) -- list all sublist
+#
+# [code](sublist)
+#
+# ### SYNOPSIS
+#
+#     sublist
+#
+# ### Description
+#
+# Generate all the sublist of the fields.
+#
+# ### Usage
+#
+#     $ echo A B C D | sublist
+#     A
+#     A B
+#     B
+#     A B C
+#     B C
+#     C
+#     A B C D
+#     B C D
+#     C D
+#     D
+#
 
-cat - | ./stairl | ./stairr
+import sys
+import argparse
+import fileinput
+import re
+
+sys.path.append('lib')
+import utils
+
+utils.exit_by_sigpipe()
+
+# Parse args
+parser = argparse.ArgumentParser()
+utils.add_common_options(parser)
+
+args = parser.parse_args()
+del sys.argv[:]
+
+ifs, ofs = utils.get_iofs(args)
+
+# output
+ifs_regex = re.compile('[%s]' % ifs) if ifs else ''
+
+for line in fileinput.input():
+    array = utils.split(ifs_regex, line.strip())
+
+    for i in range(1, len(array) + 1):
+        for j in range(0, i):
+            print(ofs.join(array[j:i]))

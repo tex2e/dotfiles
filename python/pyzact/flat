@@ -6,7 +6,7 @@
 #
 # ### SYNOPSIS
 #
-#     flat [--fs separator] [cols]
+#     flat [<cols>]
 #
 # ### Description
 #
@@ -59,6 +59,8 @@ array = []
 ifs_regex = re.compile('[%s]' % ifs) if ifs else ''
 
 for line in fileinput.input():
+    if not line.strip():
+        continue
     for item in utils.split(ifs_regex, line.strip()):
         array.append(item)
         if len(array) >= args.cols:

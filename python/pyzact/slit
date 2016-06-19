@@ -6,7 +6,7 @@
 #
 # ### SYNOPSIS
 #
-#     slit [--fs separator] rows
+#     slit <rows>
 #
 # ### Description
 #
