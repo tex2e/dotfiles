@@ -1,3 +1,4 @@
 *.zwc
 vim/.vim/bf
 vim/.vim/plugged
+__pycache__
