@@ -3,8 +3,8 @@
 This is a repository with my configuration files.
 "Easy to deploy, maintain and develop" is my motto.
 
-Requires
-------------
+Requirements
+-------------
 
 - **Git** (if you are not a sudoer, see
   [tex2e/picnic](https://github.com/tex2e/picnic) to install git)
