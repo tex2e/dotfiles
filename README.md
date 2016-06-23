@@ -12,8 +12,8 @@ Requires
 - **curl** or **wget**
 - **gawk** (for making document)
 - **Vim**
-- **Ruby** >= 2.0
-- **Python** >= 2.0
+- **Ruby** 2.0+
+- **Python** 3.5+
 
 
 Installation
