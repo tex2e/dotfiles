@@ -14,7 +14,7 @@
 #
 # ### Usage
 #
-#     $ echo {A..Z} | zcho --ifs=" " --ofs=","
+#     $ echo A B C D | zcho --ifs=" " --ofs=","
 #     A,B,C,D
 #
 
@@ -22,7 +22,6 @@ import sys
 import argparse
 import fileinput
 import re
-import math
 
 sys.path.append('lib')
 import utils
@@ -36,11 +35,9 @@ utils.add_common_options(parser)
 args = parser.parse_args()
 del sys.argv[:]
 
-ifs = utils.get_ifs(args)
-ofs = utils.get_ofs(args)
+ifs, ofs = utils.get_iofs(args)
 
 # output
-array = []
 ifs_regex = re.compile('[%s]' % ifs) if ifs else ''
 
 for line in fileinput.input():
