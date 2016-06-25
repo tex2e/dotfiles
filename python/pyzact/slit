@@ -54,12 +54,12 @@ ofs = utils.get_ofs(args)
 
 # output
 array = []
-ifs_regex = re.compile('[%s]' % ifs)
+ifs_regex = re.compile('[%s]' % ifs) if ifs else ''
 
 for line in fileinput.input():
     array.extend( re.split(ifs_regex, line.strip()) )
 
 for i in range(args.rows):
     cols = math.ceil(len(array) / (args.rows - i))
-    print(' '.join(array[:cols]))
+    print(ofs.join(array[:cols]))
     del array[:cols]
