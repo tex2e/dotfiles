@@ -374,6 +374,34 @@
       \\\\end{tabular}
     \\\\end{table}$0
     '''
+  'tables':
+    'prefix': 'make table2'
+    'body':   '''
+    \\\\begin{table}[htbp]
+      \\\\begin{minipage}{0.5\\\\hsize}
+        \\\\centering
+        \\\\caption{}
+        \\\\label{tab:}
+        \\\\begin{tabular}{c} \\\\toprule
+           \\\\\\\\
+          \\\\midrule
+           \\\\\\\\
+          \\\\bottomrule
+        \\\\end{tabular}
+      \\\\end{minipage}
+      \\\\begin{minipage}{0.5\\\\hsize}
+        \\\\centering
+        \\\\caption{}
+        \\\\label{tab:}
+        \\\\begin{tabular}{c} \\\\toprule
+           \\\\\\\\
+          \\\\midrule
+           \\\\\\\\
+          \\\\bottomrule
+        \\\\end{tabular}
+      \\\\end{minipage}
+    \\\\end{table}
+    '''
   'figure':
     'prefix': 'make figure'
     'body':   '''
@@ -383,6 +411,26 @@
       \\\\caption{${3:Caption}}
       \\\\label{fig:${4:Label}}
     \\\\end{figure}$0
+    '''
+  'figures':
+    'prefix': 'make figure2'
+    'body':   '''
+    \\\\begin{figure}
+      \\\\begin{minipage}{0.5\\\\hsize}
+        \\\\begin{center}
+          \\\\includegraphics[scale=1]{}
+        \\\\end{center}
+        \\\\caption{}
+        \\\\label{fig:}
+      \\\\end{minipage}
+      \\\\begin{minipage}{0.5\\\\hsize}
+        \\\\begin{center}
+          \\\\includegraphics[scale=1]{}
+        \\\\end{center}
+        \\\\caption{}
+        \\\\label{fig:}
+      \\\\end{minipage}
+    \\\\end{figure}
     '''
 
 # --- ShellScript ---
