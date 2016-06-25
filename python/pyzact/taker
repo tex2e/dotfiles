@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+#
+# ## takel(1) -- take first n fields
+#
+# [code](takel)
+#
+# ### SYNOPSIS
+#
+#     takel <number>
+#
+# ### Description
+#
+# Print first N of fields.
+#
+# ### Usage
+#
+#     $ echo A B C D | takel 3
+#     A B C
+#
+
+import sys
+import argparse
+import fileinput
+import re
+
+sys.path.append('lib')
+import utils
+
+utils.exit_by_sigpipe()
+
+# Parse args
+parser = argparse.ArgumentParser()
+utils.add_common_options(parser)
+
+parser.add_argument('number', type=int)
+
+args = parser.parse_args()
+del sys.argv[:]
+
+ifs, ofs = utils.get_iofs(args)
+
+# output
+ifs_regex = re.compile('[%s]' % ifs) if ifs else ''
+
+for line in fileinput.input():
+    array = utils.split(ifs_regex, line.strip())
+    print(ofs.join(array[args.number:]))
