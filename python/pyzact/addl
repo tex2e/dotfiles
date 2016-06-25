@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+#
+# ## addl(1) -- add to left
+#
+# [code](addl)
+#
+# ### SYNOPSIS
+#
+#     addl <text>
+#
+# ### Description
+#
+# Add str to left side of the input.
+#
+# ### Usage
+#
+#     $ echo abc | addl ABC
+#     ABCabc
+#
+
+import sys
+import argparse
+import fileinput
+import re
+
+sys.path.append('lib')
+import utils
+
+utils.exit_by_sigpipe()
+
+# Parse args
+parser = argparse.ArgumentParser()
+utils.add_common_options(parser)
+
+parser.add_argument('text', type=str)
+
+args = parser.parse_args()
+del sys.argv[:]
+
+ifs, ofs = utils.get_iofs(args)
+
+# output
+ifs_regex = re.compile('[%s]' % ifs) if ifs else ''
+
+for line in fileinput.input():
+    print("%s%s" % (args.text, line.strip()))
