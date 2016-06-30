@@ -71,6 +71,12 @@
       }
     });'''
 
+# --- Ruby --
+'.source.ruby':
+  'tap':
+    'prefix': 'tap'
+    'body':   'tap { |${1:elem}| $0 }'
+
 # --- Elixir ---
 '.source.elixir':
   '|>':
