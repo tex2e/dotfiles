@@ -75,7 +75,16 @@
 '.source.ruby':
   'tap':
     'prefix': 'tap'
-    'body':   'tap { |${1:elem}| $0 }'
+    'body':   'tap { |${1:elem}| $2 }'
+  'rescue':
+    'prefix': 'rescue'
+    'body':   '''
+      begin
+        #
+      rescue => e
+        #
+      end
+    '''
 
 # --- Elixir ---
 '.source.elixir':
