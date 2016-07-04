@@ -47,6 +47,10 @@ word_list = WordList.new
 (1..46).each do |week|
   (1..5).each do |day|
     word_list.show(week, day)
-    Kernel.gets
+    begin
+      Kernel.gets
+    rescue Interrupt
+      exit
+    end
   end
 end
