@@ -43,14 +43,15 @@ class WordList
   end
 end
 
+
+require 'io/console'
+
 word_list = WordList.new
 (1..46).each do |week|
   (1..5).each do |day|
     word_list.show(week, day)
-    begin
-      Kernel.gets
-    rescue Interrupt
-      exit
-    end
+
+    key = STDIN.getch
+    exit if key == "\C-c"
   end
 end
