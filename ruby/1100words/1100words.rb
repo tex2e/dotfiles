@@ -1,12 +1,13 @@
 require 'pp'
 require 'yaml'
+require 'io/console'
 
 class WordList
   def initialize
     @word_list = YAML.load_file('1100words.yml')
   end
 
-  def show(week:, day:)
+  def show_at(week:, day:)
     show(week, day)
   end
 
@@ -44,14 +45,26 @@ class WordList
 end
 
 
-require 'io/console'
-
 word_list = WordList.new
-(1..46).each do |week|
-  (1..5).each do |day|
-    word_list.show(week, day)
+max_week = 46
+max_day = 5
+week_and_days = [*1..max_week].product([*1..max_day])
+index = 0
 
-    key = STDIN.getch
-    exit if key == "\C-c"
+word_list.show_at(week: 1, day: 1)
+while true
+  break if (key = STDIN.getch) == "\C-c"
+  key = STDIN.getch if key == "\e" && STDIN.getch == "["
+
+  case key
+  when "A"; index -= 1 # ↑
+  when "B"; index += 1 # ↓
+  when "C"; index += 1 # →
+  when "D"; index -= 1 # ←
+  else; next
   end
+
+  index %= week_and_days.length
+  week, day = week_and_days[index]
+  word_list.show(week, day)
 end
