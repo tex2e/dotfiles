@@ -1,10 +1,28 @@
+#!/usr/bin/env ruby
+#:readme:
+#
+# ## wordtest(1) -- test your vocabulary
+#
+# [code](wordtest.rb)
+#
+# ### Usage
+#
+#     wordtest
+#
+# press `↓` or space key to go to next day.
+# `↑` key to go to previous day.
+# `→` key to go to next week.
+# `←` key to go to previous week.
+# `Ctrl+c` or `Ctrl+d` to exit.
+#
+
 require 'pp'
 require 'yaml'
 require 'io/console'
 
 class WordList
   def initialize
-    @word_list = YAML.load_file('1100words.yml')
+    @word_list = YAML.load_file("#{Dir.home}/.dotfiles/ruby/wordtest/1100words.yml")
   end
 
   def show_at(week:, day:)
