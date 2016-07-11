@@ -60,6 +60,7 @@ max_day = 5
 week_and_days = [*1..max_week].product([*1..max_day])
 index = 0
 
+puts "\e[H\e[2J" # clear screen
 word_list.show_at(week: 1, day: 1)
 while true
   break if (key = STDIN.getch) == "\C-c" || key == "\C-d"
@@ -68,11 +69,13 @@ while true
   case key
   when "A"; index -= 1 # ↑
   when "B"; index += 1 # ↓
-  when "C"; index += 1 # →
-  when "D"; index -= 1 # ←
+  when "C"; index += max_day # →
+  when "D"; index -= max_day # ←
+  when " "; index += 1
   else; next
   end
 
+  puts "\e[H\e[2J" # clear screen
   index %= week_and_days.length
   week, day = week_and_days[index]
   word_list.show(week, day)
