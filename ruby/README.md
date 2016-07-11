@@ -4,7 +4,7 @@ Scripts
 
 To use scripts, export PATH:
 
-    export PATH="$PATH:$HOME/.dotfiles/bin"'
+    export PATH="$PATH:$HOME/.dotfiles/bin"
 
 
 
@@ -56,5 +56,22 @@ following example is to put all vocals in brackets in all .txt files.
 
     ruby rdoc2md.rb > README.md
     ruby rdoc2md.rb ABC.rdoc > abc.md
+
+
+
+
+## wordtest(1) -- test your vocabulary
+
+[code](wordtest.rb)
+
+### Usage
+
+    wordtest
+
+press `↓` or space key to go to next day.
+`↑` key to go to previous day.
+`→` key to go to next week.
+`←` key to go to previous week.
+`Ctrl+c` or `Ctrl+d` to exit.
 
 
