@@ -26,14 +26,23 @@ class WordList
       puts page["sample_sentences"]
       puts
       puts "[Definitions]"
-      puts page["definitions"]
+      longest_key = page["definitions"][0...5].max_by(&:length)
+      page["definitions"][0...5].zip(page["definitions"][5...10]) do |pair|
+        printf("%-#{longest_key.length}s  %s\n", pair.first, pair.last)
+      end
       puts
     else # day == 5
       puts "[Definitions]"
-      puts page["definitions"]
+      longest_key = page["definitions"][0...20].max_by(&:length)
+      page["definitions"][0...20].zip(page["definitions"][20...40]) do |pair|
+        printf("%-#{longest_key.length}s  %s\n", pair.first, pair.last)
+      end
       puts
       puts "[Idioms]"
-      puts page["idioms"]
+      longest_key = page["idioms"][0...4].max_by(&:length)
+      page["idioms"][0...4].zip(page["idioms"][4...8]) do |pair|
+        printf("%-#{longest_key.length}s  %s\n", pair.first, pair.last)
+      end
       puts
     end
 
@@ -53,7 +62,7 @@ index = 0
 
 word_list.show_at(week: 1, day: 1)
 while true
-  break if (key = STDIN.getch) == "\C-c"
+  break if (key = STDIN.getch) == "\C-c" || key == "\C-d"
   key = STDIN.getch if key == "\e" && STDIN.getch == "["
 
   case key
