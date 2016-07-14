@@ -1,0 +1,47 @@
+"*":
+  "autocomplete-plus":
+    minimumWordLength: 1
+  core:
+    themes: [
+      "atom-dark-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+  editor:
+    fontSize: 12
+    invisibles:
+      eol: " "
+      space: " "
+    scrollPastEnd: true
+    showIndentGuide: true
+    showInvisibles: true
+  "exception-reporting":
+    userId: "23354aaa-7a3b-c22c-e8c0-a6e371e8af70"
+  minimap:
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false
+".c.source":
+  editor:
+    tabLength: 4
+".cs.source":
+  editor:
+    tabLength: 4
+".gfm.source":
+  editor:
+    tabLength: 4
+".html.jsp.text":
+  editor:
+    tabLength: 4
+".java.source":
+  editor:
+    tabLength: 4
+".makefile.source":
+  editor:
+    tabLength: 4
+".source.swift":
+  editor:
+    tabLength: 4
