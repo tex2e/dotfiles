@@ -73,6 +73,9 @@
 
 # --- Ruby --
 '.source.ruby':
+  'require':
+    'prefix': 'req'
+    'body':   "require '$1'$0"
   'tap':
     'prefix': 'tap'
     'body':   'tap { |${1:elem}| $2 }'
