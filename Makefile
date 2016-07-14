@@ -97,9 +97,14 @@ ATOM_PKG_LIST := \
 	highlight-selected \
 	minimap-highlight-selected
 
-atom:
-	@echo '=== linking atom snippets ==='
+atom: atom-config atom-package
+
+atom-config:
+	@echo '=== configure atom ==='
 	ln -fs $(HOME)/.dotfiles/atom/snippets.cson $(HOME)/.atom/snippets.cson
+	ln -fs $(HOME)/.dotfiles/atom/config.cson $(HOME)/.atom/config.cson
+
+atom-package:
 	@echo '=== installing atom packages ==='
 	apm install $(ATOM_PKG_LIST)
 
@@ -111,13 +116,6 @@ vim:
 
 vim-f:
 	$(MAKE) vim OPTION='-f'
-
-
-# --- make subl ---
-subl-ubuntu:
-	mkdir -p "$(HOME)/local"
-	$(HOME)/.dotfiles/bash/install-sublime3.sh "$(HOME)/local" "3083"
-
 
 # --- make git ---
 git:
