@@ -62,6 +62,7 @@
 	merge-log = "!git log `git merge-span .. $1`"
 	merge-diff = "!git diff `git merge-span ... $1`"
 	merge-difftool = "!git difftool `git merge-span ... $1`"
+	open = "!git-open"
 	publish = "!git push -u origin $(git branch-name)"
 	r = remote
 	ru = remote update
