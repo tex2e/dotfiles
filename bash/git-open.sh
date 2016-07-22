@@ -41,7 +41,7 @@ fi
 
 if [[ $URL != https://* ]]; then
   echo "URL \"$URL\" must starts with \"https://\""
-  exit 1;;
+  exit 1
 fi
 
 echo "> $OPEN $URL"
