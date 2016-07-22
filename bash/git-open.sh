@@ -46,8 +46,3 @@ fi
 
 echo "> $OPEN $URL"
 $OPEN "$URL" &>/dev/null
-
-if [[ $? -ne 0 ]]; then
-  echo "URL \"$URL\" not found."
-  exit 1
-fi
