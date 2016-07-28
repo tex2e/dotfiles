@@ -39,7 +39,7 @@ fi
 
 # --- open site --
 
-if [[ $URL != https://* ]]; then
+if [[ $URL != https://* ]] && [[ $URL != http://* ]]; then
   echo "URL \"$URL\" must starts with \"https://\""
   exit 1
 fi
