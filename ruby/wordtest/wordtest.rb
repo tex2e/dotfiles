@@ -49,6 +49,9 @@ class WordList
         printf("%-#{longest_key.length}s  %s\n", pair.first, pair.last)
       end
       puts
+      answer = @word_list["answers"]["week#{week}day#{day}"]
+      puts "[Answer]"
+      puts answer
     else # day == 5
       puts "[Definitions]"
       longest_key = page["definitions"][0...20].max_by(&:length)
@@ -62,12 +65,13 @@ class WordList
         printf("%-#{longest_key.length}s  %s\n", pair.first, pair.last)
       end
       puts
+      answer = @word_list["answers"]["week#{week}day#{day}"]
+      puts "[Answer]"
+      longest_key = answer[0...20].max_by(&:length)
+      answer[0...20].zip(answer[20...24]) do |pair|
+        printf("%-#{longest_key.length}s  %s\n", pair.first, pair.last)
+      end
     end
-
-    answer = @word_list["answers"]["week#{week}day#{day}"]
-    puts "[Answer]"
-    puts answer
-    puts
   end
 end
 
@@ -85,11 +89,12 @@ while true
   key = STDIN.getch if key == "\e" && STDIN.getch == "["
 
   case key
-  when "A"; index -= 1 # ↑
-  when "B"; index += 1 # ↓
-  when "C"; index += max_day # →
-  when "D"; index -= max_day # ←
+  when "j"; index += 1 # ↓
+  when "k"; index -= 1 # ↑
+  when "l"; index += max_day # →
+  when "h"; index -= max_day # ←
   when " "; index += 1
+  when "q"; break
   else; next
   end
 
