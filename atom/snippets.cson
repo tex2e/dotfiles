@@ -393,7 +393,7 @@
     \\\\end{table}$0
     '''
   'tables':
-    'prefix': 'make table2'
+    'prefix': 'make tables'
     'body':   '''
     \\\\begin{table}[htbp]
       \\\\begin{minipage}{0.5\\\\hsize}
@@ -431,7 +431,7 @@
     \\\\end{figure}$0
     '''
   'figures':
-    'prefix': 'make figure2'
+    'prefix': 'make figures'
     'body':   '''
     \\\\begin{figure}
       \\\\begin{minipage}{0.5\\\\hsize}
@@ -449,6 +449,29 @@
         \\\\label{fig:}
       \\\\end{minipage}
     \\\\end{figure}
+    '''
+  'code':
+    'prefix': 'code'
+    'body':   '''
+      % ~~~ code
+      \\\\begin{lstlisting}[caption=,label=code:${1}]
+      $0
+      \\\\end{lstlisting}
+      % ~~~
+    '''
+  'code input':
+    'prefix': 'code input'
+    'body':   '''
+      \\\\lstinputlisting[caption=,label=code:${1}]{${2:program.file}}
+    '''
+  'screen and verbatim':
+    'prefix': 'output'
+    'body':   '''
+      \\\\begin{screen}
+      \\\\begin{verbatim}
+      $0
+      \\\\end{verbatim}
+      \\\\end{screen}
     '''
 
 # --- ShellScript ---
