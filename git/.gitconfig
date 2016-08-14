@@ -69,7 +69,7 @@
 	rv = remote -v
 	s = status
 	# create savepoint
-	save = "!git aa && git commit -m \"SAVEPOINT\""
+	save = "!git add -A && git commit -m \"SAVEPOINT\""
 	showp = show -p
 	sm = submodule
 	smf = submodule foreach
