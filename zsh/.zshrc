@@ -101,4 +101,4 @@ function git-current-branch {
 
 # whenever a prompt is shown, evaluate a string of $RPROMPT and replace it
 setopt prompt_subst
-RPROMPT='`git-current-branch`'$RPROMPT
+RPROMPT='`git-current-branch`'
