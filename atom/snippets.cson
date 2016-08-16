@@ -264,6 +264,15 @@
     }
     '''
 
+# --- Java ---
+'.source.java':
+  'System.out.print':
+    'prefix': 'print'
+    'body':   'System.out.print($0);'
+  'System.out.println':
+    'prefix': 'println'
+    'body':   'System.out.println($0);'
+
 # --- C ---
 '.source.c':
   '#':
