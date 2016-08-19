@@ -44,33 +44,34 @@ class WordList
       puts page["sample_sentences"]
       puts
       puts "[Definitions]"
-      longest_key = page["definitions"][0...5].max_by(&:length)
-      page["definitions"][0...5].zip(page["definitions"][5...10]) do |pair|
-        printf("%-#{longest_key.length}s  %s\n", pair.first, pair.last)
-      end
+      printf_as_table(page["definitions"])
       puts
       answer = @word_list["answers"]["week#{week}day#{day}"]
       puts "[Answer]"
-      puts answer
+      printf_as_table(answer)
+      puts
+      puts "[Todays Idiom]"
+      puts page["todays_idiom"]
     else # day == 5
       puts "[Definitions]"
-      longest_key = page["definitions"][0...20].max_by(&:length)
-      page["definitions"][0...20].zip(page["definitions"][20...40]) do |pair|
-        printf("%-#{longest_key.length}s  %s\n", pair.first, pair.last)
-      end
+      printf_as_table(page["definitions"])
       puts
       puts "[Idioms]"
-      longest_key = page["idioms"][0...4].max_by(&:length)
-      page["idioms"][0...4].zip(page["idioms"][4...8]) do |pair|
-        printf("%-#{longest_key.length}s  %s\n", pair.first, pair.last)
-      end
+      printf_as_table(page["idioms"])
       puts
       answer = @word_list["answers"]["week#{week}day#{day}"]
       puts "[Answer]"
-      longest_key = answer[0...20].max_by(&:length)
-      answer[0...20].zip(answer[20...24]) do |pair|
-        printf("%-#{longest_key.length}s  %s\n", pair.first, pair.last)
-      end
+      printf_as_table(answer, 20)
+    end
+  end
+
+  private
+  def printf_as_table(array, halfpoint=nil)
+    halfpoint = array.length / 2 if halfpoint.nil?
+
+    longest_key = array[0...halfpoint].max_by(&:length)
+    array[0...halfpoint].zip( array[halfpoint...array.length] ) do |pair|
+      printf("%-#{longest_key.length}s  %s\n", pair.first, pair.last)
     end
   end
 end
@@ -82,8 +83,11 @@ max_day = 5
 week_and_days = [*1..max_week].product([*1..max_day])
 index = 0
 
+week = ARGV[0] || 1
+day  = ARGV[1] || 1
+
 puts "\e[H\e[2J" # clear screen
-word_list.show_at(week: 1, day: 1)
+word_list.show(week, day)
 while true
   break if (key = STDIN.getch) == "\C-c" || key == "\C-d"
   key = STDIN.getch if key == "\e" && STDIN.getch == "["
