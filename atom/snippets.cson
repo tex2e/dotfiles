@@ -83,9 +83,16 @@
     'prefix': 'rescue'
     'body':   '''
       begin
-        #
+        #$0
       rescue => e
         #
+      end
+    '''
+  'TestUnit':
+    'prefix': 'test'
+    'body':   '''
+      test "${1:AAA should BBB}" do
+      \t#$0
       end
     '''
 
@@ -113,7 +120,7 @@
     'prefix': 'fn'
     'body':   'fn ${1:arg} -> $2 end$0'
   'anonymous func &':
-    'prefix': 'fna'
+    'prefix': 'afn'
     'body':   '&(&1$1)$0'
   'import':
     'prefix': 'import'
