@@ -1,6 +1,7 @@
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+which brew > /dev/null &&
 export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
 export PATH="$PATH:$HOME/.npm-packages/bin"
 export PATH="$PATH:$HOME/.dotfiles/bin"
