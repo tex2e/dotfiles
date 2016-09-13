@@ -16,8 +16,9 @@ fi
 
 PS1='\W \$ '
 PS2='> '
-: ${EDITOR:=vim}
-LANG=C.UTF-8
+export EDITOR=vim
+# export LANG=C.UTF-8
+export LANG=en_US.UTF-8
 
 case `uname` in
   Darwin ) # mac os

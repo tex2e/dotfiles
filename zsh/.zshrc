@@ -12,7 +12,6 @@ fi
 
 ###
 # Set Shell variable
-LANG=C.UTF-8
 HISTSIZE=1000
 HISTFILE="$HOME/.zsh_history"
 SAVEHIST=10000
@@ -101,4 +100,4 @@ function git-current-branch {
 
 # whenever a prompt is shown, evaluate a string of $RPROMPT and replace it
 setopt prompt_subst
-RPROMPT='`git-current-branch`'$RPROMPT
+RPROMPT='`git-current-branch`'
