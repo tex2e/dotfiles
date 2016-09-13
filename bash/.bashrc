@@ -1,4 +1,11 @@
 
+# fix ubuntu keymapping
+case `uname` in
+  Linux )
+    xmodmap "$HOME/.dotfiles/xmodmap/ubuntu-keymap" > /dev/null
+    ;;
+esac
+
 # # create .xmodmap file
 # xmodmap -pke > "~/.xmodmap"
 # vim ~/.xmodmap
