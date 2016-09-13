@@ -1,4 +1,17 @@
 
+# # create .xmodmap file
+# xmodmap -pke > "~/.xmodmap"
+# vim ~/.xmodmap
+#
+#     remove Lock = Caps_Lock
+#     keysym Caps_Lock = Control_L
+#     add Control = Control_L
+#
+if [[ -f "$HOME/.xmodmap" ]]; then
+  xmodmap "$HOME/.xmodmap" &> /dev/null
+fi
+
+
 ### Variables ###
 
 PS1='\W \$ '
@@ -23,18 +36,6 @@ esac
 
 # Alias
 source ~/.alias
-
-# # create .xmodmap file
-# xmodmap -pke > "~/.xmodmap"
-# vim ~/.xmodmap
-#
-#     remove Lock = Caps_Lock
-#     keysym Caps_Lock = Control_L
-#     add Control = Control_L
-#
-if [[ -f "$HOME/.xmodmap" ]]; then
-  xmodmap "$HOME/.xmodmap" &> /dev/null
-fi
 
 if [[ -d "$HOME/.rbenv" ]]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
