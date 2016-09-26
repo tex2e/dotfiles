@@ -37,6 +37,7 @@ alias chx='chmod 755'
 alias chr='chmod 644'
 
 # external commands
+alias python='python3'
 alias tree='tree -F'
 alias tree1='tree -L 1'
 alias tree2='tree -L 2'
