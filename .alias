@@ -38,6 +38,7 @@ alias chr='chmod 644'
 
 # external commands
 alias python='python3'
+alias pip='pip3'
 alias tree='tree -F'
 alias tree1='tree -L 1'
 alias tree2='tree -L 2'
