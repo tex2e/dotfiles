@@ -24,47 +24,33 @@
 	default = upstream
 [alias]
 	a = add
-	# add all files except nn-bit executable file
+	# stages all files (git add -A) except nn-bit executable file
 	aa = "!git add -A --dry-run | cut -d' ' -f 2 | xargs file | grep -v '\\b\\d\\d-bit\\b' | cut -d':' -f 1 | xargs git add"
-	auto = "!git-auto"
 	addp = add -p
 	# list all git aliases
 	alias = "!git config --get-regexp '^alias' | less"
-	ap = add -p
 	amend = commit --amend
 	amendm = commit --amend -m
+	ap = add -p
+	auto = "!git-auto"
 	b = branch
 	# clean merged branches
 	bclean = "!f() { git branch --merged ${1-master} | grep -v \" ${1-master}$\" | xargs git branch -d; }; f"
-	bl = blame
-	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	c = commit
 	cam = commit -am
 	ch = checkout
 	chb = checkout -b
 	chm = checkout master
 	cm = commit -m
-	# commit with auto-generated message
-	cmg = "!git commit -m \"$(gen-commit-message)\""
-	# commit with auto-generated message which can be editable using vim
-	cmgv = "!git commit -m \"$(gen-commit-message | vipe)\""
-	config = config --global -e
 	d = diff
 	dc = diff --cached
-	dn = diff --name-only
 	dt = diff HEAD^ HEAD
 	f = fetch
-	gr = grep -iI
 	graph = log --graph --oneline --all --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
 	graphp = "!git graph -p"
 	l = log
 	lp = log -p
-	merge-span = "!f() { echo $(git log -1 $2 --merges --pretty=format:%P | cut -d' ' -f1)$1$(git log -1 $2 --merges --pretty=format:%P | cut -d' ' -f2); }; f"
-	merge-log = "!git log `git merge-span .. $1`"
-	merge-diff = "!git diff `git merge-span ... $1`"
-	merge-difftool = "!git difftool `git merge-span ... $1`"
 	open = "!git-open"
-	publish = "!git push -u origin $(git branch-name)"
 	r = remote
 	ru = remote update
 	rv = remote -v
@@ -72,14 +58,12 @@
 	# create savepoint
 	save = "!git add -A && git commit -m \"SAVEPOINT\""
 	showp = show -p
-	sm = submodule
-	smf = submodule foreach
-	smi = submodule init
-	smu = submodule update
 	ss = status -s
-	undo = reset HEAD~1 --mixed
-	unpublish = "!git push origin :$(git branch-name)"
+	sub = submodule
+	suba = submodule add
+	subf = submodule foreach
+	subi = submodule init
+	subu = submodule update
+	undo = reset --mixed HEAD~1
 	unstage = reset HEAD --
-	up = "!git pull --prune $@ && git submodule update --init --recursive"
-	# remove savepoint
-	wipe = "!git aa && git commit -qm \"WIPE SAVEPOINT\" && git reset HEAD~1 --hard"
+	update = "!git pull --prune $@ && git submodule update --init --recursive"
