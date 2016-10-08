@@ -22,9 +22,12 @@ function usage {
   echo "Usage: git-auto [-h|--help]"
 }
 
+PUSH_OPTION=
 case $1 in
-  -h | --help)
-    usage; exit 1;;
+  -h | --help )
+    usage; exit 1 ;;
+  -p | --push | push )
+    PUSH_OPTION="yes" ;;
 esac
 
 
@@ -81,5 +84,6 @@ function _sh {
 is_inside_repo || exit 1
 _sh "git add --all" || exit 1
 _sh "git commit -m \"$(gen_commit_message)\"" || exit 1
+test "$PUSH_OPTION" = "yes" &&
 _sh "git push $(get_tracking_remote_name)" || exit 1
 exit 0
