@@ -8,6 +8,8 @@ export PATH="$PATH:$HOME/.dotfiles/bin"
 export PATH="$PATH:$HOME/local/bin"
 export PATH="$PATH:$HOME/picnic-tools/bin"
 
-export CDPATH="$CDPATH:$HOME"
+export FPATH="$FPATH"
+
+export CDPATH="$HOME"
 export CDPATH="$CDPATH:$HOME/Documents"
 export CDPATH="$CDPATH:$HOME/Documents/pgm"
