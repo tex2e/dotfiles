@@ -26,6 +26,7 @@
 	a = add
 	# add all files except nn-bit executable file
 	aa = "!git add -A --dry-run | cut -d' ' -f 2 | xargs file | grep -v '\\b\\d\\d-bit\\b' | cut -d':' -f 1 | xargs git add"
+	auto = "!git-auto"
 	addp = add -p
 	# list all git aliases
 	alias = "!git config --get-regexp '^alias' | less"
