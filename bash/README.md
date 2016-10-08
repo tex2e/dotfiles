@@ -4,7 +4,7 @@ Scripts
 
 To use scripts, export PATH:
 
-    export PATH="$PATH:$HOME/.dotfiles/bin"'
+    export PATH="$PATH:$HOME/.dotfiles/bin"
 
 
 
@@ -201,24 +201,21 @@ so split cdpaths into each line and show them.
 
 
 
-## gen-commit-message(1) -- generate commit message
+## git-auto(1) -- stage && commit && push
 
-[code](gen-commit-message.sh)
+[code](git-auto.sh)
 
 ### Description
 
-generate commit message from git status.
-This command is supposed use at git commit -m
+stage all files, and commit with automatically generated message, and push to
+tracking remote.
 
 ### Usage
 
-    > gen-commit-message
-    create new1.sh, new2.sh
-    update foo.html, bar.css, baz.js
-    rename hage.c -> hoge.c
-    delete tmp.txt
-
-    > git commit -m "$(gen-commit-message)"
+    > git-auto
+    git add --all
+    git commit -m <message>
+    git push <remote> <branch>
 
 
 

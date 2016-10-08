@@ -1,6 +1,21 @@
 #!/bin/bash
+#:readme:
 #
-# git-auto -- stage && commit && push
+# ## git-auto(1) -- stage && commit && push
+#
+# [code](git-auto.sh)
+#
+# ### Description
+#
+# stage all files, and commit with automatically generated message, and push to
+# tracking remote.
+#
+# ### Usage
+#
+#     > git-auto
+#     git add --all
+#     git commit -m <message>
+#     git push <remote> <branch>
 #
 
 function usage {
