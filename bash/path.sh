@@ -1,18 +1,34 @@
 #!/bin/bash
 #:readme:
 #
-# ## path(1) -- split exported paths into each line
+# ## path(1) -- split paths into each line
 #
 # [code](path.sh)
 #
 # ### SYNOPSIS
 #
-#     path
+#     path [-f|f|fun|func|function|fpath] [-m|man|manual|manpath]
+#          [-c|-cd|cd|cdpath]
 #
 # ### Description
 #
-# PATH contents is difficult to read because each paths are joined with ":",
-# so split paths into each line and show them.
+# contents of PATH, CDPATH, FPATH (zsh function path) and manpath are difficult to
+# read because each paths are joined with ":", so split paths into each line and
+# show them.
 #
 
-echo -e ${PATH//:/'\n'}
+case $1 in
+  -c | -cd | cd | cdpath )
+    echo -e ${CDPATH//:/'\n'}
+    ;;
+  -f | f | fun | func | function | fpath )
+    echo -e ${FPATH//:/'\n'}
+    ;;
+  -m | m | man | manual | manpath )
+    MPATH="$(command manpath)"
+    echo -e ${MPATH//:/'\n'}
+    ;;
+  * )
+    echo -e ${PATH//:/'\n'}
+    ;;
+esac

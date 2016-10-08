@@ -9,22 +9,6 @@ To use scripts, export PATH:
 
 
 
-## cdpath(1) -- split cdpaths into each line
-
-[code](cdpath.sh)
-
-### SYNOPSIS
-
-    cdpath
-
-### Description
-
-CDPATH contents is difficult to read because each paths are joined with ":",
-so split cdpaths into each line and show them.
-
-
-
-
 ## color(1) -- ANSI color code cheat sheet
 
 [code](color.sh)
@@ -159,23 +143,6 @@ This is useful for environments which is difficult to install git command.
 ### Instant Usage
 
     > bash <(curl -L https://raw.github.com/TeX2e/dotfiles/master/bash/fakegit.sh) clone <URL>
-
-
-
-
-## fpath(1) -- split fpaths into each line
-
-[code](fpath.sh)
-
-### SYNOPSIS
-
-    fpath
-
-### Description
-
-FPATH (zsh function path) contents is difficult to read
-because each paths are joined with ":",
-so split cdpaths into each line and show them.
 
 
 
@@ -378,34 +345,20 @@ compile C file and execute it.
 
 
 
-## mpath(1) -- split manpaths into each line
-
-[code](mpath.sh)
-
-### SYNOPSIS
-
-    mpath
-
-### Description
-
-manpath contents is difficult to read because each paths are joined with ":",
-so split manpaths into each line and show them.
-
-
-
-
-## path(1) -- split exported paths into each line
+## path(1) -- split paths into each line
 
 [code](path.sh)
 
 ### SYNOPSIS
 
-    path
+    path [-f|f|fun|func|function|fpath] [-m|man|manual|manpath]
+         [-c|-cd|cd|cdpath]
 
 ### Description
 
-PATH contents is difficult to read because each paths are joined with ":",
-so split paths into each line and show them.
+contents of PATH, CDPATH, FPATH (zsh function path) and manpath are difficult to
+read because each paths are joined with ":", so split paths into each line and
+show them.
 
 
 
