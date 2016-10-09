@@ -58,9 +58,6 @@
   'it (BDD)':
     'prefix': 'it'
     'body':   "it('should $1', () => {\n\t$0\n});"
-  'jQuery.click':
-    'prefix': 'click'
-    'body':   'click(function() {\n\t$0\n});'
   'React':
     'prefix': 'React.createClass'
     'body':   '''React.createClass({
@@ -154,122 +151,67 @@
 '.source.swift':
   'print()':
     'prefix': 'print'
-    'body': 'print("$1")$0'
+    'body':   'print("$1")$0'
   'Closure':
     'prefix': 'closure'
-    'body': '{ (${1:parameters}) -> ${2:type} in ${3:body} }$0'
+    'body':   '{ (${1:parameters}) -> ${2:type} in ${3:body} }$0'
   'Function':
     'prefix': 'func'
-    'body': '''
-    func ${1:name}() {
-        ${2://}
-    }
-    '''
+    'body':   'func ${1:name}() {\n\t${2://}\n}'
   'Initializer':
     'prefix': 'init'
-    'body': '''
-    init() {
-        ${1://}
-    }
-    '''
-  'Deinitializer':
-    'prefix': 'deinit'
-    'body': '''
-    deinit {
-        ${1://}
-    }
-    '''
+    'body':   'init() {\n\t${1://}\n}'
   'Class':
     'prefix': 'class'
-    'body': '''
-    class ${1:name} {
-        ${2://}
-    }
-    '''
+    'body':   'class ${1:name} {\n\t${2://}\n}'
   'Extension':
     'prefix': 'extension'
-    'body': '''
-    extension ${1:type} {
-        ${2://}
-    }
-    '''
+    'body':   'extension ${1:type} {\n\t${2://}\n}'
   'Structure':
     'prefix': 'struct'
-    'body': '''
-    struct ${1:name} {
-        ${2://}
-    }
-    '''
+    'body':   'struct ${1:name} {\n\t${2://}\n}'
   'Enumeration':
     'prefix': 'enum'
-    'body': '''
-    enum ${1:name} {
-        ${2://}
-    }
-    '''
+    'body':   'enum ${1:name} {\n\t${2://}\n}'
   'Do-Catch Statement':
     'prefix': 'do'
-    'body': '''
-    do {
-        ${2://}
-    } catch ${1:ErrorType} {
-        ${3://}
-    } catch {
-        ${4://}
-    }
+    'body':   '''
+      do {
+      \t${2://}
+      } catch ${1:ErrorType} {
+      \t${3://}
+      } catch {
+      \t${4://}
+      }
     '''
   'If Statement':
     'prefix': 'if'
-    'body': '''
-    if ${1:condition} {
-        ${2://}
-    }
-    '''
+    'body':   'if ${1:condition} {\n\t${2://}\n}'
   'Switch Statement':
     'prefix': 'switch'
-    'body': '''
-    switch ${1:value} {
-    case ${2:value}:
-        ${3://}
-    default:
-        ${4://}
-    }
+    'body':   '''
+      switch ${1:value} {
+      case ${2:value}:
+      \t${3://}
+      default:
+      \t${4://}
+      }
     '''
   'Guard Statement':
     'prefix': 'guard'
-    'body': '''
-    guard ${1:expression} else {
-        ${2://}
-    }
-    '''
+    'body':   'guard ${1:expression} else {\n\t${2://}\n}'
   'While Loop':
     'prefix': 'while'
-    'body': '''
-    while ${1:condition} {
-        ${2://}
-    }
-    '''
+    'body':   'while ${1:condition} {\n\t${2://}\n}'
   'Repeat-While Loop':
     'prefix': 'repeat'
-    'body': '''
-    repeat {
-        ${1://}
-    } while ${2:condition}
-    '''
+    'body':   'repeat {\n\t${1://}\n} while ${2:condition}'
   'For Loop':
     'prefix': 'cfor'
-    'body': '''
-    for ${1:initialization}; ${2:condition}; ${3:incrementer} {
-        ${4://}
-    }
-    '''
+    'body':   'for ${1:initialization}; ${2:condition}; ${3:incrementer} {\n\t${4://}\n}'
   'For-In Loop':
     'prefix': 'for'
-    'body': '''
-    for ${1:i} in ${2:value} {
-        ${3://}
-    }
-    '''
+    'body':   'for ${1:i} in ${2:value} {\n\t${3://}\n}'
 
 # --- Java ---
 '.source.java':
@@ -300,11 +242,7 @@
     'body':   'for (${1:i} = 0; ${1:i} < ${2:size}; ${1:i}++) {\n\t$0\n}'
   'while':
     'prefix': 'while'
-    'body':   '''
-      while (1) {
-      \t$0
-      }
-    '''
+    'body':   'while (1) {\n\t$0\n}'
   'switch':
     'prefix': 'switch'
     'body':   '''
@@ -345,25 +283,7 @@
     'body':   '<label class="$1" for="$2">$0</label>'
   'input':
     'prefix': 'input'
-    'body':   '<input type="$1" class="$2" value="$3" />'
-  'svg':
-    'prefix': 'svg'
-    'body':   '<svg width="${1:500px}" height="${2:100px}">\n\t$0\n</svg>'
-  'rect':
-    'prefix': 'rect'
-    'body':   '<rect x="$1" y="$2" width="$3" height="$4"/>'
-  'circle':
-    'prefix': 'circle'
-    'body':   '<circle cx="$1" cy="$2" r="$3"/>'
-  'ellipse':
-    'prefix': 'ellipse'
-    'body':   '<ellipse cx="$1" cy="$2" rx="$3" ry="$4"/>'
-  'line':
-    'prefix': 'line'
-    'body':   '<line x1="$1" y1="$2" x2="$3" y2="$4" stroke="${5:black}"/>'
-  'text':
-    'prefix': 'text'
-    'body':   '<text x="$1" y="$2">$0</text>'
+    'body':   '<input type="$1" id="$2" class="$3" value="$4" />'
 
 '.text.html .meta.tag, .text.html .embedded':
   'id':
