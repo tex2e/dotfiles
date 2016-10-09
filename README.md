@@ -9,6 +9,7 @@ Requirements
 - **Git** (if you are not a sudoer, see
   [tex2e/picnic](https://github.com/tex2e/picnic) to install git)
 - **Bash**
+- **Zsh**
 - **curl** or **wget**
 - **gawk** (for making document)
 - **Vim**
@@ -42,6 +43,7 @@ Structure
     ├── python/            # python scripts
     ├── rake/              # global rakefiles
     ├── ruby/              # ruby scripts
+    ├── sublime/           # sublime packages
     ├── vim/               # vim settings
     │   ├── .vim/
     │   └── .vimrc
