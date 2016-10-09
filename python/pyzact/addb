@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cat -
-printf "%s\n" "$*"
