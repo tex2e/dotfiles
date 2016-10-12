@@ -19,6 +19,7 @@
 	required = true
 [credential]
 	helper = osxkeychain
+	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
 	helper = cache --timeout 30000
 [push]
 	default = upstream
