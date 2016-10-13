@@ -174,42 +174,39 @@ you can push to a tracking remote.
 
 
 
-## gitch(1) -- ssh/https switcher on git repository
+## git-protocol(1) -- change protocol of git repository's remote
 
-[code](gitch.sh)
+[code](git-protocol.sh)
 
 ### SYNOPSIS
 
-    gitch [<remote>]
+    git-protocol <command> [<remote>]
 
 ### Description
 
-Inside a git repository, switch the access protocol between https and ssh.
-With no arguments, set "origin" to remove as default.
+Change protocol of git repository's remote.
+If you give "switch" as command, switch the git access protocol between https and ssh.
+If "secure" is as command, set url to https in place of http.
+Without second argument "remote", set "origin" to remote by default.
 
 ### Usage
 
     > git remote -v
-    github	git@github.com:TeX2e/test (fetch)
-    github	git@github.com:TeX2e/test (push)
+    origin	http://github.com/TeX2e/test (fetch)
+    origin	http://github.com/TeX2e/test (push)
+
+    > git protocol secure origin
+     ✔ Change origin URL...OK
+    new remote:
     origin	https://github.com/TeX2e/test (fetch)
     origin	https://github.com/TeX2e/test (push)
 
-    > gitch
+    > git protocol switch origin
      ✔ Change origin URL...OK
     new remote:
-    github	git@github.com:TeX2e/test (fetch)
-    github	git@github.com:TeX2e/test (push)
     origin	git@github.com:TeX2e/test (fetch)
     origin	git@github.com:TeX2e/test (push)
 
-    > gitch github
-     ✔ Change origin URL...OK
-    new remote:
-    github	https://github.com/TeX2e/test (fetch)
-    github	https://github.com/TeX2e/test (push)
-    origin	git@github.com:TeX2e/test (fetch)
-    origin	git@github.com:TeX2e/test (push)
 
 
 
