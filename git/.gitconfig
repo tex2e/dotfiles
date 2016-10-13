@@ -1,3 +1,6 @@
+[include]
+	path = .gitconfig.macos
+	path = .gitconfig.linux
 [user]
 	name = Mako
 	email = mnfeconicu41@gmail.com
@@ -7,19 +10,11 @@
 	autocrlf = input
 [help]
 	autocorrect = 1
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree 2.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [filter "lfs"]
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
 [credential]
-	helper = osxkeychain
-	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
 	helper = cache --timeout 30000
 [push]
 	default = upstream
