@@ -59,3 +59,7 @@ alias npmb='npm run build'
 # vim
 alias bf="cat > ~/.vim/bf"
 alias bfcat="cat ~/.vim/bf"
+
+# zsh
+alias hide-rprompt="setopt transient_rprompt"
+alias show-rprompt="unsetopt transient_rprompt"
