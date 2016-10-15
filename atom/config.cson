@@ -22,8 +22,8 @@
       "highlight-selected": true
       "highlight-selectedDecorationsZIndex": 0
   "tree-view":
-    hideIgnoredNames: true
-    hideVcsIgnoredFiles: true
+    hideIgnoredNames: false
+    hideVcsIgnoredFiles: false
   welcome:
     showOnStartup: false
 ".c.source":
