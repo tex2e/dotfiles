@@ -2,9 +2,6 @@
 # inherited from .bashrc
 source ~/.bashrc
 
-# Alias
-source ~/.alias
-
 # show todo
 if which todo &> /dev/null; then
   todo
@@ -14,18 +11,25 @@ fi
 # Set Shell variable
 HISTSIZE=1000
 HISTFILE="$HOME/.zsh_history"
-SAVEHIST=10000
+SAVEHIST=1000
 PROMPT=$'%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
 
 # Set Shell options
-#setopt auto_cd
-setopt auto_param_slash auto_name_dirs auto_param_keys
-setopt mark_dirs list_types
-setopt extended_history hist_ignore_dups hist_ignore_space share_history
-setopt no_beep always_last_prompt
+setopt always_last_prompt
+unsetopt auto_name_dirs
+unsetopt auto_param_keys
+setopt auto_param_slash
+unsetopt beep
+unsetopt extended_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt ignore_eof
 setopt interactive_comments
-setopt cdable_vars sh_word_split pushd_ignore_dups
+setopt list_types
+setopt mark_dirs
 setopt prompt_subst
+setopt sh_word_split
+setopt share_history
 unsetopt nomatch # for rake arguments like: `rake subcomand[args]`
 #setopt transient_rprompt # set the option for hiding RPROMPT to copy the string of the terminal
 

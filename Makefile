@@ -1,5 +1,6 @@
 
 SHELL = /bin/sh
+UNAME := $(shell uname)
 
 ### Commands
 # + path
@@ -118,9 +119,17 @@ vim-f:
 	$(MAKE) vim OPTION='-f'
 
 # --- make git ---
+ifeq ($(UNAME), Darwin)
+GIT_CONFIG_ON_EACH_PLATFORM := "$(PWD)/git/.gitconfig.macos" "$(HOME)/.gitconfig.macos"
+endif
+ifeq ($(UNAME), Linux)
+GIT_CONFIG_ON_EACH_PLATFORM := "$(PWD)/git/.gitconfig.linux" "$(HOME)/.gitconfig.linux"
+endif
+
 git:
 	ln $(OPTION) -s "$(PWD)/git/.gitconfig" "$(HOME)/.gitconfig"
 	ln $(OPTION) -s "$(PWD)/git/.gitignore_global" "$(HOME)/.gitignore_global"
+	ln $(OPTION) -s $(GIT_CONFIG_ON_EACH_PLATFORM)
 
 git-f:
 	$(MAKE) git OPTION='-f'

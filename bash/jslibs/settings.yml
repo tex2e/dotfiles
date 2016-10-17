@@ -1,7 +1,9 @@
 
 lib:
-  jquery2: http://code.jquery.com/jquery-2.2.1.min.js
-  jquery: http://code.jquery.com/jquery-3.0.0.min.js
+  jquery2: http://code.jquery.com/jquery-2.2.4.min.js
+  jquery: http://code.jquery.com/jquery-3.1.1.min.js
+  leapjs: http://js.leapmotion.com/leap-0.6.4.min.js
+  leapjs_plugins: http://js.leapmotion.com/leap-plugins-0.1.11.min.js
   underscore: http://underscorejs.org/underscore-min.js
   three: http://threejs.org/build/three.min.js
   d3: http://d3js.org/d3.v3.min.js
@@ -10,5 +12,3 @@ lib:
   ammo: https://raw.githubusercontent.com/kripken/ammo.js/master/builds/ammo.js
   physi: https://raw.githubusercontent.com/chandlerprall/Physijs/master/physi.js
   physi_worker: https://raw.githubusercontent.com/chandlerprall/Physijs/master/physijs_worker.js
-  leapjs: http://js.leapmotion.com/leap-0.6.3.min.js
-  leapjs_plugins: http://js.leapmotion.com/leap-plugins-0.1.11.min.js
