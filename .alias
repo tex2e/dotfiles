@@ -7,6 +7,8 @@ alias bash_profile='. ~/.bash_profile'
 # zsh
 alias zshrc='. ~/.zshrc'
 alias zshenv='. ~/.zshenv'
+alias hide-rprompt="setopt transient_rprompt"
+alias show-rprompt="unsetopt transient_rprompt"
 
 # env
 alias en='LANG=en_US.UTF-8'
@@ -59,3 +61,6 @@ alias npmb='npm run build'
 # vim
 alias bf="cat > ~/.vim/bf"
 alias bfcat="cat ~/.vim/bf"
+
+# macos
+alias sweep='find . -name .DS_Store -type f -delete'
