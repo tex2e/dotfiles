@@ -28,6 +28,7 @@
 	ap = add -p
 	auto = "!git-auto"
 	b = branch
+	ba = branch -a
 	# clean merged branches
 	bclean = "!f() { git branch --merged ${1-master} | grep -v \" ${1-master}$\" | xargs git branch -d; }; f"
 	c = commit
