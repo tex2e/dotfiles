@@ -2,6 +2,7 @@
   "autocomplete-plus":
     minimumWordLength: 1
   core:
+    telemetryConsent: "limited"
     themes: [
       "atom-dark-ui"
       "base16-tomorrow-dark-theme"
