@@ -45,6 +45,7 @@
 	graphp = "!git graph -p"
 	l = log
 	lp = log -p
+	o = "!git-open"
 	open = "!git-open"
 	protocol = "!git-protocol"
 	r = remote
