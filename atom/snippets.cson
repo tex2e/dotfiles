@@ -52,6 +52,9 @@
   'anonymous func':
     'prefix': 'afun'
     'body':   'function ($1) {\n\t$0\n}'
+  'closure':
+    'prefix': 'closure'
+    'body':   '(function () {\n\t$0\n})();'
   'describe (BDD)':
     'prefix': 'describe'
     'body':   "describe('${1:desc}', () => {\n\t$0\n});"
