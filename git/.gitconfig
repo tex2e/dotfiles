@@ -61,6 +61,8 @@
 	sub = submodule
 	suba = submodule add
 	subf = submodule foreach
+	subforeach = submodule foreach
+	subupgrade = submodule foreach git pull origin master
 	subi = submodule init
 	subu = submodule update
 	undo = reset --mixed HEAD~1
