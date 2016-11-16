@@ -324,9 +324,9 @@
       \\\\caption{${1:Caption}}
       \\\\label{tab:${2:Label}}
       \\\\begin{tabular}{${3:c}} \\\\toprule
-        $0 \\\\\\\\
+        $0\\\\\\\\
         \\\\midrule
-         \\\\\\\\
+        \\\\\\\\
         \\\\bottomrule
       \\\\end{tabular}
     \\\\end{table}$0
@@ -340,9 +340,9 @@
         \\\\caption{}
         \\\\label{tab:}
         \\\\begin{tabular}{c} \\\\toprule
-           \\\\\\\\
+          \\\\\\\\
           \\\\midrule
-           \\\\\\\\
+          \\\\\\\\
           \\\\bottomrule
         \\\\end{tabular}
       \\\\end{minipage}
@@ -351,9 +351,9 @@
         \\\\caption{}
         \\\\label{tab:}
         \\\\begin{tabular}{c} \\\\toprule
-           \\\\\\\\
+          \\\\\\\\
           \\\\midrule
-           \\\\\\\\
+          \\\\\\\\
           \\\\bottomrule
         \\\\end{tabular}
       \\\\end{minipage}
@@ -412,6 +412,17 @@
       \\\\end{verbatim}
       \\\\end{screen}
     '''
+  'bibliography':
+    'prefix': 'bibliography'
+    'body':   '''
+      \\\\begin{thebibliography}{9}
+        \\\\bibitem{${1:KEY}} Authors. ``Title''. Publisher. YYYY-MM-DD. p. NN (pp. NN-NN)
+        \\\\bibitem{${2:KEY}} 作者 (YYYY)『Title』出版社 p. NN (pp. NN-NN)
+      \\\\end{thebibliography}
+    '''
+  '\\nonumber':
+    'prefix': 'nonumber'
+    'body':   'nonumber'
 
 # --- ShellScript ---
 '.source.shell':
