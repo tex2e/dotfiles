@@ -420,9 +420,9 @@
         \\\\bibitem{${2:KEY}} 作者 (YYYY)『Title』出版社 p. NN (pp. NN-NN)
       \\\\end{thebibliography}
     '''
-  '\\nonumber':
-    'prefix': 'nonumber'
-    'body':   'nonumber'
+  'math':
+    'prefix': 'math'
+    'body':   '\$${1: }\$'
 
 # --- ShellScript ---
 '.source.shell':
