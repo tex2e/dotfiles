@@ -38,7 +38,7 @@ UNAME := $(shell uname)
 #     do `make <command>` with --force
 #
 
-.PHONY: path path-f alias alias-f bash bash-f zsh zsh-f fish fish-f atom vim git rake rake-f xmodmap xmodmap-f
+.PHONY: path path-f alias alias-f bash bash-f zsh zsh-f fish fish-f atom vim git rake rake-f xmodmap xmodmap-f cygwin cygwin-f
 
 all:
 	@echo
@@ -149,6 +149,15 @@ xmodmap:
 
 xmodmap-f:
 	$(MAKE) xmodmap OPTION='-f'
+
+
+# --- make cygwin ---
+cygwin:
+	ln $(OPTION) -s "$(PWD)/cygwin/.inputrc" "$(HOME)/.inputrc"
+	ln $(OPTION) -s "$(PWD)/cygwin/.minttyrc" "$(HOME)/.minttyrc"
+
+cygwin-f:
+	$(MAKE) cygwin OPTION='-f'
 
 
 ### Development ###
