@@ -129,7 +129,7 @@ endif
 git:
 	ln $(OPTION) -s "$(PWD)/git/.gitconfig" "$(HOME)/.gitconfig"
 	ln $(OPTION) -s "$(PWD)/git/.gitignore_global" "$(HOME)/.gitignore_global"
-	ln $(OPTION) -s $(GIT_CONFIG_ON_EACH_PLATFORM)
+	test "$(GIT_CONFIG_ON_EACH_PLATFORM)" && ln $(OPTION) -s $(GIT_CONFIG_ON_EACH_PLATFORM)
 
 git-f:
 	$(MAKE) git OPTION='-f'
