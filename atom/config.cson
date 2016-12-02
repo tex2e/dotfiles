@@ -15,6 +15,8 @@
     scrollPastEnd: true
     showIndentGuide: true
     showInvisibles: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
   "exception-reporting":
     userId: "23354aaa-7a3b-c22c-e8c0-a6e371e8af70"
   "file-icons": {}
