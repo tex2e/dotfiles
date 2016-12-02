@@ -288,32 +288,6 @@
     'prefix': 'input'
     'body':   '<input type="$1" id="$2" class="$3" value="$4" />'
 
-'.text.html .meta.tag, .text.html .embedded':
-  'id':
-    'prefix': 'id'
-    'body':   'id="$1"'
-  'class':
-    'prefix': 'class'
-    'body':   'class="$1"'
-  'width':
-    'prefix': 'width'
-    'body':   'width="$1"'
-  'height':
-    'prefix': 'height'
-    'body':   'heigh="$1"'
-  'fill':
-    'prefix': 'fill'
-    'body':   'fill="${1:color}"'
-  'opacity':
-    'prefix': 'opacity'
-    'body':   'opacity="${1:0.5}"'
-  'stroke':
-    'prefix': 'stroke'
-    'body':   'stroke="${1:color}"'
-  'stroke width':
-    'prefix': 'stroke-width'
-    'body':   'stroke-width="${1:5}px"'
-
 # --- LaTeX ---
 '.text.tex.latex':
   'table':
@@ -390,21 +364,23 @@
     \\\\end{figure}
     '''
   'code':
-    'prefix': 'code'
+    'prefix': 'make listing'
     'body':   '''
       % ~~~ code
+      \\\\lstset{ numbers = left }
       \\\\begin{lstlisting}[caption=,label=code:${1}]
       $0
       \\\\end{lstlisting}
       % ~~~
     '''
   'code input':
-    'prefix': 'code input'
+    'prefix': 'make listing input'
     'body':   '''
+      \\\\lstset{ numbers = left }
       \\\\lstinputlisting[caption=,label=code:${1}]{${2:program.file}}
     '''
   'screen and verbatim':
-    'prefix': 'output'
+    'prefix': 'make output'
     'body':   '''
       \\\\begin{screen}
       \\\\begin{verbatim}
@@ -413,11 +389,11 @@
       \\\\end{screen}
     '''
   'bibliography':
-    'prefix': 'bibliography'
+    'prefix': 'make bibliography'
     'body':   '''
       \\\\begin{thebibliography}{9}
         \\\\bibitem{${1:KEY}} Authors. ``Title''. Publisher. YYYY-MM-DD. p. NN (pp. NN-NN)
-        \\\\bibitem{${2:KEY}} 作者 (YYYY)『Title』出版社 p. NN (pp. NN-NN)
+        \\\\bibitem{${2:KEY2}} 作者 (YYYY)『Title』出版社 p. NN (pp. NN-NN)
       \\\\end{thebibliography}
     '''
   'math':
