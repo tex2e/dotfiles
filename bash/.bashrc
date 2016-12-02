@@ -2,7 +2,8 @@
 # fix ubuntu keymapping
 case `uname` in
   Linux )
-    which xmodmap &> /dev/null && xmodmap "$HOME/.dotfiles/xmodmap/ubuntu-keymap" > /dev/null
+    which xmodmap &> /dev/null &&
+    xmodmap "$HOME/.dotfiles/xmodmap/ubuntu-keymap" > /dev/null
     ;;
 esac
 
