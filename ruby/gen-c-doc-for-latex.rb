@@ -19,16 +19,16 @@ def gen_doc(file)
     .map do |match|
       document = match[0].gsub(/\n\s*\*\s*/, '').strip
       document = Kramdown::Document.new(document).to_latex
-      m = match[1].match(%r{
+      return_type, function = match[1].match(%r{
         (?<return_type>
           (?:\w+\s){1,}
         )
         (?<function>
           (?:\w+\s?)\([^!@#$+%^]*?\)
         )
-        }x)
-      return_type = (m[1] =~ /^void/) ? nil : m[1]
-      function = m[2]
+        }x).to_a[1,2]
+
+      return_type = nil if return_type.match(/^void/)
 
       item = ""
       if return_type
