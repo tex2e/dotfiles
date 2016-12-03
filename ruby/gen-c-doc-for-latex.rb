@@ -1,4 +1,6 @@
-#!/usr/bin/ruby
+#!/usr/local/bin/ruby
+
+require 'kramdown'
 
 # 1. read source code file
 # 2. extract function declaration and its document
@@ -16,6 +18,7 @@ def gen_doc(file)
       }xm)
     .map do |match|
       document = match[0].gsub(/\n\s*\*\s*/, '').strip
+      document = Kramdown::Document.new(document).to_latex
       m = match[1].match(%r{
         (?<return_type>
           (?:\w+\s){1,}
