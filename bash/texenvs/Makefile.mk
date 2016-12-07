@@ -1,5 +1,6 @@
 
-SHELL = /bin/sh
+SHELL := /bin/sh
+UNAME := $(shell uname)
 .SUFFIXES:
 .SUFFIXES: .pdf .tex .dvi
 
@@ -19,11 +20,11 @@ SHELL = /bin/sh
 # + pdf
 #     create pdf from tex file.
 #
-# + open
-#     create pdf and open it.
-#
 # + punctuation
 #     replace "。" and "、" with "．" and "，"
+#
+# + open
+#     create pdf and open it.
 #
 # + clean
 #     delete all files such as .aux, .log and .dvi that are normally created by running make.
@@ -33,6 +34,9 @@ SHELL = /bin/sh
 #
 # + rebuild
 #     force to build a pdf
+#
+# + test
+#     do test (requires ruby)
 #
 
 # directory composed
@@ -55,17 +59,15 @@ PDF_FILE := $(patsubst %.tex, %.pdf, $(TEX_FILE))
 
 COMPILE_CNT := 1
 
-.PHONY: help init pdf punctuation open clean distclean rebuild
-.SILENT: help
+ifeq ($(UNAME), Linux)
+OPEN := xdg-open
+else
+OPEN := open
+endif
+
+.PHONY: init pdf punctuation open clean distclean rebuild test
 
 all: pdf
-
-help:
-	echo 'make init      - create a directory img/ and write a tmeplate tex file'
-	echo 'make pdf       - create pdf from tex file.'
-	echo 'make open      - create pdf and open it.'
-	echo 'make clean     - remove any temporary products such as .aux, .log and .dvi.'
-	echo 'make distclean - remove any generated file.'
 
 init: OUTPUT = report.tex
 init:
@@ -102,9 +104,6 @@ punctuation: $(TEX_FILE)
 
 open: $(PDF_FILE)
 	open $(PDF_FILE)
-
-xdg-open: $(PDF_FILE)
-	xdg-open $(PDF_FILE)
 
 clean:
 	$(RM) *.{aux,log,dvi,fls}
