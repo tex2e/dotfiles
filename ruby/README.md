@@ -79,7 +79,8 @@ Some explanations about following function.An explanation starts with \texttt{/*
 \item[ \texttt{ reshape(int w, int h) } ]~\\
 This function has no return type.
 
-\item[ \texttt{ time() $\to$ unsigned int  } ]~\\
+\item[ \texttt{ time() $\to$ long long int  } ]~\\
+Though it has long return type, it seems to be okay.
 \end{description}
 ~~~
 
