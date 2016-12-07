@@ -1,0 +1,3 @@
+[submodule "ruby/latex-test"]
+	path = ruby/latex-test
+	url = https://github.com/tex2e/latex-test
