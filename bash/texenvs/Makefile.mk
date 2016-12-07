@@ -115,3 +115,6 @@ distclean: clean
 rebuild:
 	touch $(TEX_FILE)
 	$(MAKE) pdf
+
+test:
+	latex-test $(TEX_FILE)
