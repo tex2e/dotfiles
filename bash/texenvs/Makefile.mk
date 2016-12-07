@@ -14,7 +14,7 @@ SHELL = /bin/sh
 ### Commands
 #
 # + init
-#     create directory images/ and write latex template file.
+#     create directory img/ and write latex template file.
 #
 # + pdf
 #     create pdf from tex file.
@@ -38,7 +38,7 @@ SHELL = /bin/sh
 # directory composed
 #  .
 #  ├── Makefile
-#  ├── images/
+#  ├── img/
 #  ├── report.aux
 #  ├── report.fls
 #  ├── report.log
@@ -61,7 +61,7 @@ COMPILE_CNT := 1
 all: pdf
 
 help:
-	echo 'make init      - create a directory images/ and write a tmeplate tex file'
+	echo 'make init      - create a directory img/ and write a tmeplate tex file'
 	echo 'make pdf       - create pdf from tex file.'
 	echo 'make open      - create pdf and open it.'
 	echo 'make clean     - remove any temporary products such as .aux, .log and .dvi.'
@@ -69,8 +69,8 @@ help:
 
 init: OUTPUT = report.tex
 init:
-	@printf 'creating directory images/ ... '
-	@mkdir images 2>/dev/null && echo 'done' || echo 'file exist'
+	@printf 'creating directory img/ ... '
+	@mkdir img 2>/dev/null && echo 'done' || echo 'file exist'
 
 	@echo 'writing template tex file ... '
 	@echo 'OUTPUT='$(OUTPUT)
