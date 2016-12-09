@@ -338,7 +338,7 @@
     'body':   '''
     \\\\begin{figure}[htbp]
       \\\\centering
-      \\\\includegraphics[scale=${1:1.0}]{${2:image.file}}
+      \\\\includegraphics[scale=${1:1.0}]{img/${2:image}}
       \\\\caption{${3:Caption}}
       \\\\label{fig:${4:Label}}
     \\\\end{figure}$0
@@ -346,20 +346,17 @@
   'figures':
     'prefix': 'make figures'
     'body':   '''
-    \\\\begin{figure}
+    \\\\begin{figure}[htbp]
       \\\\begin{minipage}{0.5\\\\hsize}
-        \\\\begin{center}
-          \\\\includegraphics[scale=1]{}
-        \\\\end{center}
-        \\\\caption{}
-        \\\\label{fig:}
+        \\\\centering
+        \\\\includegraphics[scale=1]{img/image}
+        \\\\caption{Caption}
+        \\\\label{fig:Label}
       \\\\end{minipage}
       \\\\begin{minipage}{0.5\\\\hsize}
-        \\\\begin{center}
-          \\\\includegraphics[scale=1]{}
-        \\\\end{center}
-        \\\\caption{}
-        \\\\label{fig:}
+        \\\\includegraphics[scale=1]{img/image}
+        \\\\caption{Caption}
+        \\\\label{fig:Label}
       \\\\end{minipage}
     \\\\end{figure}
     '''
