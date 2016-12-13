@@ -365,7 +365,7 @@
     'body':   '''
       % ~~~ code
       \\\\lstset{ numbers = left }
-      \\\\begin{lstlisting}[caption=,label=code:${1}]
+      \\\\begin{lstlisting}[caption=Caption,label=code:${1}]
       $0
       \\\\end{lstlisting}
       % ~~~
@@ -374,7 +374,7 @@
     'prefix': 'make listing input'
     'body':   '''
       \\\\lstset{ numbers = left }
-      \\\\lstinputlisting[caption=,label=code:${1}]{${2:program.file}}
+      \\\\lstinputlisting[caption=Caption,label=code:${1}]{${2:file}}
     '''
   'screen and verbatim':
     'prefix': 'make output'
