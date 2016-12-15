@@ -71,6 +71,15 @@
       }
     });'''
 
+# --- Python --
+'.source.python':
+  'print':
+    'prefix': 'print'
+    'body':   'print($0)'
+  'with open':
+    'prefix': 'with open'
+    'body':   'with open("${1:file}") as f:\n\tpass$0'
+
 # --- Ruby --
 '.source.ruby':
   'require':
