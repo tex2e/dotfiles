@@ -1,30 +1,37 @@
 #!/bin/bash -e
 
-# ランダムな一時ファイル名を生成
-filename=`cat /dev/urandom | LC_CTYPE=C tr -dc 'a-z0-9' | head -c 30`
+# create temporary file.
+tmpfile=$(mktemp)
 
-# 標準入力を一時ファイルに保存
-cat > "$filename"
+function rm_tmpfile {
+  [[ -f "$tmpfile" ]] && rm -f "$tmpfile"
+}
+trap rm_tmpfile EXIT
+trap 'trap - EXIT; rm_tmpfile; exit -1' INT PIPE TERM
 
-# 引数がなければウィンドウにプロット
+# Save the data from stdin to tmpfile.
+cat > "$tmpfile"
+
+# Count up data column
+max_column=$(cat "$tmpfile" | head -n 1 | wc -w)
+
+# If arguments aren't given, plot to window.
 if [ $# -eq 0 ]
 then
 
 gnuplot -p <<EOF
-set nokey
-plot '$filename' with line
+unset key
+plot for [col=2:$max_column] '$tmpfile' using 1:col with line
 EOF
 
-# 引数があれば png に出力
+# If arguments aren't given, output png.
 else
 
 gnuplot <<EOF
-set nokey
+unset key
 set terminal png
 set output '$1'
-plot '$filename' with line
+plot for [col=2:$max_column] '$tmpfile' using 1:col with line
 EOF
 
 fi
-
-rm "$filename"
