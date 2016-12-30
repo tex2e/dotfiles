@@ -21,11 +21,58 @@ max_column=$(cat "$tmpfile" | head -n 1 | wc -w)
 # --- Build up gnuplot directives ---
 gnuplot_directives=
 
-if ! [[ $# -eq 0 ]]; then
+for OPT in "$@"
+do
+  case "$OPT" in
+    '--xlabel' )
+      if [[ -z "$2" ]] || [[ "$2" =~ ^-+ ]]; then
+        echo "$PROGNAME: option requires an argument -- $1" 1>&2
+        exit 1
+      fi
+      XLABEL="$2"
+      shift 2
+      ;;
+    '--ylabel' )
+      if [[ -z "$2" ]] || [[ "$2" =~ ^-+ ]]; then
+        echo "$PROGNAME: option requires an argument -- $1" 1>&2
+        exit 1
+      fi
+      YLABEL="$2"
+      shift 2
+      ;;
+    '--' | '-' )
+      shift 1
+      params+=( "$@" )
+      break
+      ;;
+    -*)
+      echo "$PROGNAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
+      exit 1
+      ;;
+    *)
+      if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
+        params+=( "$1" )
+        shift 1
+      fi
+      ;;
+  esac
+done
+
+# whether output png
+if [[ -n "$params" ]]; then
   gnuplot_directives+="set terminal png$NEWLINE"
-  gnuplot_directives+="set output '$1'$NEWLINE"
+  gnuplot_directives+="set output '$params'$NEWLINE"
 fi
 
+# whether set labels
+if [[ -n "$XLABEL" ]]; then
+  gnuplot_directives+="set xlabel '$XLABEL'$NEWLINE"
+fi
+if [[ -n "$YLABEL" ]]; then
+  gnuplot_directives+="set ylabel '$YLABEL'$NEWLINE"
+fi
+
+# whether data has header
 if [[ "$(cat "$tmpfile" | head -n 1 | cut -f 1)" =~ ^[0-9] ]]; then
   # normal plot
   gnuplot_directives+="unset key$NEWLINE"
@@ -34,12 +81,12 @@ if [[ "$(cat "$tmpfile" | head -n 1 | cut -f 1)" =~ ^[0-9] ]]; then
     gnuplot_directives+="'$tmpfile' using 1:$i with lines, "
   done
 else
-  # plot with title
-  titles=$(cat "$tmpfile" | head -n 1)
+  # plot with legend
+  legends=$(cat "$tmpfile" | head -n 1)
   gnuplot_directives+="plot "
   for (( i = 2; i <= $max_column; i++ )); do
-    title=$(echo "$titles" | cut -f $i)
-    gnuplot_directives+="'$tmpfile' using 1:$i with lines title '$title', "
+    legend=$(echo "$legends" | cut -f $i)
+    gnuplot_directives+="'$tmpfile' using 1:$i with lines title '$legend', "
   done
 fi
 
