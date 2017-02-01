@@ -349,7 +349,7 @@
       \\\\centering
       \\\\includegraphics[scale=${1:1.0}]{img/${2:image}}
       \\\\caption{${3:Caption}}
-      \\\\label{fig:${4:Label}}
+      \\\\label{fig:${2:image}}
     \\\\end{figure}$0
     '''
   'figures':
@@ -360,12 +360,12 @@
         \\\\centering
         \\\\includegraphics[scale=1]{img/image}
         \\\\caption{Caption}
-        \\\\label{fig:Label}
+        \\\\label{fig:image}
       \\\\end{minipage}
       \\\\begin{minipage}{0.5\\\\hsize}
         \\\\includegraphics[scale=1]{img/image}
         \\\\caption{Caption}
-        \\\\label{fig:Label}
+        \\\\label{fig:image}
       \\\\end{minipage}
     \\\\end{figure}
     '''
@@ -374,8 +374,8 @@
     'body':   '''
       % ~~~ code
       \\\\lstset{ numbers = left }
-      \\\\begin{lstlisting}[caption=Caption,label=code:${1}]
-      $0
+      \\\\begin{lstlisting}[caption=Caption,label=code:${2}]
+      $1
       \\\\end{lstlisting}
       % ~~~
     '''
