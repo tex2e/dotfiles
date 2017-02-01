@@ -61,6 +61,3 @@ alias npmb='npm run build'
 # vim
 alias bf="cat > ~/.vim/bf"
 alias bfcat="cat ~/.vim/bf"
-
-# macos
-alias sweep='find . -name .DS_Store -type f -delete'
