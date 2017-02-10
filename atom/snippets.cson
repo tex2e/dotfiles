@@ -61,15 +61,6 @@
   'it (BDD)':
     'prefix': 'it'
     'body':   "it('should $1', () => {\n\t$0\n});"
-  'React':
-    'prefix': 'React.createClass'
-    'body':   '''React.createClass({
-      render: function () {
-        return (
-          //$0
-        );
-      }
-    });'''
 
 # --- Python --
 '.source.python':
@@ -296,6 +287,9 @@
   'input':
     'prefix': 'input'
     'body':   '<input type="$1" id="$2" class="$3" value="$4" />'
+  'scriptsrc':
+    'prefix': 'scriptsrc'
+    'body':   '<script src="$1"></script>'
 
 # --- LaTeX ---
 '.text.tex.latex':
