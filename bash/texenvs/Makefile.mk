@@ -98,8 +98,7 @@ pdf: $(PDF_FILE)
 punctuation: $(TEX_FILE)
 	@$(foreach file, $?, \
 		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > tmp~ \
-		&& cat tmp~ > "$(file)"; \
-		rm tmp~; \
+		&& mv tmp~ "$(file)"; \
 	)
 
 open: $(PDF_FILE)
