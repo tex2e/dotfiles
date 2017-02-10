@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Delete .DS_Store under the cwd.
-# Delete extended attribute keys from file in the cwd.
+# Delete .DS_Store
+# Delete extended attribute keys
 
 find . -type f -name .DS_Store -delete
-xattr -c $(ls -l | grep -e '^..........@' | awk '{print $NF}')
+find . -type f -name '*' -exec xattr -c {} +
