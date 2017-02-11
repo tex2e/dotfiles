@@ -379,14 +379,16 @@
       \\\\lstset{ numbers = left }
       \\\\lstinputlisting[caption=Caption,label=code:${1}]{${2:file}}
     '''
-  'screen and verbatim':
+  'output':
     'prefix': 'make output'
     'body':   '''
+      \\\\begin{spacing}{0.8}
       \\\\begin{screen}
       \\\\begin{verbatim}
       $0
       \\\\end{verbatim}
       \\\\end{screen}
+      \\\\end{spacing}
     '''
   'bibliography':
     'prefix': 'make bibliography'
