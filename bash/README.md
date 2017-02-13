@@ -174,6 +174,21 @@ you can push to a tracking remote.
 
 
 
+## git-open(1) -- Open repository's origin site
+
+[code](git-open.sh)
+
+### SYNOPSIS
+
+    git-open
+
+### Description
+
+Open an repository's origin site.
+
+
+
+
 ## git-protocol(1) -- change protocol of git repository's remote
 
 [code](git-protocol.sh)
@@ -207,6 +222,25 @@ Without second argument "remote", set "origin" to remote by default.
     origin	git@github.com:TeX2e/test (fetch)
     origin	git@github.com:TeX2e/test (push)
 
+
+
+
+
+## gnunuplot(1) -- Plot graph with data from stdin
+
+[code](gnunuplot.sh)
+
+### SYNOPSIS
+
+    gnunuplot [--xlabel <label>] [--ylabel <label>] [<output_file>]
+
+### Description
+
+Plot graph with data from stdin
+
+### Usage
+
+    cat foo.dat | gnunuplot foo.png
 
 
 
@@ -271,7 +305,7 @@ you can specify the installed directory.
 
 and also you can specify the sublime build version.
 
-    > install-sublime3 ~/usr/local 3114
+    > install-sublime3 ~/usr/local 3124
 
 
 
@@ -356,6 +390,37 @@ compile C file and execute it.
 contents of PATH, CDPATH, FPATH (zsh function path) and manpath are difficult to
 read because each paths are joined with ":", so split paths into each line and
 show them.
+
+
+
+
+## png-compress(1) -- Compress png files under cwd
+
+[code](png-compress.sh)
+
+### SYNOPSIS
+
+    png-compress [<path/to/dir>]
+
+### Description
+
+Compress png files under current working directory.
+In advance you need to install "pngcrush" command.
+
+
+
+
+## sweep(1) -- Sweep MacOS metadata under cwd (only MacOS)
+
+[code](sweep.sh)
+
+### SYNOPSIS
+
+    sweep [<path/to/dir>]
+
+### Description
+
+Delete .DS_Store and delete extended attribute keys which added to files.
 
 
 
