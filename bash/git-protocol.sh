@@ -36,6 +36,9 @@
 #
 #
 
+# FIXME: this protocol changer supports for only github.com url.
+
+
 function help {
   cat <<EOS
 git-protocol -- protocol protocol of git repository's remote

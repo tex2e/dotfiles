@@ -1,4 +1,22 @@
 #!/bin/bash -e
+#:readme:
+#
+# ## gnunuplot(1) -- Plot graph with data from stdin
+#
+# [code](gnunuplot.sh)
+#
+# ### SYNOPSIS
+#
+#     gnunuplot [--xlabel <label>] [--ylabel <label>] [<output_file>]
+#
+# ### Description
+#
+# Plot graph with data from stdin
+#
+# ### Usage
+#
+#     cat foo.dat | gnunuplot foo.png
+#
 
 NEWLINE='
 '

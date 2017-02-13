@@ -32,7 +32,7 @@
 #
 # and also you can specify the sublime build version.
 #
-#     > install-sublime3 ~/usr/local 3114
+#     > install-sublime3 ~/usr/local 3124
 #
 
 set -e
@@ -40,6 +40,12 @@ set -e
 if [[ "${1}" = '-h' ]] || [[ "${1}" = '--help' ]]; then
   # show usage
   echo "Usage: install-sublime3 [<target> [<build>]]"
+  echo ""
+  echo "Example:"
+  echo ""
+  echo "    install-sublime3 ~/usr/local"
+  echo "    install-sublime3 ~/usr/local 3124"
+  echo ""
   exit
 fi
 

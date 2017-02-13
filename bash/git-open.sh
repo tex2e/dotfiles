@@ -1,10 +1,26 @@
 #!/bin/bash
+#:readme:
 #
-# git-open -- open repository's origin site
+# ## git-open(1) -- Open repository's origin site
+#
+# [code](git-open.sh)
+#
+# ### SYNOPSIS
+#
+#     git-open
+#
+# ### Description
+#
+# Open an repository's origin site.
 #
 
 function usage {
   echo "Usage: git-open [<remote>]"
+}
+
+function encode_to_html {
+  local repo="$(echo $1 | awk -F: '{ print $2 }')"
+  echo "https://github.com/$repo"
 }
 
 case $1 in
@@ -23,10 +39,15 @@ fi
 # set URL
 REMOTE=${1:-origin}
 URL=$(git remote -v | grep "$REMOTE" | awk '{print $2}' | uniq)
-if [[ $URL == git@* ]]; then
+# remove ssh://
+if [[ "$URL" == ssh://* ]]; then
+  URL=$(echo "$URL" | awk -F"//" '{ print $2 }' )
+fi
+# convert git@ to https://
+if [[ "$URL" == git@* ]]; then
   # convert SSH to HTTPS
   URL=$(
-    echo $URL |
+    echo "$URL" |
     sed 's,:,/,' |
     sed 's,git@,https://,')
 fi
