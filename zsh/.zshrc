@@ -56,14 +56,15 @@ zstyle ':completion:*' use-cache true
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
 
-zstyle ':completion:*:ruby:*' file-patterns '*.rb:ruby\ script *(-/):dir'
-zstyle ':completion:*:coffee:*' file-patterns '*.coffee:coffee\ script *(-/):dir'
-zstyle ':completion:*:python:*' file-patterns '*.py:python\ script *(-/):dir'
-zstyle ':completion:*:platex:*' file-patterns '*.tex:tex --kanji=utf8:option *(-/):dir'
-zstyle ':completion:*:dvi*:*' file-patterns '*.dvi:dvi *(-/):dir'
-zstyle ':completion:*:open:*' file-patterns '*.pdf:pdf *(-/):dir' '*:all-files'
+zstyle ':completion:*:ruby:*' file-patterns '*.rb:ruby-script' '*(-/):dir'
+zstyle ':completion:*:coffee:*' file-patterns '*.coffee:coffee-script' '*(-/):dir'
+zstyle ':completion:*:python:*' file-patterns '*.py:python-script' '*(-/):dir'
+zstyle ':completion:*:platex:*' file-patterns '*.tex:tex-file' '*(-/):dir'
+zstyle ':completion:*:dvi*:*' file-patterns '*.dvi:dvi-file' '*(-/):dir'
+zstyle ':completion:*:open:*' file-patterns '*.pdf:pdf-file' '*(-/):dir' '*:all-files'
 zstyle ':completion:*:date:*' fake '+%Y-%m-%d'
-zstyle ':completion:*:subl:*' file-patterns '*.*:files' '*:files'
+zstyle ':completion:*:subl:*' file-patterns '*.*:files' '*:all-files'
+zstyle ':completion:*:perl:*' file-patterns '*.pl:perl-script' '*.p6:perl6-script' '*:all-files'
 
 autoload -Uz compinit && compinit
 ###
