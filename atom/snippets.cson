@@ -296,7 +296,7 @@
   'table':
     'prefix': 'make table'
     'body':   '''
-    \\\\begin{table}[htbp]
+    \\\\begin{table}[H]
       \\\\centering
       \\\\caption{${1:Caption}}
       \\\\label{tab:${2:Label}}
@@ -311,7 +311,7 @@
   'tables':
     'prefix': 'make tables'
     'body':   '''
-    \\\\begin{table}[htbp]
+    \\\\begin{table}[H]
       \\\\begin{minipage}{0.5\\\\hsize}
         \\\\centering
         \\\\caption{}
@@ -339,7 +339,7 @@
   'figure':
     'prefix': 'make figure'
     'body':   '''
-    \\\\begin{figure}[htbp]
+    \\\\begin{figure}[H]
       \\\\centering
       \\\\includegraphics[scale=${1:1.0}]{img/${2:image}}
       \\\\caption{${3:Caption}}
@@ -349,7 +349,7 @@
   'figures':
     'prefix': 'make figures'
     'body':   '''
-    \\\\begin{figure}[htbp]
+    \\\\begin{figure}[H]
       \\\\begin{minipage}{0.5\\\\hsize}
         \\\\centering
         \\\\includegraphics[scale=1]{img/image}
