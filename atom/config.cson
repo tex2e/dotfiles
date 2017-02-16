@@ -46,6 +46,12 @@
 ".makefile.source":
   editor:
     tabLength: 4
+".perl.source":
+  editor:
+    tabLength: 4
+".perl6.source":
+  editor:
+    tabLength: 4
 ".source.swift":
   editor:
     tabLength: 4
