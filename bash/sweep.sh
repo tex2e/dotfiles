@@ -14,5 +14,5 @@
 # Delete .DS_Store and delete extended attribute keys which added to files.
 #
 
-find . -type f -name .DS_Store -delete
-find . -type f -name '*' -exec xattr -c {} +
+find ${1:-.} -type f -name .DS_Store -delete
+find ${1:-.} -type f -name '*' -exec xattr -c {} +
