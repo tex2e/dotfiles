@@ -25,4 +25,4 @@ do
   echo "crushing $png"
   pngcrush -brute "$png" /var/tmp/temp.png
   mv -f /var/tmp/temp.png $png
-done;
+done
