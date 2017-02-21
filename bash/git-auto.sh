@@ -89,9 +89,9 @@ function _sh {
   eval "$*"
 }
 
-is_inside_repo || exit 1
-_sh "git add --all" || exit 1
-_sh "git commit -m \"$(gen_commit_message)\"" || exit 1
+set -e
+is_inside_repo
+_sh "git add --all"
+_sh "git commit -m \"$(gen_commit_message)\""
 test "$PUSH_OPTION" = "yes" &&
-_sh "git push $(get_tracking_remote_name)" || exit 1
-exit 0
+_sh "git push $(get_tracking_remote_name)"

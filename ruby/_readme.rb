@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 #
-# This file is meta description for documentation.
+# This file a is meta description for documentation.
 #
 
 #:readme:
