@@ -293,6 +293,24 @@
 
 # --- LaTeX ---
 '.text.tex.latex':
+  'section':
+    'prefix': 'section'
+    'body':   '''
+      % ==============================================================================
+      \\\\section{Section}
+    '''
+  'subsection':
+    'prefix': 'subsection'
+    'body':   '''
+      % ------------------------------------------------------------------------------
+      \\\\subsection{Section}
+    '''
+  'subsubsection':
+    'prefix': 'subsubsection'
+    'body':   '''
+      % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+      \\\\subsubsection{Section}
+    '''
   'table':
     'prefix': 'make table'
     'body':   '''
@@ -352,19 +370,33 @@
     \\\\begin{figure}[H]
       \\\\begin{minipage}{0.5\\\\hsize}
         \\\\centering
-        \\\\includegraphics[scale=1]{img/image}
+        \\\\includegraphics[scale=1.0]{img/image}
         \\\\caption{Caption}
         \\\\label{fig:image}
       \\\\end{minipage}
       \\\\begin{minipage}{0.5\\\\hsize}
-        \\\\includegraphics[scale=1]{img/image}
+        \\\\includegraphics[scale=1.0]{img/image}
         \\\\caption{Caption}
         \\\\label{fig:image}
       \\\\end{minipage}
     \\\\end{figure}
     '''
+  'rotated figure':
+    'prefix': 'make rotated figure'
+    'body':   '''
+      \\\\begin{figure}[H]
+        \\\\centering
+        \\\\rotatebox{90}{
+          \\\\begin{minipage}[c]{\\\\textheight}
+            \\\\includegraphics[scale=1.0]{img/${2:image}}
+            \\\\caption{Caption}
+            \\\\label{fig:${2:image}}
+          \\\\end{minipage}
+        }
+      \\\\end{figure}
+    '''
   'code':
-    'prefix': 'make listing'
+    'prefix': 'make list'
     'body':   '''
       % ~~~ code
       \\\\lstset{ numbers = left }
@@ -374,7 +406,7 @@
       % ~~~
     '''
   'code input':
-    'prefix': 'make listing input'
+    'prefix': 'make list input'
     'body':   '''
       \\\\lstset{ numbers = left }
       \\\\lstinputlisting[caption=Caption,label=code:${1}]{${2:file}}
