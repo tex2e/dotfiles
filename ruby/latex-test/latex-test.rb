@@ -110,7 +110,10 @@ class TestReportFormat < Test::Unit::TestCase
 
   def test_figure_contains_caption_definition
     @pdf.figures do |fig|
-      assert_match /\\caption{.*?}/, fig, '\\caption is not defined at figure'
+      m = fig.match(/\\caption{(.*?)}/)
+      assert m && m[1], '\\caption is not defined at figure'
+      caption = m[1].strip
+      assert caption.length >= 8, 'caption length must be grater than 8'
     end
   end
 
@@ -136,7 +139,10 @@ class TestReportFormat < Test::Unit::TestCase
 
   def test_table_contains_caption_definition
     @pdf.tables do |tab|
-      assert_match /\\caption{.*?}/, tab, '\\caption is not defined at table'
+      m = tab.match(/\\caption{(.*?)}/)
+      assert m && m[1], '\\caption is not defined at table'
+      caption = m[1].strip
+      assert caption.length >= 8, 'caption length must be grater than 8'
     end
   end
 
@@ -156,18 +162,21 @@ class TestReportFormat < Test::Unit::TestCase
 
   def test_listing_contains_label_definition
     @pdf.listings do |list|
-      assert_match /label=.*?/, list, '\\label is not defined at listing'
+      assert_match /label=./, list, '\\label is not defined at listing'
     end
   end
 
   def test_listing_contains_caption_definition
     @pdf.listings do |list|
-      assert_match /caption=.*?/, list, '\\caption is not defined at listing'
+      m = list.match(/caption=([^,\]]*)/)
+      assert m && m[1], '\\caption is not defined at listing'
+      caption = m[1].strip
+      assert caption.length >= 8, 'caption length must be grater than 8'
     end
   end
 
   def test_wrote_with_section
-    assert !@pdf.sections.empty?
+    assert @pdf.sections.length >= 1
   end
 
   # --- document ---
@@ -185,6 +194,6 @@ class TestReportFormat < Test::Unit::TestCase
   end
 
   def test_should_not_have_hardcorded_serial_numbers
-    assert_no_match /[表図]\d+/, @pdf.document, 'should not have hardcorded serial number(s)'
+    assert_no_match /[表図]\d/, @pdf.document, 'should not have hardcorded serial number(s)'
   end
 end
