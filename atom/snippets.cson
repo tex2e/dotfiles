@@ -17,6 +17,11 @@
 # If you are unfamiliar with CSON, you can read more about it here:
 # https://github.com/bevry/cson#what-is-cson
 
+'.source':
+  'shebang':
+    'prefix': '#'
+    'body':   '#!/usr/bin/env ${0:lang}'
+
 # --- CoffeeScript ---
 '.source.coffee':
   'Atom snippets':
