@@ -27,7 +27,6 @@
 	amend = commit --amend
 	amendm = commit --amend -m
 	ap = add -p
-	auto = "!git-auto"
 	b = branch
 	ba = branch -a
 	# clean merged branches
