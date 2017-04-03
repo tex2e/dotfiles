@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This file is meta description for documentation.
+# This file is a meta description for documentation.
 #
 
 #:readme:

@@ -31,6 +31,29 @@
 #     > extract foo.zip
 #
 
+function help {
+cat <<EOT
+Usage:
+    extract <file>...
+
+unzip file list:
+
+- tar.bz2
+- tar.gz
+- bz2
+- rar
+- gz
+- tar
+- tbz2
+- tgz
+- zip
+- Z
+- 7z
+
+EOT
+exit
+}
+
 for file in $@; do
   if ! [ -f "$file" ]; then
     echo "'$file' is not a valid file"
