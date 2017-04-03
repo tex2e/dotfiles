@@ -15,10 +15,12 @@
 # This implementation is quite simple because it deletes only '\r', to put '\n'.
 #
 
-temfile=`mktemp`
+tmpfile=`mktemp`
 trap "rm $tmpfile; exit 1" 2
 
 for file in $@; do
+  echo -n "converting $file ... "
   tr -d '\r' < "$file" > "$tmpfile"
   mv "$tmpfile" "$file"
+  echo "done"
 done

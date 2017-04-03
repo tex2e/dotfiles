@@ -147,33 +147,6 @@ This is useful for environments which is difficult to install git command.
 
 
 
-## git-auto(1) -- stage && commit [&& push]
-
-[code](git-auto.sh)
-
-### Description
-
-stage all files, and commit with automatically generated message. Optionally
-you can push to a tracking remote.
-
-### SYNOPSIS
-
-    git-auto [push]
-
-### Usage
-
-    > git-auto
-    git add --all
-    git commit -m <message>
-
-    > git-auto push
-    git add --all
-    git commit -m <message>
-    git push <remote> <branch>
-
-
-
-
 ## git-open(1) -- Open repository's origin site
 
 [code](git-open.sh)
