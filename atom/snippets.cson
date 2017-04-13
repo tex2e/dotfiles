@@ -75,6 +75,14 @@
   'with open':
     'prefix': 'with open'
     'body':   'with open("${1:file}") as f:\n\tpass$0'
+  'class':
+    'prefix': 'class'
+    'body':   '''
+      class ${1:Class}:
+      \t"""docstring"""
+      \tdef __init__(self, args):
+      \t\tself.args = args
+    '''
 
 # --- Ruby --
 '.source.ruby':
