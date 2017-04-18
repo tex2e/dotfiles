@@ -8,10 +8,10 @@ export PATH="$PATH:$HOME/.dotfiles/bin"
 export PATH="$PATH:$HOME/local/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/picnic-tools/bin"
-export PATH="$PATH:$HOME/app/git/bin"
 export PATH="$PATH:$HOME/app/node-linux/bin"
 export PATH="$PATH:$HOME/app/vscode-linux/bin"
 export PATH="$PATH:$HOME/app/atom-linux/bin"
+export PATH="$PATH:$HOME/app/slack-linux/usr/bin"
 
 # export FPATH="$FPATH"
 
