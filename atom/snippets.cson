@@ -75,6 +75,14 @@
   'with open':
     'prefix': 'with open'
     'body':   'with open("${1:file}") as f:\n\tpass$0'
+  'class':
+    'prefix': 'class'
+    'body':   '''
+      class ${1:Class}:
+      \t"""docstring"""
+      \tdef __init__(self, args):
+      \t\tself.args = args
+    '''
 
 # --- Ruby --
 '.source.ruby':
@@ -302,19 +310,19 @@
     'prefix': 'section'
     'body':   '''
       % ==============================================================================
-      \\\\section{Section}
+      \\\\section{${1:Section}}
     '''
   'subsection':
     'prefix': 'subsection'
     'body':   '''
       % ------------------------------------------------------------------------------
-      \\\\subsection{Section}
+      \\\\subsection{${1:Section}}
     '''
   'subsubsection':
     'prefix': 'subsubsection'
     'body':   '''
       % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      \\\\subsubsection{Section}
+      \\\\subsubsection{${1:Section}}
     '''
   'table':
     'prefix': 'make table'

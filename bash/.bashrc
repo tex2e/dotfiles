@@ -57,3 +57,6 @@ fi
 mkdircd() {
   command mkdir -p "$1" && cd "$1"
 }
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
