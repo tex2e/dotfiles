@@ -40,7 +40,7 @@
 set -u
 SCRIPT=`basename $0 .sh`
 
-TEXENV_DIR="$HOME/.dotfiles/bash/texenvs"
+TEXENV_DIR=${TEXENV_DIR:-$HOME/.dotfiles/bash/texenvs}
 
 option=${1:-null}
 
