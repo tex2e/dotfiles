@@ -102,7 +102,7 @@ punctuation: $(TEX_FILE)
 	)
 
 open: $(PDF_FILE)
-	open $(PDF_FILE)
+	$(OPEN) $(PDF_FILE)
 
 clean:
 	$(RM) *.{aux,log,dvi,fls}
