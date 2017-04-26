@@ -31,6 +31,9 @@
 ".c.source":
   editor:
     tabLength: 4
+".cpp.source":
+  editor:
+    tabLength: 4
 ".cs.source":
   editor:
     tabLength: 4
