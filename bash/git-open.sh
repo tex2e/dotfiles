@@ -7,7 +7,7 @@
 #
 # ### SYNOPSIS
 #
-#     git-open
+#     git-open [--dry-run] [<remote>]
 #
 # ### Description
 #
@@ -15,41 +15,61 @@
 #
 
 function usage {
-  echo "Usage: git-open [<remote>]"
+  echo "Usage: git-open [--dry-run] [<remote>]"
 }
 
-function encode_to_html {
-  local repo="$(echo $1 | awk -F: '{ print $2 }')"
-  echo "https://github.com/$repo"
-}
-
-case $1 in
-  -h | --help)
-    usage; exit 1;;
-esac
+for OPT in $@; do
+  case "$OPT" in
+    -h | --help )
+      usage
+      exit 1
+      ;;
+    --dry-run)
+      DRY_RUN=1
+      shift 1
+      ;;
+    '--'|'-' )
+      shift 1
+      param+=( "$@" )
+      break
+      ;;
+    -*)
+      echo "$PROGNAME: illegal option -- '$(echo $1 | sed 's/^-*//')'" 1>&2
+      exit 1
+      ;;
+    *)
+      if [[ ! -z "$1" ]] && [[ ! "$1" =~ ^-+ ]]; then
+        param+=( "$1" )
+        shift 1
+      fi
+      ;;
+  esac
+done
 
 # set open command
 which open     &>/dev/null && OPEN=open
 which xdg-open &>/dev/null && OPEN=xdg-open
-if [[ $OPEN == "" ]]; then
+if [[ "$OPEN" == "" ]]; then
   echo "You must install `open` command before running this script."
   exit 1
 fi
 
 # set URL
-REMOTE=${1:-origin}
+REMOTE=${param[0]:-origin}
 URL=$(git remote -v | grep "$REMOTE" | awk '{print $2}' | uniq)
-# remove ssh://
+# convert ssh to https
 if [[ "$URL" == ssh://* ]]; then
-  URL=$(echo "$URL" | awk -F"//" '{ print $2 }' )
-fi
-# convert git@ to https://
-if [[ "$URL" == git@* ]]; then
-  # convert SSH to HTTPS
+  # remove ssh:// and convert git@ to https://
   URL=$(
     echo "$URL" |
+    awk -F"//" '{ print $2 }' |
     sed 's,:,/,' |
-    sed 's,git@,https://,')
+    sed 's,git@,https://,'
+  )
+fi
+# remove authentication (https://username@github.com -> https://github.com)
+if [[ "$URL" == https://*@* ]]; then
+  URL=$(echo "$URL" | sed 's,//.*@,//,')
 fi
 
 if [[ $URL == "" ]]; then
@@ -66,4 +86,6 @@ if [[ $URL != https://* ]] && [[ $URL != http://* ]]; then
 fi
 
 echo "> $OPEN $URL"
-$OPEN "$URL" &>/dev/null
+if [[ "$DRY_RUN" != 1 ]]; then
+  $OPEN "$URL" &>/dev/null
+fi
