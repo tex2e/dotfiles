@@ -383,6 +383,23 @@ In advance you need to install "pngcrush" command.
 
 
 
+## rm-history(1) -- Remove shell history
+
+[code](rm-history.sh)
+
+### SYNOPSIS
+
+    rm-history [<regex>]
+
+### Description
+
+From history,
+- Remove last command if no argument specified.
+- Remove commands mathced given regex.
+
+
+
+
 ## sweep(1) -- Sweep MacOS metadata under cwd (only MacOS)
 
 [code](sweep.sh)
