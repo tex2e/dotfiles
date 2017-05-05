@@ -113,7 +113,7 @@ class TestReportFormat < Test::Unit::TestCase
       m = fig.match(/\\caption{(.*?)}/)
       assert m && m[1], '\\caption is not defined at figure'
       caption = m[1].strip
-      assert caption.length >= 8, 'caption length must be grater than 8'
+      assert caption.length >= 8, "caption \"#{caption}\" length must be grater than 8"
     end
   end
 
@@ -142,7 +142,7 @@ class TestReportFormat < Test::Unit::TestCase
       m = tab.match(/\\caption{(.*?)}/)
       assert m && m[1], '\\caption is not defined at table'
       caption = m[1].strip
-      assert caption.length >= 8, 'caption length must be grater than 8'
+      assert caption.length >= 8, "caption \"#{caption}\" length must be grater than 8"
     end
   end
 
@@ -171,7 +171,7 @@ class TestReportFormat < Test::Unit::TestCase
       m = list.match(/caption=([^,\]]*)/)
       assert m && m[1], '\\caption is not defined at listing'
       caption = m[1].strip
-      assert caption.length >= 8, 'caption length must be grater than 8'
+      assert caption.length >= 8, "caption \"#{caption}\" length must be grater than 8"
     end
   end
 
