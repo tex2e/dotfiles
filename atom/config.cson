@@ -2,6 +2,14 @@
   "autocomplete-plus":
     minimumWordLength: 1
   core:
+    disabledPackages: [
+      "pigments"
+      "language-awk"
+      "language-jade"
+      "language-scala"
+      "language-swift"
+      "script"
+    ]
     telemetryConsent: "limited"
     themes: [
       "atom-dark-ui"
