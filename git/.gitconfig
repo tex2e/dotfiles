@@ -48,6 +48,7 @@
 	ignore = !"f() { local s=$1; shift; \
 		while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
 		curl \"https://www.gitignore.io/api/$s\"; }; f"
+	issue = "!ghi"
 	l = log
 	lp = log -p
 	o = "!git-open"
@@ -72,3 +73,7 @@
 	unstage = reset HEAD --
 	update = "!git pull --prune $@ && git submodule update --init --recursive"
 	wtf = "!git-wtf"
+[github]
+	user = tex2e
+[ghi]
+	token = !security find-internet-password -a tex2e -s github.com -l 'ghi token' -w
