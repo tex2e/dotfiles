@@ -73,6 +73,7 @@
 	unstage = reset HEAD --
 	update = "!git pull --prune $@ && git submodule update --init --recursive"
 	wtf = "!git-wtf"
+	zen = "!zen"
 [github]
 	user = tex2e
 [ghi]
