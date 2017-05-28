@@ -45,7 +45,7 @@ class LaTeX
   end
 
   def sections(&block)
-    @sections ||= @text.scan(/\\section{.*}/)
+    @sections ||= @text.scan(/\\section\*?{.*}/)
     @sections.tap { |array| array.each(&block) if block_given? }
   end
 end
