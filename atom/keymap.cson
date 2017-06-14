@@ -1,0 +1,9 @@
+'body':
+  'delete': 'native!'
+  'ctrl-delete': 'native!'
+  'shift-delete': 'native!'
+  'ctrl-shift-delete': 'native!'
+  'ctrl-h': 'core:backspace'
+  'ctrl-n': 'core:move-down'
+  'ctrl-p': 'core:move-up'
+  'ctrl-b': 'core:move-left'

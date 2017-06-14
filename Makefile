@@ -104,6 +104,7 @@ atom-config:
 	@echo '=== configure atom ==='
 	ln -fs $(HOME)/.dotfiles/atom/snippets.cson $(HOME)/.atom/snippets.cson
 	ln -fs $(HOME)/.dotfiles/atom/config.cson $(HOME)/.atom/config.cson
+	ln -fs $(HOME)/.dotfiles/atom/keymap.cson $(HOME)/.atom/keymap.cson
 
 atom-package:
 	@echo '=== installing atom packages ==='
