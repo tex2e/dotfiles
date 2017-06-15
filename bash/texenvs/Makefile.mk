@@ -50,7 +50,7 @@ UNAME := $(shell uname)
 #  └── report.tex
 #
 
-TEXENV_DIR := "$(HOME)/.dotfiles/bash/texenvs"
+TEXENV_DIR := $(HOME)/.dotfiles/bash/texenvs
 
 TEX := platex -recorder -shell-escape
 
@@ -76,7 +76,7 @@ init:
 
 	@echo 'writing template tex file ... '
 	@echo 'OUTPUT='$(OUTPUT)
-	cp -i $(TEXENV_DIR)/template.tex $(PWD)/$(OUTPUT) || true
+	-cp -i $(TEXENV_DIR)/template.tex $(PWD)/$(OUTPUT)
 
 %.dvi: %.tex
 	@for i in `seq 1 $(COMPILE_CNT)`; do \
