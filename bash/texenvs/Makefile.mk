@@ -71,12 +71,15 @@ all: pdf
 
 init: OUTPUT = report.tex
 init:
-	@printf 'creating directory img/ ... '
-	@mkdir img 2>/dev/null && echo 'done' || echo 'file exist'
-
-	@echo 'writing template tex file ... '
+	@printf 'Creating directory img/ ... '
+	@mkdir img 2>/dev/null \
+	&& echo 'done' || echo 'directory exist'
+	@printf 'Creating redpen configuration ... '
+	@ln -s $(HOME)/.dotfiles/redpen/report-conf.xml report-conf.xml 2>/dev/null \
+	&& echo 'done' || echo 'file exist'
+	@echo 'Writing template tex file ... '
 	@echo 'OUTPUT='$(OUTPUT)
-	-cp -i $(TEXENV_DIR)/template.tex $(PWD)/$(OUTPUT)
+	-cp -i $(TEXENV_DIR)/template.tex $(OUTPUT)
 
 %.dvi: %.tex
 	@for i in `seq 1 $(COMPILE_CNT)`; do \
@@ -116,3 +119,6 @@ rebuild:
 
 test:
 	latex-test $(TEX_FILE)
+
+redpen:
+	redpen -c report-conf.xml $(TEX_FILE) 2>/dev/null
