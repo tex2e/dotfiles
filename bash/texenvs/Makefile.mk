@@ -98,7 +98,7 @@ init:
 
 pdf: $(PDF_FILE)
 
-punctuation: $(TEX_FILE)
+punctuation punc pun: $(TEX_FILE)
 	@$(foreach file, $?, \
 		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > tmp~ \
 		&& mv tmp~ "$(file)"; \
@@ -113,12 +113,12 @@ clean:
 distclean: clean
 	$(RM) $(PDF_FILE)
 
-rebuild:
+rebuild re:
 	touch $(TEX_FILE)
 	$(MAKE) pdf
 
 test:
 	latex-test $(TEX_FILE)
 
-redpen:
+redpen red pen:
 	redpen -c report-conf.xml $(TEX_FILE) 2>/dev/null
