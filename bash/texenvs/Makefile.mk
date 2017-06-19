@@ -74,9 +74,6 @@ init:
 	@printf 'Creating directory img/ ... '
 	@mkdir img 2>/dev/null \
 	&& echo 'done' || echo 'directory exist'
-	@printf 'Creating redpen configuration ... '
-	@ln -s $(HOME)/.dotfiles/redpen/report-conf.xml report-conf.xml 2>/dev/null \
-	&& echo 'done' || echo 'file exist'
 	@echo 'Writing template tex file ... '
 	@echo 'OUTPUT='$(OUTPUT)
 	-cp -i $(TEXENV_DIR)/template.tex $(OUTPUT)
@@ -120,5 +117,10 @@ rebuild re:
 test:
 	latex-test $(TEX_FILE)
 
-redpen red pen:
+redpen red pen: report-conf.xml
 	redpen -c report-conf.xml $(TEX_FILE) 2>/dev/null
+
+report-conf.xml:
+	@printf 'Creating redpen configuration ... '
+	@ln -s $(HOME)/.dotfiles/redpen/report-conf.xml report-conf.xml 2>/dev/null \
+	&& echo 'done' || echo 'file exist'
