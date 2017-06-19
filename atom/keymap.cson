@@ -37,6 +37,7 @@
   'ctrl-shift-delete': 'native!'
 'atom-text-editor':
   'ctrl-i': 'editor:auto-indent'
+  'cmd-i':  'editor:auto-indent'
   'ctrl-n': 'core:move-down'
   'ctrl-p': 'core:move-up'
   'ctrl-b': 'core:move-left'
