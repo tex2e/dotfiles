@@ -43,7 +43,6 @@
   'ctrl-b': 'core:move-left'
   'ctrl-h': 'core:backspace'
   'ctrl-shift-n': 'core:move-to-bottom'
-
-  # 'ctrl-shift-f': 'find-and-replace:show'
-  # 'ctrl-alt-f': 'project-find:show'
-  # 'ctrl-f': 'core:move-right'
+  'ctrl-shift-f': 'find-and-replace:show'
+  'ctrl-alt-f': 'project-find:show'
+  'ctrl-f': 'core:move-right'
