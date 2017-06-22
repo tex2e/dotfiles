@@ -34,6 +34,7 @@
 'body':
   'delete': 'native!'
   'ctrl-delete': 'native!'
+  'shift-delete': 'native!'
   'ctrl-shift-delete': 'native!'
 'atom-text-editor':
   'ctrl-i': 'editor:auto-indent'
