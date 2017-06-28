@@ -21,9 +21,9 @@
 	default = upstream
 [alias]
 	a = add
-	# stages all files (git add -A) except nn-bit executable file
-	aa = "!git add -A --dry-run | cut -d' ' -f 2 | xargs file | grep -v '\\b\\d\\d-bit\\b' | cut -d':' -f 1 | xargs git add"
+	aa = add -A
 	addp = add -p
+	am = commit --amend -m
 	amend = commit --amend
 	amendm = commit --amend -m
 	ap = add -p
@@ -58,8 +58,6 @@
 	ru = remote update
 	rv = remote -v
 	s = status
-	# create savepoint
-	save = "!git add -A && git commit -m \"SAVEPOINT\""
 	showp = show -p
 	ss = status -s
 	sub = submodule
