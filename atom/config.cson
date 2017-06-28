@@ -8,7 +8,6 @@
       "language-jade"
       "language-scala"
       "language-swift"
-      "script"
     ]
     telemetryConsent: "limited"
     themes: [
