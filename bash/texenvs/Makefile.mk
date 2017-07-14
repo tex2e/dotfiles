@@ -92,13 +92,14 @@ init:
 
 %.pdf: %.dvi
 	dvipdfmx -d5 $<
+	test -f title.pdf && pdfunite title.pdf $@ /tmp/$$.pdf && mv /tmp/$$.pdf $@
 
 pdf: $(PDF_FILE)
 
 punctuation punc pun: $(TEX_FILE)
 	@$(foreach file, $?, \
-		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > tmp~ \
-		&& mv tmp~ "$(file)"; \
+		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > /tmp/tmp~ \
+		&& mv /tmp/tmp~ "$(file)"; \
 	)
 
 open: $(PDF_FILE)
