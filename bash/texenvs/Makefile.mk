@@ -80,11 +80,11 @@ init:
 
 %.dvi: %.tex
 	@for i in `seq 1 $(COMPILE_CNT)`; do \
-		yes q | $(TEX) $<; \
+		yes q | head | $(TEX) $<; \
 	done
 	@for i in `seq 1 3`; do \
 		if grep -F 'Rerun to get cross-references right.' $(<:.tex=.log); then \
-			yes q | $(TEX) $<; \
+			yes q | head | $(TEX) $<; \
 		else \
 			exit 0; \
 		fi; \
@@ -92,7 +92,7 @@ init:
 
 %.pdf: %.dvi
 	dvipdfmx -d5 $<
-	test -f title.pdf && pdfunite title.pdf $@ /tmp/$$.pdf && mv /tmp/$$.pdf $@
+	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$.pdf && mv /tmp/$$.pdf $@
 
 pdf: $(PDF_FILE)
 
@@ -119,7 +119,7 @@ test:
 	latex-test $(TEX_FILE)
 
 redpen red pen: report-conf.xml
-	redpen -c report-conf.xml $(TEX_FILE) 2>/dev/null
+	redpen -c report-conf.xml $(TEX_FILE) 2>/dev/null | sed "s,\[[a-zA-Z]\+\],$$(tput setaf 1)&$$(tput sgr0),"
 
 report-conf.xml:
 	@printf 'Creating redpen configuration ... '
