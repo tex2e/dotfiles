@@ -18,7 +18,7 @@
 % \catcode63=\active \def?{\phantom{0}} % ? -> ' '
 % %% ----- programing -----
 % \usepackage{verbatim}
-% \newcommand{\code}[1]{\texttt{#1}}
+% \newcommand{\code}[1]{ \texttt{\detokenize{#1}} }
 % %% --- border ---
 % \usepackage{fancybox, ascmac}
 % %% --- listing ---
