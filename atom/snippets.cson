@@ -413,7 +413,7 @@
     'prefix': 'make list'
     'body':   '''
       % ~~~ code
-      \\\\lstset{ numbers = left }
+      \\\\lstset{ numbers = left, language = c }
       \\\\begin{lstlisting}[caption=Caption,label=code:${2}]
       $1
       \\\\end{lstlisting}
@@ -422,7 +422,7 @@
   'code input':
     'prefix': 'make list input'
     'body':   '''
-      \\\\lstset{ numbers = left }
+      \\\\lstset{ numbers = left, language = c }
       \\\\lstinputlisting[caption=Caption,label=code:${1}]{${2:file}}
     '''
   'output':
