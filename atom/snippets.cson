@@ -250,6 +250,12 @@
       \treturn 0;
       }
     '''
+  '#include <>':
+    'prefix': 'inc'
+    'body':   '#include <$0>'
+  '#include ""':
+    'prefix': 'Inc'
+    'body':   '#include "$0"'
   'if':
     'prefix': 'if'
     'body':   'if (${1:true}) {$0}'
