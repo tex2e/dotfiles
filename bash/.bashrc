@@ -70,6 +70,3 @@ fi
 if [ `uname` = 'Linux' ] && [ -d /mnt/c ]; then
   alias open='~/.dotfiles/bash-on-windows/open.sh'
 fi
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
