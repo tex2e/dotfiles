@@ -1,6 +1,14 @@
 
-# # create .xmodmap file
-# xmodmap -pke > "~/.xmodmap"
+### Bash 4.x Feature ###
+
+if [[ "$BASH_VERSION" =~ ^4\. ]]; then
+  shopt -s globstar
+fi
+
+
+### Key Mapping ###
+
+# xmodmap -pke > "~/.xmodmap"  # create .xmodmap file
 # vim ~/.xmodmap
 #
 #     remove Lock = Caps_Lock
@@ -10,7 +18,6 @@
 if [[ -f "$HOME/.xmodmap" ]]; then
   xmodmap "$HOME/.xmodmap" &> /dev/null
 fi
-
 # fix ubuntu keymapping
 case `uname` in
   Linux )
@@ -41,6 +48,14 @@ case `uname` in
     ;;
 esac
 
+
+### Useful Functions ###
+
+mkdircd() {
+  command mkdir -p "$1" && cd "$1"
+}
+
+
 ### Execute Scripts ###
 
 # Alias
@@ -51,12 +66,10 @@ if [[ -d "$HOME/.rbenv" ]]; then
   eval "$(rbenv init -)"
 fi
 
-
-### Useful Functions ###
-
-mkdircd() {
-  command mkdir -p "$1" && cd "$1"
-}
+# For BoW (Bash on Windows)
+if [ `uname` = 'Linux' ] && [ -d /mnt/c ]; then
+  alias open='~/.dotfiles/bash-on-windows/open.sh'
+fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
