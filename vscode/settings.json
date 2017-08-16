@@ -1,7 +1,8 @@
 {
     "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "vscode-icons",
     "atomKeymap.promptV3Features": true,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.formatOnPaste": true,
-    "window.zoomLevel": 0
+    "editor.tabSize": 2,
+    "window.zoomLevel": 0,
+    "files.insertFinalNewline": true
 }
