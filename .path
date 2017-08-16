@@ -11,9 +11,10 @@ export PATH="$PATH:$HOME/local/bin"
 # export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/git-tools/bin"
 # export PATH="$PATH:$HOME/picnic-tools/bin"
-# export PATH="$PATH:$HOME/app/node-linux/bin"
 export PATH="$PATH:$HOME/app/atom-linux/bin"
 export PATH="$PATH:$HOME/app/slack-linux/usr/bin"
+export PATH="$PATH:/usr/local/heroku/bin"
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # export FPATH="$FPATH"
 
