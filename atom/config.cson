@@ -5,9 +5,7 @@
     automaticallyUpdate: false
     disabledPackages: [
       "pigments"
-      "language-awk"
       "language-jade"
-      "language-scala"
     ]
     telemetryConsent: "limited"
     themes: [
@@ -44,13 +42,22 @@
 ".cs.source":
   editor:
     tabLength: 4
+".fsharp.source":
+  editor:
+    tabLength: 4
 ".gfm.source":
+  editor:
+    tabLength: 4
+".go.source":
   editor:
     tabLength: 4
 ".html.jsp.text":
   editor:
     tabLength: 4
 ".java.source":
+  editor:
+    tabLength: 4
+".kotlin.source":
   editor:
     tabLength: 4
 ".makefile.source":

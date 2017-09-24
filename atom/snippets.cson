@@ -21,6 +21,9 @@
   'shebang':
     'prefix': '#'
     'body':   '#!/usr/bin/env ${0:lang}'
+  'shebang (bash)':
+    'prefix': '#!'
+    'body':   '#!/bin/bash'
 
 # --- CoffeeScript ---
 '.source.coffee':
@@ -42,12 +45,6 @@
   'function':
     'prefix': 'fun'
     'body':   '($1) -> \n\t#$0'
-  'describe (BDD)':
-    'prefix': 'describe'
-    'body':   "describe '${1:desc}', ->\n\t#$0"
-  'it (BDD)':
-    'prefix': 'it'
-    'body':   "it 'should $1', ->\n\t#$0"
 
 # --- JavaScript ---
 '.source.js':
@@ -163,6 +160,15 @@
     'prefix': 'mdoc'
     'body':   '@moduledoc """$0\n"""'
 
+# --- Lisp ---
+'.source.lisp':
+  'defun onliner':
+    'prefix': 'defun:'
+    'body':   '(defun ${1:name} ($2) (${3:body}))'
+  'defun':
+    'prefix': 'defun'
+    'body':   '(defun ${1:name} ($2)\n\t"Documentation"\n\t(${3:body}))'
+
 # --- Swift ---
 '.source.swift':
   'print()':
@@ -174,9 +180,6 @@
   'Function':
     'prefix': 'func'
     'body':   'func ${1:name}() {\n\t${2://}\n}'
-  'Initializer':
-    'prefix': 'init'
-    'body':   'init() {\n\t${1://}\n}'
   'Class':
     'prefix': 'class'
     'body':   'class ${1:name} {\n\t${2://}\n}'
@@ -186,9 +189,6 @@
   'Structure':
     'prefix': 'struct'
     'body':   'struct ${1:name} {\n\t${2://}\n}'
-  'Enumeration':
-    'prefix': 'enum'
-    'body':   'enum ${1:name} {\n\t${2://}\n}'
   'Do-Catch Statement':
     'prefix': 'do'
     'body':   '''
@@ -222,9 +222,6 @@
   'Repeat-While Loop':
     'prefix': 'repeat'
     'body':   'repeat {\n\t${1://}\n} while ${2:condition}'
-  'For Loop':
-    'prefix': 'cfor'
-    'body':   'for ${1:initialization}; ${2:condition}; ${3:incrementer} {\n\t${4://}\n}'
   'For-In Loop':
     'prefix': 'for'
     'body':   'for ${1:i} in ${2:value} {\n\t${3://}\n}'
@@ -237,6 +234,12 @@
   'System.out.println':
     'prefix': 'println'
     'body':   'System.out.println($0);'
+  'if':
+    'prefix': 'if'
+    'body':   'if (${1:true}) {$0}'
+  'while':
+    'prefix': 'while'
+    'body':   'while (${1:true}) {$0}'
 
 # --- C ---
 '.source.c':
