@@ -63,6 +63,9 @@
   'it (BDD)':
     'prefix': 'it'
     'body':   "it('should $1', () => {\n\t$0\n});"
+  'querySelector':
+    'prefix': 'querySelector'
+    'body':   "querySelector('$1')"
 
 # --- Python --
 '.source.python':
