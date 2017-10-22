@@ -20,7 +20,7 @@ if ! which pngcrush &>/dev/null; then
   exit 1
 fi
 
-for png in `find ${1:-.} -name "*.png"`;
+for png in `find "${1:-.}" -iname "*.png"`;
 do
   echo "crushing $png"
   pngcrush -brute "$png" /var/tmp/temp.png
