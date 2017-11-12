@@ -42,6 +42,9 @@
 ".cs.source":
   editor:
     tabLength: 4
+".d.source":
+  editor:
+    tabLength: 4
 ".fsharp.source":
   editor:
     tabLength: 4
