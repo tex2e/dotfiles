@@ -6,6 +6,7 @@
     disabledPackages: [
       "pigments"
       "language-jade"
+      "script"
     ]
     telemetryConsent: "limited"
     themes: [
