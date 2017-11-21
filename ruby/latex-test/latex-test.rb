@@ -148,7 +148,7 @@ class TestReportFormat < Test::Unit::TestCase
 
   def test_table_caption_has_placed_correct_position
     @pdf.tables do |tab|
-      assert_match /\\caption{.*?}.*?\\begin{tabular}/m, tab, 'In table tag, \\caption must be placed behind before \\begin{tabular}'
+      assert_match /\\caption{.*?}.*?\\begin{tabularx?}/m, tab, 'In table tag, \\caption must be placed behind before \\begin{tabular}'
     end
   end
 
