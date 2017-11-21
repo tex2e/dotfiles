@@ -51,7 +51,7 @@ alias tree3='tree -L 3'
 alias tree4='tree -L 4'
 alias tree5='tree -L 5'
 alias gitlog='git log --graph --oneline --all --decorate'
-alias gitlogd="git log --graph --pretty=format:'%C(yellow)%h%Creset%C(red)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gitlogd="git log --graph --pretty=format:'%C(yellow)%h%Creset%C(red)%d%Creset %s %Cgreen(%cr)' --abbrev-commit"
 alias gitlogp="gitlogd -p"
 alias npmls='npm ls --depth 0'
 alias npmlist='npm ls --depth 0'
