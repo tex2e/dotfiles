@@ -351,6 +351,21 @@
       \\\\end{tabular}
     \\\\end{table}$0
     '''
+  'tablex':
+    'prefix': 'make tablex'
+    'body':   '''
+    \\\\begin{table}[H]
+      \\\\centering
+      \\\\caption{${1:Caption}}
+      \\\\label{tab:${2:Label}}
+      \\\\begin{tabularx}{\\\\linewidth}{${3:X}} \\\\toprule
+        $0\\\\\\\\
+        \\\\midrule
+        \\\\\\\\
+        \\\\bottomrule
+      \\\\end{tabularx}
+    \\\\end{table}$0
+    '''
   'tables':
     'prefix': 'make tables'
     'body':   '''
