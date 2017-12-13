@@ -22,7 +22,7 @@
     'prefix': '#'
     'body':   '#!/usr/bin/env ${0:lang}'
   'shebang (bash)':
-    'prefix': '#!'
+    'prefix': 'bash'
     'body':   '#!/bin/bash'
 
 # --- CoffeeScript ---
@@ -469,6 +469,9 @@
       \t#$0
       done
     '''
+  'shebang':
+    'prefix': 'bash'
+    'body':   '#!/bin/bash -u'
 
 # --- Makefile ---
 '.source.makefile':
