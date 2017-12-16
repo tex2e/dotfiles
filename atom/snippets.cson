@@ -394,6 +394,9 @@
       \\\\end{minipage}
     \\\\end{table}
     '''
+  'multicolumn':
+    'prefix': 'make multicolumn'
+    'body':   '\\\\multicolumn{1}{|c|}{$1}'
   'figure':
     'prefix': 'make figure'
     'body':   '''
@@ -436,8 +439,34 @@
         }
       \\\\end{figure}
     '''
-  'code':
+  'tikzpicture':
+    'prefix': 'make figure tikz'
+    'body':   '''
+      \\\\begin{figure}[H]
+        \\\\centering
+        \\\\begin{tikzpicture}
+          $1
+        \\\\end{tikzpicture}
+        \\\\caption{${2:Caption}}
+        \\\\label{fig:${3:Label}}
+      \\\\end{figure}
+    '''
+  'itemize':
     'prefix': 'make list'
+    'body':   '''
+      \\\\begin{itemize}
+        \\\\item $0
+      \\\\end{itemize}
+    '''
+  'enumerate':
+    'prefix': 'make enum'
+    'body':   '''
+      \\\\begin{enumerate}
+        \\\\item $0
+      \\\\end{enumerate}
+    '''
+  'listing':
+    'prefix': 'make code'
     'body':   '''
       % ~~~ code
       \\\\lstset{ numbers = left, language = c }
@@ -446,13 +475,13 @@
       \\\\end{lstlisting}
       % ~~~
     '''
-  'code input':
-    'prefix': 'make list input'
+  'inputlisting':
+    'prefix': 'make code input'
     'body':   '''
       \\\\lstset{ numbers = left, language = c }
       \\\\lstinputlisting[caption=Caption,label=code:${1}]{${2:file}}
     '''
-  'output':
+  'screen':
     'prefix': 'make output'
     'body':   '''
       \\\\begin{spacing}{0.8}
@@ -463,6 +492,17 @@
       \\\\end{screen}
       \\\\end{spacing}
     '''
+  'itembox':
+    'prefix': 'make output caption'
+    'body':   '''
+      \\\\begin{spacing}{0.8}
+      \\\\begin{itembox}[l]{${1:Caption}}
+      \\\\begin{verbatim}
+      $0
+      \\\\end{verbatim}
+      \\\\end{itembox}
+      \\\\end{spacing}
+    '''
   'bibliography':
     'prefix': 'make bibliography'
     'body':   '''
@@ -471,9 +511,20 @@
         \\\\bibitem{${2:KEY2}} 作者 (YYYY)『Title』出版社 p. NN (pp. NN-NN)
       \\\\end{thebibliography}
     '''
-  'math':
-    'prefix': 'math'
-    'body':   '\$${1: }\$'
+  'center':
+    'prefix': 'make align center'
+    'body':   '''
+      \\\\begin{center}
+      $0
+      \\\\end{center}
+    '''
+  'flushright':
+    'prefix': 'make align right'
+    'body':   '''
+      \\\\begin{flushright}
+      $0
+      \\\\end{flushright}
+    '''
 
 # --- ShellScript ---
 '.source.shell':
