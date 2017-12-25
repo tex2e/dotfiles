@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -u
 #:readme:
 #
 # ## color(1) -- ANSI color code cheat sheet

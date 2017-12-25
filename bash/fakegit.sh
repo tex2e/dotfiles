@@ -1,4 +1,30 @@
 #!/usr/bin/env bash
+#:readme:
+#
+# ## fakegit(1) -- Emulating "git clone" with other tools
+#
+# [code](fakegit.sh)
+#
+# ### SYNOPSIS
+#
+#     fakegit clone [-b <branch_name>] <GitHub Repository URL> [<directory>]
+#
+# ### DESCRIPTION
+#
+# The fakegit command provides psuedo "git clone" command only for GitHub repository,
+# which downloads files with curl, or wget.
+# This is useful for environments which is difficult to install git command.
+#
+# ### Usage
+#
+# `fakegit` provides only "clone" command like `git clone`
+#
+#     > fakegit clone https://github.com/hnw/fakegit
+#
+# ### Instant Usage
+#
+#     > bash <(curl -L https://raw.github.com/TeX2e/dotfiles/master/bash/fakegit.sh) clone <URL>
+#
 
 # origin: https://github.com/hnw/fakegit
 
@@ -25,33 +51,6 @@
 # LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-#
-
-#:readme:
-#
-# ## fakegit(1) -- Emulating "git clone" with other tools
-#
-# [code](fakegit.sh)
-#
-# ### SYNOPSIS
-#
-#     fakegit clone [-b <branch_name>] <GitHub Repository URL> [<directory>]
-#
-# ### DESCRIPTION
-#
-# The fakegit command provides psuedo "git clone" command only for GitHub repository,
-# which downloads files with curl, or wget.
-# This is useful for environments which is difficult to install git command.
-#
-# ### Usage
-#
-# `fakegit` provides only "clone" command like `git clone`
-#
-#     > fakegit clone https://github.com/hnw/fakegit
-#
-# ### Instant Usage
-#
-#     > bash <(curl -L https://raw.github.com/TeX2e/dotfiles/master/bash/fakegit.sh) clone <URL>
 #
 
 version="1.0.0"

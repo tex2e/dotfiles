@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -u
 #:readme:
 #
 # ## extract(1) -- unzip file
@@ -53,6 +53,13 @@ unzip file list:
 EOT
 exit
 }
+
+case ${1:-} in
+  "" | -h | --help )
+    help
+    exit
+    ;;
+esac
 
 for file in $@; do
   if ! [ -f "$file" ]; then

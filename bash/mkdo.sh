@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -u
 #:readme:
 #
 # ## mkdo(1) -- Compile C file and Execute
@@ -25,7 +25,7 @@
 # `-e` option can specify the excution options.
 #
 
-function usage() {
+function usage {
   echo "Usage: mkdo <file> [-c '<args>'] [-e '<args>'] [-o]"
   exit 0
 }

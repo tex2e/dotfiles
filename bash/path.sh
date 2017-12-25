@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -u
 #:readme:
 #
 # ## path(1) -- split paths into each line
@@ -17,7 +17,11 @@
 # show them.
 #
 
-case $1 in
+case ${1:-} in
+  -h | --help )
+    echo "Usage: path [fpath | manpath | cdpath]"
+    exit
+    ;;
   -c | -cd | cd | cdpath )
     echo -e ${CDPATH//:/'\n'}
     ;;

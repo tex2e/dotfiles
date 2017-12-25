@@ -74,6 +74,13 @@
 #             └── var/
 #
 
+case ${1:-} in
+  --help )
+    echo "Usage: $(basename $0) [-F] [-L level] [--] [directory]"
+    exit
+    ;;
+esac
+
 export LANG="ja_JP.UTF-8"
 
 INDENT_LEVEL=4

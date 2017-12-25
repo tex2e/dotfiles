@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -u
 #:readme:
 #
 # ## git-protocol(1) -- change protocol of git repository's remote

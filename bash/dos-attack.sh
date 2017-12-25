@@ -1,4 +1,11 @@
-#!/bin/bash
+#!/bin/bash -u
+
+case ${1:-} in
+  "" | -h | --help )
+    echo "Usage: dos-attack <url>"
+    exit
+    ;;
+esac
 
 function access {
   local url=$1

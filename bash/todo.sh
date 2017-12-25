@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -u
 #:readme:
 #
 # ## todo(1) -- A command line todo manager
@@ -48,7 +48,7 @@ Options:
   -m message  add new todo task
   -d lineno   delete todo task
 EOT
-exit 1
+exit
 }
 
 TODO_FILE="$HOME/.todo"
