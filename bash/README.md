@@ -153,7 +153,7 @@ This is useful for environments which is difficult to install git command.
 
 ### SYNOPSIS
 
-    git-open
+    git-open [--dry-run] [<remote>]
 
 ### Description
 
@@ -247,6 +247,21 @@ Plot graph with data from stdin
 
 
 
+## img-compress(1) -- Compress image files under cwd
+
+[code](img-compress.sh)
+
+### SYNOPSIS
+
+    img-compress [<path/to/dir>]
+
+### Description
+
+Compress image files under current working directory.
+
+
+
+
 ## install-sublime3(1) -- install sublime on Ubuntu without sudo/root
 
 [code](install-sublime3.sh)
@@ -323,6 +338,21 @@ if current directory has `js/lib/` or `javascript/lib/` directory, downloads to 
 
 
 
+## link-checker(1) -- Check out broken links
+
+[code](link-checker.sh)
+
+### SYNOPSIS
+
+    link-checker <url>
+
+### Description
+
+Check and list up broken links of given url.
+
+
+
+
 ## mkdo(1) -- Compile C file and Execute
 
 [code](mkdo.sh)
@@ -363,22 +393,6 @@ compile C file and execute it.
 contents of PATH, CDPATH, FPATH (zsh function path) and manpath are difficult to
 read because each paths are joined with ":", so split paths into each line and
 show them.
-
-
-
-
-## png-compress(1) -- Compress png files under cwd
-
-[code](png-compress.sh)
-
-### SYNOPSIS
-
-    png-compress [<path/to/dir>]
-
-### Description
-
-Compress png files under current working directory.
-In advance you need to install "pngcrush" command.
 
 
 
