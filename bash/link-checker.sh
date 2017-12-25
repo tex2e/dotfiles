@@ -14,10 +14,12 @@
 # Check and list up broken links of given url.
 #
 
-if [[ $# != 1 ]]; then
-  echo "Usage: $(basename $0) <url>"
-  exit
-fi
+case ${1:-} in
+  "" | -h | --help )
+    echo "Usage: $(basename $0) <url>"
+    exit
+    ;;
+esac
 
 wget -e robots=off -nd --spider -r "$1" 2>&1 \
   | grep -B 2 '404 Not Found' \

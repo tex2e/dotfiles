@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -u
 #:readme:
 #
 # ## rm-history(1) -- Remove shell history
@@ -15,6 +15,15 @@
 # - Remove last command if no argument specified.
 # - Remove commands mathced given regex.
 #
+
+case ${1:-} in
+  -h | --help )
+    echo "Usage:"
+    echo "  $(basename $0)          # Remove shell history"
+    echo "  $(basename $0) <regex>  # Remove specific word"
+    exit
+    ;;
+esac
 
 function rm_history {
   local history_file

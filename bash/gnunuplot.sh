@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -eu
 #:readme:
 #
 # ## gnunuplot(1) -- Plot graph with data from stdin
@@ -17,6 +17,13 @@
 #
 #     cat foo.dat | gnunuplot foo.png
 #
+
+case ${1:-} in
+  "" | -h | --help )
+    echo "Usage: cat file.dat | gnunuplot [<output-file>]"
+    exit
+    ;;
+esac
 
 NEWLINE='
 '

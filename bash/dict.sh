@@ -19,4 +19,11 @@
 #     dict laconic
 #
 
+case ${1:-} in
+  "" | -h | --help )
+    echo "Usage: dict <word>"
+    exit
+    ;;
+esac
+
 curl "dict://dict.org/d:$1:*" | less
