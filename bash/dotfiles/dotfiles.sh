@@ -16,6 +16,7 @@ This script can run only at "~/.dotfiles"
 HELP
 }
 
+export DOT_HOME="$HOME/.dotfiles"
 export DOT_DIR="$HOME/.dotfiles/bash/dotfiles"
 
 function include {
