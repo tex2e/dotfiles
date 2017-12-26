@@ -173,6 +173,9 @@ doc-bash:
 doc-ruby:
 	LANG=ruby EXT=rb $(MAKE) doc-template
 
+doc-python:
+	LANG=python EXT=py $(MAKE) doc-template
+
 doc-template:
 	@echo "=== creating $(LANG)/README.md ==="
 	cat /dev/null > "$(LANG)/README.md"
