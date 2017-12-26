@@ -72,7 +72,6 @@ function delete {
   echo -n 'done >> '
   sed -n "${1}p" "$TODO_FILE"
   sed -i -e "${1}d" "$TODO_FILE"
-  rm "$TODO_FILE-e"
 }
 
 [[ $# == 0 ]] && list
