@@ -96,7 +96,7 @@ init:
 
 pdf: $(PDF_FILE)
 
-punctuation punc pun: $(TEX_FILE)
+punctuation punc pun: $(TEX_FILE) */*.tex
 	@$(foreach file, $?, \
 		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > /tmp/tmp~ \
 		&& mv /tmp/tmp~ "$(file)"; \
