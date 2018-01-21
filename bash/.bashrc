@@ -44,7 +44,7 @@ case `uname` in
     source ~/.ubuntu.bashrc
     export CC=gcc
     export CXX=g++
-    alias open='xdg-open'
+    alias open='xdg-open 2>/dev/null'
     ;;
 esac
 
