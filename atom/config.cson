@@ -34,6 +34,8 @@
     hideVcsIgnoredFiles: false
   welcome:
     showOnStartup: false
+  wordcount:
+    ignorecode: true
 ".c.source":
   editor:
     tabLength: 4
