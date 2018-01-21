@@ -96,8 +96,12 @@ init:
 
 pdf: $(PDF_FILE)
 
-punctuation punc pun: $(TEX_FILE) */*.tex
+punctuation punc pun: $(TEX_FILE)
 	@$(foreach file, $?, \
+		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > /tmp/tmp~ \
+		&& mv /tmp/tmp~ "$(file)"; \
+	)
+	@$(foreach file, $(wildcard */*.tex), \
 		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > /tmp/tmp~ \
 		&& mv /tmp/tmp~ "$(file)"; \
 	)
