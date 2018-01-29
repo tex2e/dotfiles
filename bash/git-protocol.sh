@@ -135,8 +135,8 @@ if ! is_inside_repo; then
   exit 1
 fi
 
-args_command=$1
-args_remote=$2
+args_command=${1:-}
+args_remote=${2:-}
 
 case $args_command in
   switch )
