@@ -2,8 +2,18 @@
 % the nag package warns you for incorrect latex usage
 
 \documentclass[a4j, titlepage, 10pt]{jsarticle}
+
+% A process to avoid a garbled index of preview app.
+\usepackage{atbegshi}
+\ifnum 42146=\euc"A4A2
+\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+\else
+\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
+\fi
+
 % %% ----- page -----
 \usepackage[utf8]{inputenc} % encoding
+\usepackage{newtxtext, newtxmath}
 \usepackage{setspace} \setstretch{1.1} % set space between the lines
 \usepackage[top=30truemm, bottom=30truemm, left=25truemm, right=25truemm]{geometry} % page margins
 % %% ----- math -----
@@ -49,13 +59,7 @@
 % %% ----- others -----
 % \usepackage{url} % \url{url_path}
 
-% A process to avoid a garbled index of preview app.
-\usepackage{atbegshi}
-\ifnum 42146=\euc"A4A2
-\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
-\else
-\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
-\fi
+% \usepackage{refcheck}
 
 \begin{document}
 % % begin title
