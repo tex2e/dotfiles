@@ -14,8 +14,8 @@
 % %% ----- page -----
 \usepackage[utf8]{inputenc} % encoding
 \usepackage{newtxtext, newtxmath}
-\usepackage{setspace} \setstretch{1.1} % set space between the lines
-\usepackage[top=30truemm, bottom=30truemm, left=25truemm, right=25truemm]{geometry} % page margins
+% \usepackage{setspace} \setstretch{1.1} % set space between the lines
+% \usepackage[top=30truemm, bottom=30truemm, left=25truemm, right=25truemm]{geometry} % page margins
 % %% ----- math -----
 % \usepackage{amsmath, amssymb}
 % \renewcommand{\~}{$\sim$}
@@ -58,10 +58,26 @@
 %   showstringspaces = false,
 %   tabsize = 2
 % }
+% %% ----- refs -----
+% \newcommand{\tabref}[1]{\tablename~\ref{#1}}
+% \newcommand{\equref}[1]{式~(\ref{#1})}
+% \newcommand{\figref}[1]{\figurename~\ref{#1}}
+% \newcommand{\srcref}[1]{ソースコード~\ref{#1}}
 % %% ----- others -----
 % \usepackage{url} % \url{url_path}
+%
+% %% ----- tikz -----
+% \usepackage{tikz}
+% \usetikzlibrary{arrows}
+% \usetikzlibrary{shapes}
+% \usetikzlibrary{backgrounds}
+% \usetikzlibrary{graphs}
 
+% %% ----- dev -----
 % \usepackage{refcheck}
+% \usepackage[disable]{todonotes}
+% \usepackage[textwidth=10cm]{todonotes}
+% \newcommand{\TODO}[1]{\todo[size=\footnotesize]{#1}}
 
 \begin{document}
 % % begin title
