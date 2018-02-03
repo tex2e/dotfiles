@@ -92,7 +92,7 @@ init:
 
 %.pdf: %.dvi
 	dvipdfmx -d5 $<
-	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$.pdf && mv /tmp/$$.pdf $@
+	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@
 
 pdf: $(PDF_FILE)
 
