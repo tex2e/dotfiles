@@ -396,7 +396,7 @@
     '''
   'multicolumn':
     'prefix': 'make multicolumn'
-    'body':   '\\\\multicolumn{1}{|c|}{$1}'
+    'body':   '\\\\multicolumn{1}{c}{$1}'
   'figure':
     'prefix': 'make figure'
     'body':   '''
