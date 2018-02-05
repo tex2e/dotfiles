@@ -2,10 +2,21 @@
 % the nag package warns you for incorrect latex usage
 
 \documentclass[a4j, titlepage, 10pt]{jsarticle}
+% \usepackage{plext} % \pbox<t>{tategaki}
+
+% A process to avoid a garbled index of preview app.
+\usepackage{atbegshi}
+\ifnum 42146=\euc"A4A2
+\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+\else
+\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
+\fi
+
 % %% ----- page -----
 \usepackage[utf8]{inputenc} % encoding
-\usepackage{setspace} \setstretch{1.1} % set space between the lines
-\usepackage[top=30truemm, bottom=30truemm, left=25truemm, right=25truemm]{geometry} % page margins
+\usepackage{newtxtext, newtxmath}
+% \usepackage{setspace} % \setstretch{1.1} % set space between the lines
+% \usepackage[top=30truemm, bottom=30truemm, left=25truemm, right=25truemm]{geometry} % page margins
 % %% ----- math -----
 % \usepackage{amsmath, amssymb}
 % \renewcommand{\~}{$\sim$}
@@ -15,8 +26,9 @@
 % %% ----- table -----
 % \usepackage{booktabs}
 % \usepackage{tabularx}
-% \newcommand{\question}{?}
+% \newcolumntype{Y}{>{\centering\arraybackslash}X}
 % \catcode63=\active \def?{\phantom{0}} % ? -> ' '
+% \usepackage{multirow}
 % %% ----- programing -----
 % \usepackage{verbatim}
 % \newcommand{\code}[1]{ \texttt{\detokenize{#1}} }
@@ -24,12 +36,9 @@
 % \usepackage{fancybox, ascmac}
 % %% --- listing ---
 % \usepackage{ascmac}
-% \usepackage{here}
-% \usepackage{txfonts}
 % \usepackage{listings} %, jlisting}
 % \renewcommand{\lstlistingname}{リスト}
 % \lstset{
-%   language = c,
 %   numbers = left,
 %   stepnumber = 1,
 %   numberstyle = \scriptsize,
@@ -46,16 +55,26 @@
 %   showstringspaces = false,
 %   tabsize = 2
 % }
+% %% ----- refs -----
+% \newcommand{\tabref}[1]{\tablename~\ref{#1}}
+% \newcommand{\equref}[1]{式~(\ref{#1})}
+% \newcommand{\figref}[1]{\figurename~\ref{#1}}
+% \newcommand{\srcref}[1]{プログラムリスト~\ref{#1}}
 % %% ----- others -----
 % \usepackage{url} % \url{url_path}
+%
+% %% ----- tikz -----
+% \usepackage{tikz}
+% \usetikzlibrary{arrows}
+% \usetikzlibrary{shapes}
+% \usetikzlibrary{backgrounds}
+% \usetikzlibrary{graphs}
 
-% A process to avoid a garbled index of preview app.
-\usepackage{atbegshi}
-\ifnum 42146=\euc"A4A2
-\AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
-\else
-\AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
-\fi
+% %% ----- dev -----
+% \usepackage{refcheck}
+% \usepackage[disable]{todonotes}
+% \usepackage[textwidth=10cm]{todonotes}
+% \newcommand{\TODO}[1]{\todo[size=\footnotesize]{#1}}
 
 \begin{document}
 % % begin title

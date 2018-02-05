@@ -92,7 +92,7 @@ init:
 
 %.pdf: %.dvi
 	dvipdfmx -d5 $<
-	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$.pdf && mv /tmp/$$.pdf $@
+	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@
 
 pdf: $(PDF_FILE)
 
@@ -129,3 +129,6 @@ report-conf.xml:
 	@printf 'Creating redpen configuration ... '
 	@ln -s $(HOME)/.dotfiles/redpen/report-conf.xml report-conf.xml 2>/dev/null \
 	&& echo 'done' || echo 'file exist'
+
+jlisting.sty:
+	cp $(TEXENV_DIR)/jlisting.sty .
