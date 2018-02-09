@@ -417,6 +417,7 @@
         \\\\caption{Caption}
         \\\\label{fig:image}
       \\\\end{minipage}
+      %
       \\\\begin{minipage}{0.5\\\\hsize}
         \\\\centering
         \\\\includegraphics[scale=1.0]{img/image}
