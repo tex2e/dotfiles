@@ -38,7 +38,7 @@ UNAME := $(shell uname)
 #     do `make <command>` with --force
 #
 
-.PHONY: path path-f alias alias-f bash bash-f zsh zsh-f fish fish-f atom vim git rake rake-f xmodmap xmodmap-f cygwin cygwin-f
+.PHONY: path alias bash zsh fish atom vim git rake xmodmap cygwin brew
 
 all:
 	@echo
@@ -119,6 +119,7 @@ vim:
 vim-f:
 	$(MAKE) vim OPTION='-f'
 
+
 # --- make git ---
 ifeq ($(UNAME), Darwin)
 GIT_CONFIG_ON_EACH_PLATFORM := "$(PWD)/git/.gitconfig.macos" "$(HOME)/.gitconfig.macos"
@@ -160,6 +161,15 @@ cygwin:
 cygwin-f:
 	$(MAKE) cygwin OPTION='-f'
 
+
+# --- make brew ---
+homebrew: brew
+brew:
+	ln $(OPTION) -s "$(PWD)/brew/Brewfile" "$(HOME)/Brewfile"
+
+homebrew-f: brew-f
+brew-f:
+	$(MAKE) brew OPTION='-f'
 
 ### Development ###
 
