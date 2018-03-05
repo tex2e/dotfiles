@@ -31,7 +31,6 @@ alias ls='ls -F'
 alias la='ls -A'
 alias l.='\ls -d .*'
 alias ll='ls -l'
-alias lal='la -l'
 alias lla='ll -A'
 alias fd='find . -type d -not -path "*/\.*" -name'
 alias ff='find . -type f -not -path "*/\.*" -name'
@@ -41,8 +40,8 @@ alias make4='make -j 4'
 
 # external commands
 alias python='python3'
-alias server='python3 -m http.server &>/dev/null &; printf "localhost:8000\n"'
-alias server2='python2 -m SimpleHTTPServer &>/dev/null &; printf "localhost:8000\n"'
+alias server='python3 -m http.server &>/dev/null &; echo "localhost:8000"'
+alias server2='python2 -m SimpleHTTPServer &>/dev/null &; echo "localhost:8000"'
 alias pip='pip3'
 alias pip-update="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -I{} pip install -U {} || true"
 alias tree='tree -F'
