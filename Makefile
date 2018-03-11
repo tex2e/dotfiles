@@ -163,13 +163,14 @@ cygwin-f:
 
 
 # --- make brew ---
-homebrew: brew
 brew:
 	ln $(OPTION) -s "$(PWD)/brew/Brewfile" "$(HOME)/Brewfile"
+	test -d "$(HOME)/.brew-aliases" || \
+	ln $(OPTION) -s "$(PWD)/brew/.brew-aliases" "$(HOME)/.brew-aliases"
 
-homebrew-f: brew-f
 brew-f:
 	$(MAKE) brew OPTION='-f'
+
 
 ### Development ###
 
