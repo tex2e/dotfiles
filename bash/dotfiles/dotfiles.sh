@@ -7,11 +7,10 @@ SYNOPSIS:
   $(basename $0) link <path/to/script.sh>
 
 Usage:
+This script can run only at "~/.dotfiles".
 
-This script can run only at "~/.dotfiles"
-
-    > dotfiles link bash/foo.sh
-    ✔ create bin/foo -> bash/foo.sh
+SUBCOMMAND:
+$(column <(cut -d '.' -f1 <(ls $DOT_DIR/cmd)))
 
 HELP
 }
@@ -33,7 +32,7 @@ ARGS=()
 while [ $# -gt 0 ]
 do
   case "$1" in
-  --help)
+  --help|-h)
     dotfiles_help
     exit 0
     ;;
