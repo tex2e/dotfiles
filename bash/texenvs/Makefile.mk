@@ -122,13 +122,5 @@ rebuild re:
 test:
 	latex-test $(TEX_FILE)
 
-redpen red pen: report-conf.xml
-	redpen -c report-conf.xml $(TEX_FILE) 2>/dev/null | sed "s,\[[a-zA-Z]\+\],$$(tput setaf 1)&$$(tput sgr0),"
-
-report-conf.xml:
-	@printf 'Creating redpen configuration ... '
-	@ln -s $(HOME)/.dotfiles/redpen/report-conf.xml report-conf.xml 2>/dev/null \
-	&& echo 'done' || echo 'file exist'
-
 jlisting.sty:
 	cp $(TEXENV_DIR)/jlisting.sty .
