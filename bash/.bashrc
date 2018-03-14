@@ -67,6 +67,6 @@ if [[ -d "$HOME/.rbenv" ]]; then
 fi
 
 # For BoW (Bash on Windows)
-if [ `uname` = 'Linux' ] && [ -d /mnt/c ]; then
+if [[ `uname` = 'Linux' ]] && [[ -d /mnt/c ]]; then
   alias open='~/.dotfiles/bash-on-windows/open.sh'
 fi

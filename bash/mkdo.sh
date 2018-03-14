@@ -30,7 +30,7 @@ function usage {
   exit 0
 }
 
-if [ $# -eq 0 ]; then
+if [[ $# -eq 0 ]]; then
   usage
 fi
 
