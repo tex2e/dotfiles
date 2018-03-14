@@ -61,10 +61,23 @@ mkdircd() {
 # Alias
 source ~/.alias
 
+# rbenv settings
 if [[ -d "$HOME/.rbenv" ]]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
+
+# alert command
+case `uname` in
+  Darwin ) # mac os
+    alert() {
+      osascript -e "display notification \"$2\" with title \"$1\""
+    }
+    ;;
+  Linux )
+    alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)"'
+    ;;
+esac
 
 # For BoW (Bash on Windows)
 if [[ `uname` = 'Linux' ]] && [[ -d /mnt/c ]]; then
