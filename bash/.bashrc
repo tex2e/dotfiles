@@ -70,7 +70,7 @@ fi
 # alert command
 case `uname` in
   Darwin ) # mac os
-    alert() {
+    function alert() {
       osascript -e "display notification \"$2\" with title \"$1\""
     }
     ;;
