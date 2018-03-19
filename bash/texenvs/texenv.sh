@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -u
 #:readme:
 #
 # ## texenv(1) -- init LaTeX environment for writing reports
@@ -37,26 +37,11 @@
 #     └── report.tex
 #
 
-set -u
-SCRIPT=`basename $0 .sh`
-
 TEXENV_DIR=${TEXENV_DIR:-$HOME/.dotfiles/bash/texenvs}
 
-option=${1:-null}
-
-if [ $# = 0 ] || [ $option = make ]; then
-  printf 'linking Makefile ... '
-  ln -s "$TEXENV_DIR/Makefile.mk" "$PWD/Makefile" &>/dev/null && \
-  echo 'done' || \
-  echo 'file exists'
-elif [ $option = rake ]; then
-  printf 'linking Rakefile ... '
-  ln -s "$TEXENV_DIR/Rakefile.rb" "$PWD/Rakefile" &>/dev/null && \
-  echo 'done' || \
-  echo 'file exists'
-else
-  echo 'nothing to be done'
-  exit 1
-fi
+printf 'linking Makefile ... '
+ln -s "$TEXENV_DIR/Makefile.mk" "$PWD/Makefile" &>/dev/null && \
+echo 'done' || \
+echo 'file exists'
 
 exit 0
