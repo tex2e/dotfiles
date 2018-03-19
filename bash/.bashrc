@@ -57,6 +57,12 @@ mkdircd() {
 sandbox() {
   mkdircd sandbox
 }
+rmsandbox() {
+  case `pwd` in
+    */sandbox ) cd .. && rm -rf sandbox ;;
+    *         ) echo "rmsandbox: Current dir is not a sandbox!" && return 1 ;;
+  esac
+}
 
 
 ### Execute Scripts ###
