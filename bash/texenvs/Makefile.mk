@@ -72,7 +72,7 @@ all: pdf
 init: OUTPUT = report.tex
 init:
 	@printf 'Creating directory img/ ... '
-	@mkdir img 2>/dev/null \
+	@mkdir img 2>/dev/null && touch img/.keep \
 	&& echo 'done' || echo 'directory exist'
 	@echo 'Writing template tex file ... '
 	@echo 'OUTPUT='$(OUTPUT)
