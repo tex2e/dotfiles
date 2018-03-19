@@ -54,6 +54,9 @@ esac
 mkdircd() {
   command mkdir -p "$1" && cd "$1"
 }
+sandbox() {
+  mkdircd sandbox
+}
 
 
 ### Execute Scripts ###
