@@ -54,6 +54,8 @@ esac
 mkdircd() {
   command mkdir -p "$1" && cd "$1"
 }
+alias mkcd='mkdircd'
+
 sandbox() {
   mkdircd sandbox
 }
