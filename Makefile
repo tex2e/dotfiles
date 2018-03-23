@@ -38,7 +38,7 @@ UNAME := $(shell uname)
 #     do `make <command>` with --force
 #
 
-.PHONY: path alias bash zsh fish atom vim git rake xmodmap cygwin brew
+.PHONY: path alias bash zsh fish atom vim git rake xmodmap cygwin brew gdb
 
 all:
 	@echo
@@ -151,6 +151,12 @@ brew:
 brew-f:
 	$(MAKE) brew OPTION='-f'
 
+
+# --- make gdb ---
+gdb:
+	ln $(OPTION) -s "$(PWD)/misc/.gdbinit" "$(HOME)/.gdbinit"
+gdb-f:
+	$(MAKE) gdb OPTION='-f'
 
 ### Development ###
 
