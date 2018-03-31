@@ -1,16 +1,17 @@
 
 # Brewfile
 
-Install commands via homebrew-bundle
+Install commands written in Brewfile via homebrew-bundle
 
 ```
+cd
 brew bundle
 ```
 
 If you want to update Brewfile, type:
 
 ```
-brew bundle dump --force
+brew bundle dump --force --global
 ```
 
 or this one if brew-aliases is activated

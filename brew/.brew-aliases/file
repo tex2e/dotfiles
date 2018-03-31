@@ -2,5 +2,4 @@
 # alias: brew file
 #:  * `file` [args...]
 #:    `brew file` is an alias for `brew bundle dump --force`
-brew bundle dump --force $*
-
+brew bundle dump --force --global $*
