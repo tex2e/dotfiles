@@ -145,7 +145,7 @@ cygwin-f:
 
 # --- make brew ---
 brew:
-	ln $(OPTION) -s "$(PWD)/brew/Brewfile" "$(HOME)/Brewfile"
+	ln $(OPTION) -s "$(PWD)/brew/.Brewfile" "$(HOME)/.Brewfile"
 	test -d "$(HOME)/.brew-aliases" || \
 	ln $(OPTION) -s "$(PWD)/brew/.brew-aliases" "$(HOME)/.brew-aliases"
 brew-f:
