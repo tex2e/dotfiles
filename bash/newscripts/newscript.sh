@@ -1,9 +1,10 @@
 #!/bin/bash
 
-new_script_name=${1:-template.sh}
+filename=${1:-template.sh}
+scriptname="${filename%.*}"
 
-export NEWSCRIPT_DIR="$HOME/.dotfiles/bash/newscripts"
-export NEWSCRIPT_TEMPLATE="$NEWSCRIPT_DIR/template.sh"
+NEWSCRIPT_DIR="$HOME/.dotfiles/bash/newscripts"
+NEWSCRIPT_TEMPLATE="$NEWSCRIPT_DIR/template.sh"
 
-cp -i "$NEWSCRIPT_TEMPLATE" "$new_script_name"
-chmod +x "$new_script_name"
+cat "$NEWSCRIPT_TEMPLATE" | sed "s/SCRIPTNAME/$scriptname/g" > "$scriptname"
+chmod +x "$scriptname"
