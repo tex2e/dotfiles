@@ -60,7 +60,7 @@ PDF_FILE := $(patsubst %.tex, %.pdf, $(TEX_FILE))
 COMPILE_CNT := 1
 
 ifeq ($(UNAME), Linux)
-OPEN := xdg-open
+OPEN := xdg-open 2>/dev/null
 else
 OPEN := open
 endif
@@ -97,13 +97,13 @@ init:
 pdf: $(PDF_FILE)
 
 punctuation punc pun: $(TEX_FILE)
-	@$(foreach file, $?, \
-		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > /tmp/tmp~ \
-		&& mv /tmp/tmp~ "$(file)"; \
+	$(foreach file, $?, \
+		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > /tmp/$$$$.tex \
+		&& mv /tmp/$$$$.tex "$(file)"; \
 	)
-	@$(foreach file, $(wildcard */*.tex), \
-		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > /tmp/tmp~ \
-		&& mv /tmp/tmp~ "$(file)"; \
+	$(foreach file, $(wildcard */*.tex), \
+		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > /tmp/$$$$.tex \
+		&& mv /tmp/$$$$.tex "$(file)"; \
 	)
 
 open: $(PDF_FILE)
