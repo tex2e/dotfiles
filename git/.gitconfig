@@ -23,6 +23,8 @@
 	a = add
 	aa = add -A
 	addp = add -p
+	ae = commit --allow-empty
+	aem = commit --allow-empty -m
 	am = commit --amend -m
 	amend = commit --amend
 	amendm = commit --amend -m

@@ -65,7 +65,7 @@ validate_url() {
   #  SSH:  git@github.com:*/*.git
   #  Git:  git://github.com/*/*.git
   local valid_url=$(echo "$1" | grep '^\(https://github.com/\|git@github.com:\|git://github.com/\)[^/]*/[^/]*.git$' || true)
-  if [ -z "$valid_url" ]; then
+  if [[ -z "$valid_url" ]]; then
     echo "fakegit: Specified invalid GitHub URL \`$url'" >&2
     exit 1
   fi
@@ -92,9 +92,9 @@ fail() {
 fakegit_clone() {
   local branch_name="master"
 
-  if [ "$1" = "-b" ] || [ "$1" = "--branch" ]; then
+  if [[ "$1" = "-b" ]] || [[ "$1" = "--branch" ]]; then
     branch_name="$2"
-    if [ -z "$branch_name" ] ; then
+    if [[ -z "$branch_name" ]]; then
       fail "switch \`$1' requires a value"
       exit 1
     fi
@@ -103,7 +103,7 @@ fakegit_clone() {
 
   local git_repo="$1"
 
-  if [ -z "$git_repo" ]; then
+  if [[ -z "$git_repo" ]]; then
     echo "usage: $0 clone [-b <branch_name>] <GitHub Repository URL> [<directory>]" >&2
     exit 1
   fi
@@ -119,7 +119,7 @@ fakegit_clone() {
 
   local fetch_command=$(fetch_command "${svn_repo}/tarball/${branch_name}" || true)
   local extract_command="tar xzf - --strip-components 1 -C $dir"
-  if [ -z "$fetch_command" ]; then
+  if [[ -z "$fetch_command" ]]; then
     fail "No download command found.\nPlease install one of \`curl' or \`wget' and try again"
   fi
   mkdir -p "$dir"
@@ -137,7 +137,7 @@ fakegit_help() {
     ;;
   * )
     command_path="$(command -v "fakegit_$1" || true)"
-    if [ -n "$command_path" ]; then
+    if [[ -n "$command_path" ]]; then
       echo "Sorry, the \`$1' command isn't documented yet."
       echo
       echo "You can view the command's source here:"
@@ -156,7 +156,7 @@ case "$command" in
   ;;
 * )
   command_path="$(command -v "fakegit_$command" || true)"
-  if [ -z "$command_path" ]; then
+  if [[ -z "$command_path" ]]; then
     echo "fakegit: Unsupported command \`$command'" >&2
     exit 1
   fi
