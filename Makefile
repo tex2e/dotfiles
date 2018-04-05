@@ -38,7 +38,7 @@ UNAME := $(shell uname)
 #     do `make <command>` with --force
 #
 
-.PHONY: path path-f alias alias-f bash bash-f zsh zsh-f fish fish-f atom vim git rake rake-f xmodmap xmodmap-f cygwin cygwin-f
+.PHONY: path alias bash zsh fish atom vim git rake xmodmap cygwin brew gdb
 
 all:
 	@echo
@@ -49,7 +49,6 @@ all:
 # --- make path ---
 path:
 	ln $(OPTION) -s "$(PWD)/.path" "$(HOME)/.path"
-
 path-f:
 	$(MAKE) path OPTION='-f'
 
@@ -57,7 +56,6 @@ path-f:
 # --- make alias ---
 alias:
 	ln $(OPTION) -s "$(PWD)/.alias" "$(HOME)/.alias"
-
 alias-f:
 	$(MAKE) alias OPTION='-f'
 
@@ -67,7 +65,6 @@ bash: path
 	ln $(OPTION) -s "$(PWD)/bash/.bash_profile" "$(HOME)/.bash_profile"
 	ln $(OPTION) -s "$(PWD)/bash/.bashrc" "$(HOME)/.bashrc"
 	ln $(OPTION) -s "$(PWD)/bash/.ubuntu.bashrc" "$(HOME)/.ubuntu.bashrc"
-
 bash-f: path-f
 	$(MAKE) bash OPTION='-f'
 
@@ -76,7 +73,6 @@ bash-f: path-f
 zsh: bash
 	ln $(OPTION) -s "$(PWD)/zsh/.zshenv" "$(HOME)/.zshenv"
 	ln $(OPTION) -s "$(PWD)/zsh/.zshrc" "$(HOME)/.zshrc"
-
 zsh-f: bash-f
 	$(MAKE) zsh OPTION='-f'
 
@@ -85,7 +81,6 @@ zsh-f: bash-f
 fish: alias
 	ln $(OPTION) -s "$(PWD)/fish/config.fish" "$(HOME)/.config/fish/config.fish"
 	ln $(OPTION) -s "$(PWD)/.alias" "$(HOME)/.config/fish/aliases.fish"
-
 fish-f: alias-f
 	$(MAKE) fish OPTION='-f'
 
@@ -99,13 +94,11 @@ ATOM_PKG_LIST := \
 	minimap-highlight-selected
 
 atom: atom-config atom-package
-
 atom-config:
 	@echo '=== configure atom ==='
 	ln -fs $(HOME)/.dotfiles/atom/snippets.cson $(HOME)/.atom/snippets.cson
 	ln -fs $(HOME)/.dotfiles/atom/config.cson $(HOME)/.atom/config.cson
 	ln -fs $(HOME)/.dotfiles/atom/keymap.cson $(HOME)/.atom/keymap.cson
-
 atom-package:
 	@echo '=== installing atom packages ==='
 	apm install $(ATOM_PKG_LIST)
@@ -115,9 +108,9 @@ atom-package:
 vim:
 	ln $(OPTION) -s "$(PWD)/vim/.vimrc" "$(HOME)/.vimrc"
 	ln $(OPTION) -s "$(PWD)/vim/.vim/" "$(HOME)/.vim"
-
 vim-f:
 	$(MAKE) vim OPTION='-f'
+
 
 # --- make git ---
 ifeq ($(UNAME), Darwin)
@@ -131,23 +124,13 @@ git:
 	ln $(OPTION) -s "$(PWD)/git/.gitconfig" "$(HOME)/.gitconfig"
 	ln $(OPTION) -s "$(PWD)/git/.gitignore_global" "$(HOME)/.gitignore_global"
 	test "$(GIT_CONFIG_ON_EACH_PLATFORM)" && ln $(OPTION) -s $(GIT_CONFIG_ON_EACH_PLATFORM)
-
 git-f:
 	$(MAKE) git OPTION='-f'
-
-
-# --- make rake ---
-rake:
-	ln $(OPTION) -s "$(PWD)/rake/" "$(HOME)/.rake"
-
-rake-f:
-	$(MAKE) rake OPTION='-f'
 
 
 # --- make xmodmap ---
 xmodmap:
 	ln $(OPTION) -s "$(PWD)/xmodmap/.xmodmap" "$(HOME)/.xmodmap"
-
 xmodmap-f:
 	$(MAKE) xmodmap OPTION='-f'
 
@@ -156,26 +139,36 @@ xmodmap-f:
 cygwin:
 	ln $(OPTION) -s "$(PWD)/cygwin/.inputrc" "$(HOME)/.inputrc"
 	ln $(OPTION) -s "$(PWD)/cygwin/.minttyrc" "$(HOME)/.minttyrc"
-
 cygwin-f:
 	$(MAKE) cygwin OPTION='-f'
 
+
+# --- make brew ---
+brew:
+	ln $(OPTION) -s "$(PWD)/brew/.Brewfile" "$(HOME)/.Brewfile"
+	test -d "$(HOME)/.brew-aliases" || \
+	ln $(OPTION) -s "$(PWD)/brew/.brew-aliases" "$(HOME)/.brew-aliases"
+brew-f:
+	$(MAKE) brew OPTION='-f'
+
+
+# --- make gdb ---
+gdb:
+	ln $(OPTION) -s "$(PWD)/misc/.gdbinit" "$(HOME)/.gdbinit"
+gdb-f:
+	$(MAKE) gdb OPTION='-f'
 
 ### Development ###
 
 # --- make doc ---
 
 doc: doc-bash doc-ruby
-
 doc-bash:
 	LANG=bash EXT=sh $(MAKE) doc-template
-
 doc-ruby:
 	LANG=ruby EXT=rb $(MAKE) doc-template
-
 doc-python:
 	LANG=python EXT=py $(MAKE) doc-template
-
 doc-template:
 	@echo "=== creating $(LANG)/README.md ==="
 	cat /dev/null > "$(LANG)/README.md"

@@ -52,42 +52,6 @@ display ANSI Color code sheet (16colors)
 
 
 
-## dict(1) -- a command line dictionary for UNIX
-
-[code](dict.sh)
-
-### SYNOPSIS
-
-    dict <word>
-
-### Description
-
-a command line dictionary for UNIX
-
-### Usage
-
-    dict rudimentary
-    dict laconic
-
-
-
-
-## doc2unix(1) -- convert CRLF to LF
-
-[code](dos2unix.sh)
-
-### SYNOPSIS
-
-    doc2unix <file>...
-
-### Description
-
-`doc2unix` convert line breaks as CRLF to LF in the file(s).
-This implementation is quite simple because it deletes only '\r', to put '\n'.
-
-
-
-
 ## extract(1) -- unzip file
 
 [code](extract.sh)
@@ -199,25 +163,6 @@ Without second argument "remote", set "origin" to remote by default.
 
 
 
-## gnunuplot(1) -- Plot graph with data from stdin
-
-[code](gnunuplot.sh)
-
-### SYNOPSIS
-
-    gnunuplot [--xlabel <label>] [--ylabel <label>] [<output_file>]
-
-### Description
-
-Plot graph with data from stdin
-
-### Usage
-
-    cat foo.dat | gnunuplot foo.png
-
-
-
-
 ## htmlenv(1) -- init html environment
 
 [code](htmlenvs/htmlenv.sh)
@@ -258,97 +203,6 @@ Plot graph with data from stdin
 ### Description
 
 Compress image files under current working directory.
-
-
-
-
-## install-sublime3(1) -- install sublime on Ubuntu without sudo/root
-
-[code](install-sublime3.sh)
-
-### SYNOPSIS
-
-    install-sublime3 [<target> [<build>]]
-
-- `target`    Default target is "/usr/local".
-- `build`     build version. If not defined, tries to get the build into the
-              Sublime Text 3 website.
-
-### Description
-
-install sublime on Ubuntu without sudo/root.
-
-**Note: this script only runs on Ubuntu.**
-
-### Usage
-
-`install-sublime3` installs sublime text 3.
-the sublime is installed to
-
-    > install-sublime3
-
-you can specify the installed directory.
-
-    > install-sublime3 ~/usr/local
-
-and also you can specify the sublime build version.
-
-    > install-sublime3 ~/usr/local 3124
-
-
-
-
-## jslib(1) -- javascript library install tool via shell script
-
-[code](jslibs/jslib.sh)
-
-### SYNOPSIS
-
-    jslib install <library>
-
-### Description
-
-install javascript library via shell script.
-
-### Usage
-
-`jslib` downloads a specified javascript library.
-
-    > jslib install jquery
-    install to path/to/dir/jquery-2.2.1.min.js
-
-if current directory has `js/lib/` or `javascript/lib/` directory, downloads to there.
-
-    > tree
-    .
-    └── javascript/
-        └── lib/
-
-    > jslib install jquery
-    install to path/to/dir/javascript/lib/jquery-2.2.1.min.js
-
-### settings
-
-`bash/jslibs/settings.yml` has javascript library URLs.
-
-    lib:
-      jquery: http://code.jquery.com/jquery-2.2.1.min.js
-      underscore: http://underscorejs.org/underscore-min.js
-
-
-
-
-## link-checker(1) -- Check out broken links
-
-[code](link-checker.sh)
-
-### SYNOPSIS
-
-    link-checker <url>
-
-### Description
-
-Check and list up broken links of given url.
 
 
 
@@ -577,21 +431,5 @@ when a symbolic link is encountered, the format is like `name -> real-path`
         └── 2.2.3-1/
             ├── usr/
             └── var/
-
-
-
-
-## vipe(1) -- edit pipe
-
-[code](vipe.sh)
-
-### SYNOPSIS
-
-    command | vipe | command
-
-### DESCRIPTION
-
-vipe allows you to run your editor in the middle of a unix pipeline
-edit the data that is being piped between programs.
 
 
