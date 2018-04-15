@@ -22,26 +22,22 @@
 #     origin	http://github.com/TeX2e/test (fetch)
 #     origin	http://github.com/TeX2e/test (push)
 #
+#     > git protocol origin
+#      ✔ Change origin URL...OK
+#     new remote:
+#     origin	git@github.com:TeX2e/test (fetch)
+#     origin	git@github.com:TeX2e/test (push)
+#
 #     > git protocol secure origin
 #      ✔ Change origin URL...OK
 #     new remote:
 #     origin	https://github.com/TeX2e/test (fetch)
 #     origin	https://github.com/TeX2e/test (push)
 #
-#     > git protocol switch origin
-#      ✔ Change origin URL...OK
-#     new remote:
-#     origin	git@github.com:TeX2e/test (fetch)
-#     origin	git@github.com:TeX2e/test (push)
-#
-#
-
-# FIXME: this protocol changer supports for only github.com url.
-
 
 function help {
   cat <<EOS
-git-protocol -- protocol protocol of git repository's remote
+git-protocol -- change protocol of git repository's remote
 
 Usage:
   git-protocol [command] [remote]
@@ -91,17 +87,14 @@ function switch_remote_access_way {
 
   case $(get_remote_access_way "$origin") in
     "http" )
-      repo="$(git config remote."$origin".url | awk -F// '{ print $2 }' | sed -e 's,github.com/,github.com:,g')"
+      repo=$(git config remote."$origin".url | awk -F// '{ print $2 }' | sed -e 's,.com/,.com:,')
       new_remote_url="git@$repo"
       ;;
     "ssh" )
-      repo="$(git config remote."$origin".url | awk -F: '{ print $2 }')"
-      new_remote_url="https://github.com/$repo"
+      repo=$(git config remote."$origin".url | awk -F@ '{ print $2 }' | sed -e 's,.com:,.com/,')
+      new_remote_url="https://$repo"
       ;;
   esac
-
-  # echo $repo
-  # echo $new_remote_url
 
   if git remote set-url "$origin" "$new_remote_url"; then
     success "Change $origin URL"
@@ -139,7 +132,7 @@ args_command=${1:-}
 args_remote=${2:-}
 
 case $args_command in
-  switch )
+  switch | "")
     switch_remote_access_way "${args_remote:-origin}" ;;
   secure )
     set_secure_protocol "${args_remote:-origin}" ;;
