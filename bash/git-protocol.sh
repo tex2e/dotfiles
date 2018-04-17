@@ -87,12 +87,39 @@ function switch_remote_access_way {
 
   case $(get_remote_access_way "$origin") in
     "http" )
-      repo=$(git config remote."$origin".url | awk -F// '{ print $2 }' | sed -e 's,.com/,.com:,')
-      new_remote_url="git@$repo"
+      # Current URL is one of the following:
+      #   1. https://tex2e@bitbucket.org/tex2e/repo.git
+      #   2. https://bitbucket.org/tex2e/repo.git
+      #   3. https://tex2e@github.com/tex2e/repo.git
+      #   4. https://github.com/tex2e/repo.git
+      repo=$(git config remote."$origin".url | awk -F// '{ print $2 }' | sed -E 's,\.(com|org)/,\.\1:,')
+      # Check if URL contains username.
+      if echo "$repo" | grep '@' &> /dev/null; then
+        user=$(echo $repo | cut -d@ -f1)
+        repo=$(echo $repo | cut -d@ -f2)
+        # Create a string like "git@bitbucket.org:tex2e/repo.git"
+        new_remote_url="git@$repo"
+      else
+        # Create a string like "git@bitbucket.org/repo.git"
+        new_remote_url="git@$repo"
+      fi
       ;;
     "ssh" )
-      repo=$(git config remote."$origin".url | awk -F@ '{ print $2 }' | sed -e 's,.com:,.com/,')
-      new_remote_url="https://$repo"
+      # Current URL is one of the following:
+      #   1. git@bitbucket.org:tex2e/repo.git
+      #   2. git@bitbucket.org/repo.git
+      #   3. git@github.com:tex2e/repo.git
+      #   4. git@github.com/repo.git
+      repo=$(git config remote."$origin".url | awk -F@ '{ print $2 }' | sed -E 's,\.(com|org):,\.\1/,')
+      # Check if URL contains username.
+      if echo "$repo" | grep ':' &> /dev/null; then
+        user=$(echo $repo | grep -oE ':[^/]+' | cut -c2-)
+        # Create a string like "https://tex2e@bitbucket.org/tex2e/repo.git"
+        new_remote_url="https://$user@$repo"
+      else
+        # Create a string like "https://bitbucket.org/tex2e/repo.git"
+        new_remote_url="https://$repo"
+      fi
       ;;
   esac
 
