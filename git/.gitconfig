@@ -23,8 +23,6 @@
 	a = add
 	aa = add -A
 	addp = add -p
-	ae = commit --allow-empty
-	aem = commit --allow-empty -m
 	am = commit --amend -m
 	amend = commit --amend
 	amendm = commit --amend -m
@@ -42,6 +40,8 @@
 	d = diff
 	dc = diff --cached
 	dt = diff HEAD^ HEAD
+	empty = commit --allow-empty
+	emptym = commit --allow-empty -m
 	f = fetch
 	fa = fetch --all
 	fp = fetch --prune
