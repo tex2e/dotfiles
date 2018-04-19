@@ -15,6 +15,7 @@
 #
 
 import sys
+import codecs
 import urllib.parse
 
 import argparse
@@ -30,7 +31,8 @@ def main(args):
     if args.operator == 'decode':
         print(urllib.parse.unquote(args.string))
     else:
-        print(urllib.parse.quote(args.string))
+        string = codecs.escape_decode(args.string.encode())[0]
+        print(urllib.parse.quote(string))
 
 if __name__ == '__main__':
     main(args)
