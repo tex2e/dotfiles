@@ -53,7 +53,7 @@ done
 
 test "$SUBCOMMAND" = ""  && dotfiles_help && exit 0
 
-if ! [[ "$PWD" = "$HOME/.dotfiles" ]]; then
+if [[ "$PWD" != "$HOME/.dotfiles" ]] && [[ "$SUBCOMMAND" != update ]]; then
   echo "$(basename $0) can run only at \"~/.dotfiles\""
   echo 'Before run this, type following.'
   echo '    cd ~/.dotfiles'
