@@ -14,6 +14,7 @@
 # unzip file which support as follows.
 # - tar.bz2
 # - tar.gz
+# - tar.xz
 # - bz2
 # - rar
 # - gz
@@ -54,6 +55,8 @@ EOT
 exit
 }
 
+exe() { echo "\$ $@"; "$@"; }
+
 case ${1:-} in
   "" | -h | --help )
     help
@@ -68,17 +71,18 @@ for file in $@; do
   fi
 
   case "$file" in
-    *.tar.bz2) tar xjf "$file"     ;;
-    *.tar.gz)  tar xzf "$file"     ;;
-    *.bz2)     bunzip2 "$file"     ;;
-    *.rar)     unrar e "$file"     ;;
-    *.gz)      gunzip "$file"      ;;
-    *.tar)     tar xf "$file"      ;;
-    *.tbz2)    tar xjf "$file"     ;;
-    *.tgz)     tar xzf "$file"     ;;
-    *.zip)     unzip "$file"       ;;
-    *.Z)       uncompress "$file"  ;;
-    *.7z)      7z x "$file"        ;;
+    *.tar.bz2) exe tar xjf "$file"     ;;
+    *.tar.gz)  exe tar xzf "$file"     ;;
+    *.tar.xz)  exe tar xf  "$file"     ;;
+    *.bz2)     exe bunzip2 "$file"     ;;
+    *.rar)     exe unrar e "$file"     ;;
+    *.gz)      exe gunzip "$file"      ;;
+    *.tar)     exe tar xf "$file"      ;;
+    *.tbz2)    exe tar xjf "$file"     ;;
+    *.tgz)     exe tar xzf "$file"     ;;
+    *.zip)     exe unzip "$file"       ;;
+    *.Z)       exe uncompress "$file"  ;;
+    *.7z)      exe 7z x "$file"        ;;
     *) echo "'$file' cannot be extracted via extract()" ;;
   esac
 done
