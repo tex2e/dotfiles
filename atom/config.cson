@@ -7,6 +7,7 @@
       "pigments"
       "language-jade"
       "script"
+      "language-gfm"
     ]
     telemetryConsent: "limited"
     themes: [
@@ -25,6 +26,8 @@
   "exception-reporting":
     userId: "23354aaa-7a3b-c22c-e8c0-a6e371e8af70"
   "file-icons": {}
+  "markdown-preview":
+    liveUpdate: false
   minimap:
     plugins:
       "highlight-selected": true
