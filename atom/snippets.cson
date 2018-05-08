@@ -527,6 +527,12 @@
       \\\\end{flushright}
     '''
 
+# --- Markdown ---
+'.text.md':
+  'code':
+    'prefix': 'code'
+    'body':   '```$1\n$0\n```'
+
 # --- ShellScript ---
 '.source.shell':
   'forin':
