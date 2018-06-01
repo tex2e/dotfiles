@@ -28,9 +28,6 @@ UNAME := $(shell uname)
 # + git
 #     create git config
 #
-# + rake
-#     create ~/.rake directory and create global rakefile
-#
 # + xmodmap
 #     create xmodmap config
 #
@@ -38,7 +35,7 @@ UNAME := $(shell uname)
 #     do `make <command>` with --force
 #
 
-.PHONY: path alias bash zsh fish atom vim git rake xmodmap cygwin brew gdb
+.PHONY: path alias bash zsh fish atom vim git xmodmap cygwin brew gdb
 
 all:
 	@echo
