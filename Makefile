@@ -58,11 +58,11 @@ alias-f:
 
 
 # --- make bash ---
-bash: path
+bash: alias path
 	ln $(OPTION) -s "$(PWD)/bash/.bash_profile" "$(HOME)/.bash_profile"
 	ln $(OPTION) -s "$(PWD)/bash/.bashrc" "$(HOME)/.bashrc"
 	ln $(OPTION) -s "$(PWD)/bash/.ubuntu.bashrc" "$(HOME)/.ubuntu.bashrc"
-bash-f: path-f
+bash-f: alias-f path-f
 	$(MAKE) bash OPTION='-f'
 
 
