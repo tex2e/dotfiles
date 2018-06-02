@@ -66,4 +66,6 @@ alias bfcat="cat ~/.vim/bf"
 
 #
 alias c="cd ~/ctf/workspace; vagrant ssh"
+alias cup="cd ~/ctf/workspace; vagrant up"
+alias rp="rp++"
 alias install-linuxbrew='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
