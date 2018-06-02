@@ -42,10 +42,8 @@ alias egrep='egrep --color=auto'
 alias make4='make -j 4'
 
 # external commands
-alias python='python3'
 alias server='python3 -m http.server &>/dev/null &; echo "localhost:8000"'
 alias server2='python2 -m SimpleHTTPServer &>/dev/null &; echo "localhost:8000"'
-alias pip='pip3'
 alias pip-update="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -I{} pip install -U {} || true"
 alias tree='tree -F'
 alias tree1='tree -L 1'
@@ -65,3 +63,7 @@ alias npmb='npm run build'
 # vim
 alias bf="cat > ~/.vim/bf"
 alias bfcat="cat ~/.vim/bf"
+
+#
+alias c="cd ~/ctf/workspace; vagrant ssh"
+alias install-linuxbrew='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
