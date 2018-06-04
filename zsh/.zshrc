@@ -12,7 +12,7 @@ fi
 HISTSIZE=1000
 HISTFILE="$HOME/.zsh_history"
 SAVEHIST=1000
-PROMPT=$'%(2L.#%L .)%1~ %{$fg[cyan]%}%#%{$reset_color%} '
+PROMPT=$'%m%(2L.#%L.) %1~ %{$fg[cyan]%}%#%{$reset_color%} '
 
 # Set Shell options
 setopt always_last_prompt
