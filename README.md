@@ -1,7 +1,7 @@
 # dotfiles
 
 This is a repository with my configuration files.
-"Easy to deploy, maintain and develop" is my motto.
+
 
 Requirements
 -------------
@@ -41,7 +41,6 @@ Structure
     ├── fish/              # fish settings
     ├── git/               # git setting files
     ├── python/            # python scripts
-    ├── rake/              # global rakefiles
     ├── ruby/              # ruby scripts
     ├── sublime/           # sublime packages
     ├── vim/               # vim settings
@@ -80,9 +79,6 @@ Rules:
 
 + `git`
     create git settings
-
-+ `rake`
-    create ~/.rake directory and set global rakefile
 
 + `xmodmap`
     create xmodmap config

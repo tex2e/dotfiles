@@ -28,9 +28,6 @@ UNAME := $(shell uname)
 # + git
 #     create git config
 #
-# + rake
-#     create ~/.rake directory and create global rakefile
-#
 # + xmodmap
 #     create xmodmap config
 #
@@ -38,7 +35,7 @@ UNAME := $(shell uname)
 #     do `make <command>` with --force
 #
 
-.PHONY: path alias bash zsh fish atom vim git rake xmodmap cygwin brew gdb
+.PHONY: path alias bash zsh fish atom vim git xmodmap cygwin brew gdb
 
 all:
 	@echo
@@ -61,11 +58,11 @@ alias-f:
 
 
 # --- make bash ---
-bash: path
+bash: alias path
 	ln $(OPTION) -s "$(PWD)/bash/.bash_profile" "$(HOME)/.bash_profile"
 	ln $(OPTION) -s "$(PWD)/bash/.bashrc" "$(HOME)/.bashrc"
 	ln $(OPTION) -s "$(PWD)/bash/.ubuntu.bashrc" "$(HOME)/.ubuntu.bashrc"
-bash-f: path-f
+bash-f: alias-f path-f
 	$(MAKE) bash OPTION='-f'
 
 
