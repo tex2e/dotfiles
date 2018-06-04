@@ -14,40 +14,14 @@ UNAME := $(shell uname)
 
 ### Commands
 #
-# + init
-#     create directory img/ and write latex template file.
-#
-# + pdf
-#     create pdf from tex file.
-#
-# + punctuation
-#     replace "。" and "、" with "．" and "，"
-#
-# + open
-#     create pdf and open it.
-#
-# + clean
-#     delete all files such as .aux, .log and .dvi that are normally created by running make.
-#
-# + distclean
-#     delete all generated file (including .pdf).
-#
-# + rebuild
-#     force to build a pdf
-#
-# + test
-#     do test (requires ruby)
-#
-
-# directory composed
-#  .
-#  ├── Makefile
-#  ├── img/
-#  ├── report.aux
-#  ├── report.fls
-#  ├── report.log
-#  ├── report.pdf
-#  └── report.tex
+# + init: create directory img/ and write latex template file.
+# + pdf: create pdf from tex file.
+# + punctuation: replace "。" and "、" with "．" and "，"
+# + open: create pdf and open it.
+# + clean: delete all files such as .aux, .log and .dvi that are normally created by running make.
+# + distclean: delete all generated file (including .pdf).
+# + rebuild: force to build a pdf
+# + test: do test (requires ruby)
 #
 
 TEXENV_DIR := $(HOME)/.dotfiles/bash/texenvs
@@ -62,7 +36,11 @@ COMPILE_CNT := 1
 ifeq ($(UNAME), Linux)
 OPEN := xdg-open 2>/dev/null
 else
+ifeq ($(UNAME), Darwin)
+OPEN := evince
+else
 OPEN := open
+endif
 endif
 
 .PHONY: init pdf punctuation open clean distclean rebuild test
@@ -107,7 +85,7 @@ punctuation punc pun: $(TEX_FILE)
 	)
 
 open: $(PDF_FILE)
-	$(OPEN) $(PDF_FILE)
+	$(OPEN) $(PDF_FILE) &
 
 clean:
 	$(RM) *.{aux,log,dvi,fls}
