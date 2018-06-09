@@ -16,6 +16,7 @@
 \usepackage[utf8]{inputenc} % encoding
 \usepackage{otf}
 \usepackage{newtxtext, newtxmath}
+\renewcommand{\thefootnote}{(\arabic{footnote})} % footnote
 % \usepackage{setspace} % \setstretch{1.1} % set space between the lines
 % \usepackage[top=30truemm, bottom=30truemm, left=25truemm, right=25truemm]{geometry} % page margins
 % %% ----- math -----
@@ -27,9 +28,8 @@
 % \usepackage[dvipdfmx, hiresbb]{graphicx}
 % %% ----- table -----
 % \usepackage{booktabs}
-% \usepackage{tabularx}
-% \newcolumntype{Y}{>{\centering\arraybackslash}X}
 % \catcode63=\active \def?{\phantom{0}} % ? -> ' '
+% \usepackage{tabularx} \newcolumntype{Y}{>{\centering\arraybackslash}X}
 % \usepackage{multirow}
 % %% ----- programing -----
 % \usepackage{verbatim}
@@ -50,18 +50,16 @@
 %   tabsize = 2
 % }
 % %% ----- refs -----
-% \newcommand{\tabref}[1]{\tablename~\ref{#1}}
-% \newcommand{\equref}[1]{式~(\ref{#1})}
-% \newcommand{\figref}[1]{\figurename~\ref{#1}}
-% \newcommand{\srcref}[1]{プログラムリスト~\ref{#1}}
+\newcommand{\tabref}[1]{\tablename~\ref{#1}}
+\newcommand{\equref}[1]{式~(\ref{#1})}
+\newcommand{\figref}[1]{\figurename~\ref{#1}}
+\newcommand{\srcref}[1]{プログラムリスト~\ref{#1}}
 % %% ----- others -----
 % \usepackage{url} % \url{url_path}
-%
 % %% ----- tikz -----
-% \usepackage{tikz}
+% \usepackage{tikz} % xcolor -> graphicx -> tikz
 % \usetikzlibrary{calc}
 % positioning, arrows, shapes, backgrounds, graphs, intersections, trees, matrix
-
 % %% ----- dev -----
 % \usepackage{refcheck}
 % \usepackage{comment}
@@ -72,11 +70,12 @@
 %   { \HUGE Title }\\ \vspace{5mm}
 %   { \LARGE Subtitle }\vfill
 % }
-% \author{{ \Large author }}
+% \author{{ \Large dept } \\~\\ { \Large author }}
 % \date{\today}
 % \maketitle
 % % end title
 
 Hello, \LaTeX.
+日本語の印字テスト.
 
 \end{document}
