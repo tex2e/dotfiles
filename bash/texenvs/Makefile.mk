@@ -102,3 +102,6 @@ test:
 
 jlisting.sty:
 	cp $(TEXENV_DIR)/jlisting.sty .
+
+install:
+	sudo tlmgr install nag newtx fontaxes boondox txfonts ec helvetic here collection-fontsrecommended collection-langjapanese lcdftypetools
