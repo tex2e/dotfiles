@@ -42,6 +42,8 @@ alias egrep='egrep --color=auto'
 alias make4='make -j 4'
 
 # external commands
+alias python=python3
+alias pip=pip3
 alias server='python3 -m http.server &>/dev/null &; echo "localhost:8000"'
 alias server2='python2 -m SimpleHTTPServer &>/dev/null &; echo "localhost:8000"'
 alias pip-update="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -I{} pip install -U {} || true"
