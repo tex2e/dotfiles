@@ -72,13 +72,6 @@ rmsandbox() {
 # Alias
 source ~/.alias
 
-# python2 and python3
-case `uname` in
-  Darwin ) # mac os
-    alias python=python3
-    alias pip=pip3
-esac
-
 # rbenv settings
 if [[ -d "$HOME/.rbenv" ]]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
