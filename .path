@@ -3,6 +3,7 @@ export PATH="/usr/local/texlive/2017/bin/x86_64-linux:$PATH"
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 # which brew &> /dev/null &&
 #   export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
 
