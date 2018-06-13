@@ -70,7 +70,8 @@ init:
 
 %.pdf: %.dvi
 	dvipdfmx -d5 $<
-	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@
+	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
+	-test -d _markdown_report && $(RM) -r _markdown_report || true
 
 pdf: $(PDF_FILE)
 
