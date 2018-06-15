@@ -104,4 +104,8 @@ jlisting.sty:
 	cp $(TEXENV_DIR)/jlisting.sty .
 
 install:
-	sudo tlmgr install nag newtx fontaxes boondox txfonts ec helvetic here collection-fontsrecommended collection-langjapanese lcdftypetools pgfplots
+	sudo tlmgr install newtx collection-latexrecommended collection-fontsrecommended collection-langjapanese pgfplots dvipdfmx
+
+install-presen:
+	sudo tlmgr install newtx beamer bxdpx-beamer
+	pip3 install python-pptx
