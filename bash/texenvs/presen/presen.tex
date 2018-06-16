@@ -2,7 +2,7 @@
 % the nag package warns you for incorrect latex usage
 
 % [handout]{beamer} アニメーションを考慮しない配布用の資料作成
-\documentclass[dvipdfmx, 14pt]{beamer}
+\documentclass[dvipdfmx, 12pt]{beamer}
 \usepackage{pgfpages}
 \usepackage{bxdpx-beamer}
 
@@ -21,20 +21,22 @@
 \usetheme{Singapore} % Theme
 \usecolortheme{default} % Color
 \usefonttheme{professionalfonts} % Font
-\setbeamertemplate{headline}{
-  \leavevmode%
-  \vskip10pt% 上のマージン（狭すぎると見出しがスクリーンからはみ出ることがある）
+\setbeamertemplate{headline}{ % headerの設定
+  \leavevmode\vskip10pt % 上のマージン（狭すぎると見出しがスクリーンからはみ出ることがある）
 }
-\setbeamerfont{frametitle}{size=\Large} % 見出しのサイズ
-\setbeamertemplate{frametitle}[default][center] % 見出しの中央揃え
+\setbeamertemplate{frametitle}{ % スライドの見出しの設定
+  \Large % フォント
+  \centering % 中央揃え
+  \insertframetitle
+  \par\vskip-6pt\color{black}\hrulefill % 見出しの下線
+}
 \setbeamertemplate{navigation symbols}{} % ナビゲーションの無効化
-\setbeamerfont{footline}{size=\scriptsize, series=\bfseries} % footerのフォント
-\setbeamertemplate{footline}{
-  \leavevmode%
-  \raggedleft% 右寄せ
-  \insertframenumber{} / \inserttotalframenumber% ページ番号 / ページ総数
-  \hspace*{5ex}% 右のマージン
-  \vskip15pt% 下のマージン（狭すぎると行番号がスクリーンに映し出されないことがある）
+\setbeamertemplate{footline}{% footerの設定
+  \scriptsize\bfseries % フォント
+  \leavevmode\raggedleft % 右寄せ
+  \insertframenumber{} / \inserttotalframenumber % ページ番号 / ページ総数
+  \hspace*{5ex} % 右のマージン
+  \vskip15pt % 下のマージン（狭すぎると行番号がスクリーンに映し出されないことがある）
 }
 
 \AtBeginSection[]{ % Do nothing for \section*
@@ -48,8 +50,9 @@
 \usepackage{lmodern} % Latin Modern font
 \usepackage{otf} % otf (font)
 \usepackage{bm} % bold math
-\usepackage{newtxtext, newtxmath} % newtx (font)
 \renewcommand{\kanjifamilydefault}{\gtdefault} % fontfamily: Gothic
+\renewcommand{\familydefault}{\sfdefault} % 英語フォント
+\usepackage{txfonts}
 \usepackage{xcolor} % \textcolor{color}{text}
 %%%%
 
@@ -109,6 +112,7 @@
   \begin{itemize}
     \item Hello, \LaTeX.
     \item 日本語の印字テスト.
+    \item $e^{i\pi} = -1$
   \end{itemize}
 
 \end{frame}
