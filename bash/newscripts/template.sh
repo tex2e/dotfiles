@@ -21,7 +21,7 @@ function success {
   printf " \033[32m✔ \033[m%s\n" "$*"
 }
 function fail {
-  printf " \003[31m✘ \033[m%s\n" "$*"
+  printf " \033[31m✘ \033[m%s\n" "$*"
 }
 
 function include {
