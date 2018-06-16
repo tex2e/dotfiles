@@ -30,6 +30,7 @@ TEX := platex -recorder -shell-escape
 
 TEX_FILE := $(wildcard *.tex)
 PDF_FILE := $(patsubst %.tex, %.pdf, $(TEX_FILE))
+PPTX_FILE := $(patsubst %.tex, %.pptx, $(TEX_FILE))
 
 COMPILE_CNT := 1
 
@@ -56,6 +57,13 @@ init:
 	@echo 'OUTPUT='$(OUTPUT)
 	-cp -i $(TEXENV_DIR)/template.tex $(OUTPUT)
 
+init-presen:
+	@echo 'Creating presen environment ...'
+	@mkdir img 2>/dev/null && touch img/.keep
+	@mkdir pages 2>/dev/null && touch pages/.keep
+	-cp -i $(TEXENV_DIR)/presen/.gitignore .
+	-cp -R -i $(TEXENV_DIR)/presen/* .
+
 %.dvi: %.tex
 	@for i in `seq 1 $(COMPILE_CNT)`; do \
 		yes q | head | $(TEX) $<; \
@@ -73,7 +81,12 @@ init:
 	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
 	-test -d _markdown_report && $(RM) -r _markdown_report || true
 
+%.pptx: %.pdf presen-note.txt
+	./bin/pdf2pptx.sh
+
 pdf: $(PDF_FILE)
+
+pptx presen: $(PPTX_FILE)
 
 punctuation punc pun: $(TEX_FILE)
 	$(foreach file, $?, \

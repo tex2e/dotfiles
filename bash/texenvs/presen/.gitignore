@@ -1,0 +1,11 @@
+
+pages/
+!pages/.keep
+
+*.aux
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.toc
