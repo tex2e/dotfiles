@@ -69,7 +69,9 @@ init-presen:
 		yes q | head | $(TEX) $<; \
 	done
 	@for i in `seq 1 3`; do \
-		if grep -F 'Rerun to get cross-references right.' $(<:.tex=.log); then \
+		if grep -F 'Rerun to get cross-references right.' $(<:.tex=.log) || \
+			grep -F 'Package rerunfilecheck Warning' $(<:.tex=.log); \
+		then \
 			yes q | head | $(TEX) $<; \
 		else \
 			exit 0; \
