@@ -1,0 +1,16 @@
+それでは、「LaTeX + Beamerでプレゼン作成」という題で発表させて頂きます。
+
+# 表
+このノートの内容を変えるには presen-note.txt を編集してください。
+
+# Tikz + 手順
+このノートの内容を変えるには presen-note.txt を編集してください。
+
+# Tikz + 階層構造
+このノートの内容を変えるには presen-note.txt を編集してください。
+
+# Tikz + 数式
+このノートの内容を変えるには presen-note.txt を編集してください。
+
+# Tikz + Overlay
+このノートの内容を変えるには presen-note.txt を編集してください。
