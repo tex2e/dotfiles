@@ -4,7 +4,7 @@ UNAME := $(shell uname)
 .SUFFIXES:
 .SUFFIXES: .pdf .tex .dvi
 
-### how to make PDF from TEX ###
+### Usage ###
 #
 # to make PDF from TeX, type:
 #
@@ -12,16 +12,20 @@ UNAME := $(shell uname)
 #     make pdf
 #
 
-### Commands
+### Commands ###
 #
-# + init: create directory img/ and write latex template file.
-# + pdf: create pdf from tex file.
+# + init: write template tex file to create latex environment
+# + init-presen: write template for presentation.
+# + pdf: create pdf from tex file
 # + punctuation: replace "。" and "、" with "．" and "，"
-# + open: create pdf and open it.
-# + clean: delete all files such as .aux, .log and .dvi that are normally created by running make.
-# + distclean: delete all generated file (including .pdf).
+# + open: create pdf and open it
+# + clean: rm *.{aux,log,dvi,fls}
+# + distclean: rm *.{aux,log,dvi,fls,pdf}
 # + rebuild: force to build a pdf
 # + test: do test (requires ruby)
+# + pptx: create pptx from pdf file (requires python3, ImageMagic, python-pptx)
+# + install: install essensial latex packages
+# + install-presen: install essensial latex package for presentation
 #
 
 TEXENV_DIR := $(HOME)/.dotfiles/bash/texenvs
@@ -50,19 +54,24 @@ all: pdf
 
 init: OUTPUT = report.tex
 init:
-	@printf 'Creating directory img/ ... '
-	@mkdir img 2>/dev/null && touch img/.keep \
-	&& echo 'done' || echo 'directory exist'
-	@echo 'Writing template tex file ... '
+	@echo 'Creating latex environment ...'
+	-mkdir img 2>/dev/null && touch img/.keep
 	@echo 'OUTPUT='$(OUTPUT)
 	-cp -i $(TEXENV_DIR)/template.tex $(OUTPUT)
 
 init-presen:
 	@echo 'Creating presen environment ...'
-	@mkdir img 2>/dev/null && touch img/.keep
-	@mkdir pages 2>/dev/null && touch pages/.keep
+	-mkdir img 2>/dev/null && touch img/.keep
+	-mkdir pages 2>/dev/null && touch pages/.keep
 	-cp -i $(TEXENV_DIR)/presen/.gitignore .
 	-cp -R -i $(TEXENV_DIR)/presen/* .
+
+install:
+	sudo tlmgr install newtx collection-latexrecommended collection-fontsrecommended collection-langjapanese pgfplots dvipdfmx markdown csvsimple paralist
+
+install-presen:
+	sudo tlmgr install newtx beamer bxdpx-beamer
+	pip3 install python-pptx
 
 %.dvi: %.tex
 	@for i in `seq 1 $(COMPILE_CNT)`; do \
@@ -118,10 +127,3 @@ test:
 
 jlisting.sty:
 	cp $(TEXENV_DIR)/jlisting.sty .
-
-install:
-	sudo tlmgr install newtx collection-latexrecommended collection-fontsrecommended collection-langjapanese pgfplots dvipdfmx markdown csvsimple paralist
-
-install-presen:
-	sudo tlmgr install newtx beamer bxdpx-beamer
-	pip3 install python-pptx
