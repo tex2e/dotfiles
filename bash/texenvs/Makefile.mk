@@ -29,12 +29,14 @@ UNAME := $(shell uname)
 #
 
 TEXENV_DIR := $(HOME)/.dotfiles/bash/texenvs
+TMP := /tmp
 
 TEX := platex -recorder -shell-escape
 
-TEX_FILE := $(wildcard *.tex)
-PDF_FILE := $(patsubst %.tex, %.pdf, $(TEX_FILE))
+TEX_FILE  := $(wildcard *.tex)
+PDF_FILE  := $(patsubst %.tex, %.pdf, $(TEX_FILE))
 PPTX_FILE := $(patsubst %.tex, %.pptx, $(TEX_FILE))
+PNG_FILE  := $(patsubst %.tex, %.png, $(TEX_FILE))
 
 COMPILE_CNT := 1
 
@@ -66,12 +68,21 @@ init-presen:
 	-cp -i $(TEXENV_DIR)/presen/.gitignore .
 	-cp -R -i $(TEXENV_DIR)/presen/* .
 
+init-standalone: OUTPUT = standalone.tex
+init-standalone:
+	@echo 'Creating standalone environment ...'
+	-cp -i $(TEXENV_DIR)/standalone/.gitignore .
+	-cp -i $(TEXENV_DIR)/standalone/standalone.tex $(OUTPUT)
+
 install:
 	sudo tlmgr install newtx collection-latexrecommended collection-fontsrecommended collection-langjapanese pgfplots dvipdfmx markdown csvsimple paralist
 
 install-presen:
 	sudo tlmgr install newtx beamer bxdpx-beamer
 	pip3 install python-pptx
+
+install-standalone:
+	sudo tlmgr install standalone
 
 %.dvi: %.tex
 	@for i in `seq 1 $(COMPILE_CNT)`; do \
@@ -87,6 +98,15 @@ install-presen:
 		fi; \
 	done
 
+%.png: %.tex
+	mkdir -p $(TMP)/$$$$ && \
+	platex -shell-escape -halt-on-error -output-directory=$(TMP)/$$$$ $< && \
+	dvipdfmx -d5 -o $(TMP)/$$$$/$(basename $(notdir $<)).pdf $(TMP)/$$$$/$(basename $(notdir $<)).dvi && \
+	convert -density 200 $(TMP)/$$$$/$(basename $(notdir $<)).pdf -quality 90 $@ && \
+	touch $@ \
+	&& rm -r $(TMP)/$$$$ \
+	|| rm -r $(TMP)/$$$$
+
 %.pdf: %.dvi
 	dvipdfmx -d5 $<
 	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
@@ -98,6 +118,8 @@ install-presen:
 pdf: $(PDF_FILE)
 
 pptx presen: $(PPTX_FILE)
+
+png: $(PNG_FILE)
 
 punctuation punc pun: $(TEX_FILE)
 	$(foreach file, $?, \
