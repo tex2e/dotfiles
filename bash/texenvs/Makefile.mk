@@ -75,7 +75,7 @@ init-standalone:
 	-cp -i $(TEXENV_DIR)/standalone/standalone.tex $(OUTPUT)
 
 install:
-	sudo tlmgr install newtx collection-latexrecommended collection-fontsrecommended collection-langjapanese pgfplots dvipdfmx markdown csvsimple paralist
+	sudo tlmgr install newtx collection-latexrecommended collection-fontsrecommended collection-langjapanese comment pgfplots dvipdfmx markdown csvsimple paralist
 
 install-presen:
 	sudo tlmgr install newtx beamer bxdpx-beamer
