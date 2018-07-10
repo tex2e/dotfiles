@@ -36,7 +36,9 @@ TEX := platex -recorder -shell-escape
 TEX_FILE  := $(wildcard *.tex)
 PDF_FILE  := $(patsubst %.tex, %.pdf, $(TEX_FILE))
 PPTX_FILE := $(patsubst %.tex, %.pptx, $(TEX_FILE))
-PNG_FILE  := $(patsubst %.tex, %.png, $(TEX_FILE))
+
+PNG_TEX   := $(shell find img -type f -name '*.tex')
+PNG_FILE  := $(patsubst %.tex, %.png, $(PNG_TEX))
 
 COMPILE_CNT := 1
 
