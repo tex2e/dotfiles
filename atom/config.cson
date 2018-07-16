@@ -8,6 +8,7 @@
       "language-jade"
       "script"
       "language-gfm"
+      "language-python"
     ]
     telemetryConsent: "limited"
     themes: [
