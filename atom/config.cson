@@ -1,4 +1,8 @@
 "*":
+  "atom-package-deps":
+    ignored: [
+      "nim"
+    ]
   "autocomplete-plus":
     minimumWordLength: 1
   core:
@@ -80,5 +84,8 @@
   editor:
     tabLength: 4
 ".source.swift":
+  editor:
+    tabLength: 4
+".source.y":
   editor:
     tabLength: 4
