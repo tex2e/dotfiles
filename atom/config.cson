@@ -9,8 +9,6 @@
     automaticallyUpdate: false
     disabledPackages: [
       "pigments"
-      "language-jade"
-      "script"
       "language-gfm"
       "language-python"
     ]
