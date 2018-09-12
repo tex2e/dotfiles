@@ -81,6 +81,9 @@ alias npmlist='npm ls --depth 0'
 alias npms='npm start'
 alias npmt='npm test'
 alias npmb='npm run build'
+alias openssl-key='openssl rsa -text -modulus -noout -in'
+alias openssl-pub='openssl rsa -text -modulus -noout -pubin -in'
+alias openssl-csr='openssl req -text -modulus -noout -in'
 
 # vim
 alias bf="cat > ~/.vim/bf"
