@@ -1,6 +1,4 @@
 
-set nocompatible
-
 "syntax highlight
 syntax on
 highlight Comment ctermfg=gray
@@ -12,6 +10,7 @@ set mouse=a
 
 "file
 set number
+set relativenumber
 set ruler
 set ambiwidth=double "文脈によって解釈が異なる全角文字の幅を、2に固定する
 set tabstop=4        "インデント幅
@@ -21,7 +20,7 @@ set smartindent      "改行時などに、自動でインデントを設定し�
 set autoindent       "改行時のインデントを継続
 set autoread
 set nowrap
-set scrolloff=5      " スクロールする時に下が見えるようにする
+set scrolloff=5      "スクロールする時に下が見えるようにする
 
 "status line
 set laststatus=2
@@ -52,7 +51,6 @@ set wildmenu wildmode=list:full
 
 "mapping
 inoremap <C-e> <Esc>
-inoremap jj <Esc>
 inoremap <C-h> <LEFT>
 inoremap <C-j> <DOWN>
 inoremap <C-k> <UP>
@@ -94,17 +92,6 @@ nnoremap s< <C-w><
 nnoremap s+ <C-w>+
 nnoremap s- <C-w>-
 nnoremap == gg=G''
-noremap m %
-inoremap <C-b> <ESC>:read ~/.vim/bf<CR>i
-nnoremap <C-b> :read ~/.vim/bf<CR>
-vnoremap <C-b> :w!~/.vim/bf<CR>
-
-"git
-set spelllang=en,cjk                       "スペルチェック
-autocmd FileType gitcommit setlocal spell  "コミット時のスペルチェック
-autocmd FileType gitcommit startinsert
-runtime ftplugin/man.vim                   "マニュアル
-nnoremap git :<C-u>Agit<CR>
 
 
 """"""""""""""""""""""""""""""
@@ -126,11 +113,8 @@ nnoremap git :<C-u>Agit<CR>
 call plug#begin()
 Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/nerdtree'
-Plug 'cohama/agit.vim', { 'commit': 'f663a12ff8868670687350d7b1bbe6d23673bc3b' }
-Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Shougo/vimproc.vim'
-Plug 'Shougo/vimshell.vim'
 Plug 'itchyny/lightline.vim'
 call plug#end()
 
