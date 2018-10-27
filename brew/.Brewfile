@@ -59,10 +59,11 @@ brew "git"
 brew "git-lfs"
 brew "gnu-getopt", link: true
 brew "gnu-sed", args: ["with-default-names"]
-brew "gnuplot", args: ["with-x11"]
 brew "libtasn1"
 brew "nettle"
 brew "gnutls"
+brew "gnupg"
+brew "gnuplot", args: ["with-x11"]
 brew "go"
 brew "gperftools"
 brew "gradle"
