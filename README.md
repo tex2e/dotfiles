@@ -11,10 +11,10 @@ Requirements
 - **Bash**
 - **Zsh**
 - **curl** or **wget**
-- **gawk** (for making document)
 - **Vim**
 - **Ruby** 2.0+
 - **Python** 3.5+
+- **gawk** (for making document)
 
 
 Installation
