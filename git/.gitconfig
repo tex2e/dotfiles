@@ -4,6 +4,7 @@
 [user]
 	name = Mako
 	email = mnfeconicu41@gmail.com
+	signingkey = 402F552C68EFB93F
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim -c \"set fenc=utf-8\"
@@ -63,18 +64,8 @@
 	s = status
 	showp = show -p
 	ss = status -s
-	sub = submodule
-	suba = submodule add
-	subf = submodule foreach
-	subforeach = submodule foreach
-	subupgrade = submodule foreach git pull origin master
-	subi = submodule init
-	subu = submodule update
 	undo = reset --mixed HEAD~1
 	unstage = reset HEAD --
-	update = "!git pull --prune $@ && git submodule update --init --recursive"
-	wtf = "!git-wtf"
-	zen = "!zen"
 	pr = "!f() { git fetch -fu ${2:-upstream} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 	pr-clean = "!git checkout master ; git for-each-ref refs/heads/pr/* --format="%(refname)" | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
 [github]
