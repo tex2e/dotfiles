@@ -75,6 +75,17 @@
 ".makefile.source":
   editor:
     tabLength: 4
+".md.text":
+  "bracket-matcher":
+    autocompleteCharacters: [
+      "()"
+      "[]"
+      "{}"
+      "\"\""
+      "''"
+      "``"
+      "$$"
+    ]
 ".perl.source":
   editor:
     tabLength: 4
@@ -87,3 +98,14 @@
 ".source.y":
   editor:
     tabLength: 4
+".tex.text":
+  "bracket-matcher":
+    autocompleteCharacters: [
+      "()"
+      "[]"
+      "{}"
+      "\"\""
+      "''"
+      "``"
+      "$$"
+    ]
