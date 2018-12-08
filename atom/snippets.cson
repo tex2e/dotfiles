@@ -27,6 +27,9 @@
 
 # --- Python --
 '.source.python':
+  'shebang':
+    'prefix': 'python'
+    'body':   '#!/usr/bin/env python'
   'print':
     'prefix': 'print'
     'body':   'print($0)'
@@ -88,9 +91,6 @@
   'require':
     'prefix': 'req'
     'body':   "require '$1'$0"
-  'tap':
-    'prefix': 'tap'
-    'body':   'tap { |${1:elem}| $2 }'
   'rescue':
     'prefix': 'rescue'
     'body':   '''
@@ -137,24 +137,9 @@
   'import':
     'prefix': 'import'
     'body':   'import ${1:Module}$0'
-  'import only':
-    'prefix': 'import only'
-    'body':   'import ${1:Module}, only: [${2:function}: ${3:arity}]$0'
-  'import except':
-    'prefix': 'import except'
-    'body':   'import ${1:Module}, except: [${2:function}: ${3:arity}]$0'
-  'try do … rescue … end':
-    'prefix': 'rescue'
-    'body':   'try do\n\t$1\nrescue\n\te in RuntimeError -> e$2\nend$0'
   'try do … catch … end':
     'prefix': 'catch'
     'body':   'try do\n\t$1\ncatch\n\tx -> "Got #{x}"$2\nend$0'
-  'receive do … end':
-    'prefix': 'receive'
-    'body':   'receive do\n  $0\nend'
-  'after ->':
-    'prefix': 'after'
-    'body':   'after ${1:time} ->\n\t$0'
   '@doc':
     'prefix': 'doc'
     'body':   '@doc """$0\n"""'
@@ -170,63 +155,6 @@
   'defun':
     'prefix': 'defun'
     'body':   '(defun ${1:name} ($2)\n\t"Documentation"\n\t(${3:body}))'
-
-# --- Swift ---
-'.source.swift':
-  'print()':
-    'prefix': 'print'
-    'body':   'print("$1")$0'
-  'Closure':
-    'prefix': 'closure'
-    'body':   '{ (${1:parameters}) -> ${2:type} in ${3:body} }$0'
-  'Function':
-    'prefix': 'func'
-    'body':   'func ${1:name}() {\n\t${2://}\n}'
-  'Class':
-    'prefix': 'class'
-    'body':   'class ${1:name} {\n\t${2://}\n}'
-  'Extension':
-    'prefix': 'extension'
-    'body':   'extension ${1:type} {\n\t${2://}\n}'
-  'Structure':
-    'prefix': 'struct'
-    'body':   'struct ${1:name} {\n\t${2://}\n}'
-  'Do-Catch Statement':
-    'prefix': 'do'
-    'body':   '''
-      do {
-      \t${2://}
-      } catch ${1:ErrorType} {
-      \t${3://}
-      } catch {
-      \t${4://}
-      }
-    '''
-  'If Statement':
-    'prefix': 'if'
-    'body':   'if ${1:condition} {\n\t${2://}\n}'
-  'Switch Statement':
-    'prefix': 'switch'
-    'body':   '''
-      switch ${1:value} {
-      case ${2:value}:
-      \t${3://}
-      default:
-      \t${4://}
-      }
-    '''
-  'Guard Statement':
-    'prefix': 'guard'
-    'body':   'guard ${1:expression} else {\n\t${2://}\n}'
-  'While Loop':
-    'prefix': 'while'
-    'body':   'while ${1:condition} {\n\t${2://}\n}'
-  'Repeat-While Loop':
-    'prefix': 'repeat'
-    'body':   'repeat {\n\t${1://}\n} while ${2:condition}'
-  'For-In Loop':
-    'prefix': 'for'
-    'body':   'for ${1:i} in ${2:value} {\n\t${3://}\n}'
 
 # --- Java ---
 '.source.java':
@@ -258,9 +186,6 @@
   '#include <>':
     'prefix': 'inc'
     'body':   '#include <$0>'
-  '#include ""':
-    'prefix': 'Inc'
-    'body':   '#include "$0"'
   'if':
     'prefix': 'if'
     'body':   'if (${1:true}) {$0}'
@@ -534,6 +459,9 @@
 
 # --- ShellScript ---
 '.source.shell':
+  'shebang':
+    'prefix': 'bash'
+    'body':   '#!/bin/bash -u'
   'forin':
     'prefix': 'forin'
     'body':   '''
@@ -541,9 +469,6 @@
       \t#$0
       done
     '''
-  'shebang':
-    'prefix': 'bash'
-    'body':   '#!/bin/bash -u'
 
 # --- Makefile ---
 '.source.makefile':
@@ -556,6 +481,3 @@
   'SUFFIXES':
     'prefix': 'SUFFIXES'
     'body':   '.SUFFIXES:'
-  'SILENT':
-    'prefix': 'SILENT'
-    'body':   '.SILENT:'
