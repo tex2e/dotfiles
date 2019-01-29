@@ -1,4 +1,6 @@
 
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
 # inherited from .bashrc
 source ~/.bashrc
 
