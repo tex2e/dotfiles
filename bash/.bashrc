@@ -34,6 +34,7 @@ PS2='> '
 export EDITOR=vim
 # export LANG=C.UTF-8
 export LANG=en_US.UTF-8
+export HISTIGNORE="ls*:cd:pwd:exit:cd .."
 
 case `uname` in
   Darwin ) # mac os
