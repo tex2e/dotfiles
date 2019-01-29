@@ -66,6 +66,29 @@ rmsandbox() {
   esac
 }
 
+t() {
+  ffmpeg -ss $2 -to $3 -i $1 $(basename $1 .mp4)-t.mp4
+}
+s() {
+  for file in $@; do
+    ffmpeg -i $file -vf scale=700:-1 $(basename $file .mp4)-s.mp4 \
+    || ffmpeg -y -i $file -vf scale=690:-1 $(basename $file .mp4)-s.mp4 \
+    || ffmpeg -y -i $file -vf scale=710:-1 $(basename $file .mp4)-s.mp4 \
+    || ffmpeg -y -i $file -vf scale=702:-1 $(basename $file .mp4)-s.mp4
+  done
+}
+vup() {
+  ffmpeg -i $1 -af volume=+${2:-5}dB $(basename $1 .mp4)-vu.mp4
+}
+vdown() {
+  ffmpeg -i $1 -af volume=-${2:-5}dB $(basename $1 .mp4)-vd.mp4
+}
+c() {
+  for file in $@; do
+    ffmpeg -i $file -preset slow $(basename $file .mp4)-c.mp4
+  done
+}
+
 
 ### Execute Scripts ###
 
