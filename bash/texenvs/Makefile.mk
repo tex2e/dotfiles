@@ -73,8 +73,9 @@ init-presen:
 init-standalone: OUTPUT = standalone.tex
 init-standalone:
 	@echo 'Creating standalone environment ...'
+	-mkdir img 2>/dev/null && touch img/.keep
 	-cp -i $(TEXENV_DIR)/standalone/.gitignore .
-	-cp -i $(TEXENV_DIR)/standalone/standalone.tex $(OUTPUT)
+	-cp -i $(TEXENV_DIR)/standalone/standalone.tex img/$(OUTPUT)
 
 install:
 	sudo tlmgr install newtx collection-latexrecommended collection-fontsrecommended collection-langjapanese comment pgfplots dvipdfmx markdown csvsimple paralist
