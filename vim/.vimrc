@@ -16,7 +16,7 @@ set number
 "set shiftwidth=4     "vimが自動で生成する（読み込み時など）tab幅をスペース4つ文にする
 "set expandtab        "tabを半角スペースで挿入する
 "set smartindent      "改行時などに、自動でインデントを設定してくれる
-set autoindent       "改行時のインデントを継続
+"set autoindent       "改行時のインデントを継続
 "set autoread
 "set nowrap
 set scrolloff=5      "スクロールする時に下が見えるようにする
