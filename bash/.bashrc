@@ -67,6 +67,10 @@ rmsandbox() {
   esac
 }
 
+touch00() {
+  touch -t $(date +%m%d0000) $*
+}
+
 t() {
   ffmpeg -ss $2 -to $3 -i $1 $(basename $1 .mp4)-t.mp4
 }
