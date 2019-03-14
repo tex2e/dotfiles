@@ -43,6 +43,7 @@ alias ll='ls -l'
 alias lla='ll -A'
 alias sl=ls
 alias rm='rm -i'
+alias cp='cp -i'
 alias fd='find . -type d -not -path "*/\.git*" -name'
 alias fd1='find . -maxdepth 1 -type d -not -path "*/\.git*" -name'
 alias fd2='find . -maxdepth 2 -type d -not -path "*/\.git*" -name'
