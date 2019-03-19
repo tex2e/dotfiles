@@ -4,5 +4,14 @@
     "editor.tabSize": 2,
     "window.zoomLevel": 0,
     "files.insertFinalNewline": true,
-    "workbench.iconTheme": "vscode-icons"
+    "workbench.iconTheme": "vscode-icons",
+    "editor.lineNumbers": "on",
+    "editor.minimap.enabled": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 80,
+    "editor.occurrencesHighlight": true,
+    "editor.selectionHighlight": true,
+    "editor.renderWhitespace": "all",
+    "editor.formatOnPaste": true
 }
