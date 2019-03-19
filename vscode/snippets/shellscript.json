@@ -1,0 +1,8 @@
+{
+	"Shebang": {
+		"prefix": "bash",
+		"body": [
+			"#!/bin/bash -u"
+		]
+	}
+}
