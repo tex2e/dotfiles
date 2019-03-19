@@ -1,8 +1,8 @@
 {
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.iconTheme": "vscode-icons",
     "atomKeymap.promptV3Features": true,
     "editor.tabSize": 2,
     "window.zoomLevel": 0,
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "workbench.iconTheme": "vscode-icons"
 }
