@@ -13,5 +13,6 @@
     "editor.occurrencesHighlight": true,
     "editor.selectionHighlight": true,
     "editor.renderWhitespace": "all",
-    "editor.formatOnPaste": true
+    "editor.formatOnPaste": true,
+    "git.autofetch": false
 }
