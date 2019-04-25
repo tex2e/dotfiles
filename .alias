@@ -88,6 +88,7 @@ alias openssl-pub='openssl rsa -text -modulus -noout -pubin -in'
 alias openssl-csr='openssl req -text -modulus -noout -in'
 alias v=vagrant
 alias globalip='curl globalip.me'
+alias oepn='open'
 
 # vim
 alias bf="cat > ~/.vim/bf"
