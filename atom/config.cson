@@ -29,6 +29,8 @@
   "exception-reporting":
     userId: "23354aaa-7a3b-c22c-e8c0-a6e371e8af70"
   "file-icons": {}
+  kite:
+    showWelcomeNotificationOnStartup: false
   "markdown-preview":
     liveUpdate: false
   minimap:

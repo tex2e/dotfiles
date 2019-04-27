@@ -72,7 +72,7 @@ touch00() {
 }
 
 t() {
-  ffmpeg -ss $2 -to $3 -i $1 $(dirname $file)/$(basename $1 .mp4)-t.mp4
+  ffmpeg -ss $2 -to $3 -i $1 $(dirname $1)/$(basename $1 .mp4)-t.mp4
 }
 s() {
   for file in $@; do
@@ -83,10 +83,10 @@ s() {
   done
 }
 vup() {
-  ffmpeg -i $1 -af volume=+${2:-5}dB $(dirname $file)/$(basename $1 .mp4)-vu.mp4
+  ffmpeg -i $1 -af volume=+${2:-5}dB $(dirname $1)/$(basename $1 .mp4)-vu.mp4
 }
 vdown() {
-  ffmpeg -i $1 -af volume=-${2:-5}dB $(dirname $file)/$(basename $1 .mp4)-vd.mp4
+  ffmpeg -i $1 -af volume=-${2:-5}dB $(dirname $1)/$(basename $1 .mp4)-vd.mp4
 }
 co() {
   for file in $@; do
