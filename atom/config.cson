@@ -94,9 +94,6 @@
 ".perl6.source":
   editor:
     tabLength: 4
-".sage.source":
-  editor:
-    tabLength: 2
 ".source.swift":
   editor:
     tabLength: 4
