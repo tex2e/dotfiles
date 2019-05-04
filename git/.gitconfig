@@ -52,7 +52,6 @@
 	ignore = !"f() { local s=$1; shift; \
 		while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
 		curl \"https://www.gitignore.io/api/$s\"; }; f"
-	issue = "!ghi"
 	l = log
 	lp = log -p
 	o = "!git-open"
@@ -70,5 +69,3 @@
 	pr-clean = "!git checkout master ; git for-each-ref refs/heads/pr/* --format="%(refname)" | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
 [github]
 	user = tex2e
-[ghi]
-	token = !security find-internet-password -a tex2e -s github.com -l 'ghi token' -w
