@@ -90,6 +90,7 @@ alias openssl-csr='openssl req -text -modulus -noout -in'
 alias v=vagrant
 alias globalip='curl globalip.me'
 alias oepn='open'
+alias shred='gshred -v -u'
 
 # vim
 alias bf="cat > ~/.vim/bf"
