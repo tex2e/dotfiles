@@ -37,6 +37,7 @@ alias fg4='fg %4'
 alias fg5='fg %5'
 
 # basic commands
+alias l='ls'
 alias ls='ls -F'
 alias la='ls -A'
 alias ll='ls -l'
