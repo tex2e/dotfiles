@@ -31,7 +31,7 @@ UNAME := $(shell uname)
 TEXENV_DIR := $(HOME)/.dotfiles/bash/texenvs
 TMP := /tmp
 
-TEX := platex -recorder -shell-escape
+TEX := platex -recorder -interaction=nonstopmode -shell-escape
 
 TEX_FILE  := $(wildcard *.tex)
 PDF_FILE  := $(patsubst %.tex, %.pdf, $(TEX_FILE))
