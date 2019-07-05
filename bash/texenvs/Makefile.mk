@@ -77,16 +77,6 @@ init-standalone:
 	-cp -i $(TEXENV_DIR)/standalone/.gitignore .
 	-cp -i $(TEXENV_DIR)/standalone/standalone.tex img/$(OUTPUT)
 
-install:
-	sudo tlmgr install newtx collection-latexrecommended collection-fontsrecommended collection-langjapanese comment pgfplots dvipdfmx markdown csvsimple paralist
-
-install-presen:
-	sudo tlmgr install newtx beamer bxdpx-beamer
-	pip3 install python-pptx
-
-install-standalone:
-	sudo tlmgr install standalone
-
 %.dvi: %.tex
 	@for i in `seq 1 $(COMPILE_CNT)`; do \
 		yes q | head | $(TEX) $<; \
@@ -113,7 +103,6 @@ install-standalone:
 %.pdf: %.dvi
 	dvipdfmx -d5 $<
 	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
-	-test -d _markdown_report && $(RM) -r _markdown_report || true
 
 %.pptx: %.pdf presen-note.txt
 	./bin/pdf2pptx.sh
