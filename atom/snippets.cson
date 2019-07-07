@@ -335,7 +335,7 @@
     'prefix': 'make figures'
     'body':   '''
     \\\\begin{figure}[H]
-      \\\\begin{minipage}{0.5\\\\hsize}
+      \\\\begin{minipage}{0.49\\\\hsize}
         \\\\centering
         \\\\includegraphics[scale=1.0]{img/image}
         \\\\caption{Caption}
