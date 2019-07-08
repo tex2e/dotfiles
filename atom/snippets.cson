@@ -394,8 +394,7 @@
     'prefix': 'make code'
     'body':   '''
       % ~~~ code
-      \\\\lstset{ numbers = left, language = c }
-      \\\\begin{lstlisting}[caption=Caption,label=code:${2}]
+      \\\\begin{lstlisting}[numbers=left, language=c, caption=Caption, label=code:${2}]
       $1
       \\\\end{lstlisting}
       % ~~~
@@ -403,8 +402,9 @@
   'inputlisting':
     'prefix': 'make code input'
     'body':   '''
-      \\\\lstset{ numbers = left, language = c }
-      \\\\lstinputlisting[caption=Caption,label=code:${1}]{${2:file}}
+      % ~~~ code
+      \\\\lstinputlisting[numbers=left, lanuage=c, caption=Caption, label=code:${1}]{${2:file}}
+      % ~~~
     '''
   'screen':
     'prefix': 'make output'
@@ -456,6 +456,12 @@
   'code':
     'prefix': 'code'
     'body':   '```$1\n$0\n```'
+  'link':
+    'prefix': 'link'
+    'body':   '[$1]($2)'
+  'image':
+    'prefix': 'image'
+    'body':   '![$1]($2)'
 
 # --- ShellScript ---
 '.source.shell':
