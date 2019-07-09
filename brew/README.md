@@ -20,3 +20,17 @@ or this one if brew-aliases is activated
 ```
 brew file
 ```
+
+
+
+------
+
+Creates a dependency graph with **brew-graph**.
+
+```
+brew install martido/brew-graph/brew-graph
+brew install graphviz
+
+brew graph --installed | dot -Tpng -ograph.png
+open graph.png
+```
