@@ -124,7 +124,10 @@ punctuation punc pun: $(TEX_FILE)
 	)
 
 open: $(PDF_FILE)
-	$(OPEN) $(PDF_FILE) &
+	$(OPEN) $< &
+
+open-report:
+	$(OPEN) report.pdf &
 
 clean:
 	$(RM) *.{aux,log,dvi,fls}
