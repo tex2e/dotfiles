@@ -4,6 +4,10 @@ UNAME := $(shell uname)
 .SUFFIXES:
 .SUFFIXES: .pdf .tex .dvi
 
+# # DEBUG
+# OLD_SHELL := $(SHELL)
+# SHELL = $(warning [Making: $@] [Dependencies: $^] [Changed: $?])$(OLD_SHELL)
+
 ### Usage ###
 #
 # to make PDF from TeX, type:
@@ -105,6 +109,7 @@ init-standalone:
 	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
 
 %.pptx: %.pdf presen-note.txt
+	touch $?
 	./bin/pdf2pptx.sh
 
 pdf: $(PDF_FILE)

@@ -38,7 +38,7 @@ def main(argv):
         slide.shapes.add_picture(image_path, left, top, width, height)
 
         if len(notes) > i:
-            note = re.sub(r'^#.*\n', '', notes[i], flags=re.MULTILINE)
+            note = re.sub(r'^#.*\n?', '', notes[i], flags=re.MULTILINE)
             notes_slide = slide.notes_slide
             text_frame = notes_slide.notes_text_frame
             text_frame.text = note
