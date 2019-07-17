@@ -131,7 +131,7 @@ punctuation punc pun: $(TEX_FILE)
 open: $(PDF_FILE)
 	$(OPEN) $< &
 
-open-report:
+open-report: report.pdf
 	$(OPEN) report.pdf &
 
 clean:
