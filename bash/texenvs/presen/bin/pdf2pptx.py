@@ -3,6 +3,7 @@
 import os
 import sys
 import glob
+import re
 from pptx import Presentation # pip install python-pptx
 
 if len(sys.argv) < 1:
@@ -23,6 +24,9 @@ def main(argv):
     prs = Presentation()
     blank_slide_layout = prs.slide_layouts[6]
 
+    #prs.slide_height = 6858000 # 4:3
+    #prs.slide_height = 5143500 # 16:9
+
     left   = 0
     top    = 0
     width  = prs.slide_width
@@ -34,9 +38,10 @@ def main(argv):
         slide.shapes.add_picture(image_path, left, top, width, height)
 
         if len(notes) > i:
+            note = re.sub(r'^#.*\n', '', notes[i], flags=re.MULTILINE)
             notes_slide = slide.notes_slide
             text_frame = notes_slide.notes_text_frame
-            text_frame.text = notes[i]
+            text_frame.text = note
 
     prs.save('presen.pptx')
     print('Craete: presen.pptx')
