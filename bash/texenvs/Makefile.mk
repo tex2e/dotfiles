@@ -108,12 +108,12 @@ init-standalone:
 	dvipdfmx -d5 $<
 	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
 
-%.pptx: %.pdf presen-note.txt
+presen.pptx: presen.pdf presen-note.txt
 	./bin/pdf2pptx.sh
 
 pdf: $(PDF_FILE)
 
-pptx presen: $(PPTX_FILE)
+pptx presen: presen.pptx
 
 png: $(PNG_FILE)
 
