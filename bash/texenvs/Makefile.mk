@@ -109,7 +109,6 @@ init-standalone:
 	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
 
 %.pptx: %.pdf presen-note.txt
-	touch $?
 	./bin/pdf2pptx.sh
 
 pdf: $(PDF_FILE)
