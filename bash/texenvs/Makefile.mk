@@ -28,8 +28,6 @@ UNAME := $(shell uname)
 # + rebuild: force to build a pdf
 # + test: do test (requires ruby)
 # + pptx: create pptx from pdf file (requires python3, ImageMagic, python-pptx)
-# + install: install essensial latex packages
-# + install-presen: install essensial latex package for presentation
 #
 
 TEXENV_DIR := $(HOME)/.dotfiles/bash/texenvs
