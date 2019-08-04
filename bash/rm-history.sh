@@ -19,7 +19,6 @@
 case ${1:-} in
   -h | --help )
     echo "Usage:"
-    echo "  $(basename $0)          # Remove shell history"
     echo "  $(basename $0) <regex>  # Remove specific word"
     exit
     ;;
@@ -38,11 +37,8 @@ function rm_history {
   esac
 
   if [[ "$1" != "" ]]; then
-    echo sed -i \"/$1/d\" \"$history_file\"
-    sed -i "/$1/d" "$history_file"
-  else
-    echo sed -i \'\$d\' \"$history_file\"
-    sed -i '$d' "$history_file"
+    echo gsed -i \"/$1/d\" \"$history_file\"
+    gsed -i "/$1/d" "$history_file"
   fi
 }
 
