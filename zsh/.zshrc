@@ -15,6 +15,7 @@ HISTSIZE=1000
 HISTFILE="$HOME/.zsh_history"
 SAVEHIST=1000
 PROMPT=$'%m%(2L.#%L.) %1~ %{$fg[cyan]%}%#%{$reset_color%} '
+HISTORY_IGNORE="(ls*|cd|pwd|exit|cd ..|git ss|git aa)"
 
 # Set Shell options
 setopt always_last_prompt
