@@ -26,6 +26,7 @@ unsetopt beep
 unsetopt extended_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
+setopt SHARE_HISTORY
 setopt ignore_eof
 setopt interactive_comments
 setopt list_types
@@ -34,18 +35,14 @@ setopt prompt_subst
 setopt sh_word_split
 setopt share_history
 unsetopt nomatch # for rake arguments like: `rake subcomand[args]`
-#setopt transient_rprompt # set the option for hiding RPROMPT to copy the string of the terminal
 
 # Set Keybind
 bindkey -e
 
 # Alias and functions
-alias .='source'
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
-alias -g M='| more'
-alias -g L='| less'
 
 # Using Completion
 zstyle ':completion:*' verbose yes
@@ -60,10 +57,8 @@ zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
 
 zstyle ':completion:*:ruby:*' file-patterns '*.rb:ruby-script' '*(-/):dir'
-zstyle ':completion:*:coffee:*' file-patterns '*.coffee:coffee-script' '*(-/):dir'
 zstyle ':completion:*:python:*' file-patterns '*.py:python-script' '*(-/):dir'
 zstyle ':completion:*:platex:*' file-patterns '*.tex:tex-file' '*(-/):dir'
-zstyle ':completion:*:dvi*:*' file-patterns '*.dvi:dvi-file' '*(-/):dir'
 zstyle ':completion:*:open:*' file-patterns '*.pdf:pdf-file' '*(-/):dir' '*:all-files'
 zstyle ':completion:*:date:*' fake '+%Y-%m-%d'
 zstyle ':completion:*:subl:*' file-patterns '*.*:files' '*:all-files'
@@ -72,40 +67,54 @@ zstyle ':completion:*:perl:*' file-patterns '*.pl:perl-script' '*.p6:perl6-scrip
 autoload -Uz compinit && compinit
 ###
 
-
-# Git status
-#   green when working directory is clean
-#   yellow when it has untracked files
-#   red when changes are not staged for commit
-#   bold red when it has untracked files and changes are not staged
-#
-# load ${fg[...]} and $reset_color
+# Color
 autoload -U colors; colors
 
-function git-current-branch {
-  local name st color
+# # Git status
+# #   green when working directory is clean
+# #   yellow when it has untracked files
+# #   red when changes are not staged for commit
+# #   bold red when it has untracked files and changes are not staged
+#
+# function git-current-branch {
+#   local name st color
+#
+#   [[ "$PWD" =~ '/\.git(/.*)?$' ]] && return
+#
+#   # branch name
+#   name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
+#   [[ -z $name ]] && return
+#
+#   # set color
+#   st=`git status 2> /dev/null`
+#   if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+#     color=${fg[green]}
+#   elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
+#     color=${fg[yellow]}
+#   else
+#     color=${fg[red]}
+#   fi
+#
+#   echo "${origin_diff} %{$color%}$name%{$reset_color%}"
+# }
+#
+# # whenever a prompt is shown, evaluate a string of $RPROMPT and replace it
+# setopt prompt_subst
+# RPROMPT='`git-current-branch`'
 
-  [[ "$PWD" =~ '/\.git(/.*)?$' ]] && return
-
-  # branch name
-  name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
-  [[ -z $name ]] && return
-
-  # set color
-  st=`git status 2> /dev/null`
-  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-    color=${fg[green]}
-  elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-    color=${fg[yellow]}
-  elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-    color=${fg_bold[red]}
-  else
-    color=${fg[red]}
-  fi
-
-  echo "${origin_diff} %{$color%}$name%{$reset_color%}"
+# Show Git State in ZSH Prompt via vcs_info
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:*' stagedstr "%F{yellow}" # ステージングした時に出す文字列
+zstyle ':vcs_info:*' unstagedstr "%F{red}" # 変更がある時に出す文字列
+zstyle ':vcs_info:*' formats "%F{green}%c%u%b%f" # 表示フォーマット
+zstyle ':vcs_info:*' actionformats '%b|%a' # rebase時などの表示フォーマット
+function _update_vcs_info_msg() {
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  [[ -n "$vsc_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
-
-# whenever a prompt is shown, evaluate a string of $RPROMPT and replace it
-setopt prompt_subst
-RPROMPT='`git-current-branch`'
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _update_vcs_info_msg
+RPROMPT='${vcs_info_msg_0_}'
