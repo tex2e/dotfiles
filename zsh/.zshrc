@@ -68,39 +68,7 @@ autoload -Uz compinit && compinit
 ###
 
 # Color
-autoload -U colors; colors
-
-# # Git status
-# #   green when working directory is clean
-# #   yellow when it has untracked files
-# #   red when changes are not staged for commit
-# #   bold red when it has untracked files and changes are not staged
-#
-# function git-current-branch {
-#   local name st color
-#
-#   [[ "$PWD" =~ '/\.git(/.*)?$' ]] && return
-#
-#   # branch name
-#   name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
-#   [[ -z $name ]] && return
-#
-#   # set color
-#   st=`git status 2> /dev/null`
-#   if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-#     color=${fg[green]}
-#   elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-#     color=${fg[yellow]}
-#   else
-#     color=${fg[red]}
-#   fi
-#
-#   echo "${origin_diff} %{$color%}$name%{$reset_color%}"
-# }
-#
-# # whenever a prompt is shown, evaluate a string of $RPROMPT and replace it
-# setopt prompt_subst
-# RPROMPT='`git-current-branch`'
+autoload -Uz colors && colors
 
 # Show Git State in ZSH Prompt via vcs_info
 autoload -Uz vcs_info
