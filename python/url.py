@@ -15,6 +15,7 @@
 #
 
 import sys
+import re
 import codecs
 import urllib.parse
 
@@ -29,10 +30,17 @@ args = parser.parse_args()
 
 def main(args):
     if args.operator == 'decode':
-        print(urllib.parse.unquote(args.string))
+        return urllib.parse.unquote(args.string)
     else:
-        string = codecs.escape_decode(args.string.encode())[0]
-        print(urllib.parse.quote(string))
+        url = args.string
+        m = re.match(r'^(https?://)(.*)$', url)
+        if m:
+            # Don't encode "https://" to "https%3A//"
+            string = codecs.escape_decode(m[2].encode())[0]
+            return m[1] + urllib.parse.quote(string)
+        else:
+            string = codecs.escape_decode(args.string.encode())[0]
+            return urllib.parse.quote(string)
 
 if __name__ == '__main__':
-    main(args)
+    print(main(args))
