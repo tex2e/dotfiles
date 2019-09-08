@@ -36,6 +36,7 @@ setopt prompt_subst
 setopt sh_word_split
 setopt share_history
 unsetopt nomatch # for rake arguments like: `rake subcomand[args]`
+setopt magic_equal_subst
 
 # Set Keybind
 bindkey -e
