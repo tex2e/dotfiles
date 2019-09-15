@@ -99,3 +99,5 @@ alias bfcat="cat ~/.vim/bf"
 #
 alias gdb="gdb -q"
 alias install-linuxbrew='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
+
+alias blog="cd ~/Documents/pgm/github/blog; atom .; open http://localhost:4000/blog/; ./server.sh &"
