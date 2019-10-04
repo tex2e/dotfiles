@@ -254,12 +254,6 @@
       % ------------------------------------------------------------------------------
       \\\\subsection{${1:Section}}
     '''
-  'subsubsection':
-    'prefix': 'subsubsection'
-    'body':   '''
-      % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-      \\\\subsubsection{${1:Section}}
-    '''
   'table':
     'prefix': 'make table'
     'body':   '''
@@ -449,6 +443,18 @@
       \\\\begin{flushright}
       $0
       \\\\end{flushright}
+    '''
+  'columns':
+    'prefix': 'make columns'
+    'body':   '''
+    \\\\begin{columns}[t]
+      \\\\begin{column}{.49\\\\textwidth}
+        text1
+      \\\\end{column}
+      \\\\begin{column}{.49\\\\textwidth}
+        text2
+      \\\\end{column}
+    \\\\end{columns}
     '''
 
 # --- Markdown ---
