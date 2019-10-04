@@ -39,8 +39,9 @@ TEX_FILE  := $(wildcard *.tex)
 PDF_FILE  := $(patsubst %.tex, %.pdf, $(TEX_FILE))
 PPTX_FILE := $(patsubst %.tex, %.pptx, $(TEX_FILE))
 
-PNG_TEX   := $(shell find img -type f -name '*.tex')
-PNG_FILE  := $(patsubst %.tex, %.png, $(PNG_TEX))
+IMG_TEX   := $(shell find img -type f -name '*.tex')
+PNG_FILE  := $(patsubst %.tex, %.png, $(IMG_TEX))
+EPS_FILE  := $(patsubst %.tex, %.eps, $(IMG_TEX))
 
 COMPILE_CNT := 1
 
@@ -102,6 +103,15 @@ init-standalone:
 	&& rm -r $(TMP)/$$$$ \
 	|| rm -r $(TMP)/$$$$
 
+%.eps: %.tex
+	mkdir -p $(TMP)/$$$$ && \
+	platex -shell-escape -halt-on-error -output-directory=$(TMP)/$$$$ $< && \
+	dvipdfmx -d5 -o $(TMP)/$$$$/$(basename $(notdir $<)).pdf $(TMP)/$$$$/$(basename $(notdir $<)).dvi && \
+	pdftops -level2 -eps $(TMP)/$$$$/$(basename $(notdir $<)).pdf $@ && \
+	touch $@ \
+	&& rm -r $(TMP)/$$$$ \
+	|| rm -r $(TMP)/$$$$
+
 %.pdf: %.dvi
 	dvipdfmx -d5 $<
 	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
@@ -113,14 +123,12 @@ pdf: $(PDF_FILE)
 
 pptx presen: presen.pptx
 
+eps: $(EPS_FILE)
+
 png: $(PNG_FILE)
 
 punctuation punc pun: $(TEX_FILE)
 	$(foreach file, $?, \
-		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > /tmp/$$$$.tex \
-		&& mv /tmp/$$$$.tex "$(file)"; \
-	)
-	$(foreach file, $(wildcard */*.tex), \
 		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > /tmp/$$$$.tex \
 		&& mv /tmp/$$$$.tex "$(file)"; \
 	)
