@@ -88,3 +88,9 @@ function _update_vcs_info_msg() {
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd _update_vcs_info_msg
 RPROMPT='${vcs_info_msg_0_}'
+
+# Google Cloud SDK
+if [[ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]]; then
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+fi
