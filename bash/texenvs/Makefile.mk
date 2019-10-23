@@ -62,21 +62,21 @@ all: pdf
 init: OUTPUT = report.tex
 init:
 	@echo 'Creating latex environment ...'
-	-mkdir img 2>/dev/null && touch img/.keep
+	-mkdir -p img && touch img/.keep
 	@echo 'OUTPUT='$(OUTPUT)
 	-cp -i $(TEXENV_DIR)/template.tex $(OUTPUT)
 
 init-presen:
 	@echo 'Creating presen environment ...'
-	-mkdir img 2>/dev/null && touch img/.keep
-	-mkdir pages 2>/dev/null && touch pages/.keep
+	-mkdir -p img && touch img/.keep
+	-mkdir -p pages && touch pages/.keep
 	-cp -i $(TEXENV_DIR)/presen/.gitignore .
 	-cp -R -i $(TEXENV_DIR)/presen/* .
 
 init-standalone: OUTPUT = standalone.tex
 init-standalone:
 	@echo 'Creating standalone environment ...'
-	-mkdir img 2>/dev/null && touch img/.keep
+	-mkdir -p img && touch img/.keep
 	-cp -i $(TEXENV_DIR)/standalone/.gitignore .
 	-cp -i $(TEXENV_DIR)/standalone/standalone.tex img/$(OUTPUT)
 

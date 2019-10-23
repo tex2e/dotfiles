@@ -18,5 +18,5 @@ python3 -c 'from pptx import Presentation' &>/dev/null \
 
 mkdir -p pages
 rm pages/presen-*.jpg || true
-convert -density 300 presen.pdf pages/presen-%02d.jpg
+convert -density 500 presen.pdf pages/presen-%02d.jpg
 python3 bin/pdf2pptx.py pages presen-note.txt
