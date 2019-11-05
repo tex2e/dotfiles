@@ -320,7 +320,7 @@
     'body':   '''
     \\\\begin{figure}[H]
       \\\\centering
-      \\\\includegraphics[scale=${1:1.0}]{img/${2:image}}
+      \\\\includegraphics[width=${1:10cm}]{img/${2:image}}
       \\\\caption{${3:Caption}}
       \\\\label{fig:${2:image}}
     \\\\end{figure}$0
@@ -331,14 +331,14 @@
     \\\\begin{figure}[H]
       \\\\begin{minipage}{0.49\\\\hsize}
         \\\\centering
-        \\\\includegraphics[scale=1.0]{img/image}
+        \\\\includegraphics[width=6cm]{img/image}
         \\\\caption{Caption}
         \\\\label{fig:image}
       \\\\end{minipage}
       %
       \\\\begin{minipage}{0.5\\\\hsize}
         \\\\centering
-        \\\\includegraphics[scale=1.0]{img/image}
+        \\\\includegraphics[width=6cm]{img/image}
         \\\\caption{Caption}
         \\\\label{fig:image}
       \\\\end{minipage}
@@ -351,7 +351,7 @@
         \\\\centering
         \\\\rotatebox{90}{
           \\\\begin{minipage}[c]{\\\\textheight}
-            \\\\includegraphics[scale=1.0]{img/${2:image}}
+            \\\\includegraphics[width=10cm]{img/${2:image}}
             \\\\caption{Caption}
             \\\\label{fig:${2:image}}
           \\\\end{minipage}
