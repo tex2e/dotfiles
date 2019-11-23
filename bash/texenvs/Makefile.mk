@@ -65,6 +65,7 @@ init:
 	-mkdir -p img && touch img/.keep
 	@echo 'OUTPUT='$(OUTPUT)
 	-cp -i $(TEXENV_DIR)/template.tex $(OUTPUT)
+	-cp -i $(TEXENV_DIR)/.latexmkrc .
 
 init-presen:
 	@echo 'Creating presen environment ...'
@@ -80,19 +81,23 @@ init-standalone:
 	-cp -i $(TEXENV_DIR)/standalone/.gitignore .
 	-cp -i $(TEXENV_DIR)/standalone/standalone.tex img/$(OUTPUT)
 
-%.dvi: %.tex
-	@for i in `seq 1 $(COMPILE_CNT)`; do \
-		yes q | head | $(TEX) $<; \
-	done
-	@for i in `seq 1 3`; do \
-		if grep -F 'Rerun to get cross-references right.' $(<:.tex=.log) || \
-			grep -F 'Package rerunfilecheck Warning' $(<:.tex=.log); \
-		then \
-			yes q | head | $(TEX) $<; \
-		else \
-			exit 0; \
-		fi; \
-	done
+# %.dvi: %.tex
+# 	@for i in `seq 1 $(COMPILE_CNT)`; do \
+# 		yes q | head | $(TEX) $<; \
+# 	done
+# 	@for i in `seq 1 3`; do \
+# 		if grep -F 'Rerun to get cross-references right.' $(<:.tex=.log) || \
+# 			grep -F 'Package rerunfilecheck Warning' $(<:.tex=.log); \
+# 		then \
+# 			yes q | head | $(TEX) $<; \
+# 		else \
+# 			exit 0; \
+# 		fi; \
+# 	done
+
+# %.pdf: %.dvi
+# 	dvipdfmx -d5 $<
+# 	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
 
 %.png: %.tex
 	mkdir -p $(TMP)/$$$$ && \
@@ -112,9 +117,13 @@ init-standalone:
 	&& rm -r $(TMP)/$$$$ \
 	|| rm -r $(TMP)/$$$$
 
-%.pdf: %.dvi
-	dvipdfmx -d5 $<
-	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
+FORCE:
+
+%.pdf: FORCE
+	latexmk $(patsubst %.pdf,%.tex,$@)
+
+# %.pdf:
+# 	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
 
 presen.pptx: presen.pdf presen-note.txt
 	./bin/pdf2pptx.sh
