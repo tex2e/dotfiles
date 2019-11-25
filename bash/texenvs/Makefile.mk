@@ -43,6 +43,8 @@ IMG_TEX   := $(shell find img -type f -name '*.tex')
 PNG_FILE  := $(patsubst %.tex, %.png, $(IMG_TEX))
 EPS_FILE  := $(patsubst %.tex, %.eps, $(IMG_TEX))
 
+BOOK_TEX_FILE := $(wildcard book/*.tex)
+
 COMPILE_CNT := 1
 
 ifeq ($(UNAME), Linux)
@@ -136,7 +138,7 @@ eps: $(EPS_FILE)
 
 png: $(PNG_FILE)
 
-punctuation punc pun: $(TEX_FILE)
+punctuation punc pun: $(TEX_FILE) $(BOOK_TEX_FILE)
 	$(foreach file, $?, \
 		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > /tmp/$$$$.tex \
 		&& mv /tmp/$$$$.tex "$(file)"; \
