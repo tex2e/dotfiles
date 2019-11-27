@@ -124,8 +124,8 @@ FORCE:
 %.pdf: FORCE
 	latexmk $(patsubst %.pdf,%.tex,$@)
 
-# %.pdf:
-# 	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
+title:
+	-test -f title.pdf && pdfunite title.pdf report.pdf /tmp/$$$$.pdf && mv /tmp/$$$$.pdf report.pdf || true
 
 presen.pptx: presen.pdf presen-note.txt
 	./bin/pdf2pptx.sh
