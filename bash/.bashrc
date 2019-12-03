@@ -15,16 +15,16 @@ fi
 #     keysym Caps_Lock = Control_L
 #     add Control = Control_L
 #
-if [[ -f "$HOME/.xmodmap" ]]; then
-  xmodmap "$HOME/.xmodmap" &> /dev/null
-fi
-# fix ubuntu keymapping
-case `uname` in
-  Linux )
-    which xmodmap &> /dev/null &&
-    xmodmap "$HOME/.dotfiles/xmodmap/ubuntu-keymap" > /dev/null
-    ;;
-esac
+# if [[ -f "$HOME/.xmodmap" ]]; then
+#   xmodmap "$HOME/.xmodmap" &> /dev/null
+# fi
+# # fix ubuntu keymapping
+# case `uname` in
+#   Linux )
+#     which xmodmap &> /dev/null &&
+#     xmodmap "$HOME/.dotfiles/xmodmap/ubuntu-keymap" > /dev/null
+#     ;;
+# esac
 
 
 ### Variables ###
