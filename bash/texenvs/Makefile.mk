@@ -75,6 +75,7 @@ init-presen:
 	-mkdir -p pages && touch pages/.keep
 	-cp -i $(TEXENV_DIR)/presen/.gitignore .
 	-cp -R -i $(TEXENV_DIR)/presen/* .
+	-cp -i $(TEXENV_DIR)/.latexmkrc .
 
 init-standalone: OUTPUT = standalone.tex
 init-standalone:
@@ -105,7 +106,7 @@ init-standalone:
 	mkdir -p $(TMP)/$$$$ && \
 	platex -shell-escape -halt-on-error -output-directory=$(TMP)/$$$$ $< && \
 	dvipdfmx -d5 -o $(TMP)/$$$$/$(basename $(notdir $<)).pdf $(TMP)/$$$$/$(basename $(notdir $<)).dvi && \
-	convert -density 200 $(TMP)/$$$$/$(basename $(notdir $<)).pdf -quality 90 $@ && \
+	convert -density 300 $(TMP)/$$$$/$(basename $(notdir $<)).pdf -quality 90 $@ && \
 	touch $@ \
 	&& rm -r $(TMP)/$$$$ \
 	|| rm -r $(TMP)/$$$$
@@ -139,9 +140,8 @@ eps: $(EPS_FILE)
 png: $(PNG_FILE)
 
 punctuation punc pun: $(TEX_FILE) $(BOOK_TEX_FILE)
-	$(foreach file, $?, \
-		cat "$(file)" | sed -e 's/。/．/g' | sed -e 's/、/，/g' > /tmp/$$$$.tex \
-		&& mv /tmp/$$$$.tex "$(file)"; \
+	$(foreach file, $^, \
+		tr '。、' '．，' < "$(file)" 1<> "$(file)"; \
 	)
 
 open: $(PDF_FILE)
