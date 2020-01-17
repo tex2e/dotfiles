@@ -20,21 +20,15 @@
 \usecolortheme{default} % Color
 \usefonttheme{professionalfonts} % Font
 \setbeamertemplate{headline}{ % headerの設定
-  \leavevmode\vskip10pt % 上のマージン（狭すぎると見出しがスクリーンからはみ出ることがある）
-}
-\setbeamertemplate{frametitle}{ % スライドの見出しの設定
-  \Large % フォント
-  \centering % 中央揃え
-  \insertframetitle
-  \par\vskip-6pt\color{black}\hrulefill % 見出しの下線
+  \leavevmode\vskip10pt % 上のマージン（100番教室用の余白設定）
 }
 \setbeamertemplate{navigation symbols}{} % ナビゲーションの無効化
 \setbeamertemplate{footline}{% footerの設定
   \scriptsize\bfseries % フォント
   \leavevmode\raggedleft % 右寄せ
   \insertframenumber{} / \inserttotalframenumber % ページ番号 / ページ総数
-  \hspace*{5ex} % 右のマージン
-  \vskip15pt % 下のマージン（狭すぎると行番号がスクリーンに映し出されないことがある）
+  \hspace*{5ex} % 右のマージン（100番教室用の余白設定）
+  \vskip15pt % 下のマージン（100番教室用の余白設定）
 }
 
 \AtBeginSection[]{ % Do nothing for \section*

@@ -66,13 +66,14 @@ init:
 	@echo 'Creating latex environment ...'
 	-mkdir -p img && touch img/.keep
 	@echo 'OUTPUT='$(OUTPUT)
-	-cp -i $(TEXENV_DIR)/template.tex $(OUTPUT)
 	-cp -i $(TEXENV_DIR)/.latexmkrc .
+	-cp -i $(TEXENV_DIR)/template.tex $(OUTPUT)
 
 init-presen:
 	@echo 'Creating presen environment ...'
 	-mkdir -p img && touch img/.keep
 	-mkdir -p pages && touch pages/.keep
+	-cp -i $(TEXENV_DIR)/.latexmkrc .
 	-cp -i $(TEXENV_DIR)/presen/.gitignore .
 	-cp -R -i $(TEXENV_DIR)/presen/* .
 	-cp -i $(TEXENV_DIR)/.latexmkrc .
@@ -81,6 +82,7 @@ init-standalone: OUTPUT = standalone.tex
 init-standalone:
 	@echo 'Creating standalone environment ...'
 	-mkdir -p img && touch img/.keep
+	-cp -i $(TEXENV_DIR)/.latexmkrc .
 	-cp -i $(TEXENV_DIR)/standalone/.gitignore .
 	-cp -i $(TEXENV_DIR)/standalone/standalone.tex img/$(OUTPUT)
 
@@ -125,8 +127,8 @@ FORCE:
 %.pdf: FORCE
 	latexmk $(patsubst %.pdf,%.tex,$@)
 
-# %.pdf:
-# 	-test -f title.pdf && pdfunite title.pdf $@ /tmp/$$$$.pdf && mv /tmp/$$$$.pdf $@ || true
+title:
+	-test -f title.pdf && pdfunite title.pdf report.pdf /tmp/$$$$.pdf && mv /tmp/$$$$.pdf report.pdf || true
 
 presen.pptx: presen.pdf presen-note.txt
 	./bin/pdf2pptx.sh

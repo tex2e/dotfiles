@@ -15,16 +15,16 @@ fi
 #     keysym Caps_Lock = Control_L
 #     add Control = Control_L
 #
-if [[ -f "$HOME/.xmodmap" ]]; then
-  xmodmap "$HOME/.xmodmap" &> /dev/null
-fi
-# fix ubuntu keymapping
-case `uname` in
-  Linux )
-    which xmodmap &> /dev/null &&
-    xmodmap "$HOME/.dotfiles/xmodmap/ubuntu-keymap" > /dev/null
-    ;;
-esac
+# if [[ -f "$HOME/.xmodmap" ]]; then
+#   xmodmap "$HOME/.xmodmap" &> /dev/null
+# fi
+# # fix ubuntu keymapping
+# case `uname` in
+#   Linux )
+#     which xmodmap &> /dev/null &&
+#     xmodmap "$HOME/.dotfiles/xmodmap/ubuntu-keymap" > /dev/null
+#     ;;
+# esac
 
 
 ### Variables ###
@@ -100,23 +100,23 @@ co() {
 # Alias
 source ~/.alias
 
-# rbenv settings
-if [[ -d "$HOME/.rbenv" ]]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
+## rbenv settings
+#if [[ -d "$HOME/.rbenv" ]]; then
+#  export PATH="$HOME/.rbenv/bin:$PATH"
+#  eval "$(rbenv init -)"
+#fi
 
-# alert command
-case `uname` in
-  Darwin ) # mac os
-    function alert() {
-      osascript -e "display notification \"$2\" with title \"$1\""
-    }
-    ;;
-  Linux )
-    alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)"'
-    ;;
-esac
+## alert command
+#case `uname` in
+#  Darwin ) # mac os
+#    function alert() {
+#      osascript -e "display notification \"$2\" with title \"$1\""
+#    }
+#    ;;
+#  Linux )
+#    alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)"'
+#    ;;
+#esac
 
 # For BoW (Bash on Windows)
 if [[ `uname` = 'Linux' ]] && [[ -d /mnt/c ]]; then
