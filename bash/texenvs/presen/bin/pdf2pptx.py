@@ -10,7 +10,7 @@ if len(sys.argv) < 1:
     print("Usage: pdf2pptx <path/to/pages/> [path/to/presen-note.txt]")
     sys.exit()
 
-def listdir_nohidden(path):
+def ls(path):
     return glob.glob(os.path.join(path, '*'))
 
 def main(argv):
@@ -32,7 +32,7 @@ def main(argv):
     width  = prs.slide_width
     height = prs.slide_height
 
-    for i, image_path in enumerate(sorted(listdir_nohidden(images_path))):
+    for i, image_path in enumerate(sorted(ls(images_path))):
         print('Create:', image_path)
         slide = prs.slides.add_slide(blank_slide_layout)
         slide.shapes.add_picture(image_path, left, top, width, height)
