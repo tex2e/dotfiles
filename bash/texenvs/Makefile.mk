@@ -153,7 +153,7 @@ open-report: report.pdf
 	$(OPEN) report.pdf &
 
 clean:
-	$(RM) *.{aux,log,dvi,fls}
+	$(RM) *.{aux,log,dvi,fls,bbl,blg,fls,out,toc}
 
 distclean: clean
 	$(RM) $(PDF_FILE)
