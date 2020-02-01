@@ -107,8 +107,8 @@ init-standalone:
 %.png: %.tex
 	mkdir -p $(TMP)/$$$$ && \
 	platex -shell-escape -halt-on-error -output-directory=$(TMP)/$$$$ $< && \
-	dvipdfmx -d5 -o $(TMP)/$$$$/$(basename $(notdir $<)).pdf $(TMP)/$$$$/$(basename $(notdir $<)).dvi && \
-	convert -density 300 $(TMP)/$$$$/$(basename $(notdir $<)).pdf -quality 90 $@ && \
+	dvipdfmx -d5 -o $(TMP)/$$$$/$(basename $(<F)).pdf $(TMP)/$$$$/$(basename $(<F)).dvi && \
+	convert -density 300 $(TMP)/$$$$/$(basename $(<F)).pdf -quality 90 $@ && \
 	touch $@ \
 	&& rm -r $(TMP)/$$$$ \
 	|| rm -r $(TMP)/$$$$
@@ -116,8 +116,8 @@ init-standalone:
 %.eps: %.tex
 	mkdir -p $(TMP)/$$$$ && \
 	platex -shell-escape -halt-on-error -output-directory=$(TMP)/$$$$ $< && \
-	dvipdfmx -d5 -o $(TMP)/$$$$/$(basename $(notdir $<)).pdf $(TMP)/$$$$/$(basename $(notdir $<)).dvi && \
-	pdftops -level2 -eps $(TMP)/$$$$/$(basename $(notdir $<)).pdf $@ && \
+	dvipdfmx -d5 -o $(TMP)/$$$$/$(basename $(<F)).pdf $(TMP)/$$$$/$(basename $(<F)).dvi && \
+	pdftops -level2 -eps $(TMP)/$$$$/$(basename $(<F)).pdf $@ && \
 	touch $@ \
 	&& rm -r $(TMP)/$$$$ \
 	|| rm -r $(TMP)/$$$$
