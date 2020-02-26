@@ -9,7 +9,7 @@
 #
 # ### SYNOPSIS
 #
-#     tree [-F] [-L level] [--] [directory]
+#     tree [-F] [-L level] [--ascii] [--] [directory]
 #
 # ### Description
 #
@@ -86,18 +86,14 @@ export LANG="ja_JP.UTF-8"
 INDENT_LEVEL=4
 MAX_NEST_LEVEL=8
 
-# check whether cut command support for multibyte string.
-if [[ $(echo "あいうえお" | cut -c 1-2) = "あい" ]]; then
-  pipe="│"
-  pipet="├"
-  pipefin="└"
-  line="── "
-else
-  pipe="|"
-  pipet="|"
-  pipefin="\`"
-  line="-- "
-fi
+unicode_pipe="│"
+unicode_pipet="├"
+unicode_pipefin="└"
+unicode_line="── "
+ascii_pipe="|"
+ascii_pipet="|"
+ascii_pipefin="\`"
+ascii_line="-- "
 none="   "
 tab="    "
 
@@ -195,12 +191,14 @@ function deindent {
 
 # --- main ---
 
-while getopts FL:h OPT
+while getopts FL:Ah OPT
 do
   case $OPT in
   F ) FILE_SUFFIX=1
       ;;
   L ) MAX_NEST_LEVEL=$OPTARG
+      ;;
+  A ) USE_ASCII=1
       ;;
   h ) usage_exit
       ;;
@@ -210,5 +208,19 @@ do
 done
 
 shift $((OPTIND - 1))
+
+# Use multibyte string when cut command support utf8
+# and USE_ASCII flag is not raised.
+if [[ $(echo "あいうえお" | cut -c 1-2) = "あい" ]] && [[ -z "$USE_ASCII" ]]; then
+  pipe="$unicode_pipe"
+  pipet="$unicode_pipet"
+  pipefin="$unicode_pipefin"
+  line="$unicode_line"
+else
+  pipe="$ascii_pipe"
+  pipet="$ascii_pipet"
+  pipefin="$ascii_pipefin"
+  line="$ascii_line"
+fi
 
 rec_ls ${1:-.}
