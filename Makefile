@@ -15,12 +15,8 @@ UNAME := $(shell uname)
 # + zsh
 #     create zsh config: .zshenc and .zshrc
 #
-# + fish
-#     create fish (friendly interactive shell) config
-#
 # + atom
-#     create atom config: snippets.cson
-#     and install atom packages (ATOM_PKG_LIST)
+#     create atom config and install atom packages (ATOM_PKG_LIST)
 #
 # + vim
 #     create vim config
@@ -31,11 +27,14 @@ UNAME := $(shell uname)
 # + xmodmap
 #     create xmodmap config
 #
+# + tmux
+#     create tmux config
+#
 # + <command>-f
 #     do `make <command>` with --force
 #
 
-.PHONY: path alias bash zsh fish atom vim git xmodmap cygwin brew gdb
+.PHONY: path alias bash zsh fish atom vim git xmodmap cygwin brew gdb tmux
 
 all:
 	@echo
@@ -72,14 +71,6 @@ zsh: bash
 	ln $(OPTION) -s "$(PWD)/zsh/.zshrc" "$(HOME)/.zshrc"
 zsh-f: bash-f
 	$(MAKE) zsh OPTION='-f'
-
-
-# --- make fish ---
-fish: alias
-	ln $(OPTION) -s "$(PWD)/fish/config.fish" "$(HOME)/.config/fish/config.fish"
-	ln $(OPTION) -s "$(PWD)/.alias" "$(HOME)/.config/fish/aliases.fish"
-fish-f: alias-f
-	$(MAKE) fish OPTION='-f'
 
 
 # --- make atom ---
@@ -149,16 +140,23 @@ brew-f:
 	$(MAKE) brew OPTION='-f'
 
 
+# --- make tmux ---
+tmux:
+	ln $(OPTION) -s "$(PWD)/tmux/.tmux.conf" "$(HOME)/.tmux.conf"
+tmux-f:
+	$(MAKE) tmux OPTION='-f'
+
+
 # --- make gdb ---
 gdb:
 	ln $(OPTION) -s "$(PWD)/misc/.gdbinit" "$(HOME)/.gdbinit"
 gdb-f:
 	$(MAKE) gdb OPTION='-f'
 
+
 ### Development ###
 
 # --- make doc ---
-
 doc: doc-bash doc-ruby
 doc-bash:
 	LANG=bash EXT=sh $(MAKE) doc-template
