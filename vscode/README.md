@@ -49,14 +49,3 @@ c.json
 	}
 }
 ```
-
-## locale.json
-
-```
-{
-	// Defines VSCode's desplay language.
-	// See https://go.microsoft.com/fwlink/?LinkId=761051 for a list of supported languages.
-	// Changing the value requires to restart VSCode.
-	"locale":"en"
-}
-```
