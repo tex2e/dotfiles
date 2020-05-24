@@ -1,9 +1,0 @@
-{
-	"Shebang": {
-		"scope": "bash",
-		"prefix": "bash",
-		"body": [
-			"#!/bin/bash -u"
-		]
-	}
-}

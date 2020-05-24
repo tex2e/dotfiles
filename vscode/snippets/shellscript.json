@@ -1,0 +1,89 @@
+{
+	"Shebang": {
+		"prefix": [
+			"bash",
+			"#!",
+			"shebang"
+		],
+		"body": [
+			"${1|#!/bin/bash,#!/usr/bin/env bash|} -u\n"
+		],
+		"description": [
+			"Shebang",
+			"",
+			"Option 1: #!/bin/bash",
+			"Description: Shebang Bash executor.",
+			"",
+			"Option 2: #!/usr/bin/env bash",
+			"Description: Shell searchs for the first match of bash in the $PATH environment variable.",
+		]
+	},
+	"read": {
+		"prefix": "read",
+		"body": "read -r ${0:VAR}",
+		"description": "Read input of ${VAR}."
+	},
+	"if": {
+		"prefix": "if",
+		"body": [
+			"if [[ ${1:condition} ]]; then",
+			"\t${0}",
+			"fi"
+		],
+	},
+	"elseif": {
+		"prefix": "elseif",
+		"body": [
+			"elif [[ ${1:condition} ]]; then",
+			"\t${0}"
+		],
+	},
+	"else": {
+		"prefix": "else",
+		"body": [
+			"else",
+			"\t${0}"
+		],
+	},
+	"for_in": {
+		"prefix": "for_in",
+		"body": [
+			"for ${0:VAR} in $${1:LIST}; do",
+			"\techo $${0:VAR}",
+			"done"
+		],
+	},
+	"for_i": {
+		"prefix": "for_i",
+		"body": [
+			"for ((${1:i} = 0; ${1:i} < ${2:10}; ${1:i}++)); do",
+			"\techo $${0:i}",
+			"done"
+		],
+	},
+	"while": {
+		"prefix": "while",
+		"body": [
+			"while [[ ${1:condition} ]]; do",
+			"\t${0}",
+			"done"
+		],
+	},
+	"function": {
+		"prefix": "function",
+		"body": [
+			"${1:name}() {",
+			"\t${0}",
+			"}"
+		],
+	},
+	"case": {
+		"prefix": "case",
+		"body": [
+			"case \"$${1:VAR}\" in",
+			"\t${1:1}) echo 1$0 ;;",
+			"\t*) echo default ;;",
+			"esac"
+		],
+	}
+}

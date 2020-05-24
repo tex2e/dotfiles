@@ -1,16 +1,13 @@
 {
 	"#include <>": {
-		"scope": "c",
 		"prefix": "inc",
 		"body": "#include <$1>"
 	},
 	"#include \"\"": {
-		"scope": "c",
 		"prefix": "Inc",
 		"body": "#include \"$1\""
 	},
 	"int main(int argc, char **argv)": {
-		"scope": "c",
 		"prefix": "main",
 		"body": [
 			"int main(int argc, char **argv) {",

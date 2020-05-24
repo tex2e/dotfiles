@@ -1,6 +1,5 @@
 {
 	"code": {
-		"scope": "markdown",
 		"prefix": "code",
 		"body": [
 			"```$1",
@@ -9,7 +8,6 @@
 		]
 	},
 	"table": {
-		"scope": "markdown",
 		"prefix": "table",
 		"body": [
 			"| ${1:a} | b |",
