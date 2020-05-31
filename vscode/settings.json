@@ -28,5 +28,13 @@
     "editor.dragAndDrop": false,
     "explorer.confirmDragAndDrop": false,
     "editor.snippetSuggestions": "top",
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "githd.blameView.enabled": false,
+    "diffEditor.renderSideBySide": false,
+    "git.confirmSync": false,
+    "editor.lineHeight": 14,
+    "editor.wrappingIndent": "indent",
+    "[vbnet]": {
+        "editor.tabSize": 4
+    }
 }
