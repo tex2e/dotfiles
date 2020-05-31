@@ -5,7 +5,8 @@
 			"```$1",
 			"$0",
 			"```"
-		]
+		],
+		"description": "Program"
 	},
 	"table": {
 		"prefix": "table",
@@ -13,6 +14,7 @@
 			"| ${1:a} | b |",
 			"|---|---|",
 			"| 1 | 2 |"
-		]
+		],
+		"description": "Table"
 	}
 }
