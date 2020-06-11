@@ -36,5 +36,14 @@
     "editor.wrappingIndent": "indent",
     "[vbnet]": {
         "editor.tabSize": 4
-    }
+    },
+    "[python]": {
+        "editor.tabSize": 4
+    },
+    "python.jediEnabled": false,
+    "python.pythonPath": "/usr/local/bin/python3",
+    "python.formatting.provider": "none",
+    "python.languageServer": "None",
+    "csv-edit.fontSizeInPx": 13,
+    "csv-edit.doubleClickColumnHandleForcedWith": 10
 }
