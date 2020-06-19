@@ -24,6 +24,15 @@
 	a = add
 	aa = add -A
 	addp = add -p
+	add1 = "!git add $(git status -s | sed -n 1p | cut -c 4-)"
+	add2 = "!git add $(git status -s | sed -n 2p | cut -c 4-)"
+	add3 = "!git add $(git status -s | sed -n 3p | cut -c 4-)"
+	add4 = "!git add $(git status -s | sed -n 4p | cut -c 4-)"
+	add5 = "!git add $(git status -s | sed -n 5p | cut -c 4-)"
+	add6 = "!git add $(git status -s | sed -n 6p | cut -c 4-)"
+	add7 = "!git add $(git status -s | sed -n 7p | cut -c 4-)"
+	add8 = "!git add $(git status -s | sed -n 8p | cut -c 4-)"
+	add9 = "!git add $(git status -s | sed -n 9p | cut -c 4-)"
 	am = commit --amend -m
 	amend = commit --amend
 	amendm = commit --amend -m
