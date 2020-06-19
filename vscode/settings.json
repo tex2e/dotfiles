@@ -24,7 +24,6 @@
     "workbench.editor.tabSizing": "shrink",
     "diffEditor.ignoreTrimWhitespace": true,
     "editor.tabCompletion": "on",
-    "editor.minimap.renderCharacters": false,
     "editor.dragAndDrop": false,
     "explorer.confirmDragAndDrop": false,
     "editor.snippetSuggestions": "top",
@@ -45,5 +44,7 @@
     "python.formatting.provider": "none",
     "python.languageServer": "None",
     "csv-edit.fontSizeInPx": 13,
-    "csv-edit.doubleClickColumnHandleForcedWith": 10
+    "csv-edit.doubleClickColumnHandleForcedWith": 10,
+    "editor.minimap.maxColumn": 100,
+    "editor.minimap.renderCharacters": false
 }
