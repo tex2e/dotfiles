@@ -1,8 +1,6 @@
 {
     "workbench.startupEditor": "newUntitledFile",
-    "atomKeymap.promptV3Features": true,
     "editor.tabSize": 2,
-    "window.zoomLevel": 0,
     "files.insertFinalNewline": true,
     "workbench.iconTheme": "vscode-icons",
     "editor.lineNumbers": "on",
@@ -31,7 +29,6 @@
     "githd.blameView.enabled": false,
     "diffEditor.renderSideBySide": false,
     "git.confirmSync": false,
-    "editor.lineHeight": 14,
     "editor.wrappingIndent": "indent",
     "[vbnet]": {
         "editor.tabSize": 4
@@ -39,12 +36,99 @@
     "[python]": {
         "editor.tabSize": 4
     },
-    "python.jediEnabled": false,
     "python.pythonPath": "/usr/local/bin/python3",
-    "python.formatting.provider": "none",
-    "python.languageServer": "None",
     "csv-edit.fontSizeInPx": 13,
     "csv-edit.doubleClickColumnHandleForcedWith": 10,
-    "editor.minimap.maxColumn": 100,
-    "editor.minimap.renderCharacters": false
+    "editor.minimap.maxColumn": 80,
+    "editor.minimap.renderCharacters": false,
+    "indenticator.showHover": true,
+    "indenticator.showCurrentDepthInStatusBar": false,
+    "indenticator.style": "dashed",
+    "codemap.vb": [
+        {
+            "pattern": "^\\s*Sub \\w*",
+            "clear": "Sub ",
+            "suffix": "(...)",
+            "icon": "function"
+        },
+        {
+            "pattern": "^\\s*Private Sub \\w*",
+            "clear": "Private Sub ",
+            "suffix": "(...)",
+            "icon": "function"
+        },
+        {
+            "pattern": "^\\s*Public Sub \\w*",
+            "clear": "Public Sub" ,
+            "suffix": "(...)",
+            "icon": "function"
+        },
+        {
+            "pattern": "^\\s*Protected Sub \\w*",
+            "clear": "Protected Sub" ,
+            "suffix": "(...)",
+            "icon": "function"
+        },
+        {
+            "pattern": "^\\s*Function \\w*",
+            "clear": "Function ",
+            "suffix": "(...)",
+            "icon": "function"
+        },
+        {
+            "pattern": "^\\s*Private Function \\w*",
+            "clear": "Private Function ",
+            "suffix": "(...)",
+            "icon": "function"
+        },
+        {
+            "pattern": "^\\s*Public Function \\w*",
+            "clear": "Public Function" ,
+            "suffix": "(...)",
+            "icon": "function"
+        },
+        {
+            "pattern": "^\\s*Protected Function \\w*",
+            "clear": "Protected Function" ,
+            "suffix": "(...)",
+            "icon": "function"
+        },
+        {
+            "pattern": "^\\s*Public Class \\w*",
+            "clear": "Public Class ",
+            "icon": "class"
+        },
+        {
+            "pattern": "^\\s*Module \\w*",
+            "clear": "Module ",
+            "icon": "class"
+        },
+        {
+            "pattern": "^\\s*Private m_\\w*",
+            "clear": "Private ",
+            "icon": "property"
+        },
+        {
+            "pattern": "^#Region .+\\w*",
+            "clear": "#Region ",
+            "icon": "none"
+        }
+    ],
+    "python.languageServer": "Microsoft",
+    "python.analysis.memory.keepLibraryAst": true,
+    "python.analysis.memory.keepLibraryLocalVariables": true,
+    "multiCommand.commands": [
+        {
+            "command": "multiCommand.open-codemap-and-reveal",
+            "sequence": [
+                "workbench.view.extension.codemap-explorer",
+                "codemap.reveal",
+                "workbench.action.focusActiveEditorGroup"
+            ]
+        }
+    ],
+    "window.zoomLevel": -0.4,
+    "debug.console.fontSize": 12.5,
+    "editor.fontSize": 12.5,
+    "editor.lineHeight": 15
 }

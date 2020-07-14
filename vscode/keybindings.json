@@ -9,5 +9,13 @@
     "key": "ctrl+shift+d",
     "command": "editor.action.copyLinesDownAction",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+q",
+    "command": "extension.multiCommand.execute",
+    "args": {
+      "command": "multiCommand.open-codemap-and-reveal"
+    },
+    "when": "editorFocus"
   }
 ]
