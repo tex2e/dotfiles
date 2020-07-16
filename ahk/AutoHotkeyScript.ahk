@@ -330,4 +330,12 @@ F13 & g::Send {AppsKey}gitbash
 ; Folder Shortcuts
 ;F13 & h::Send !d%homedir%{Enter}
 
+F13 & m::
+  if GetKeyState("Shift") {
+    Send {AppsKey}x{Up}{Up}{Enter}
+    return
+  }
+  Send ^m
+  return
+
 #IfWinActive
