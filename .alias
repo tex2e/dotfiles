@@ -23,18 +23,12 @@ alias .....='cd ../../../..'
 alias kill1='kill -9 %1'
 alias kill2='kill -9 %2'
 alias kill3='kill -9 %3'
-alias kill4='kill -9 %4'
-alias kill5='kill -9 %5'
 alias bg1='bg %1'
 alias bg2='bg %2'
 alias bg3='bg %3'
-alias bg4='bg %4'
-alias bg5='bg %5'
 alias fg1='fg %1'
 alias fg2='fg %2'
 alias fg3='fg %3'
-alias fg4='fg %4'
-alias fg5='fg %5'
 
 # basic commands
 alias l='ls'
@@ -49,14 +43,10 @@ alias fd='find . -type d -not -path "*/\.git*" -name'
 alias fd1='find . -maxdepth 1 -type d -not -path "*/\.git*" -name'
 alias fd2='find . -maxdepth 2 -type d -not -path "*/\.git*" -name'
 alias fd3='find . -maxdepth 3 -type d -not -path "*/\.git*" -name'
-alias fd4='find . -maxdepth 4 -type d -not -path "*/\.git*" -name'
-alias fd5='find . -maxdepth 5 -type d -not -path "*/\.git*" -name'
 alias ff='find . -type f -not -path "*/\.git*" -name'
 alias ff1='find . -maxdepth 1 -type f -not -path "*/\.git*" -name'
 alias ff2='find . -maxdepth 2 -type f -not -path "*/\.git*" -name'
 alias ff3='find . -maxdepth 3 -type f -not -path "*/\.git*" -name'
-alias ff4='find . -maxdepth 4 -type f -not -path "*/\.git*" -name'
-alias ff5='find . -maxdepth 5 -type f -not -path "*/\.git*" -name'
 alias chx='chmod 755'
 alias chr='chmod 644'
 alias grep='grep --color=auto --exclude-dir .git'
@@ -67,18 +57,17 @@ alias make4='make -j 4'
 # external commands
 alias python=python3
 alias pip=pip3
-alias server='python3 -m http.server &>/dev/null &; echo "localhost:8000"'
-alias server2='python2 -m SimpleHTTPServer &>/dev/null &; echo "localhost:8000"'
+if which py &>/dev/null; then
+  alias python=py
+  alias pip='py -m pip'
+fi
+alias server='echo "localhost:8000"; python -m http.server &>/dev/null &'
 alias pip-update="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -I{} pip install -U {} || true"
 alias tree='tree -F'
 alias tree1='tree -L 1'
 alias tree2='tree -L 2'
 alias tree3='tree -L 3'
-alias tree4='tree -L 4'
-alias tree5='tree -L 5'
 alias gitlog='git log --graph --oneline --all --decorate'
-alias gitlogd="git log --graph --pretty=format:'%C(yellow)%h%Creset%C(red)%d%Creset %s %Cgreen(%cr)' --abbrev-commit"
-alias gitlogp="gitlogd -p"
 alias npmls='npm ls --depth 0'
 alias npmlist='npm ls --depth 0'
 alias npms='npm start'
@@ -88,16 +77,10 @@ alias openssl-key='openssl rsa -text -modulus -noout -in'
 alias openssl-pub='openssl rsa -text -modulus -noout -pubin -in'
 alias openssl-csr='openssl req -text -modulus -noout -in'
 alias v=vagrant
-alias globalip='curl globalip.me'
 alias oepn='open'
 alias shred='gshred -v -u'
 
-# vim
-alias bf="cat > ~/.vim/bf"
-alias bfcat="cat ~/.vim/bf"
-
 #
-alias gdb="gdb -q"
 alias install-linuxbrew='sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"'
 
 alias blog="cd ~/Documents/pgm/github/blog; open http://localhost:4000/blog/; ./server.sh &"
