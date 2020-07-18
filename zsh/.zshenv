@@ -3,4 +3,4 @@
 source ~/.path
 
 # functions path
-fpath=($fpath /usr/local/share/zsh-completions ~/.dotfiles/zsh/function)
+#fpath=($fpath /usr/local/share/zsh-completions ~/.dotfiles/zsh/function)
