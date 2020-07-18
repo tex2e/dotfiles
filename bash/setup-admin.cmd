@@ -8,6 +8,16 @@ IF exist "%TO_DIR%\.bash_profile" (
 )
 MKLINK "%TO_DIR%\.bash_profile" "%FROM_DIR%\.bash_profile"
 
+IF exist "%TO_DIR%\.bashrc" (
+  MOVE "%TO_DIR%\.bashrc" "%TO_DIR%\.bashrc.orig"
+)
+MKLINK "%TO_DIR%\.bashrc" "%FROM_DIR%\.bashrc"
+
+IF exist "%TO_DIR%\.ubuntu.bashrc" (
+  MOVE "%TO_DIR%\.ubuntu.bashrc" "%TO_DIR%\.ubuntu.bashrc.orig"
+)
+MKLINK "%TO_DIR%\.ubuntu.bashrc" "%FROM_DIR%\.ubuntu.bashrc"
+
 IF exist "%TO_DIR%\.alias" (
   MOVE "%TO_DIR%\.alias" "%TO_DIR%\.alias.orig"
 )
