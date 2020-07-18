@@ -3,16 +3,24 @@
 SET TO_DIR=%HomeDrive%%HomePath%
 SET FROM_DIR=%~dp0
 
-IF exist "%TO_DIR%\.zshenv" (
-  MOVE "%TO_DIR%\.zshenv" "%TO_DIR%\.zshenv.orig"
+call :backup_and_mklink .zshenv
+call :backup_and_mklink .zshrc
+
+echo [info]: Setup Finished!
+
+pause
+
+exit /b
+
+
+REM サブルーチン：バックアップの作成とリンクの作成
+:backup_and_mklink
+if exist "%TO_DIR%\%~1" (
+  MOVE "%TO_DIR%\%~1" "%TO_DIR%\%~1.orig"
 )
-MKLINK "%TO_DIR%\.zshenv" "%FROM_DIR%\.zshenv"
-
-IF exist "%TO_DIR%\.zshrc" (
-  MOVE "%TO_DIR%\.zshrc" "%TO_DIR%\.zshrc.orig"
+if "%~2"=="" (
+  MKLINK "%TO_DIR%\%~1" "%FROM_DIR%\%~1"
+) else (
+  MKLINK "%TO_DIR%\%~1" "%FROM_DIR%\%~2"
 )
-MKLINK "%TO_DIR%\.zshrc" "%FROM_DIR%\.zshrc"
-
-echo "[info]: Setup Finished!"
-
-PAUSE
+exit /b
