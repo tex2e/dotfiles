@@ -130,5 +130,6 @@
     "window.zoomLevel": -0.4,
     "debug.console.fontSize": 12.5,
     "editor.fontSize": 12.5,
-    "editor.lineHeight": 15
+    "editor.lineHeight": 15,
+    "editor.fontFamily": "Source Han Code JP, Consolas, Meiryo, 'Courier New', monospace"
 }
