@@ -1,2 +1,2 @@
 #!/bin/bash
-$(dirname $0)/../bash/mkdo.sh
+$(dirname $0)/../bash/mkdo.sh $*

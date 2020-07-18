@@ -1,2 +1,2 @@
 #!/bin/bash
-$(dirname $0)/../ruby/mov2gif.rb
+$(dirname $0)/../ruby/mov2gif.rb $*

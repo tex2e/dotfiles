@@ -1,2 +1,2 @@
 #!/bin/bash
-$(dirname $0)/../ruby/latex-test/latex-test.rb
+$(dirname $0)/../ruby/latex-test/latex-test.rb $*

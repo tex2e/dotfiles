@@ -1,2 +1,2 @@
 #!/bin/bash
-$(dirname $0)/../python/url.py
+$(dirname $0)/../python/url.py $*

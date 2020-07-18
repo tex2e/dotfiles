@@ -1,2 +1,2 @@
 #!/bin/bash
-$(dirname $0)/../ruby/randomstr.rb
+$(dirname $0)/../ruby/randomstr.rb $*

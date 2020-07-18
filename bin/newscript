@@ -1,2 +1,2 @@
 #!/bin/bash
-$(dirname $0)/../bash/newscripts/newscript.sh
+$(dirname $0)/../bash/newscripts/newscript.sh $*

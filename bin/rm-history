@@ -1,2 +1,2 @@
 #!/bin/bash
-$(dirname $0)/../bash/rm-history.sh
+$(dirname $0)/../bash/rm-history.sh $*

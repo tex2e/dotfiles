@@ -1,2 +1,2 @@
 #!/bin/bash
-$(dirname $0)/../bash/htmlenvs/htmlenv.sh
+$(dirname $0)/../bash/htmlenvs/htmlenv.sh $*
