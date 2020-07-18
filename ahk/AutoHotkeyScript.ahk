@@ -324,7 +324,7 @@ F13 & l::Send !d
 ; Open Command Window
 #c::Send !dcmd{Enter}
 !#c::Send !dpowershell{Enter}
-F13 & g::Send {AppsKey}gitbash
+F13 & g::Send {AppsKey}s      ; gitbash
 
 ; Folder Shortcuts
 ;F13 & h::Send !d%homedir%{Enter}
