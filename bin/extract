@@ -1,1 +1,2 @@
-../bash/extract.sh
+#!/bin/bash
+$(dirname $0)/../bash/extract.sh

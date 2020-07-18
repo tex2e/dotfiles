@@ -1,1 +1,2 @@
-../bash/git-protocol.sh
+#!/bin/bash
+$(dirname $0)/../bash/git-protocol.sh

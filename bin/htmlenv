@@ -1,1 +1,2 @@
-../bash/htmlenvs/htmlenv.sh
+#!/bin/bash
+$(dirname $0)/../bash/htmlenvs/htmlenv.sh

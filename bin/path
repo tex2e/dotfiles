@@ -1,1 +1,2 @@
-../bash/path.sh
+#!/bin/bash
+$(dirname $0)/../bash/path.sh
