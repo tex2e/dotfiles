@@ -169,7 +169,7 @@ F13 & 3::
 #n:: Run, Notepad.exe                       ; Notepad
 #c:: Run, cmd.exe, %A_MyDocuments%          ; cmd.exe
 !#c:: Run, powershell.exe, %A_MyDocuments%  ; PowerShell
-#q:: DllCall("PowrProf\SetSuspendState", "int", 0, "int", 1, "int", 0) ; Sleep
+;#q:: DllCall("PowrProf\SetSuspendState", "int", 0, "int", 1, "int", 0) ; Sleep
 
 ; Ctrl+Tabでタスクビュー
 F13 & Tab:: Send #{Tab}
