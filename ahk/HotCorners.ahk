@@ -35,8 +35,8 @@ IsCorner(cornerID)
 ; Show Task View (Open Apps Overview)
 if IsCorner("TopRight")
 {
-  Send, {LWin down}{tab down}
-  Send, {LWin up}{tab up}
+  Send, {LWin down}{a down}
+  Send, {LWin up}{a up}
   Loop
   {
     if ! IsCorner("TopRight")
@@ -47,8 +47,7 @@ if IsCorner("TopRight")
 ; Show Action Center
 if IsCorner("BottomRight")
 {
-  Send, {LWin down}{a down}
-  Send, {LWin up}{a up}
+  Send, {Esc}#b{Left}{Left}{Enter}
   Loop
   {
     if ! IsCorner("BottomRight")
