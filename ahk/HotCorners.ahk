@@ -11,12 +11,12 @@ CoordMode, Mouse, Screen  ; Coordinate mode - coords will be passed to mouse rel
 IsCorner(cornerID)
 {
   WinGetPos, X, Y, Xmax, Ymax, Program Manager ; get desktop size
-  MouseGetPos, MouseX, MouseY  ; Function MouseGetPos retrieves the current position of the mouse cursor
+  MouseGetPos, MouseX, MouseY, OutputVarWin, OutputVarControl, 1
   T = 5  ; adjust tolerance value (pixels to corner) if desired
-  CornerTopLeft := (MouseY < T and MouseX < T)  ; Boolean stores whether mouse cursor is in top left corner
-  CornerTopRight := (MouseY < T and MouseX > Xmax - T)  ; Boolean stores whether mouse cursor is in top right corner
-  CornerBottomLeft := (MouseY > Ymax - T and MouseX < T)  ; Boolean stores whether mouse cursor is in bottom left corner
-  CornerBottomRight := (MouseY > Ymax - T and MouseX > Xmax - T)  ; Boolean stores whether mouse cursor is in top left corner
+  CornerTopLeft := (MouseY < T and MouseX < T)
+  CornerTopRight := (MouseY < T and MouseX > Xmax - T)
+  CornerBottomLeft := (MouseY > Ymax - T and MouseX < T)
+  CornerBottomRight := ((MouseY > Ymax - T and MouseX > Xmax - T) or (OutputVarControl = "TrayShowDesktopButtonWClass1"))
 
   if (cornerID = "TopLeft"){
     return CornerTopLeft
@@ -27,7 +27,7 @@ IsCorner(cornerID)
   else if (cornerID = "BottomLeft"){
     return CornerBottomLeft
   }
-  else if  (cornerID = "BottomRight") {
+  else if (cornerID = "BottomRight") {
     return CornerBottomRight
   }
 }
@@ -51,18 +51,6 @@ if IsCorner("BottomRight")
   Loop
   {
     if ! IsCorner("BottomRight")
-      break ; exits loop when mouse is no longer in the corner
-  }
-}
-
-; Press Windows
-if IsCorner("BottomLeft")
-{
-  Send, {LWin down}
-  Send, {LWin up}
-  Loop
-  {
-    if ! IsCorner("BottomLeft")
       break ; exits loop when mouse is no longer in the corner
   }
 }
