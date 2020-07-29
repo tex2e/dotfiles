@@ -5,6 +5,7 @@
 ;;
 #IfWinActive ahk_class CabinetWClass
 
+^+m::
 F13 & m::
   if GetKeyState("Shift") {
     Send {AppsKey}x{Up}{Up}{Enter}
