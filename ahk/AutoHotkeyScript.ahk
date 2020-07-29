@@ -114,26 +114,29 @@ F13 & Right::Send ^{Right}
 F13 & Up::Send ^{Up}
 F13 & Down::Send ^{Down}
 F13 & Space::Send ^{Space}
-F13 & 4::^4
+F13 & 1::^1
 F13 & 5::^5
 F13 & 6::^6
 F13 & 0::^0
 F13 & ,::^,
+F13 & F1::Send ^{F1}
+F13 & F2::Send ^{F2}
+F13 & F3::Send ^{F3}
 
 
 ;;
 ;; カスタムマップ
 ;;
 !s::!PrintScreen    ; 左手だけでスクリーンショット
-F13 & 1::
-  IfWinActive, ahk_exe Code.exe
-    Send ^1         ; VSCode
-  else
-    Send ^/         ; 左手だけでコメントアウト
-  return
 F13 & 3::
   IfWinActive, ahk_exe Code.exe
     Send ^3         ; VSCode
+  else
+    Send ^/         ; 左手だけでコメントアウト
+  return
+F13 & 4::
+  IfWinActive, ahk_exe Code.exe
+    Send ^4         ; VSCode
   else
     Send ^+/        ; 左手だけでコメントアウト解除
   return
@@ -330,8 +333,5 @@ F13 & l::Send !d
 #c::Send !dcmd{Enter}
 !#c::Send !dpowershell{Enter}
 F13 & g::Send {AppsKey}s      ; gitbash
-
-; Folder Shortcuts
-;F13 & h::Send !d%homedir%{Enter}
 
 #IfWinActive
