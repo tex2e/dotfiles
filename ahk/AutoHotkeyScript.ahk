@@ -164,6 +164,11 @@ F13 & 3::
 +WheelDown::WheelRight
 +WheelUp::WheelLeft
 
+; マウスの第4ボタン(BrowserBack)を押しながら第5ボタン(BrowserForward)でEnter
+; ダイアログにEnterを入力したいけどマウスを動かしたくない＆マウスから手を放したくない人向け
+XButton1 & XButton2::Send {Enter}
+XButton1::Send {XButton1}
+XButton2::Send {XButton2}
 
 ; プログラム起動のショートカット
 #n:: Run, Notepad.exe                       ; Notepad
