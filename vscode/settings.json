@@ -114,19 +114,15 @@
             "icon": "none"
         }
     ],
+    "codemap.cmd": [
+        {
+            "pattern": "^:L_.*",
+            "icon": "none"
+        }
+    ],
     "python.languageServer": "Microsoft",
     "python.analysis.memory.keepLibraryAst": true,
     "python.analysis.memory.keepLibraryLocalVariables": true,
-    "multiCommand.commands": [
-        {
-            "command": "multiCommand.open-codemap-and-reveal",
-            "sequence": [
-                "workbench.view.extension.codemap-explorer",
-                "codemap.reveal",
-                "workbench.action.focusActiveEditorGroup"
-            ]
-        }
-    ],
     "window.zoomLevel": -0.4,
     "debug.console.fontSize": 12.5,
     "editor.fontSize": 12.5,
