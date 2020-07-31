@@ -170,6 +170,8 @@ F13 & 4::
 ; マウスの第4ボタン(BrowserBack)を押しながら第5ボタン(BrowserForward)でEnter
 ; ダイアログにEnterを入力したいけどマウスを動かしたくない＆マウスから手を放したくない人向け
 XButton1 & XButton2::Send {Enter}
+; マウスの第5ボタン(BrowserForward)を押しながら第4ボタン(BrowserBack)でエクスプローラー
+XButton2 & XButton1::#e
 XButton1::Send {XButton1}
 XButton2::Send {XButton2}
 
