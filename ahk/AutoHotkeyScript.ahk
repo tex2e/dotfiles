@@ -268,7 +268,7 @@ F13 & h::
   return
 F13 & o::
   if GetKeyState("Shift") {
-    Send ^+o
+    Send {HOME}{Enter}{Up}
     return
   }
   Send {END}{Enter}               ; open_line
