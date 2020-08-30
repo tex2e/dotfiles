@@ -13,6 +13,8 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/local/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="$PATH:$HOME/.opam/default/bin/"
+export PATH="$PATH:$HOME/Documents/pgm/wasm/emsdk"
+export PATH="$PATH:$HOME/Documents/pgm/wasm/emsdk/upstream/emscripten"
 export PATH="$PATH:/usr/local/heroku/bin"
 export PATH="$PATH:./node_modules/.bin"
 
