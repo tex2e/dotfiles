@@ -32,7 +32,6 @@ IsCorner(cornerID)
   }
 }
 
-; Show Task View (Open Apps Overview)
 if IsCorner("TopRight")
 {
   Send, {LWin down}{a down}
@@ -44,10 +43,11 @@ if IsCorner("TopRight")
   }
 }
 
-; Show Action Center
 if IsCorner("BottomRight")
 {
-  Send, {Esc}#b{Left}{Left}{Enter}
+  WinActivate, ahk_class Shell_TrayWnd
+  Send {ESC}
+  ControlClick, TrayClockWClass1, ahk_exe explorer.exe ahk_class Shell_TrayWnd
   Loop
   {
     if ! IsCorner("BottomRight")
