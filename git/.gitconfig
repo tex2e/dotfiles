@@ -9,6 +9,7 @@
 	excludesfile = ~/.gitignore_global
 	editor = vim -c \"set fenc=utf-8\"
 	autocrlf = input
+	quotepath = false
 [help]
 	autocorrect = 1
 [filter "lfs"]
