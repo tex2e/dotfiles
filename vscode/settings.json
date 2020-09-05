@@ -39,6 +39,9 @@
     "[c]": {
         "editor.tabSize": 4
     },
+    "[cpp]": {
+        "editor.tabSize": 4
+    },
     "python.pythonPath": "/usr/local/bin/python3",
     "csv-edit.fontSizeInPx": 13,
     "csv-edit.doubleClickColumnHandleForcedWith": 10,
