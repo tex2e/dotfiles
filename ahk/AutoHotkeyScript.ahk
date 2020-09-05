@@ -115,13 +115,15 @@ F13 & Up::Send ^{Up}
 F13 & Down::Send ^{Down}
 F13 & Space::Send ^{Space}
 F13 & 1::^1
+F13 & 2::^2
 F13 & 5::^5
 F13 & 6::^6
+F13 & 7::^7
+F13 & 8::^8
+F13 & 9::^9
 F13 & 0::^0
 F13 & ,::^,
-F13 & F1::Send ^{F1}
-F13 & F2::Send ^{F2}
-F13 & F3::Send ^{F3}
+F13 & /::^/
 
 
 ;;
@@ -287,41 +289,6 @@ F13 & u::
   }
   Send ^z                         ; undo
   return
-
-
-;;
-;; 選択文字を「"」「'」「()」で囲む処理
-;;
-
-F13 & 7:: Enclose("'", "'")
-F13 & 2::
-  IfWinActive, ahk_exe Code.exe
-    Send ^2                       ; VSCode
-  else
-    Enclose("""", """")
-  return
-F13 & 8:: Enclose("(", ")")
-F13 & 9:: Enclose("(", ")")
-
-Enclose(begin, end) {
-  oldClipboard = %Clipboard%
-  Clipboard =
-  Send, ^c
-  ClipWait
-  If (!ErrorLevel) {
-    StringRight, LastChar, Clipboard, 1
-    If (LastChar != "`n") {
-      WinGetTitle, CurrentWinTitle
-      Clipboard = %begin%%Clipboard%%end%
-      ClipWait
-      WinActivate, %CurrentWinTitle%
-      Send, ^v
-      Sleep 150
-    }
-    Clipboard = %oldClipboard%
-  }
-  Return
-}
 
 
 ;;

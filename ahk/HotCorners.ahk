@@ -2,6 +2,7 @@
 ;;
 ;; Hot Corners
 ;;
+#NoTrayIcon
 #Persistent  ; Keeps script running persisitantly
 SetTimer, HotCorners, 0  ; HotCorners is name of timer, will be reset every 0 seconds until process is killed
 return
