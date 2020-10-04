@@ -1,1 +1,2 @@
-../ruby/randomhex.rb
+#!/bin/bash
+$(dirname $0)/../ruby/randomhex.rb $*

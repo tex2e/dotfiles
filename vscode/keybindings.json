@@ -12,10 +12,7 @@
   },
   {
     "key": "ctrl+q",
-    "command": "extension.multiCommand.execute",
-    "args": {
-      "command": "multiCommand.open-codemap-and-reveal"
-    },
+    "command": "workbench.view.extension.codemap-explorer",
     "when": "editorFocus"
   }
 ]

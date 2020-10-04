@@ -12,6 +12,8 @@ EnvGet, homedir, USERPROFILE
 ; 4. AutoHotkeyScript.exe をスタートアップに移動
 
 
+#Include Customize.ahk
+
 ;;
 ;; CapsLockをCtrlキーにする
 ;;
@@ -112,26 +114,29 @@ F13 & Right::Send ^{Right}
 F13 & Up::Send ^{Up}
 F13 & Down::Send ^{Down}
 F13 & Space::Send ^{Space}
-F13 & 4::^4
+F13 & 1::^1
 F13 & 5::^5
 F13 & 6::^6
 F13 & 0::^0
 F13 & ,::^,
+F13 & F1::Send ^{F1}
+F13 & F2::Send ^{F2}
+F13 & F3::Send ^{F3}
 
 
 ;;
 ;; カスタムマップ
 ;;
 !s::!PrintScreen    ; 左手だけでスクリーンショット
-F13 & 1::
-  IfWinActive, ahk_exe Code.exe
-    Send ^1         ; VSCode
-  else
-    Send ^/         ; 左手だけでコメントアウト
-  return
 F13 & 3::
   IfWinActive, ahk_exe Code.exe
     Send ^3         ; VSCode
+  else
+    Send ^/         ; 左手だけでコメントアウト
+  return
+F13 & 4::
+  IfWinActive, ahk_exe Code.exe
+    Send ^4         ; VSCode
   else
     Send ^+/        ; 左手だけでコメントアウト解除
   return
@@ -162,12 +167,22 @@ F13 & 3::
 +WheelDown::WheelRight
 +WheelUp::WheelLeft
 
+; マウスの第4ボタン(BrowserBack)を押しながら第5ボタン(BrowserForward)でEnter
+; ダイアログにEnterを入力したいけどマウスを動かしたくない＆マウスから手を放したくない人向け
+XButton1 & XButton2::Send {Enter}
+; マウスの第5ボタン(BrowserForward)を押しながら第4ボタン(BrowserBack)でエクスプローラー
+XButton2 & XButton1::#e
+XButton1::Send {XButton1}
+XButton2::Send {XButton2}
 
 ; プログラム起動のショートカット
 #n:: Run, Notepad.exe                       ; Notepad
 #c:: Run, cmd.exe, %A_MyDocuments%          ; cmd.exe
 !#c:: Run, powershell.exe, %A_MyDocuments%  ; PowerShell
-#q:: DllCall("PowrProf\SetSuspendState", "int", 0, "int", 1, "int", 0) ; Sleep
+;#q:: DllCall("PowrProf\SetSuspendState", "int", 0, "int", 1, "int", 0) ; Sleep
+
+; Ctrl+Tabでタスクビュー
+F13 & Tab:: Send #{Tab}
 
 ;;
 ;; MacOS風のキーボード操作
@@ -253,7 +268,7 @@ F13 & h::
   return
 F13 & o::
   if GetKeyState("Shift") {
-    Send ^+o
+    Send {HOME}{Enter}{Up}
     return
   }
   Send {END}{Enter}               ; open_line
@@ -319,9 +334,6 @@ F13 & l::Send !d
 ; Open Command Window
 #c::Send !dcmd{Enter}
 !#c::Send !dpowershell{Enter}
-F13 & g::Send {AppsKey}gitbash
-
-; Folder Shortcuts
-;F13 & h::Send !d%homedir%{Enter}
+F13 & g::Send {AppsKey}s      ; gitbash
 
 #IfWinActive

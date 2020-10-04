@@ -1,1 +1,2 @@
-../ruby/latex-test/latex-test.rb
+#!/bin/bash
+$(dirname $0)/../ruby/latex-test/latex-test.rb $*

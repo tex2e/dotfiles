@@ -120,5 +120,5 @@ source ~/.alias
 
 # For BoW (Bash on Windows)
 if [[ `uname` = 'Linux' ]] && [[ -d /mnt/c ]]; then
-  alias open='~/.dotfiles/bash-on-windows/open.sh'
+  alias open='cmd.exe /c start'
 fi

@@ -1,1 +1,2 @@
-../python/url.py
+#!/bin/bash
+$(dirname $0)/../python/url.py $*

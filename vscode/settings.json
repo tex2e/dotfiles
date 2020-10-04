@@ -36,6 +36,9 @@
     "[python]": {
         "editor.tabSize": 4
     },
+    "[c]": {
+        "editor.tabSize": 4
+    },
     "python.pythonPath": "/usr/local/bin/python3",
     "csv-edit.fontSizeInPx": 13,
     "csv-edit.doubleClickColumnHandleForcedWith": 10,
@@ -114,21 +117,18 @@
             "icon": "none"
         }
     ],
+    "codemap.cmd": [
+        {
+            "pattern": "^:L_.*",
+            "icon": "none"
+        }
+    ],
     "python.languageServer": "Microsoft",
     "python.analysis.memory.keepLibraryAst": true,
     "python.analysis.memory.keepLibraryLocalVariables": true,
-    "multiCommand.commands": [
-        {
-            "command": "multiCommand.open-codemap-and-reveal",
-            "sequence": [
-                "workbench.view.extension.codemap-explorer",
-                "codemap.reveal",
-                "workbench.action.focusActiveEditorGroup"
-            ]
-        }
-    ],
     "window.zoomLevel": -0.4,
     "debug.console.fontSize": 12.5,
     "editor.fontSize": 12.5,
-    "editor.lineHeight": 15
+    "editor.lineHeight": 15,
+    "editor.fontFamily": "Source Han Code JP, Consolas, Meiryo, 'Courier New', monospace"
 }
