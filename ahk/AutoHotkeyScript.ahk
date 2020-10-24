@@ -19,7 +19,7 @@ EnvGet, homedir, USERPROFILE
 ;;
 F13 & q::
   if GetKeyState("Shift") {
-    Send ^+f
+    Send ^+q
     return
   }
   Send ^q
@@ -113,7 +113,7 @@ F13 & Left::Send ^{Left}
 F13 & Right::Send ^{Right}
 F13 & Up::Send ^{Up}
 F13 & Down::Send ^{Down}
-F13 & Space::Send ^{Space}
+F13 & Space::Send ^#k   ; For Keypirinha (Windows Launcher)
 F13 & 1::^1
 F13 & 2::^2
 F13 & 5::^5
