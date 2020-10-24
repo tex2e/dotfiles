@@ -1,12 +1,11 @@
 @echo off
 
-set TO_DIR=%HomeDrive%%HomePath%\Documents\Apps\Keypirinha\portable\Profile\User
+set TO_DIR=%HomeDrive%%HomePath%\Documents\Apps\Keypirinha
 set FROM_DIR=%~dp0
 
 openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto NotAdmin
-  call :backup_and_mklink Keypirinha.ini
-  call :backup_and_mklink taskswitcher.ini
+  call :backup_and_mklink portable\Profile\User\Keypirinha.ini
   echo [info]: Setup Finished!
 goto End
 :NotAdmin
