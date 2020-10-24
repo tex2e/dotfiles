@@ -25,3 +25,6 @@ export CDPATH="$CDPATH:$HOME/Documents"
 export CDPATH="$CDPATH:$HOME/Documents/pgm"
 
 export GOPATH="$HOME/go"
+
+# X11
+export DISPLAY=localhost:0.0

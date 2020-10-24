@@ -1,4 +1,3 @@
-
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # inherited from .bashrc
@@ -89,3 +88,6 @@ if [[ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
+
+# opam configuration
+test -r /mnt/c/Users/mnfec/.opam/opam-init/init.zsh && . /mnt/c/Users/mnfec/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
