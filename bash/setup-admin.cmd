@@ -3,13 +3,18 @@
 set TO_DIR=%HomeDrive%%HomePath%
 set FROM_DIR=%~dp0
 
-call :backup_and_mklink .bash_profile
-call :backup_and_mklink .bashrc
-call :backup_and_mklink .ubuntu.bashrc
-call :backup_and_mklink .alias ..\.alias
-call :backup_and_mklink .path ..\.path
-
-echo [info]: Setup Finished!
+openfiles > NUL 2>&1
+if NOT %ERRORLEVEL% EQU 0 goto NotAdmin
+  call :backup_and_mklink .bash_profile
+  call :backup_and_mklink .bashrc
+  call :backup_and_mklink .ubuntu.bashrc
+  call :backup_and_mklink .alias ..\.alias
+  call :backup_and_mklink .path ..\.path
+  echo [info]: Setup Finished!
+goto End
+:NotAdmin
+  echo This command prompt is NOT ELEVATED
+:End
 
 pause
 

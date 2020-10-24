@@ -3,10 +3,14 @@
 set TO_DIR=%HomeDrive%%HomePath%
 set FROM_DIR=%~dp0
 
-call :backup_and_mklink .batrc.cmd
-
-
-echo [info]: Setup Finished!
+openfiles > NUL 2>&1
+if NOT %ERRORLEVEL% EQU 0 goto NotAdmin
+  call :backup_and_mklink .batrc.cmd
+  echo [info]: Setup Finished!
+goto End
+:NotAdmin
+  echo This command prompt is NOT ELEVATED
+:End
 
 pause
 
