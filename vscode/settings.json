@@ -1,6 +1,5 @@
 {
     "workbench.startupEditor": "newUntitledFile",
-    "editor.tabSize": 2,
     "files.insertFinalNewline": true,
     "workbench.iconTheme": "vscode-icons",
     "editor.lineNumbers": "on",
@@ -30,6 +29,7 @@
     "diffEditor.renderSideBySide": false,
     "git.confirmSync": false,
     "editor.wrappingIndent": "indent",
+    "editor.tabSize": 2,
     "[vbnet]": {
         "editor.tabSize": 4
     },
@@ -41,6 +41,19 @@
     },
     "[cpp]": {
         "editor.tabSize": 4
+    },
+    "[tex]": {
+        // スニペット補完中にも補完を使えるようにする
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.tabSize": 2
+    },
+    "[latex]": {
+        // スニペット補完中にも補完を使えるようにする
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.tabSize": 2
+    },
+    "[bibtex]": {
+        "editor.tabSize": 2
     },
     "python.pythonPath": "/usr/local/bin/python3",
     "csv-edit.fontSizeInPx": 13,
@@ -133,5 +146,8 @@
     "debug.console.fontSize": 12.5,
     "editor.fontSize": 12.5,
     "editor.lineHeight": 15,
-    "editor.fontFamily": "Source Han Code JP, Consolas, Meiryo, 'Courier New', monospace"
+    "editor.fontFamily": "Source Han Code JP, Consolas, Meiryo, 'Courier New', monospace",
+    "files.associations": {
+        "*.sage": "python"
+    }
 }
