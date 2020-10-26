@@ -80,3 +80,5 @@
 	pr-clean = "!git checkout master ; git for-each-ref refs/heads/pr/* --format="%(refname)" | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
 [github]
 	user = tex2e
+[pull]
+	rebase = false
