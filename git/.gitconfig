@@ -82,3 +82,8 @@
 	user = tex2e
 [pull]
 	rebase = false
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
