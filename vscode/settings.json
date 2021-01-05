@@ -63,52 +63,17 @@
     "indenticator.showHover": true,
     "indenticator.showCurrentDepthInStatusBar": false,
     "indenticator.style": "dashed",
+    "codemap.textMode": true,
     "codemap.vb": [
         {
-            "pattern": "^\\s*Sub \\w*",
-            "clear": "Sub ",
+            "pattern": "^\\s*([A-Z][a-z]+ )*Sub \\w*",
+            "clear": "",
             "suffix": "(...)",
             "icon": "function"
         },
         {
-            "pattern": "^\\s*Private Sub \\w*",
-            "clear": "Private Sub ",
-            "suffix": "(...)",
-            "icon": "function"
-        },
-        {
-            "pattern": "^\\s*Public Sub \\w*",
-            "clear": "Public Sub" ,
-            "suffix": "(...)",
-            "icon": "function"
-        },
-        {
-            "pattern": "^\\s*Protected Sub \\w*",
-            "clear": "Protected Sub" ,
-            "suffix": "(...)",
-            "icon": "function"
-        },
-        {
-            "pattern": "^\\s*Function \\w*",
-            "clear": "Function ",
-            "suffix": "(...)",
-            "icon": "function"
-        },
-        {
-            "pattern": "^\\s*Private Function \\w*",
-            "clear": "Private Function ",
-            "suffix": "(...)",
-            "icon": "function"
-        },
-        {
-            "pattern": "^\\s*Public Function \\w*",
-            "clear": "Public Function" ,
-            "suffix": "(...)",
-            "icon": "function"
-        },
-        {
-            "pattern": "^\\s*Protected Function \\w*",
-            "clear": "Protected Function" ,
+            "pattern": "^\\s*([A-Z][a-z]+ )*Function \\w*",
+            "clear": "ction",
             "suffix": "(...)",
             "icon": "function"
         },
@@ -123,8 +88,13 @@
             "icon": "class"
         },
         {
-            "pattern": "^\\s*Private m_\\w*",
+            "pattern": "^\\s*Private m_[^ ]+ As (New )?[^\\s]+",
             "clear": "Private ",
+            "icon": "property"
+        },
+        {
+            "pattern": "^\\s*Public [^ ]+ Property p_\\w*",
+            "clear": "Public ",
             "icon": "property"
         },
         {
@@ -133,21 +103,33 @@
             "icon": "none"
         }
     ],
+    "codemap.cpp": [
+        {
+            "pattern": "^\\w+::\\w+\\(",
+            "suffix": "...)",
+            "icon": "class"
+        },
+        {
+            "pattern": "^(\\w+ )*\\w+::\\w+\\(",
+            "suffix": "...)",
+            "icon": "function"
+        }
+    ],
     "codemap.cmd": [
         {
             "pattern": "^:L_.*",
             "icon": "none"
         }
     ],
-    "python.languageServer": "Microsoft",
-    "python.analysis.memory.keepLibraryAst": true,
-    "python.analysis.memory.keepLibraryLocalVariables": true,
-    "window.zoomLevel": -0.4,
+    "window.zoomLevel": -0.45,
     "debug.console.fontSize": 12.5,
     "editor.fontSize": 12.5,
     "editor.lineHeight": 15,
     "editor.fontFamily": "Source Han Code JP, Consolas, Meiryo, 'Courier New', monospace",
     "files.associations": {
         "*.sage": "python"
-    }
+    },
+    "markdown-preview-enhanced.previewTheme": "one-dark.css",
+    "markdown-preview-enhanced.scrollSync": false,
+    "markdown.preview.fontSize": 12
 }
