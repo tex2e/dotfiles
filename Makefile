@@ -15,9 +15,6 @@ UNAME := $(shell uname)
 # + zsh
 #     create zsh config: .zshenc and .zshrc
 #
-# + atom
-#     create atom config and install atom packages (ATOM_PKG_LIST)
-#
 # + vim
 #     create vim config
 #
@@ -26,9 +23,6 @@ UNAME := $(shell uname)
 #
 # + xmodmap
 #     create xmodmap config
-#
-# + tmux
-#     create tmux config
 #
 # + <command>-f
 #     do `make <command>` with --force
@@ -71,25 +65,6 @@ zsh: bash
 	ln $(OPTION) -s "$(PWD)/zsh/.zshrc" "$(HOME)/.zshrc"
 zsh-f: bash-f
 	$(MAKE) zsh OPTION='-f'
-
-
-# --- make atom ---
-ATOM_PKG_LIST := \
-	minimap \
-	file-icons \
-	sublime-style-column-selection \
-	highlight-selected \
-	minimap-highlight-selected
-
-atom: atom-config atom-package
-atom-config:
-	@echo '=== configure atom ==='
-	ln -fs $(HOME)/.dotfiles/atom/snippets.cson $(HOME)/.atom/snippets.cson
-	ln -fs $(HOME)/.dotfiles/atom/config.cson $(HOME)/.atom/config.cson
-	ln -fs $(HOME)/.dotfiles/atom/keymap.cson $(HOME)/.atom/keymap.cson
-atom-package:
-	@echo '=== installing atom packages ==='
-	apm install $(ATOM_PKG_LIST)
 
 
 # --- make vim ---
@@ -138,20 +113,6 @@ brew:
 	ln $(OPTION) -s "$(PWD)/brew/.brew-aliases" "$(HOME)/.brew-aliases"
 brew-f:
 	$(MAKE) brew OPTION='-f'
-
-
-# --- make tmux ---
-tmux:
-	ln $(OPTION) -s "$(PWD)/tmux/.tmux.conf" "$(HOME)/.tmux.conf"
-tmux-f:
-	$(MAKE) tmux OPTION='-f'
-
-
-# --- make gdb ---
-gdb:
-	ln $(OPTION) -s "$(PWD)/misc/.gdbinit" "$(HOME)/.gdbinit"
-gdb-f:
-	$(MAKE) gdb OPTION='-f'
 
 
 ### Development ###
