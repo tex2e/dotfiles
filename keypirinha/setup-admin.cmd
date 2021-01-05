@@ -5,9 +5,14 @@ set FROM_DIR=%~dp0
 
 openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto NotAdmin
-  call :backup_and_mklink portable\Profile\User\Keypirinha.ini
-  call :backup_and_mklink portable\Profile\User\filescatalog.ini
-  call :backup_and_mklink portable\Profile\User\bookmarks.ini
+  call :backup_and_mklink portable\Profile\User\Keypirinha.ini Keypirinha.ini
+  call :backup_and_mklink portable\Profile\User\filescatalog.ini filescatalog.ini
+  call :backup_and_mklink portable\Profile\User\bookmarks.ini bookmarks.ini
+  
+  echo Kill.keypirinha-package
+  copy /Y %FROM_DIR%\InstalledPackages\Kill.keypirinha-package %TO_DIR%\portable\Profile\InstalledPackages\
+  echo WindowsApps.keypirinha-package
+  copy /Y %FROM_DIR%\InstalledPackages\WindowsApps.keypirinha-package %TO_DIR%\portable\Profile\InstalledPackages\
   echo [info]: Setup Finished!
 goto End
 :NotAdmin
