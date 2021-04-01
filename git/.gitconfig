@@ -43,19 +43,14 @@
 	# clean merged branches
 	bclean = "!f() { git branch --merged ${1-master} | grep -v \" ${1-master}$\" | xargs git branch -d; }; f"
 	c = commit
-	cam = commit -am
 	ch = checkout
 	chb = checkout -b
-	chm = checkout master
 	cm = commit -m
 	d = diff
 	dc = diff --cached
 	dt = diff HEAD^ HEAD
 	empty = commit --allow-empty
 	emptym = commit --allow-empty -m
-	f = fetch
-	fa = fetch --all
-	fp = fetch --prune
 	git = !exec git
 	graph = log --graph --oneline --all --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
 	graphp = "!git graph -p"
@@ -63,8 +58,8 @@
 	ignore = !"f() { local s=$1; shift; \
 		while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
 		curl \"https://www.gitignore.io/api/$s\"; }; f"
-	l = log
-	lp = log -p
+	logd = log --graph --oneline --all --decorate
+	logp = log -p
 	o = "!git-open"
 	open = "!git-open"
 	protocol = "!git-protocol"
@@ -72,16 +67,15 @@
 	ru = remote update
 	rv = remote -v
 	s = status
-	showp = show -p
 	ss = status -s
+	showp = show -p
 	undo = reset --mixed HEAD~1
 	unstage = reset HEAD --
-	pr = "!f() { git fetch -fu ${2:-upstream} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
-	pr-clean = "!git checkout master ; git for-each-ref refs/heads/pr/* --format="%(refname)" | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
 [github]
 	user = tex2e
 [pull]
 	rebase = false
+	default = current
 [difftool "sourcetree"]
 	cmd = '' \"$LOCAL\" \"$REMOTE\"
 [mergetool "sourcetree"]
