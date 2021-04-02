@@ -2,6 +2,21 @@
 
 This is a repository with my configuration files.
 
+## Setup
+
+```
+ssh-keygen -t ed25519
+cat ~/.ssh/id_ed25519.pub
+cat <<EOS
+Host github.com
+        HostName github.com
+        IdentityFile ~/.ssh/id_ed25519
+        User git
+EOS
+ssh -T github.com
+```
+
+
 
 Requirements
 -------------
