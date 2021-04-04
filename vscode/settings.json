@@ -131,5 +131,9 @@
     },
     "markdown-preview-enhanced.previewTheme": "one-dark.css",
     "markdown-preview-enhanced.scrollSync": false,
-    "markdown.preview.fontSize": 12
+    "markdown.preview.fontSize": 12,
+    "editor.rulers": [
+        80
+    ],
+    "powershell.startAutomatically": false
 }
