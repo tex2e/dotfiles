@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+cd $(dirname $0)
+
 # バックアップの作成とリンクの作成
 function createSymlink {
   if [ -e "$HOME/${2:-$1}" ]; then
@@ -12,4 +14,3 @@ createSymlink .path
 createSymlink .alias
 createSymlink .bash_profile
 createSymlink .bashrc
-createSymlink .ubuntu.bashrc
