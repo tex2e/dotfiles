@@ -8,7 +8,7 @@
 ^+m::
 F13 & m::
   if GetKeyState("Shift") {
-    Send {AppsKey}x{Up}{Up}{Enter}
+    Send {AppsKey}x{Up}{Up}{Up}{Enter}
     return
   }
   Send ^m
