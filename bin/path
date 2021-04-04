@@ -1,2 +1,2 @@
 #!/bin/bash
-$(dirname $0)/../bash/path.sh $*
+$(dirname $0)/../bash/scripts/path.sh $*

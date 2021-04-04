@@ -1,2 +1,2 @@
 #!/bin/bash
-$(dirname $0)/../bash/extract.sh $*
+$(dirname $0)/../bash/scripts/extract.sh $*
