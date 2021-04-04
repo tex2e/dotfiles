@@ -11,9 +11,6 @@ EnvGet, homedir, USERPROFILE
 ; 3. 常駐しているAutoHotkeyScriptの停止
 ; 4. AutoHotkeyScript.exe をスタートアップに移動
 
-
-#Include Customize.ahk
-
 ;;
 ;; CapsLockをCtrlキーにする
 ;;
@@ -108,11 +105,38 @@ F13 & v::
   }
   Send ^v
   return
-F13 & LButton::Send ^{LButton}
-F13 & Left::Send ^{Left}
-F13 & Right::Send ^{Right}
-F13 & Up::Send ^{Up}
-F13 & Down::Send ^{Down}
+F13 & LButton::
+  if GetKeyState("Shift") {
+    Send ^+{LButton}
+    return
+  }
+  Send ^{LButton}
+  return
+F13 & Left::
+  if GetKeyState("Shift") {
+    Send ^+{Left}
+    return
+  }
+  Send ^{Left}
+  return
+F13 & Right::
+  if GetKeyState("Shift") {
+    Send ^+{Right}
+    return
+  }
+  Send ^{Right}
+F13 & Up::
+  if GetKeyState("Shift") {
+    Send ^+{Up}
+    return
+  }
+  Send ^{Up}
+F13 & Down::
+  if GetKeyState("Shift") {
+    Send ^+{Down}
+    return
+  }
+  Send ^{Down}
 F13 & Space::Send ^#k   ; For Keypirinha (Windows Launcher)
 F13 & 1::^1
 F13 & 2::^2
@@ -154,7 +178,7 @@ F13 & 4::
   Return
 
 
-; Excelの複数行の結合セルに貼り付ける
+; Excelで結合セルの複数行に貼り付ける
 !+v::
   Critical
   SetKeyDelay, 0
@@ -181,7 +205,6 @@ XButton2::Send {XButton2}
 #n:: Run, Notepad.exe                       ; Notepad
 #c:: Run, cmd.exe, %A_MyDocuments%          ; cmd.exe
 !#c:: Run, powershell.exe, %A_MyDocuments%  ; PowerShell
-;#q:: DllCall("PowrProf\SetSuspendState", "int", 0, "int", 1, "int", 0) ; Sleep
 
 ; Ctrl+Tabでタスクビュー
 F13 & Tab:: Send #{Tab}
@@ -194,7 +217,7 @@ F13 & Tab:: Send #{Tab}
 ;   変換 : IME-オン
 ;
 F13 & k::
-if GetKeyState("Shift") {
+  if GetKeyState("Shift") {
     Send ^+k
     return
   }
@@ -299,8 +322,39 @@ F13 & u::
 F13 & l::Send !d
 
 ; Open Command Window
-#c::Send !dcmd{Enter}
-!#c::Send !dpowershell{Enter}
+#c::Send !dcmd{Enter}         ; cmd
+!#c::Send !dpowershell{Enter} ; powershell
 F13 & g::Send {AppsKey}s      ; gitbash
+
+; メモファイルの作成
+^+m::
+F13 & m::
+  vPathNotepad := "C:\Windows\system32\notepad.exe"
+  vNameNoExt := "memo"
+  vDotExt := ".txt"
+  vPath := ""
+  WinGet, hWnd, ID, A
+  for oWin in ComObjCreate("Shell.Application").Windows {
+    if (oWin.HWND != hWnd)
+      Continue
+    vDir := RTrim(oWin.Document.Folder.Self.Path, "\")
+    if !InStr(FileExist(vDir), "D") {
+      oWin := ""
+      return
+    }
+    Loop {
+      vSfx := (A_Index=1) ? "" : " (" A_Index ")"
+      vName := vNameNoExt vSfx vDotExt
+      vPath := vDir "\" vName
+      if !FileExist(vPath)
+        break
+    }
+    ; Create a blank text file (ANSI/UTF-8)
+    FileAppend,, % "*" vPath
+    ;FileAppend,, % "*" vPath, UTF-8
+    break
+  }
+  oWin := ""
+  return
 
 #IfWinActive
