@@ -39,6 +39,17 @@ setopt notify             # report background job status immediately
 bindkey -e
 
 
+### Key Mapping ###
+
+if [[ -f "$HOME/.Xmodmap" ]]; then
+  # To avoid error "xmodmap:  unable to open display 'localhost:0.0'"
+  export DISPLAY=:0.0
+  export LIBGL_ALWAYS_INDIRECT=1
+  # keymapping
+  xmodmap "$HOME/.Xmodmap" &> /dev/null
+fi
+
+
 ### Alias ###
 
 alias -g ...='../..'

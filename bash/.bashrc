@@ -24,24 +24,13 @@ esac
 
 ### Key Mapping ###
 
-# # create .xmodmap file
-# xmodmap -pke > "~/.xmodmap"
-# vim ~/.xmodmap
-#
-#     remove Lock = Caps_Lock
-#     keysym Caps_Lock = Control_L
-#     add Control = Control_L
-#
 if [[ -f "$HOME/.xmodmap" ]]; then
+  # To avoid error "xmodmap:  unable to open display 'localhost:0.0'"
+  export DISPLAY=:0.0
+  export LIBGL_ALWAYS_INDIRECT=1
+  # keymapping
   xmodmap "$HOME/.xmodmap" &> /dev/null
 fi
-# # fix ubuntu keymapping
-# case `uname` in
-#   Linux )
-#     which xmodmap &> /dev/null &&
-#     xmodmap "$HOME/.dotfiles/xmodmap/ubuntu-keymap" > /dev/null
-#     ;;
-# esac
 
 
 ### Useful Functions ###

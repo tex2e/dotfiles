@@ -1,12 +1,19 @@
 
 # xmodmap
 
+CapsLockをCtrlにする
+
+```
+xmodmap -pke > "~/.xmodmap"
+vim ~/.xmodmap
+
+remove Lock = Caps_Lock
+keysym Caps_Lock = Control_L
+add Control = Control_L
+```
 
 ```bash
 #!/bin/bash
-
-# Ubuntu 18.04
-# ln -s ~/.dotfiles/xmodmap/startup.sh
 
 xmodmap "$HOME/.xmodmap"
 xmodmap "$HOME/.dotfiles/xmodmap/ubuntu-keymap"
