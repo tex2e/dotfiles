@@ -25,6 +25,7 @@ exit /b
 
 
 REM サブルーチン：バックアップの作成とリンクの作成
+REM call :backup_and_mklink リンク先 リンク元
 :backup_and_mklink
 if exist "%TO_DIR%\%~1" (
   MOVE "%TO_DIR%\%~1" "%TO_DIR%\%~1.orig"
