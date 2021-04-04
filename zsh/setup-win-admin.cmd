@@ -1,12 +1,16 @@
 @echo off
 
+REM リンク先フォルダとリンク元フォルダ
 SET TO_DIR=%HomeDrive%%HomePath%
-set FROM_DIR=%~dp0
+SET FROM_DIR=%~dp0
 
+REM 管理者権限チェック
 openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto NotAdmin
-  call :backup_and_mklink .gitconfig
-  call :backup_and_mklink .gitignore_global
+
+  call :backup_and_mklink .zshenv
+  call :backup_and_mklink .zshrc
+
   echo [info]: Setup Finished!
 goto End
 :NotAdmin

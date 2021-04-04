@@ -1,3 +1,8 @@
+
+# xmodmap
+
+
+```bash
 #!/bin/bash
 
 # Ubuntu 18.04
@@ -5,3 +10,4 @@
 
 xmodmap "$HOME/.xmodmap"
 xmodmap "$HOME/.dotfiles/xmodmap/ubuntu-keymap"
+```

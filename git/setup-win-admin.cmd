@@ -1,15 +1,16 @@
 @echo off
 
-set TO_DIR=%HomeDrive%%HomePath%
+REM リンク先フォルダとリンク元フォルダ
+SET TO_DIR=%USERPROFILE%
 set FROM_DIR=%~dp0
 
+REM 管理者権限チェック
 openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto NotAdmin
-  call :backup_and_mklink .bash_profile
-  call :backup_and_mklink .bashrc
-  call :backup_and_mklink .ubuntu.bashrc
-  call :backup_and_mklink .alias
-  call :backup_and_mklink .path
+
+  call :backup_and_mklink .gitconfig
+  call :backup_and_mklink .gitignore_global
+
   echo [info]: Setup Finished!
 goto End
 :NotAdmin

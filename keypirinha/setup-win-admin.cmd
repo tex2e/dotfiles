@@ -1,18 +1,23 @@
 @echo off
 
-set TO_DIR=%HomeDrive%%HomePath%\Documents\Apps\Keypirinha
+REM リンク先フォルダとリンク元フォルダ
+set TO_DIR=%USERPROFILE%\Documents\Apps\Keypirinha
 set FROM_DIR=%~dp0
 
+REM 管理者権限チェック
 openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto NotAdmin
+
   call :backup_and_mklink portable\Profile\User\Keypirinha.ini Keypirinha.ini
   call :backup_and_mklink portable\Profile\User\filescatalog.ini filescatalog.ini
   call :backup_and_mklink portable\Profile\User\bookmarks.ini bookmarks.ini
   
-  echo Kill.keypirinha-package
+  REM パッケージのインストール（指定フォルダにコピー）
+  echo [+] Kill.keypirinha-package
   copy /Y %FROM_DIR%\InstalledPackages\Kill.keypirinha-package %TO_DIR%\portable\Profile\InstalledPackages\
-  echo WindowsApps.keypirinha-package
+  echo [+] WindowsApps.keypirinha-package
   copy /Y %FROM_DIR%\InstalledPackages\WindowsApps.keypirinha-package %TO_DIR%\portable\Profile\InstalledPackages\
+
   echo [info]: Setup Finished!
 goto End
 :NotAdmin

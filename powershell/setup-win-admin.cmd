@@ -1,11 +1,13 @@
 @echo off
 
-set TO_DIR=%HomeDrive%%HomePath%
+REM リンク先フォルダとリンク元フォルダ
+set TO_DIR=%USERPROFILE%\Documents\WindowsPowerShell
 set FROM_DIR=%~dp0
 
+REM 管理者権限チェック
 openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto NotAdmin
-  call :backup_and_mklink .batrc.cmd
+  call :backup_and_mklink Microsoft.PowerShell_profile.ps1
   echo [info]: Setup Finished!
 goto End
 :NotAdmin

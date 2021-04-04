@@ -1,12 +1,15 @@
 @echo off
 
-SET TO_DIR=%HomeDrive%%HomePath%
-SET FROM_DIR=%~dp0
+REM リンク先フォルダとリンク元フォルダ
+set TO_DIR=%HomeDrive%%HomePath%
+set FROM_DIR=%~dp0
 
+REM 管理者権限チェック
 openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto NotAdmin
-  call :backup_and_mklink .zshenv
-  call :backup_and_mklink .zshrc
+
+  call :backup_and_mklink .batrc.cmd
+
   echo [info]: Setup Finished!
 goto End
 :NotAdmin
