@@ -8,8 +8,8 @@ if NOT %ERRORLEVEL% EQU 0 goto NotAdmin
   call :backup_and_mklink .bash_profile
   call :backup_and_mklink .bashrc
   call :backup_and_mklink .ubuntu.bashrc
-  call :backup_and_mklink .alias ..\.alias
-  call :backup_and_mklink .path ..\.path
+  call :backup_and_mklink .alias
+  call :backup_and_mklink .path
   echo [info]: Setup Finished!
 goto End
 :NotAdmin
