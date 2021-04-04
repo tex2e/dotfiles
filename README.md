@@ -20,7 +20,7 @@ Requirements
 Installation
 -------------
 
-~~~ bash
+~~~bash
 git clone https://github.com/TeX2e/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 make zsh-f
