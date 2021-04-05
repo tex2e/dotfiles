@@ -18,3 +18,12 @@ add Control = Control_L
 xmodmap "$HOME/.xmodmap"
 xmodmap "$HOME/.dotfiles/xmodmap/ubuntu-keymap"
 ```
+
+
+```makefile
+# # --- make xmodmap ---
+# xmodmap:
+# 	ln $(OPTION) -s "$(PWD)/xmodmap/.Xmodmap" "$(HOME)/.Xmodmap"
+# xmodmap-f:
+# 	$(MAKE) xmodmap OPTION='-f'
+```

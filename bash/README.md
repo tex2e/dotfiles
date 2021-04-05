@@ -1,9 +1,8 @@
 
-Scripts
-==========
+# Bash
 
-To use scripts, export PATH:
 
-    export PATH="$PATH:$HOME/.dotfiles/bin"
-
+```bash
+export PATH="$PATH:$HOME/.dotfiles/bin"
+```
 

@@ -4,106 +4,32 @@ This is a repository with my configuration files.
 
 ## Setup
 
+```bash
+git clone https://github.com/TeX2e/dotfiles ~/.dotfiles
+cd ~/.dotfiles
 ```
+
+```bash
+git clone git@github.com:tex2e/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+```
+
+When setup new pc:
+
+```bash
 ssh-keygen -t ed25519
 cat ~/.ssh/id_ed25519.pub
 cat <<EOS
 Host github.com
-        HostName github.com
-        IdentityFile ~/.ssh/id_ed25519
-        User git
+    HostName github.com
+    IdentityFile ~/.ssh/id_ed25519
+    User git
 EOS
 ssh -T github.com
 ```
 
 
-
-Requirements
--------------
-
-- **Git** (if you are not a sudoer, see
-  [tex2e/picnic](https://github.com/tex2e/picnic) to install git)
-- **Bash**
-- **Zsh**
-- **curl** or **wget**
-- **Vim**
-- **Ruby** 2.0+
-- **Python** 3.5+
-- **gawk** (for making document)
-
-
-Installation
--------------
-
-~~~bash
-git clone https://github.com/TeX2e/dotfiles ~/.dotfiles
-cd ~/.dotfiles
-make zsh-f
-~~~
-
-
-Structure
-------------
-
-    .
-    ├── atom/              # atom settings
-    │   └── snippets.cson
-    ├── bash/              # bash scripts
-    │   ├── .bash_profile
-    │   ├── .bashrc
-    │   └── .ubuntu.bashrc
-    ├── bin/               # executable (symlinks)
-    ├── fish/              # fish settings
-    ├── git/               # git setting files
-    ├── python/            # python scripts
-    ├── ruby/              # ruby scripts
-    ├── sublime/           # sublime packages
-    ├── vim/               # vim settings
-    │   ├── .vim/
-    │   └── .vimrc
-    ├── xmodmap/           # xmodmap settings
-    ├── zsh/               # zsh settings
-    │   ├── .zshenv
-    │   └── .zshrc
-    ├── .alias             # alias
-    ├── .path              # export PATH
-    └── Makefile           # create symlinks or config settings
-
-
-Makefile
-----------
-
-Usage:
-
-    make zsh
-
-Rules:
-
-+ `bash`
-    create symlinks which link to .bash_profile and .bashrc into home dir
-
-+ `zsh`
-    create symlinks which link to .zshenv and .zshrc into home dir
-
-+ `atom`
-    create atom config
-    and install atom packages (ATOM_PKG_LIST)
-
-+ `vim`
-    create vim settings
-
-+ `git`
-    create git settings
-
-+ `xmodmap`
-    create xmodmap config
-
-+ `<command>-f`
-    do `make <command>` with --force
-
-
-License
---------
+## License
 
     DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
         Version 2, December 2004
