@@ -53,10 +53,6 @@ touch00() {
 
 source ~/.alias
 
-# Git Bash
-if which explorer.exe &>/dev/null; then
-  alias open='explorer'
-fi
 # Ubuntu
 if [[ `uname` = "Linux" ]]; then
   alias open='xdg-open 2>/dev/null'
