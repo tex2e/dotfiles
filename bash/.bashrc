@@ -57,7 +57,7 @@ source ~/.alias
 if [[ `uname` = "Linux" ]]; then
   alias open='xdg-open 2>/dev/null'
 fi
-# Bash on Windows
+# Windows Subsystem for Linux
 if [[ `uname` = "Linux" ]] && [[ -d /mnt/c ]]; then
   alias open='cmd.exe /c start'
 fi
@@ -123,9 +123,9 @@ esac
 # enable color support of ls, less and man, and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  alias dir='dir --color=auto'
-  alias vdir='vdir --color=auto'
+  #alias ls='ls --color=auto'
+  #alias dir='dir --color=auto'
+  #alias vdir='vdir --color=auto'
 
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
