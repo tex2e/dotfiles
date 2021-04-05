@@ -1,20 +1,22 @@
 # dotfiles
 
-This is a repository with my configuration files.
+Windows, WSL, Git Bash, Ubuntu, Kali, MacOS の設定ファイル
 
-## Setup
+## 前提条件
+
+- Windowsの場合：Git for Windows（Git Bash）
+- Linux系の場合：Gitコマンド
+
+## ダウンロード
+
+一時的な環境ですぐに使いたい場合：
 
 ```bash
 git clone https://github.com/TeX2e/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ```
 
-```bash
-git clone git@github.com:tex2e/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-```
-
-When setup new pc:
+普段使う環境でメンテナンスしながら使う場合（SSH鍵必須、GitHubで二要素認証あり）：
 
 ```bash
 ssh-keygen -t ed25519
@@ -25,8 +27,31 @@ Host github.com
     IdentityFile ~/.ssh/id_ed25519
     User git
 EOS
+# GitHubにアクセスしてSSH公開鍵を登録する。
+# 以下は確認コマンド
 ssh -T github.com
+
+git clone git@github.com:tex2e/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 ```
+
+## インストール
+
+設定ファイルのシンボリックリンクを作成します。
+詳細は各フォルダ内の README.md をご覧ください。
+
+### Windows
+
+各フォルダに移動してから setup-win-XXX.cmd を実行してください。
+setup-win-admin.cmd のように末尾に「admin」が付いているものは管理者権限で実行してください。
+レジストリ変更が必要な設定は、XXX.reg のファイルを実行してください。
+
+### Linux
+
+各フォルダにある ./XXX/setup-linux.sh を実行してください（cdしないで実行しても問題ないです）。
+Windowsとは異なり、シンボリックリンクの作成に管理者権限は不要ですので、sudoなしで実行してください。
+
+
 
 
 ## License
