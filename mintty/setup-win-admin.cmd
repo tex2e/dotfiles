@@ -1,15 +1,15 @@
 @echo off
 
 REM リンク先フォルダとリンク元フォルダ
-set TO_DIR=%USERPROFILE%
+set TO_DIR=%USERPROFILE%\.mintty\themes
 set FROM_DIR=%~dp0
 
 REM 管理者権限チェック
 openfiles > NUL 2>&1
 if NOT %ERRORLEVEL% EQU 0 goto NotAdmin
 
-  mkdir %TO_DIR%\.mintty\themes
-  call :backup_and_mklink .mintty\themes\base16-google-light.minttyrc base16-google-light.minttyrc
+  mkdir %TO_DIR%
+  call :backup_and_mklink base16-google-light.minttyrc
 
   echo [info]: Setup Finished!
 goto End

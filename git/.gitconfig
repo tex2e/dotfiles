@@ -10,6 +10,7 @@
 	editor = vim -c \"set fenc=utf-8\"
 	autocrlf = input
 	quotepath = false
+	pager = LESSCHARSET=utf-8 less
 [help]
 	autocorrect = 1
 [filter "lfs"]

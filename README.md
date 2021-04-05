@@ -21,7 +21,7 @@ cd ~/.dotfiles
 ```bash
 ssh-keygen -t ed25519
 cat ~/.ssh/id_ed25519.pub
-cat <<EOS
+cat <<EOS > ~/.ssh/config
 Host github.com
     HostName github.com
     IdentityFile ~/.ssh/id_ed25519
