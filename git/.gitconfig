@@ -1,6 +1,7 @@
 [include]
 	path = .gitconfig.macos
 	path = .gitconfig.linux
+	path = .gitconfig.work
 [user]
 	name = Mako
 	email = mnfeconicu41@gmail.com
@@ -77,8 +78,3 @@
 [pull]
 	rebase = false
 	default = current
-[difftool "sourcetree"]
-	cmd = '' \"$LOCAL\" \"$REMOTE\"
-[mergetool "sourcetree"]
-	cmd = "'' "
-	trustExitCode = true
