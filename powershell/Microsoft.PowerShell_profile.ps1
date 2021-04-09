@@ -24,8 +24,10 @@ function Prompt {
 
 ### Options ###
 
-# Zsh風のタブ補完
+# Bash風のタブ補完
 Set-PSReadLineKeyHandler -Key Tab -Function Complete
+# Emacsキーバインド
+Set-PSReadLineOption -EditMode Emacs
 
 
 ### Alias ###
@@ -72,3 +74,4 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
+
