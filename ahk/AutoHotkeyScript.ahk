@@ -125,21 +125,42 @@ F13 & Right::
     return
   }
   Send ^{Right}
+  return
 F13 & Up::
   if GetKeyState("Shift") {
     Send ^+{Up}
     return
   }
   Send ^{Up}
+  return
 F13 & Down::
   if GetKeyState("Shift") {
     Send ^+{Down}
     return
   }
   Send ^{Down}
-F13 & Space::Send ^#k   ; For Keypirinha (Windows Launcher)
+  return
+F13 & Space::
+  if GetKeyState("Shift") {
+    Winset, Alwaysontop, , A  ; 常に最前面に表示
+    return
+  }
+  Send ^#k          ; Keypirinha (Windows Launcher)
+  return
 F13 & 1::^1
 F13 & 2::^2
+F13 & 3::
+  IfWinActive, ahk_exe Code.exe
+    Send ^3         ; VSCode
+  else
+    Send ^/         ; 左手だけでコメントアウト
+  return
+F13 & 4::
+  IfWinActive, ahk_exe Code.exe
+    Send ^4         ; VSCode
+  else
+    Send ^+/        ; 左手だけでコメントアウト解除
+  return
 F13 & 5::^5
 F13 & 6::^6
 F13 & 7::^7
@@ -154,20 +175,8 @@ F13 & /::^/
 ;; カスタムマップ
 ;;
 !s::!PrintScreen    ; 左手だけでスクリーンショット
-F13 & 3::
-  IfWinActive, ahk_exe Code.exe
-    Send ^3         ; VSCode
-  else
-    Send ^/         ; 左手だけでコメントアウト
-  return
-F13 & 4::
-  IfWinActive, ahk_exe Code.exe
-    Send ^4         ; VSCode
-  else
-    Send ^+/        ; 左手だけでコメントアウト解除
-  return
 
-; 日付のリマップ
+; 日付の入力
 ::ddd::
   FormatTime,TimeString,,yyyy/MM/dd
   Send %TimeString%
@@ -177,9 +186,9 @@ F13 & 4::
   Send %TimeString%
   Return
 
-
 ; Excelで結合セルの複数行に貼り付ける
 !+v::
+  Sleep, 1000
   Critical
   SetKeyDelay, 0
   Loop, parse, clipboard, `n, `r
@@ -196,7 +205,7 @@ F13 & 4::
 ; マウスの第4ボタン(BrowserBack)を押しながら第5ボタン(BrowserForward)でEnter
 ; ダイアログにEnterを入力したいけどマウスを動かしたくない＆マウスから手を放したくない人向け
 XButton1 & XButton2::Send {Enter}
-; マウスの第5ボタン(BrowserForward)を押しながら第4ボタン(BrowserBack)でエクスプローラー
+; マウスの第5ボタン(BrowserForward)を押しながら第4ボタン(BrowserBack)でエクスプローラー起動
 XButton2 & XButton1::#e
 XButton1::Send {XButton1}
 XButton2::Send {XButton2}
@@ -326,35 +335,15 @@ F13 & l::Send !d
 !#c::Send !dpowershell{Enter} ; powershell
 F13 & g::Send {AppsKey}s      ; gitbash
 
-; メモファイルの作成
+; Create New Text
+; 新規作成の内容を編集したいときは ShellNewHandler.exe を使う
 ^+m::
 F13 & m::
-  vPathNotepad := "C:\Windows\system32\notepad.exe"
-  vNameNoExt := "memo"
-  vDotExt := ".txt"
-  vPath := ""
-  WinGet, hWnd, ID, A
-  for oWin in ComObjCreate("Shell.Application").Windows {
-    if (oWin.HWND != hWnd)
-      Continue
-    vDir := RTrim(oWin.Document.Folder.Self.Path, "\")
-    if !InStr(FileExist(vDir), "D") {
-      oWin := ""
-      return
-    }
-    Loop {
-      vSfx := (A_Index=1) ? "" : " (" A_Index ")"
-      vName := vNameNoExt vSfx vDotExt
-      vPath := vDir "\" vName
-      if !FileExist(vPath)
-        break
-    }
-    ; Create a blank text file (ANSI/UTF-8)
-    FileAppend,, % "*" vPath
-    ;FileAppend,, % "*" vPath, UTF-8
-    break
-  }
-  oWin := ""
-  return
+ if GetKeyState("Shift") {
+   Send {AppsKey}x{Up}{Up}{Enter}
+   return
+ }
+ Send ^m
+ return
 
 #IfWinActive
