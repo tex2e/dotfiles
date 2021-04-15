@@ -61,6 +61,7 @@
 		while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
 		curl \"https://www.gitignore.io/api/$s\"; }; f"
 	logd = log --graph --oneline --all --decorate
+	logc = "log --graph --date=short --pretty=format:\"[%ad] %h %an : %s\""
 	logp = log -p
 	o = "!git-open"
 	open = "!git-open"
