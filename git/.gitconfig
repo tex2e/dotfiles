@@ -1,11 +1,11 @@
-[include]
-	path = .gitconfig.macos
-	path = .gitconfig.linux
-	path = .gitconfig.work
 [user]
 	name = Mako
 	email = mnfeconicu41@gmail.com
 	signingkey = 402F552C68EFB93F
+[include]
+	path = .gitconfig.macos
+	path = .gitconfig.linux
+	path = .gitconfig.work
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim -c \"set fenc=utf-8\"
