@@ -186,7 +186,7 @@ function additonal_info {
 # delete indent one level from tail
 function deindent {
   local target_str=$1
-  echo "$target_str" | rev | cut -c $((INDENT_LEVEL+1))- | rev
+  echo "$target_str" | awk -v indentlevel=$INDENT_LEVEL '{print substr($0, 0, length($0)-indentlevel)}'
 }
 
 # --- main ---
