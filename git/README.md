@@ -7,7 +7,7 @@ gitconfig と gitignore_global の設定
 ### インストール手順
 
 - Linuxの場合、setup-linux.sh を実行
-- Windows (Git Bash) の場合、setup-win-admin.cmd を管理者権限で実行
+- Windowsの場合、setup-win-admin.cmd を管理者権限で実行
 
 ### 注意事項
 

@@ -1,7 +1,7 @@
 
 # mintty
 
-Git Bashの背景色などのカスタマイズの設定
+WindowsでGit Bashの背景色などのカスタマイズの設定
 
 
 ### インストール手順

@@ -12,7 +12,7 @@ Windows, WSL, Git Bash, Ubuntu, Kali, MacOS の設定ファイル
 一時的な環境ですぐに使いたい場合：
 
 ```bash
-git clone https://github.com/TeX2e/dotfiles ~/.dotfiles
+git clone https://github.com/tex2e/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ```
 
