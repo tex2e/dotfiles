@@ -16,7 +16,7 @@ git clone https://github.com/tex2e/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ```
 
-普段使う環境でメンテナンスしながら使う場合（SSH鍵必須、GitHubで二要素認証あり）：
+普段使う環境でメンテナンスしながら使う場合（SSH鍵必須、GitHubで二要素認証）：
 
 ```bash
 ssh-keygen -t ed25519
@@ -52,7 +52,7 @@ setup-win-admin.cmd のように末尾に「admin」が付いているものは�
 Windowsとは異なり、シンボリックリンクの作成に管理者権限は不要ですので、sudoなしで実行してください。
 
 
-
+<br>
 
 ## License
 
