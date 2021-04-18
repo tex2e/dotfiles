@@ -1,29 +1,30 @@
 
-# xmodmap
+# Xmodmap
 
-CapsLockをCtrlにする
+CapsLockをCtrlにする (Linuxのみ)
+
+
+### インストール手順
+
+1. setup-linux.sh を実行
+2. コンソールを再起動
+
+
+### 設定ファイル
+
+設定ファイル作成：
 
 ```
-xmodmap -pke > "~/.xmodmap"
-vim ~/.xmodmap
+xmodmap -pke > "~/.Xmodmap"
+vim ~/.Xmodmap
 
-remove Lock = Caps_Lock
-keysym Caps_Lock = Control_L
-add Control = Control_L
+    remove Lock = Caps_Lock
+    keysym Caps_Lock = Control_L
+    add Control = Control_L
 ```
 
-```bash
-#!/bin/bash
+設定ファイル適用：
 
-xmodmap "$HOME/.xmodmap"
-xmodmap "$HOME/.dotfiles/xmodmap/ubuntu-keymap"
 ```
-
-
-```makefile
-# # --- make xmodmap ---
-# xmodmap:
-# 	ln $(OPTION) -s "$(PWD)/xmodmap/.Xmodmap" "$(HOME)/.Xmodmap"
-# xmodmap-f:
-# 	$(MAKE) xmodmap OPTION='-f'
+xmodmap ~/.Xmodmap
 ```

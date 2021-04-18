@@ -1,50 +1,50 @@
 
-# Brewfile
+# Brew
 
-Install commands written in Brewfile via homebrew-bundle
-
-```
-cd
-brew bundle
-```
-
-If you want to update Brewfile, type:
-
-```
-brew bundle dump --force --global
-```
-
-or this one if brew-aliases is activated
-(To install Homebrew Aliases, type `brew tap homebrew/aliases`).
-
-```
-brew file
-```
+Brewでインストールしたパッケージ一覧の作成と、エイリアスの設定
 
 
+### インストール手順
 
-------
+1. brewインストール
+2. `brew tap homebrew/aliases` でHomebrewエイリアスをインストール
+3. `setup-linux.sh` を実行
 
-Creates a dependency graph with **brew-graph**.
+### Brewfile作成
+
+Brewでインストールしたパッケージ一覧
+
+#### 一覧作成方法
+
+    brew bundle dump --force --global
+
+または
+
+    brew file
+
+
+#### 一覧復元方法
+
+    brew bundle --global
+
+
+
+<br>
+
+### Brew-Graph 導入
+
+不要パッケージ削除のための、依存関係グラフの作成
+
+インストール手順：
 
 ```
 brew install martido/brew-graph/brew-graph
 brew install graphviz
-
-brew graph --installed | dot -Tpng -ograph.png
-open graph.png
 ```
 
+依存関係グラフ作成手順：
 
-
----
-
-```makefile
-# # --- make brew ---
-# brew:
-# 	ln $(OPTION) -s "$(PWD)/brew/.Brewfile" "$(HOME)/.Brewfile"
-# 	test -d "$(HOME)/.brew-aliases" || \
-# 	ln $(OPTION) -s "$(PWD)/brew/.brew-aliases" "$(HOME)/.brew-aliases"
-# brew-f:
-# 	$(MAKE) brew OPTION='-f'
+```
+brew graph --installed | dot -Tpng -ograph.png
+open graph.png
 ```

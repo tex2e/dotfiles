@@ -336,7 +336,7 @@ F13 & l::Send !d
 F13 & g::Send {AppsKey}s      ; gitbash
 
 ; Create New Text
-; 新規作成の内容を編集したいときは ShellNewHandler.exe を使う
+; 右クリックの新規作成の内容を編集したいときは ShellNewHandler.exe を使う
 ^+m::
 F13 & m::
  if GetKeyState("Shift") {

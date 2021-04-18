@@ -10,7 +10,7 @@ REM 1. Compile
 "C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe" /in "%AHK_SCRIPT%" /out "%AHK_EXE%"
 
 REM 2. Kill AutoHotKey process
-TASKKILL /im AutoHotkeyScript.exe
+TASKKILL /im "%AHK_EXE%"
 TIMEOUT 1
 
 REM 3. Move exe to shell:startup folder
