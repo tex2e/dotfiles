@@ -20,13 +20,13 @@ cd ~/.dotfiles
 
 ```bash
 ssh-keygen -t ed25519
-cat ~/.ssh/id_ed25519.pub
 cat <<EOS > ~/.ssh/config
 Host github.com
     HostName github.com
     IdentityFile ~/.ssh/id_ed25519
     User git
 EOS
+cat ~/.ssh/id_ed25519.pub
 # GitHubにアクセスしてSSH公開鍵を登録する。
 # 以下は確認コマンド
 ssh -T github.com
@@ -37,7 +37,7 @@ cd ~/.dotfiles
 
 ## インストール
 
-設定ファイルのシンボリックリンクを作成します。
+各フォルダ内にあるコマンドを実行して、設定ファイルのシンボリックリンクを作成します。
 詳細は各フォルダ内の README.md をご覧ください。
 
 ### Windows
