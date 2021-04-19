@@ -1,15 +1,15 @@
 
 PS1='\W \$ '
 
+# export path
+source ~/.path
+
+# Alias
+source ~/.alias
+
 # Git for Windows
 if [[ `uname` =~ ^MINGW64 ]]; then
   PS1='\[\033]0;\w\007\]\[\033[32m\]\W\[\033[0m\] $ '
   alias open='explorer'
   alias which='type'
 fi
-
-# export path
-source ~/.path
-
-# Alias
-source ~/.alias
