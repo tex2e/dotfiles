@@ -1,2 +1,6 @@
 #!/bin/bash
-$(dirname $0)/../python/url.py $*
+if [[ `uname` =~ ^MINGW64 ]]; then # Git for Windows
+  py -3 $(dirname $0)/../python/url.py $*
+else
+  $(dirname $0)/../python/url.py $1 "$2"
+fi
