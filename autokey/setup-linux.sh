@@ -7,7 +7,10 @@ export TO_DIR="$HOME/.config/autokey/data"
 
 # リンクの作成
 function createSymlink {
-  ln -f -s "$FROM_DIR/$1" "$TO_DIR/${2:-$1}"
+  if [ ! -e "$TO_DIR/${2:-$1}" ]; then
+    ln -f -s "$FROM_DIR/$1" "$TO_DIR/${2:-$1}"
+  fi
 }
 
 createSymlink CapsCtrl
+createSymlink Replace
