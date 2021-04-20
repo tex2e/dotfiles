@@ -1,0 +1,30 @@
+{
+    "type": "script",
+    "description": "dd_MMDD",
+    "store": {},
+    "modes": [
+        1
+    ],
+    "usageCount": 10,
+    "prompt": false,
+    "omitTrigger": true,
+    "showInTrayMenu": false,
+    "abbreviation": {
+        "abbreviations": [
+            "dd"
+        ],
+        "backspace": true,
+        "ignoreCase": false,
+        "immediate": false,
+        "triggerInside": false,
+        "wordChars": "[\\w]"
+    },
+    "hotkey": {
+        "modifiers": [],
+        "hotKey": null
+    },
+    "filter": {
+        "regex": null,
+        "isRecursive": false
+    }
+}

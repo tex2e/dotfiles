@@ -28,3 +28,17 @@ vim ~/.Xmodmap
 ```
 xmodmap ~/.Xmodmap
 ```
+
+
+
+---
+
+### Ubuntu
+
+
+```
+sudo apt install autokey-gtk
+autokey-gtk &
+```
+設定 > システム > セッションと起動 > 自動開始アプリケーション
+
