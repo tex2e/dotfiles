@@ -176,6 +176,9 @@ F13 & /::^/
 ;;
 !s::!PrintScreen    ; 左手だけでスクリーンショット
 
+; ウィンドウを閉じる
+!MButton::!F4
+
 ; 日付の入力
 ::ddd::
   FormatTime,TimeString,,yyyy/MM/dd
