@@ -1,3 +1,6 @@
 remove Lock = Caps_Lock
-keysym Caps_Lock = Control_L
-add Control = Control_L
+keysym Caps_Lock = Hyper_L
+add Control = Hyper_L
+
+!keycode  97 = backslash underscore backslash underscore
+keycode  97 = underscore underscore underscore underscore
