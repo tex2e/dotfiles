@@ -30,10 +30,10 @@ shopt -s globstar
 
 ### Key Mapping ###
 
+# To avoid error "xmodmap:  unable to open display 'localhost:0.0'"
+export DISPLAY=:0.0
+export LIBGL_ALWAYS_INDIRECT=1
 if [[ -f "$HOME/.xmodmap" ]]; then
-  # To avoid error "xmodmap:  unable to open display 'localhost:0.0'"
-  export DISPLAY=:0.0
-  export LIBGL_ALWAYS_INDIRECT=1
   # keymapping
   xmodmap "$HOME/.xmodmap" &> /dev/null
 fi
