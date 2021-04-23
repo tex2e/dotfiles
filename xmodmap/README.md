@@ -2,7 +2,7 @@
 # Xmodmap
 
 CapsLockをCtrlにする (Linuxのみ)
-
+which 
 
 ### インストール手順
 
@@ -29,16 +29,26 @@ vim ~/.Xmodmap
 xmodmap ~/.Xmodmap
 ```
 
+キーコードの確認：
+
+```
+xev
+```
+
 
 
 ---
 
-### Ubuntu
+### Kali Linux
 
 
 ```
 sudo apt install autokey-gtk
 autokey-gtk &
 ```
-設定 > システム > セッションと起動 > 自動開始アプリケーション
+設定 > システム > セッションと起動 > 自動開始アプリケーション > 追加
+
+* 名前：Autokey
+* コマンド：autokey-gtk
+* トリガー：on login
 
