@@ -1,7 +1,7 @@
 [user]
 	name = Mako
 	email = mnfeconicu41@gmail.com
-	signingkey = 402F552C68EFB93F
+	signingkey = F38F3A06B593ED8881D8934D402F552C68EFB93F
 [include]
 	path = .gitconfig.macos
 	path = .gitconfig.linux
