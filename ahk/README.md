@@ -3,6 +3,11 @@
 
 Windowsでキーボードとマウス操作の設定
 
+### AHKインストール
+
+- https://autohotkey.com/download/ahk.zip をダウンロードし展開する
+- "C:\Program Files\AutoHotkey" に配置する
+
 
 ### セットアップ手順
 
