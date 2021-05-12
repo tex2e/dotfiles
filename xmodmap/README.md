@@ -2,7 +2,6 @@
 # Xmodmap
 
 CapsLockをCtrlにする (Linuxのみ)
-which 
 
 ### インストール手順
 
@@ -41,7 +40,6 @@ xev
 
 ### Kali Linux
 
-
 ```
 sudo apt install autokey-gtk
 autokey-gtk &
@@ -51,4 +49,3 @@ autokey-gtk &
 * 名前：Autokey
 * コマンド：autokey-gtk
 * トリガー：on login
-
