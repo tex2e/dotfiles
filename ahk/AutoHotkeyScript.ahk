@@ -211,12 +211,16 @@ Insert & /::^/
 !s::!PrintScreen    ; 左手だけでスクリーンショット
 
 ; 日付の入力
+::dd::
+  FormatTime,TimeString,,M/d
+  Send %TimeString%
+  Return
 ::ddd::
   FormatTime,TimeString,,yyyy/MM/dd
   Send %TimeString%
   Return
-::dd::
-  FormatTime,TimeString,,M/d
+::dddd::
+  FormatTime,TimeString,,yyyy-MM-dd
   Send %TimeString%
   Return
 
