@@ -4,8 +4,8 @@ REM リンク先フォルダとリンク元フォルダ
 set TO_DIR=%USERPROFILE%\Documents\Apps\Keypirinha
 set FROM_DIR=%~dp0
 
-if exist %TO_DIR% (
-  echo Keypirinhaを「%TO_DIR%」に配置してください
+if not exist %TO_DIR% (
+  echo Not Found: %TO_DIR%
   goto End
 )
 
