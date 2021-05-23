@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+# 設定ファイル自動生成スクリプト
+
+# JSONファイルの作成
+#          V ここでキーボードの文字の範囲を指定する
 for ch in {0..9}; do
 cat <<EOS > .caps_$ch.json
 {
@@ -33,6 +37,8 @@ cat <<EOS > .caps_$ch.json
     }
 }
 EOS
+
+# Pythonスクリプトの作成
 cat <<EOS > caps_$ch.py
 keyboard.send_keys("<ctrl>+$ch")
 EOS
