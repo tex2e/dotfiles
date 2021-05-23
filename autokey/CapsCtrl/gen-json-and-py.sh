@@ -1,10 +1,10 @@
 #!/bin/bash -e
 
 # 設定ファイル自動生成スクリプト
-
-# JSONファイルの作成
+#
 #          V ここでキーボードの文字の範囲を指定する
 for ch in {0..9}; do
+# JSONファイルの作成
 cat <<EOS > .caps_$ch.json
 {
     "type": "script",
