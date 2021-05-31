@@ -39,7 +39,7 @@ Insert & r::
     Send ^+r
     return
   }
-  Send ^r
+  Send ^f                    ; Hyper+R => Ctrl+F
   return
 F13 & t::
 Insert & t::
