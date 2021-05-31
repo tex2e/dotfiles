@@ -39,7 +39,7 @@ Insert & r::
     Send ^+r
     return
   }
-  Send ^f                    ; Hyper+R => Ctrl+F
+  Send ^r
   return
 F13 & t::
 Insert & t::
@@ -79,7 +79,7 @@ Insert & g::
     Send ^+g
     return
   }
-  Send ^g
+  Send ^f                    ; Caps+G => Ctrl+F
   return
 F13 & l::
 Insert & l::
