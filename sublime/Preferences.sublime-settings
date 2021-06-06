@@ -1,0 +1,13 @@
+{
+	"color_scheme": "Packages/GitHub Theme/schemes/GitHub Dimmed.sublime-color-scheme",
+	"font_size": 10,
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"theme": "Adaptive.sublime-theme",
+	"hot_exit": false,
+	"remember_open_files": false,
+	"always_show_minimap_viewport": true,
+	"draw_white_space": "all",
+}
