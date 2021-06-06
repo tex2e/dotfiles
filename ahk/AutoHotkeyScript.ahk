@@ -398,11 +398,11 @@ Insert & g::
 ^+m::
 F13 & m::
 Insert & m::
- if GetKeyState("Shift") {
-   Send {AppsKey}x{Up}{Up}{Enter}
-   return
- }
- Send ^m
- return
+  if GetKeyState("Shift") {
+    Send {AppsKey}x{Up}{Up}{Enter}
+    return
+  }
+  Send ^m
+  return
 
 #IfWinActive
