@@ -21,4 +21,4 @@ Sublime Text 4 の設定
   1. Ctrl+Shift+P でコマンドパレットを表示する
   2. 「Package Control: Install Packagse」を選択する
   3. GitHub Color Theme をインストールする
-  4. Preferences > Chose Color Scheme > GitHub Dimmed を選択する
+  4. Preferences > Chose Color Scheme > GitHub～ を選択する
