@@ -2,6 +2,7 @@
 
 REM リンク先フォルダとリンク元フォルダ
 set TO_DIR=%AppData%\Sublime Text 3\Packages\User
+if not exist %TO_DIR% set TO_DIR=%AppData%\Sublime Text\Packages\User
 set FROM_DIR=%~dp0
 
 REM 管理者権限チェック
