@@ -192,9 +192,15 @@ if [ "$color_prompt" = yes ]; then
   # RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
 
   # enable syntax-highlighting
-  # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh-syntax-highlighting
-  if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && [ "$color_prompt" = yes ]; then
-    . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/local/share/zsh-syntax-highlighting
+  if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh -a "$color_prompt" = yes ] \
+      || [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh -a "$color_prompt" = yes ]; then
+    if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+      . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    fi
+    if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+      . /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    fi
     ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
     ZSH_HIGHLIGHT_STYLES[default]=none
     ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
@@ -291,11 +297,13 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Enable auto-suggestions based on the history.
-# git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-autosuggestions /usr/local/share/zsh-autosuggestions
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
   . /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  # change suggestion color
-  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
+  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'   # change suggestion color
+elif [ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  . /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'   # change suggestion color
 fi
 
 # Enable command-not-found if installed.

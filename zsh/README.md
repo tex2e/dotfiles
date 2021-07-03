@@ -18,7 +18,7 @@
 - command-not-found : 存在しないコマンドを入れた時に類似コマンドを表示する
 
 ```
-git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/share/zsh-syntax-highlighting
+sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/local/share/zsh-autosuggestions
+sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/local/share/zsh-syntax-highlighting
 sudo apt-get install command-not-found
 ```
