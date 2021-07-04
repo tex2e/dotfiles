@@ -46,9 +46,9 @@ cd ~/.dotfiles
 setup-win-admin.cmd のように末尾に「admin」が付いているものは管理者権限で実行してください。
 レジストリ変更が必要な設定は、XXX.reg のファイルを実行してください。
 
-### Linux
+### Linux / MacOS
 
-各フォルダにある ./XXX/setup-linux.sh を実行してください（cdしないで実行しても問題ないです）。
+各フォルダにある ./XXX/setup-linux.sh または ./XXX/setup-macos.sh を実行してください。
 Windowsとは異なり、シンボリックリンクの作成に管理者権限は不要ですので、sudoなしで実行してください。
 
 
