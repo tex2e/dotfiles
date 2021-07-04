@@ -1,0 +1,10 @@
+{
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"font_size": 11,
+	"color_scheme": "auto",
+	"dark_color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
+	"light_color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
+}
