@@ -89,6 +89,14 @@ if [[ `uname` = "Linux" ]] && [[ -d /mnt/c ]]; then
   alias open='cmd.exe /c start'
 fi
 
+# MacOS
+if [[ `uname` = "Darwin" ]]; then
+  alias python=/opt/homebrew/bin/python3
+  alias python3=/opt/homebrew/bin/python3
+  alias pip=/opt/homebrew/bin/pip3
+  alias pip3=/opt/homebrew/bin/pip3
+fi
+
 
 ### Completion ###
 
