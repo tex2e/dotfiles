@@ -1,5 +1,5 @@
 
-# AutoHotKey
+# AutoHotKey (Windows)
 
 Windowsでキーボードとマウス操作の設定
 
