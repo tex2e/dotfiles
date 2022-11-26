@@ -1,0 +1,22 @@
+{
+    "extensions.ignoreRecommendations": true,
+    "explorer.confirmDragAndDrop": false,
+    "editor.rulers": [
+        80
+    ],
+    "editor.wordWrap": "on",
+    "editor.renderWhitespace": "all",
+    "editor.copyWithSyntaxHighlighting": false,
+    "explorer.confirmDelete": false,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.minimap.maxColumn": 60,
+    "redhat.telemetry.enabled": false,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "editor.minimap.showSlider": "always",
+    "workbench.tree.indent": 14,
+    "workbench.tree.renderIndentGuides": "always",
+}
