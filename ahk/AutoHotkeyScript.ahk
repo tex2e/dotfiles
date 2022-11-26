@@ -223,6 +223,46 @@ Insert & /::^/
   FormatTime,TimeString,,yyyy-MM-dd
   Send %TimeString%
   Return
+; 日報記入用
+::dddn::
+  FormatTime,TimeString,,yyyy
+  Send %TimeString%
+  Sleep, 100
+  Send {Tab}
+  Sleep, 100
+  FormatTime,TimeString,,M
+  Send %TimeString%
+  Sleep, 100
+  Send {Tab}
+  Sleep, 100
+  FormatTime,TimeString,,d
+  Send %TimeString%
+  Sleep, 100
+  Send {Tab}
+  Sleep, 100
+  Send 8
+  Sleep, 100
+  Send {Tab}
+  Sleep, 100
+  Send 30
+  Sleep, 100
+  Send {Tab}
+  Sleep, 100
+  FormatTime,TimeString,,yyyy
+  Send %TimeString%
+  Sleep, 100
+  Send {Tab}
+  Sleep, 100
+  FormatTime,TimeString,,M
+  Send %TimeString%
+  Sleep, 100
+  Send {Tab}
+  Sleep, 100
+  FormatTime,TimeString,,d
+  Send %TimeString%
+  Sleep, 100
+  Send {Tab}
+  Return
 
 ; Excelで結合セルの複数行に貼り付ける
 !+v::

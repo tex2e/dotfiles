@@ -1,5 +1,5 @@
 
-# AutoKey
+# AutoKey (Linux)
 
 ### インストール手順
 

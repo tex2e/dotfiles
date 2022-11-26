@@ -8,7 +8,6 @@
     "editor.occurrencesHighlight": true,
     "editor.selectionHighlight": true,
     "editor.renderWhitespace": "all",
-    "editor.formatOnPaste": true,
     "git.autofetch": false,
     "extensions.ignoreRecommendations": true,
     "editor.suggestSelection": "first",
@@ -58,7 +57,7 @@
     "python.pythonPath": "/usr/local/bin/python3",
     "csv-edit.fontSizeInPx": 13,
     "csv-edit.doubleClickColumnHandleForcedWith": 10,
-    "editor.minimap.maxColumn": 80,
+    "editor.minimap.maxColumn": 60,
     "editor.minimap.renderCharacters": false,
     "indenticator.showHover": true,
     "indenticator.showCurrentDepthInStatusBar": false,
@@ -137,5 +136,6 @@
     ],
     "powershell.startAutomatically": false,
     "vsicons.dontShowNewVersionMessage": true,
-    "editor.fontLigatures": true
+    "editor.fontLigatures": true,
+    "window.commandCenter": false
 }
