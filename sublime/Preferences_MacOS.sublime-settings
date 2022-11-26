@@ -7,4 +7,6 @@
 	"color_scheme": "auto",
 	"dark_color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
 	"light_color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
+	"hot_exit": false,
+	"remember_open_files": false,
 }
