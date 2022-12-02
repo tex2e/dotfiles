@@ -227,7 +227,7 @@ Insert & /::^/
 ::dddn::
   FormatTime,TimeString,,yyyy
   Send %TimeString%
-  Sleep, 50
+  Sleep, 300
   Send {Tab}
   Sleep, 50
   FormatTime,TimeString,,M
@@ -250,7 +250,7 @@ Insert & /::^/
   Sleep, 50
   FormatTime,TimeString,,yyyy
   Send %TimeString%
-  Sleep, 50
+  Sleep, 300
   Send {Tab}
   Sleep, 50
   FormatTime,TimeString,,M
