@@ -137,5 +137,6 @@
     "powershell.startAutomatically": false,
     "vsicons.dontShowNewVersionMessage": true,
     "editor.fontLigatures": true,
-    "window.commandCenter": false
+    "window.commandCenter": false,
+    "editor.copyWithSyntaxHighlighting": false
 }
