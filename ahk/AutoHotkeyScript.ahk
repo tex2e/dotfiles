@@ -229,38 +229,38 @@ Insert & /::^/
   Send %TimeString%
   Sleep, 300
   Send {Tab}
-  Sleep, 50
+  Sleep, 100
   FormatTime,TimeString,,M
   Send %TimeString%
-  Sleep, 50
+  Sleep, 100
   Send {Tab}
-  Sleep, 50
+  Sleep, 100
   FormatTime,TimeString,,d
   Send %TimeString%
-  Sleep, 50
+  Sleep, 100
   Send {Tab}
-  Sleep, 50
+  Sleep, 100
   Send 8
-  Sleep, 50
+  Sleep, 100
   Send {Tab}
-  Sleep, 50
+  Sleep, 100
   Send 30
-  Sleep, 50
+  Sleep, 100
   Send {Tab}
-  Sleep, 50
+  Sleep, 100
   FormatTime,TimeString,,yyyy
   Send %TimeString%
   Sleep, 300
   Send {Tab}
-  Sleep, 50
+  Sleep, 100
   FormatTime,TimeString,,M
   Send %TimeString%
-  Sleep, 50
+  Sleep, 100
   Send {Tab}
-  Sleep, 50
+  Sleep, 100
   FormatTime,TimeString,,d
   Send %TimeString%
-  Sleep, 50
+  Sleep, 100
   Send {Tab}
   Return
 
