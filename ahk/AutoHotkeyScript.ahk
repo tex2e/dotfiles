@@ -226,41 +226,53 @@ Insert & /::^/
 ; 日報記入用
 ::dddn::
   FormatTime,TimeString,,yyyy
-  Send %TimeString%
-  Sleep, 300
+  Send % SubStr(TimeString, 1, 1)
+  Sleep, 30
+  Send % SubStr(TimeString, 2, 1)
+  Sleep, 30
+  Send % SubStr(TimeString, 3, 1)
+  Sleep, 30
+  Send % SubStr(TimeString, 4, 1)
+  Sleep, 30
   Send {Tab}
-  Sleep, 100
+  Sleep, 50
   FormatTime,TimeString,,M
   Send %TimeString%
-  Sleep, 100
+  Sleep, 50
   Send {Tab}
-  Sleep, 100
+  Sleep, 50
   FormatTime,TimeString,,d
   Send %TimeString%
-  Sleep, 100
+  Sleep, 50
   Send {Tab}
-  Sleep, 100
+  Sleep, 50
   Send 8
-  Sleep, 100
+  Sleep, 50
   Send {Tab}
-  Sleep, 100
+  Sleep, 50
   Send 30
-  Sleep, 100
+  Sleep, 50
   Send {Tab}
-  Sleep, 100
+  Sleep, 50
   FormatTime,TimeString,,yyyy
-  Send %TimeString%
-  Sleep, 300
+  Send % SubStr(TimeString, 1, 1)
+  Sleep, 30
+  Send % SubStr(TimeString, 2, 1)
+  Sleep, 30
+  Send % SubStr(TimeString, 3, 1)
+  Sleep, 30
+  Send % SubStr(TimeString, 4, 1)
+  Sleep, 30
   Send {Tab}
-  Sleep, 100
+  Sleep, 50
   FormatTime,TimeString,,M
   Send %TimeString%
-  Sleep, 100
+  Sleep, 50
   Send {Tab}
-  Sleep, 100
+  Sleep, 50
   FormatTime,TimeString,,d
   Send %TimeString%
-  Sleep, 100
+  Sleep, 50
   Send {Tab}
   Return
 
