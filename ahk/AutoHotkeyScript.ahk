@@ -227,52 +227,52 @@ Insert & /::^/
 ::dddn::
   FormatTime,TimeString,,yyyy
   Send % SubStr(TimeString, 1, 1)
-  Sleep, 30
+  Sleep, 50
   Send % SubStr(TimeString, 2, 1)
-  Sleep, 30
+  Sleep, 50
   Send % SubStr(TimeString, 3, 1)
-  Sleep, 30
+  Sleep, 50
   Send % SubStr(TimeString, 4, 1)
-  Sleep, 30
+  Sleep, 200
   Send {Tab}
   Sleep, 50
   FormatTime,TimeString,,M
   Send %TimeString%
-  Sleep, 50
+  Sleep, 200
   Send {Tab}
   Sleep, 50
   FormatTime,TimeString,,d
   Send %TimeString%
-  Sleep, 50
+  Sleep, 200
   Send {Tab}
   Sleep, 50
   Send 8
-  Sleep, 50
+  Sleep, 200
   Send {Tab}
   Sleep, 50
   Send 30
-  Sleep, 50
+  Sleep, 200
   Send {Tab}
   Sleep, 50
   FormatTime,TimeString,,yyyy
   Send % SubStr(TimeString, 1, 1)
-  Sleep, 30
+  Sleep, 50
   Send % SubStr(TimeString, 2, 1)
-  Sleep, 30
+  Sleep, 50
   Send % SubStr(TimeString, 3, 1)
-  Sleep, 30
+  Sleep, 50
   Send % SubStr(TimeString, 4, 1)
-  Sleep, 30
+  Sleep, 200
   Send {Tab}
   Sleep, 50
   FormatTime,TimeString,,M
   Send %TimeString%
-  Sleep, 50
+  Sleep, 200
   Send {Tab}
   Sleep, 50
   FormatTime,TimeString,,d
   Send %TimeString%
-  Sleep, 50
+  Sleep, 200
   Send {Tab}
   Return
 
