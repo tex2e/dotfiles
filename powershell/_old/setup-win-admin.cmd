@@ -1,7 +1,7 @@
 @echo off
 
 REM リンク先フォルダとリンク元フォルダ
-set TO_DIR=%USERPROFILE%\Documents\PowerShell
+set TO_DIR=%USERPROFILE%\Documents\WindowsPowerShell
 set FROM_DIR=%~dp0
 
 REM 管理者権限チェック
