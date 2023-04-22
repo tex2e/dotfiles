@@ -1,11 +1,16 @@
 @echo off
 
 rem リンク先フォルダとリンク元フォルダ
-set TO_DIR=%USERPROFILE%
+set TO_DIR=%USERPROFILE%\test\test\text
 set FROM_DIR=%~dp0
 echo [*] TO_DIR=%TO_DIR%
 echo [*] FROM_DIR=%FROM_DIR%
 echo [ ]
+
+if not exist %TO_DIR% (
+  echo [-] Not Found: %TO_DIR%
+  goto L_end
+)
 
 rem 管理者権限チェック
 openfiles > nul 2>&1
@@ -14,9 +19,7 @@ if not %ERRORLEVEL% == 0 (
   goto L_end
 )
 
-rem シンボリックリンクの作成
-call :backup_and_mklink .batrc.cmd
-
+call :backup_and_mklink test
 if not %ERRORLEVEL% == 0 (
   echo [-] Failed!
   goto L_end
@@ -27,6 +30,7 @@ echo [+] Setup Finished!
 :L_end
 pause
 exit /b
+
 
 
 rem サブルーチン：バックアップの作成とリンクの作成
