@@ -6,7 +6,7 @@
 
 ### インストール手順
 
-1. dotfilesのbashのインストール
+1. dotfilesのbashのインストール（zshの前にbashが完了していること）
 2. セットアップコマンドの実行
   - Linuxの場合、setup-linux.sh を実行
   - Windowsの場合、setup-win-admin.cmd を実行
