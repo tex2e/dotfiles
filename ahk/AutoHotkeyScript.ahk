@@ -1,5 +1,5 @@
 ﻿; REMOVED: #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
+#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode("Input")  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 
@@ -91,22 +91,21 @@ F13 & g::
 Insert & g::
 {
   if WinActive("ahk_class CabinetWClass") {  ; Explorer
-    Send("{AppsKey}s")             ; gitbash
+    Send("{AppsKey}s")  ; gitbash
     return
   }
   if GetKeyState("Shift") {
     Send("^+g")
     return
   }
-  Send("^f")                    ; Caps+G => Ctrl+F
+  Send("^g")
   return
 }
 F13 & l::
 Insert & l::
 {
   if WinActive("ahk_class CabinetWClass") {  ; Explorer
-    ; Focus Location Editor
-    Send("!d")
+    Send("!d")  ; Focus location editor
     return
   }
   if GetKeyState("Shift") {
@@ -209,35 +208,21 @@ Insert & Down::
 F13 & Space::
 Insert & Space::
 {
-  ; if GetKeyState("Shift") {
-  ;   WinSetAlwaysontop(, "A")  ; 常に最前面に表示
-  ;   return
-  ; }
-  Send("^#k")          ; Keypirinha (Windows Launcher)
+  if GetKeyState("Shift") {
+    Send("^+{Space}")
+    return
+  }
+  Send("^#k")  ; Keypirinha (Windows Launcher)
   return
 }
 F13 & 1::^1
 Insert & 1::^1
 F13 & 2::^2
 Insert & 2::^2
-F13 & 3::
-Insert & 3::
-{
-  if WinActive("ahk_exe Code.exe")
-    Send("^3")         ; VSCode
-  else
-    Send("^/")         ; 左手だけでコメントアウト
-  return
-}
-F13 & 4::
-Insert & 4::
-{
-  if WinActive("ahk_exe Code.exe")
-    Send("^4")         ; VSCode
-  else
-    Send("^+/")        ; 左手だけでコメントアウト解除
-  return
-}
+F13 & 3::^3
+Insert & 3::^3
+F13 & 4::^4
+Insert & 4::^4
 F13 & 5::^5
 Insert & 5::^5
 F13 & 6::^6
@@ -259,28 +244,30 @@ Insert & /::^/
 ;;
 ;; カスタムマップ
 ;;
-!s::!PrintScreen    ; 左手だけでスクリーンショット
+!s::!PrintScreen  ; 左手だけでスクリーンショット
 
-; 日付の入力
+; 日付の入力（月/日）
 ::dd::
 {
   TimeString := FormatTime(, "M/d")
   Send(TimeString)
   Return
 }
+; 日付の入力（年/月/日）
 ::ddd::
 {
   TimeString := FormatTime(, "yyyy/MM/dd")
   Send(TimeString)
   Return
 }
+; 日付の入力（年-月-日）
 ::dddd::
 {
   TimeString := FormatTime(, "yyyy-MM-dd")
   Send(TimeString)
   Return
-; 日報記入用
 }
+; 日報記入用
 ::dddn::
 {
   TimeString := FormatTime(, "yyyy")
@@ -353,7 +340,6 @@ Insert & /::^/
 +WheelUp::WheelLeft
 
 ; マウスの第4ボタン(BrowserBack)を押しながら第5ボタン(BrowserForward)でEnter
-; ダイアログにEnterを入力したいけどマウスを動かしたくない＆マウスから手を放したくない人向け
 XButton1 & XButton2::Send("{Enter}")
 ; マウスの第5ボタン(BrowserForward)を押しながら第4ボタン(BrowserBack)でエクスプローラー起動
 XButton2 & XButton1::#e
@@ -361,8 +347,8 @@ XButton1::Send("{XButton1}")
 XButton2::Send("{XButton2}")
 
 ; プログラム起動のショートカット
-#n::Run("Notepad.exe")                       ; Notepad
-#c::Run("cmd.exe", A_MyDocuments)          ; cmd.exe
+#n::Run("Notepad.exe")  ; Notepad
+#c::Run("cmd.exe", A_MyDocuments)  ; cmd.exe
 !#c::Run("powershell.exe", A_MyDocuments)  ; PowerShell
 
 ; Ctrl+Tabでタスクビュー
@@ -383,7 +369,7 @@ Insert & k::
     Send("^+k")
     return
   }
-  Send("{F7}")                       ; Ctrl-kでカタカナに変換
+  Send("{F7}")  ; Ctrl-kでカタカナに変換
   return
 }
 F13 & j::
@@ -393,10 +379,10 @@ Insert & j::
     Send("^+j")
     return
   }
-  Send("{F6}")                       ; Ctrl-jでひらがなに変換
+  Send("{F6}")  ; Ctrl-jでひらがなに変換
   return
 }
-vkE2::_                           ; アンダースコアをShiftなしで入力する
+vkE2::_  ; アンダースコアをShiftなしで入力する
 
 ;;
 ;; Emacs風のキー入力
@@ -408,7 +394,7 @@ Insert & f::
     Send("^+f")
     return
   }
-  Send("{Right}")                    ; forward_char
+  Send("{Right}")  ; forward_char
   return
 }
 F13 & p::
@@ -418,7 +404,7 @@ Insert & p::
     Send("^+p")
     return
   }
-  Send("{Up}")                       ; previous_line
+  Send("{Up}")  ; previous_line
   return
 }
 F13 & n::
@@ -428,7 +414,7 @@ Insert & n::
     Send("^+n")
     return
   }
-  Send("{Down}")                     ; next_line
+  Send("{Down}")  ; next_line
   return
 }
 F13 & b::
@@ -438,7 +424,7 @@ Insert & b::
     Send("^+b")
     return
   }
-  Send("{Left}")                     ; backward_char
+  Send("{Left}")  ; backward_char
   return
 }
 F13 & a::
@@ -448,7 +434,7 @@ Insert & a::
     Send("^+a")
     return
   }
-  Send("{HOME}")                     ; move_beginning_of_line
+  Send("{HOME}")  ; move_beginning_of_line
   return
 }
 F13 & e::
@@ -458,7 +444,7 @@ Insert & e::
     Send("^+e")
     return
   }
-  Send("{END}")                      ; move_end_of_line
+  Send("{END}")  ; move_end_of_line
   return
 }
 F13 & d::
@@ -468,7 +454,7 @@ Insert & d::
     Send("^+d")
     return
   }
-  Send("{Del}")                      ; delete_char
+  Send("{Del}")  ; delete_char
   return
 }
 F13 & h::
@@ -478,7 +464,7 @@ Insert & h::
     Send("^+h")
     return
   }
-  Send("{BS}")                       ; delete_backward_char
+  Send("{BS}")  ; delete_backward_char
   return
 }
 F13 & o::
@@ -488,7 +474,7 @@ Insert & o::
     Send("{HOME}{Enter}{Up}")
     return
   }
-  Send("{END}{Enter}")               ; open_line
+  Send("{END}{Enter}")  ; open_line
   return
 }
 F13 & m::
@@ -498,7 +484,7 @@ Insert & m::
     Send("^+m")
     return
   }
-  Send("{Enter}")                    ; newline
+  Send("{Enter}")  ; newline
   return
 }
 F13 & u::
@@ -508,7 +494,7 @@ Insert & u::
     Send("^+u")
     return
   }
-  Send("^z")                         ; undo
+  Send("^z")  ; undo
   return
 }
 
