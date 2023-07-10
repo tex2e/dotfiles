@@ -3,6 +3,7 @@
 
 Windowsでキーボードとマウス操作の設定
 
+
 ### AHKインストール
 
 - https://autohotkey.com/download/ahk.zip をインストールする
@@ -32,4 +33,4 @@ Windowsでキーボードとマウス操作の設定
 
 ### （補足）regファイル作成方法
 
-[Change Key](https://forest.watch.impress.co.jp/library/software/changekey/) をダウンロードして、管理者権限で実行して、キー配置変換後にレジストリエディタで「HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout」をエクスポートする。
+- [Change Key](https://forest.watch.impress.co.jp/library/software/changekey/) をダウンロードして、管理者権限で実行して、キー配置変換後にレジストリエディタで「HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout」をエクスポートする。

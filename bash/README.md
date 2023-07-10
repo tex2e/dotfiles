@@ -12,7 +12,6 @@
 ### 注意事項
 
 - Git Bash は起動時に .bash_profile しか読まないので、Git Bash向け設定は全て .bash_profile に記述すること
-
 - 自作コマンドを使いたいときは PATH に `~/.dotfiles/bin` が追加されているか確認
 
   ```bash
