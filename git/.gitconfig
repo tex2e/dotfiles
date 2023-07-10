@@ -20,8 +20,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[credential]
-	helper = cache --timeout 30000
+#[credential]
+#	helper = cache --timeout 30000
 [push]
 	default = upstream
 [alias]
