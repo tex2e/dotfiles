@@ -18,6 +18,11 @@
 3. zshセットアップコマンドの実行
   - Linuxの場合、setup-linux.sh を実行
   - Windowsの場合、setup-win-admin.cmd を実行
+4. 起動するシェルの切り替え
+    ```bash
+    chsh -s $(which zsh) $USER
+    ```
+
 
 ### Zsh追加カスタマイズのインストール手順
 
