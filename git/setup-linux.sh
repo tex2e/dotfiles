@@ -7,6 +7,7 @@ function createSymlink {
   if [ -e "$HOME/${2:-$1}" ]; then
     cp "$HOME/${2:-$1}" "$HOME/${2:-$1}.bak"
   fi
+  echo ln -f -s "$PWD/$1" "$HOME/${2:-$1}"
   ln -f -s "$PWD/$1" "$HOME/${2:-$1}"
 }
 
