@@ -6,10 +6,23 @@
 
 ### インストール手順
 
-1. dotfilesのbashのインストール（zshの前にbashが完了していること）
-2. セットアップコマンドの実行
+1. zshのインストール
+    ```bash
+    $ sudo apt update
+    $ sudo apt install zsh
+    ```
+2. dotfilesのbashのインストール（zshの前にbashが完了していること）
+    ```bash
+    $ ./bash/setup-linux.sh
+    ```
+3. zshセットアップコマンドの実行
   - Linuxの場合、setup-linux.sh を実行
   - Windowsの場合、setup-win-admin.cmd を実行
+4. 起動するシェルの切り替え
+    ```bash
+    chsh -s $(which zsh) $USER
+    ```
+
 
 ### Zsh追加カスタマイズのインストール手順
 
@@ -17,7 +30,7 @@
 - zsh-syntax-highlighting : コンソール文字の色付け
 - command-not-found : 存在しないコマンドを入れた時に類似コマンドを表示する
 
-```
+```bash
 sudo git clone --depth 1 https://github.com/zsh-users/zsh-autosuggestions /usr/local/share/zsh-autosuggestions
 sudo git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git /usr/local/share/zsh-syntax-highlighting
 sudo apt-get install command-not-found
