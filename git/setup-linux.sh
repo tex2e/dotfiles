@@ -13,7 +13,7 @@ function createSymlink {
 
 createSymlink .gitconfig
 createSymlink .gitignore_global
-createSymlink .gitattributes_global
+createSymlink .gitattributes_global .config/git/attributes
 
 case `uname` in
   Darwin ) # mac os

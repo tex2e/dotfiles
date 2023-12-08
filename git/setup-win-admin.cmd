@@ -17,8 +17,12 @@ if not %ERRORLEVEL% == 0 (
 rem シンボリックリンクの作成
 call :backup_and_mklink .gitconfig
 call :backup_and_mklink .gitignore_global
-call :backup_and_mklink .gitattributes_global
-
+if not %ERRORLEVEL% == 0 (
+  echo [-] Failed!
+  goto L_end
+)
+mkdir "%USERPROFILE%\.config\git"
+call :backup_and_mklink .config\git\attributes .gitattributes_global
 if not %ERRORLEVEL% == 0 (
   echo [-] Failed!
   goto L_end

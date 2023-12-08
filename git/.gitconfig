@@ -8,7 +8,6 @@
 	autocrlf = false
 	quotepath = false
 	pager = LESSCHARSET=utf-8 less
-	attributesfile = .gitattributes_global
 [include]
 	path = .gitconfig.macos
 	path = .gitconfig.linux
