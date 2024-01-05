@@ -331,7 +331,8 @@ Insert & /::^/
   Loop Parse, A_Clipboard, "`n", "`r"
   {
     line := StrReplace(A_LoopField, "`t")
-    Send("{F2}%line%{Enter}")
+    ;Send("{F2}%line%{Enter}")
+    Send(Format("{F2}{1}{Enter}", line))
   }
   Return
 }
