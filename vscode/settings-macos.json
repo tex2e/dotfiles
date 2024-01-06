@@ -18,5 +18,9 @@
     },
     "editor.minimap.showSlider": "always",
     "workbench.tree.indent": 14,
-    "workbench.tree.renderIndentGuides": "always"
+    "workbench.tree.renderIndentGuides": "always",
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "git.openRepositoryInParentFolders": "never"
 }
