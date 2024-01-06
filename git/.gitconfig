@@ -4,6 +4,7 @@
 	signingkey = F38F3A06B593ED8881D8934D402F552C68EFB93F
 [core]
 	excludesfile = .gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = vim -c \"set fenc=utf-8\"
 	autocrlf = false
 	quotepath = false
