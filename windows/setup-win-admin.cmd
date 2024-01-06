@@ -15,7 +15,7 @@ if not %ERRORLEVEL% == 0 (
 )
 
 rem シンボリックリンクの作成
-call :backup_and_mklink .vimrc
+call :backup_and_mklink .batrc.cmd
 
 if not %ERRORLEVEL% == 0 (
   echo [-] Failed!

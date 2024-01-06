@@ -1,41 +1,53 @@
 @echo off
 
-REM VSCode settings directory
+rem リンク先フォルダとリンク元フォルダ
+set TO_DIR=%AppData%\Code\User
+set FROM_DIR=%~dp0
+echo [*] TO_DIR=%TO_DIR%
+echo [*] FROM_DIR=%FROM_DIR%
+echo [ ]
 
-REM リンク先フォルダとリンク元フォルダ
-SET TO_DIR=%AppData%\Code\User
-SET FROM_DIR=%~dp0
+rem コピー先の存在チェック
+if not exist %TO_DIR% (
+  echo [-] Not Found: %TO_DIR%
+  goto L_end
+)
 
-REM 管理者権限チェック
-openfiles > NUL 2>&1
-if NOT %ERRORLEVEL% EQU 0 goto NotAdmin
+rem 管理者権限チェック
+openfiles > nul 2>&1
+if not %ERRORLEVEL% == 0 (
+  echo [-] This command prompt is NOT ELEVATED!
+  goto L_end
+)
 
-  call :backup_and_mklink settings.json
-  call :backup_and_mklink keybindings.json
-  call :backup_and_mklink snippets\markdown.json
-  call :backup_and_mklink snippets\shellscript.json
+rem シンボリックリンクの作成
+call :backup_and_mklink settings.json
+call :backup_and_mklink keybindings.json
+call :backup_and_mklink snippets\markdown.json
+call :backup_and_mklink snippets\shellscript.json
 
-  echo [info]: Setup Finished!
-goto End
-:NotAdmin
-  echo This command prompt is NOT ELEVATED
-:End
+if not %ERRORLEVEL% == 0 (
+  echo [-] Failed!
+  goto L_end
+)
 
+echo [+] Setup Finished!
+
+:L_end
 pause
-
 exit /b
 
 
-REM サブルーチン：バックアップの作成とリンクの作成
-REM call :backup_and_mklink リンク先ファイル リンク元ファイル
-REM 引数が1つだけのときはリンク先とリンク元が同じファイル名とみなす。
+rem サブルーチン：バックアップの作成とリンクの作成
+rem call :backup_and_mklink リンク先 リンク元
 :backup_and_mklink
 if exist "%TO_DIR%\%~1" (
-  MOVE "%TO_DIR%\%~1" "%TO_DIR%\%~1.orig"
+  move "%TO_DIR%\%~1" "%TO_DIR%\%~1.orig"
 )
 if "%~2"=="" (
-  MKLINK "%TO_DIR%\%~1" "%FROM_DIR%\%~1"
+  mklink "%TO_DIR%\%~1" "%FROM_DIR%\%~1"
 ) else (
-  MKLINK "%TO_DIR%\%~1" "%FROM_DIR%\%~2"
+  mklink "%TO_DIR%\%~1" "%FROM_DIR%\%~2"
 )
+if not %ERRORLEVEL% == 0 exit /b 1
 exit /b

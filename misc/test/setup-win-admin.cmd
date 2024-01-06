@@ -1,13 +1,12 @@
 @echo off
 
 rem リンク先フォルダとリンク元フォルダ
-set TO_DIR=%USERPROFILE%\Documents\Apps\Keypirinha
+set TO_DIR=%USERPROFILE%\test\test\text
 set FROM_DIR=%~dp0
 echo [*] TO_DIR=%TO_DIR%
 echo [*] FROM_DIR=%FROM_DIR%
 echo [ ]
 
-rem コピー先の存在チェック
 if not exist %TO_DIR% (
   echo [-] Not Found: %TO_DIR%
   goto L_end
@@ -20,22 +19,7 @@ if not %ERRORLEVEL% == 0 (
   goto L_end
 )
 
-rem シンボリックリンクの作成
-call :backup_and_mklink portable\Profile\User\Keypirinha.ini Keypirinha.ini
-call :backup_and_mklink portable\Profile\User\filescatalog.ini filescatalog.ini
-call :backup_and_mklink portable\Profile\User\bookmarks.ini bookmarks.ini
-
-if not %ERRORLEVEL% == 0 (
-  echo [-] Failed!
-  goto L_end
-)
-
-rem パッケージのインストール（指定フォルダにコピー）
-echo [+] Kill.keypirinha-package
-copy /Y %FROM_DIR%\InstalledPackages\Kill.keypirinha-package %TO_DIR%\portable\Profile\InstalledPackages\
-echo [+] WindowsApps.keypirinha-package
-copy /Y %FROM_DIR%\InstalledPackages\WindowsApps.keypirinha-package %TO_DIR%\portable\Profile\InstalledPackages\
-
+call :backup_and_mklink test
 if not %ERRORLEVEL% == 0 (
   echo [-] Failed!
   goto L_end
@@ -46,6 +30,7 @@ echo [+] Setup Finished!
 :L_end
 pause
 exit /b
+
 
 
 rem サブルーチン：バックアップの作成とリンクの作成

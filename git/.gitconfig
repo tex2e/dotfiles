@@ -2,16 +2,17 @@
 	name = Mako
 	email = mnfeconicu41@gmail.com
 	signingkey = F38F3A06B593ED8881D8934D402F552C68EFB93F
+[core]
+	excludesfile = .gitignore_global
+	editor = vim -c \"set fenc=utf-8\"
+	autocrlf = false
+	quotepath = false
+	pager = LESSCHARSET=utf-8 less
 [include]
 	path = .gitconfig.macos
 	path = .gitconfig.linux
+	path = .gitconfig.windows
 	path = .gitconfig.work
-[core]
-	excludesfile = ~/.gitignore_global
-	editor = vim -c \"set fenc=utf-8\"
-	autocrlf = input
-	quotepath = false
-	pager = LESSCHARSET=utf-8 less
 [help]
 	autocorrect = 1
 [filter "lfs"]
@@ -19,31 +20,30 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[credential]
-	helper = cache --timeout 30000
+#[credential]
+#	helper = cache --timeout 30000
 [push]
 	default = upstream
 [alias]
 	a = add
 	aa = add -A
 	addp = add -p
-	add1 = "!git add $(git status -s | sed -n 1p | cut -c 4-)"
-	add2 = "!git add $(git status -s | sed -n 2p | cut -c 4-)"
-	add3 = "!git add $(git status -s | sed -n 3p | cut -c 4-)"
-	add4 = "!git add $(git status -s | sed -n 4p | cut -c 4-)"
-	add5 = "!git add $(git status -s | sed -n 5p | cut -c 4-)"
-	add6 = "!git add $(git status -s | sed -n 6p | cut -c 4-)"
-	add7 = "!git add $(git status -s | sed -n 7p | cut -c 4-)"
-	add8 = "!git add $(git status -s | sed -n 8p | cut -c 4-)"
-	add9 = "!git add $(git status -s | sed -n 9p | cut -c 4-)"
+	add1 = !git add $(git status -s | sed -n 1p | cut -c 4-)
+	add2 = !git add $(git status -s | sed -n 2p | cut -c 4-)
+	add3 = !git add $(git status -s | sed -n 3p | cut -c 4-)
+	add4 = !git add $(git status -s | sed -n 4p | cut -c 4-)
+	add5 = !git add $(git status -s | sed -n 5p | cut -c 4-)
+	add6 = !git add $(git status -s | sed -n 6p | cut -c 4-)
+	add7 = !git add $(git status -s | sed -n 7p | cut -c 4-)
+	add8 = !git add $(git status -s | sed -n 8p | cut -c 4-)
+	add9 = !git add $(git status -s | sed -n 9p | cut -c 4-)
 	am = commit --amend -m
 	amend = commit --amend
 	amendm = commit --amend -m
 	ap = add -p
 	b = branch
 	ba = branch -a
-	# clean merged branches
-	bclean = "!f() { git branch --merged ${1-master} | grep -v \" ${1-master}$\" | xargs git branch -d; }; f"
+	bclean = "!f() { git branch --merged ${1-master} | grep -v \\" ${1-master}$\\" | xargs git branch -d; }; f"
 	c = commit
 	ch = checkout
 	chb = checkout -b
@@ -51,21 +51,23 @@
 	d = diff
 	dc = diff --cached
 	dt = diff HEAD^ HEAD
+	ds = "!f() { git diff $@ | iconv -f shift_jis;}; f"
+	dcs = "!f() { git diff --cached $@ | iconv -f shift_jis;}; f"
+	dtool = difftool -t code
+	dtoolc = difftool -t code --cached
 	empty = commit --allow-empty
 	emptym = commit --allow-empty -m
 	git = !exec git
 	graph = log --graph --oneline --all --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
-	graphp = "!git graph -p"
-	home = "!git-open"
-	ignore = !"f() { local s=$1; shift; \
-		while [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\
-		curl -L \"https://www.gitignore.io/api/$s\"; }; f"
+	graphp = !git graph -p
+	home = !git-open
+	ignore = "!f() { local s=$1; shift; \t\twhile [ $# -gt 0 ]; do s=\"$s,$1\"; shift; done;\t\tcurl -L \"https://www.gitignore.io/api/$s\"; }; f"
 	logd = log --graph --oneline --all --decorate
-	logc = "log --graph --date=short --pretty=format:\"[%ad] %h %an : %s\""
+	logdd = log --graph --oneline --all --decorate --date=short --pretty=format:\"[%ad] %h %an : %s\"
 	logp = log -p
-	o = "!git-open"
-	open = "!git-open"
-	protocol = "!git-protocol"
+	o = !git-open
+	open = !git-open
+	protocol = !git-protocol
 	r = remote
 	ru = remote update
 	rv = remote -v
@@ -81,3 +83,19 @@
 	default = current
 [init]
 	defaultBranch = main
+[fetch]
+	prune = false
+[rebase]
+	autoStash = false
+	autosquash = false
+	updateRefs = false
+[diff]
+	guitool = code
+[difftool "code"]
+	cmd = "code --wait --diff \"$LOCAL\" \"$REMOTE\""
+[merge]
+	guitool = code
+[mergetool "code"]
+	cmd = "code --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\""
+[credential "https://reamine.ndensan.co.jp"]
+	provider = generic

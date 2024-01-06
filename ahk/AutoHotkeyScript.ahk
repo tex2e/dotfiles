@@ -1,9 +1,9 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+﻿; REMOVED: #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#Warn  ; Enable warnings to assist with detecting common errors.
+SendMode("Input")  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir(A_ScriptDir)  ; Ensures a consistent starting directory.
 
-EnvGet, homedir, USERPROFILE
+homedir := EnvGet("USERPROFILE")
 
 ; 編集したらスタートアップに再登録する
 ; 1. AutoHotkeyScript.ahk を右クリックし、Compile Script を実行
@@ -19,174 +19,210 @@ Insert::Return
 
 F13 & q::
 Insert & q::
+{
   if GetKeyState("Shift") {
-    Send ^+q
+    Send("^+q")
     return
   }
-  Send ^q
+  Send("^q")
   return
+}
 F13 & w::
 Insert & w::
+{
   if GetKeyState("Shift") {
-    Send ^+w
+    Send("^+w")
     return
   }
-  Send ^w
+  Send("^w")
   return
+}
 F13 & r::
 Insert & r::
+{
   if GetKeyState("Shift") {
-    Send ^+r
+    Send("^+r")
     return
   }
-  Send ^r
+  Send("^r")
   return
+}
 F13 & t::
 Insert & t::
+{
   if GetKeyState("Shift") {
-    Send ^+t
+    Send("^+t")
     return
   }
-  Send ^t
+  Send("^t")
   return
+}
 F13 & y::
 Insert & y::
+{
   if GetKeyState("Shift") {
-    Send ^+y
+    Send("^+y")
     return
   }
-  Send ^y
+  Send("^y")
   return
+}
 F13 & i::
 Insert & i::
+{
   if GetKeyState("Shift") {
-    Send ^+i
+    Send("^+i")
     return
   }
-  Send ^i
+  Send("^i")
   return
+}
 F13 & s::
 Insert & s::
+{
   if GetKeyState("Shift") {
-    Send ^+s
+    Send("^+s")
     return
   }
-  Send ^s
+  Send("^s")
   return
+}
 F13 & g::
 Insert & g::
-  if GetKeyState("Shift") {
-    Send ^+g
+{
+  if WinActive("ahk_class CabinetWClass") {  ; Explorer
+    Send("{AppsKey}s")  ; gitbash
     return
   }
-  Send ^f                    ; Caps+G => Ctrl+F
+  if GetKeyState("Shift") {
+    Send("^+g")
+    return
+  }
+  Send("^g")
   return
+}
 F13 & l::
 Insert & l::
-  if GetKeyState("Shift") {
-    Send ^+l
+{
+  if WinActive("ahk_class CabinetWClass") {  ; Explorer
+    Send("!d")  ; Focus location editor
     return
   }
-  Send ^l
+  if GetKeyState("Shift") {
+    Send("^+l")
+    return
+  }
+  Send("^l")
   return
+}
 F13 & z::
 Insert & z::
+{
   if GetKeyState("Shift") {
-    Send ^+z
+    Send("^+z")
     return
   }
-  Send ^z
+  Send("^z")
   return
+}
 F13 & x::
 Insert & x::
+{
   if GetKeyState("Shift") {
-    Send ^+x
+    Send("^+x")
     return
   }
-  Send ^x
+  Send("^x")
   return
+}
 F13 & c::
 Insert & c::
+{
   if GetKeyState("Shift") {
-    Send ^+c
+    Send("^+c")
     return
   }
-  Send ^c
+  Send("^c")
   return
+}
 F13 & v::
 Insert & v::
+{
   if GetKeyState("Shift") {
-    Send ^+v
+    Send("^+v")
     return
   }
-  Send ^v
+  Send("^v")
   return
+}
 F13 & LButton::
 Insert & LButton::
+{
   if GetKeyState("Shift") {
-    Send ^+{LButton}
+    Send("^+{LButton}")
     return
   }
-  Send ^{LButton}
+  Send("^{LButton}")
   return
+}
 F13 & Left::
 Insert & Left::
+{
   if GetKeyState("Shift") {
-    Send ^+{Left}
+    Send("^+{Left}")
     return
   }
-  Send ^{Left}
+  Send("^{Left}")
   return
+}
 F13 & Right::
 Insert & Right::
+{
   if GetKeyState("Shift") {
-    Send ^+{Right}
+    Send("^+{Right}")
     return
   }
-  Send ^{Right}
+  Send("^{Right}")
   return
+}
 F13 & Up::
 Insert & Up::
+{
   if GetKeyState("Shift") {
-    Send ^+{Up}
+    Send("^+{Up}")
     return
   }
-  Send ^{Up}
+  Send("^{Up}")
   return
+}
 F13 & Down::
 Insert & Down::
+{
   if GetKeyState("Shift") {
-    Send ^+{Down}
+    Send("^+{Down}")
     return
   }
-  Send ^{Down}
+  Send("^{Down}")
   return
+}
 F13 & Space::
 Insert & Space::
+{
   if GetKeyState("Shift") {
-    Winset, Alwaysontop, , A  ; 常に最前面に表示
+    Send("^+{Space}")
     return
   }
-  Send ^#k          ; Keypirinha (Windows Launcher)
+  Send("^#k")  ; Keypirinha (Windows Launcher)
   return
+}
 F13 & 1::^1
 Insert & 1::^1
 F13 & 2::^2
 Insert & 2::^2
-F13 & 3::
-Insert & 3::
-  IfWinActive, ahk_exe Code.exe
-    Send ^3         ; VSCode
-  else
-    Send ^/         ; 左手だけでコメントアウト
-  return
-F13 & 4::
-Insert & 4::
-  IfWinActive, ahk_exe Code.exe
-    Send ^4         ; VSCode
-  else
-    Send ^+/        ; 左手だけでコメントアウト解除
-  return
+F13 & 3::^3
+Insert & 3::^3
+F13 & 4::^4
+Insert & 4::^4
 F13 & 5::^5
 Insert & 5::^5
 F13 & 6::^6
@@ -208,94 +244,117 @@ Insert & /::^/
 ;;
 ;; カスタムマップ
 ;;
-!s::!PrintScreen    ; 左手だけでスクリーンショット
+!s::!PrintScreen  ; 左手だけでスクリーンショット
 
-; 日付の入力
+; 日付の入力（月/日）
 ::dd::
-  FormatTime,TimeString,,M/d
-  Send %TimeString%
+{
+  TimeString := FormatTime(, "M/d")
+  Send(TimeString)
   Return
+}
+; 日付の入力（年/月/日）
 ::ddd::
-  FormatTime,TimeString,,yyyy/MM/dd
-  Send %TimeString%
+{
+  TimeString := FormatTime(, "yyyy/MM/dd")
+  Send(TimeString)
   Return
+}
+; 日付の入力（年-月-日）
 ::dddd::
-  FormatTime,TimeString,,yyyy-MM-dd
-  Send %TimeString%
+{
+  TimeString := FormatTime(, "yyyy-MM-dd")
+  Send(TimeString)
   Return
+}
 ; 日報記入用
 ::dddn::
-  FormatTime,TimeString,,yyyy
-  Send %TimeString%
-  Sleep, 100
-  Send {Tab}
-  Sleep, 100
-  FormatTime,TimeString,,M
-  Send %TimeString%
-  Sleep, 100
-  Send {Tab}
-  Sleep, 100
-  FormatTime,TimeString,,d
-  Send %TimeString%
-  Sleep, 100
-  Send {Tab}
-  Sleep, 100
-  Send 8
-  Sleep, 100
-  Send {Tab}
-  Sleep, 100
-  Send 30
-  Sleep, 100
-  Send {Tab}
-  Sleep, 100
-  FormatTime,TimeString,,yyyy
-  Send %TimeString%
-  Sleep, 100
-  Send {Tab}
-  Sleep, 100
-  FormatTime,TimeString,,M
-  Send %TimeString%
-  Sleep, 100
-  Send {Tab}
-  Sleep, 100
-  FormatTime,TimeString,,d
-  Send %TimeString%
-  Sleep, 100
-  Send {Tab}
+{
+  TimeString := FormatTime(, "yyyy")
+  Send(SubStr(TimeString, 1, 1))
+  Sleep(50)
+  Send(SubStr(TimeString, 2, 1))
+  Sleep(50)
+  Send(SubStr(TimeString, 3, 1))
+  Sleep(50)
+  Send(SubStr(TimeString, 4, 1))
+  Sleep(200)
+  Send("{Tab}")
+  Sleep(50)
+  TimeString := FormatTime(, "M")
+  Send(TimeString)
+  Sleep(200)
+  Send("{Tab}")
+  Sleep(50)
+  TimeString := FormatTime(, "d")
+  Send(TimeString)
+  Sleep(200)
+  Send("{Tab}")
+  Sleep(50)
+  Send(8)
+  Sleep(200)
+  Send("{Tab}")
+  Sleep(50)
+  Send(30)
+  Sleep(200)
+  Send("{Tab}")
+  Sleep(50)
+  TimeString := FormatTime(, "yyyy")
+  Send(SubStr(TimeString, 1, 1))
+  Sleep(50)
+  Send(SubStr(TimeString, 2, 1))
+  Sleep(50)
+  Send(SubStr(TimeString, 3, 1))
+  Sleep(50)
+  Send(SubStr(TimeString, 4, 1))
+  Sleep(200)
+  Send("{Tab}")
+  Sleep(50)
+  TimeString := FormatTime(, "M")
+  Send(TimeString)
+  Sleep(200)
+  Send("{Tab}")
+  Sleep(50)
+  TimeString := FormatTime(, "d")
+  Send(TimeString)
+  Sleep(200)
+  Send("{Tab}")
   Return
+}
 
 ; Excelで結合セルの複数行に貼り付ける
 !+v::
-  Sleep, 1000
-  Critical
-  SetKeyDelay, 0
-  Loop, parse, clipboard, `n, `r
+{
+  Sleep(1000)
+  Critical()
+  SetKeyDelay(0)
+  Loop Parse, A_Clipboard, "`n", "`r"
   {
     line := StrReplace(A_LoopField, "`t")
-    Send {F2}%line%{Enter}
+    ;Send("{F2}%line%{Enter}")
+    Send(Format("{F2}{1}{Enter}", line))
   }
   Return
-
+}
 ; Shift+ホイールで左右にスクロール
 +WheelDown::WheelRight
 +WheelUp::WheelLeft
 
 ; マウスの第4ボタン(BrowserBack)を押しながら第5ボタン(BrowserForward)でEnter
-; ダイアログにEnterを入力したいけどマウスを動かしたくない＆マウスから手を放したくない人向け
-XButton1 & XButton2::Send {Enter}
+XButton1 & XButton2::Send("{Enter}")
 ; マウスの第5ボタン(BrowserForward)を押しながら第4ボタン(BrowserBack)でエクスプローラー起動
 XButton2 & XButton1::#e
-XButton1::Send {XButton1}
-XButton2::Send {XButton2}
+XButton1::Send("{XButton1}")
+XButton2::Send("{XButton2}")
 
 ; プログラム起動のショートカット
-#n:: Run, Notepad.exe                       ; Notepad
-#c:: Run, cmd.exe, %A_MyDocuments%          ; cmd.exe
-!#c:: Run, powershell.exe, %A_MyDocuments%  ; PowerShell
+#n::Run("Notepad.exe")  ; Notepad
+#c::Run("cmd.exe", A_MyDocuments)  ; cmd.exe
+!#c::Run("powershell.exe", A_MyDocuments)  ; PowerShell
 
 ; Ctrl+Tabでタスクビュー
-F13 & Tab:: Send #{Tab}
-Insert & Tab:: Send #{Tab}
+F13 & Tab::Send("#{Tab}")
+Insert & Tab::Send("#{Tab}")
 
 ;;
 ;; MacOS風のキーボード操作
@@ -306,143 +365,153 @@ Insert & Tab:: Send #{Tab}
 ;
 F13 & k::
 Insert & k::
+{
   if GetKeyState("Shift") {
-    Send ^+k
+    Send("^+k")
     return
   }
-  Send {F7}                       ; Ctrl-kでカタカナに変換
+  Send("{F7}")  ; Ctrl-kでカタカナに変換
   return
+}
 F13 & j::
 Insert & j::
+{
   if GetKeyState("Shift") {
-    Send ^+j
+    Send("^+j")
     return
   }
-  Send {F6}                       ; Ctrl-jでひらがなに変換
+  Send("{F6}")  ; Ctrl-jでひらがなに変換
   return
-vkE2::_                           ; アンダースコアをShiftなしで入力する
+}
+vkE2::_  ; アンダースコアをShiftなしで入力する
 
 ;;
 ;; Emacs風のキー入力
 ;;
 F13 & f::
 Insert & f::
+{
   if GetKeyState("Shift") {
-    Send ^+f
+    Send("^+f")
     return
   }
-  Send {Right}                    ; forward_char
+  Send("{Right}")  ; forward_char
   return
+}
 F13 & p::
 Insert & p::
+{
   if GetKeyState("Shift") {
-    Send ^+p
+    Send("^+p")
     return
   }
-  Send {Up}                       ; previous_line
+  Send("{Up}")  ; previous_line
   return
+}
 F13 & n::
 Insert & n::
+{
   if GetKeyState("Shift") {
-    Send ^+n
+    Send("^+n")
     return
   }
-  Send {Down}                     ; next_line
+  Send("{Down}")  ; next_line
   return
+}
 F13 & b::
 Insert & b::
+{
   if GetKeyState("Shift") {
-    Send ^+b
+    Send("^+b")
     return
   }
-  Send {Left}                     ; backward_char
+  Send("{Left}")  ; backward_char
   return
+}
 F13 & a::
 Insert & a::
+{
   if GetKeyState("Shift") {
-    Send ^+a
+    Send("^+a")
     return
   }
-  Send {HOME}                     ; move_beginning_of_line
+  Send("{HOME}")  ; move_beginning_of_line
   return
+}
 F13 & e::
 Insert & e::
+{
   if GetKeyState("Shift") {
-    Send ^+e
+    Send("^+e")
     return
   }
-  Send {END}                      ; move_end_of_line
+  Send("{END}")  ; move_end_of_line
   return
+}
 F13 & d::
 Insert & d::
+{
   if GetKeyState("Shift") {
-    Send ^+d
+    Send("^+d")
     return
   }
-  Send {Del}                      ; delete_char
+  Send("{Del}")  ; delete_char
   return
+}
 F13 & h::
 Insert & h::
+{
   if GetKeyState("Shift") {
-    Send ^+h
+    Send("^+h")
     return
   }
-  Send {BS}                       ; delete_backward_char
+  Send("{BS}")  ; delete_backward_char
   return
+}
 F13 & o::
 Insert & o::
+{
   if GetKeyState("Shift") {
-    Send {HOME}{Enter}{Up}
+    Send("{HOME}{Enter}{Up}")
     return
   }
-  Send {END}{Enter}               ; open_line
+  Send("{END}{Enter}")  ; open_line
   return
+}
 F13 & m::
 Insert & m::
+{
   if GetKeyState("Shift") {
-    Send ^+m
+    Send("^+m")
     return
   }
-  Send {Enter}                    ; newline
+  Send("{Enter}")  ; newline
   return
+}
 F13 & u::
 Insert & u::
+{
   if GetKeyState("Shift") {
-    Send ^+u
+    Send("^+u")
     return
   }
-  Send ^z                         ; undo
+  Send("^z")  ; undo
   return
+}
 
-
-;;
-;; Explorer
-;;
-#IfWinActive ahk_class CabinetWClass
-; Focus Location Editor
-F13 & l::
-Insert & l::
-  Send !d
-  return
-
-; Open Command Window
-#c::Send !dcmd{Enter}         ; cmd
-!#c::Send !dpowershell{Enter} ; powershell
-F13 & g::
-Insert & g::
-  Send {AppsKey}s             ; gitbash
-  return
-
-; Create New Text
+; Create New Text in Explorer
 ; 右クリックの新規作成の内容を編集したいときは ShellNewHandler.exe を使う
 ^+m::
-F13 & m::
-Insert & m::
-  if GetKeyState("Shift") {
-    Send {AppsKey}x{Up}{Up}{Enter}
+; F13 & m::
+; Insert & m::
+{
+  if WinActive("ahk_class CabinetWClass") {  ; Explorer
+    if GetKeyState("Shift") {
+      Send("{AppsKey}x{Up}{Up}{Enter}")
+      return
+    }
+    Send("^m")
     return
   }
-  Send ^m
   return
-
-#IfWinActive
+}

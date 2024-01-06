@@ -87,16 +87,6 @@
             "icon": "class"
         },
         {
-            "pattern": "^\\s*Private m_[^ ]+ As (New )?[^\\s]+",
-            "clear": "Private ",
-            "icon": "property"
-        },
-        {
-            "pattern": "^\\s*Public [^ ]+ Property p_\\w*",
-            "clear": "Public ",
-            "icon": "property"
-        },
-        {
             "pattern": "^#Region .+\\w*",
             "clear": "#Region ",
             "icon": "none"
@@ -137,5 +127,6 @@
     "powershell.startAutomatically": false,
     "vsicons.dontShowNewVersionMessage": true,
     "editor.fontLigatures": true,
-    "window.commandCenter": false
+    "window.commandCenter": false,
+    "editor.copyWithSyntaxHighlighting": false
 }
