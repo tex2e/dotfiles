@@ -12,15 +12,16 @@
     "editor.minimap.maxColumn": 60,
     "redhat.telemetry.enabled": false,
     "editor.unicodeHighlight.ambiguousCharacters": false,
-    "[javascript]": {
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true
-    },
     "editor.minimap.showSlider": "always",
     "workbench.tree.indent": 14,
     "workbench.tree.renderIndentGuides": "always",
     "[python]": {
+        "editor.tabSize": 4,
         "editor.formatOnType": true
+    },
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
     },
     "git.openRepositoryInParentFolders": "never"
 }
