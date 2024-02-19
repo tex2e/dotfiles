@@ -35,6 +35,10 @@
     "[python]": {
         "editor.tabSize": 4
     },
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
     "[c]": {
         "editor.tabSize": 4
     },
