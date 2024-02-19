@@ -331,17 +331,13 @@ Insert & /::^/
   Loop Parse, A_Clipboard, "`n", "`r"
   {
     line := StrReplace(A_LoopField, "`t")
-    ;Send("{F2}%line%{Enter}")
     Send(Format("{F2}{1}{Enter}", line))
   }
   Return
 }
-; Shift+ホイールで左右にスクロール
-+WheelDown::WheelRight
-+WheelUp::WheelLeft
 
-; マウスの第4ボタン(BrowserBack)を押しながら第5ボタン(BrowserForward)でEnter
-XButton1 & XButton2::Send("{Enter}")
+; マウスの第4ボタン(BrowserBack)を押しながら第5ボタン(BrowserForward)でエクスプローラー起動
+XButton1 & XButton2::#e
 ; マウスの第5ボタン(BrowserForward)を押しながら第4ボタン(BrowserBack)でエクスプローラー起動
 XButton2 & XButton1::#e
 XButton1::Send("{XButton1}")
@@ -502,12 +498,14 @@ Insert & u::
 ; Create New Text in Explorer
 ; 右クリックの新規作成の内容を編集したいときは ShellNewHandler.exe を使う
 ^+m::
-; F13 & m::
-; Insert & m::
 {
   if WinActive("ahk_class CabinetWClass") {  ; Explorer
     if GetKeyState("Shift") {
-      Send("{AppsKey}x{Up}{Up}{Enter}")
+      Send("{AppsKey}")
+      Sleep(100)
+      Send("{Up}{Up}{Enter}")
+      Sleep(100)
+      Send("{Up}{Up}")
       return
     }
     Send("^m")
