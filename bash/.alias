@@ -81,4 +81,4 @@ alias oepn='open'
 alias shred='shred -v -u'
 
 # custom commands
-alias blog="cd ~/Documents/pgm/github/blog; open http://localhost:4000/blog/; ./server.sh &"
+alias blog='f() { cd ~/Documents/pgm/github/blog; open http://localhost:4000/blog/; ./server.sh $@ & }; f'

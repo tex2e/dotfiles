@@ -1,6 +1,6 @@
 [user]
 	name = Mako
-	email = mnfeconicu41@gmail.com
+	email = 10919093+tex2e@users.noreply.github.com
 	signingkey = F38F3A06B593ED8881D8934D402F552C68EFB93F
 [core]
 	excludesfile = .gitignore_global
@@ -21,8 +21,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-#[credential]
-#	helper = cache --timeout 30000
 [push]
 	default = upstream
 [alias]
@@ -98,5 +96,3 @@
 	guitool = code
 [mergetool "code"]
 	cmd = "code --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\""
-[credential "https://reamine.ndensan.co.jp"]
-	provider = generic
