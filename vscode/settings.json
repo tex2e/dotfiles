@@ -5,7 +5,7 @@
     "editor.lineNumbers": "on",
     "editor.wordWrap": "on",
     "editor.wordWrapColumn": 80,
-    "editor.occurrencesHighlight": true,
+    "editor.occurrencesHighlight": "singleFile",
     "editor.selectionHighlight": true,
     "editor.renderWhitespace": "all",
     "git.autofetch": false,
@@ -132,5 +132,6 @@
     "vsicons.dontShowNewVersionMessage": true,
     "editor.fontLigatures": true,
     "window.commandCenter": false,
-    "editor.copyWithSyntaxHighlighting": false
+    "editor.copyWithSyntaxHighlighting": false,
+    "git.openRepositoryInParentFolders": "never"
 }
