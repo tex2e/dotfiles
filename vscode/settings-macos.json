@@ -1,9 +1,6 @@
 {
     "extensions.ignoreRecommendations": true,
     "explorer.confirmDragAndDrop": false,
-    "editor.rulers": [
-        80
-    ],
     "editor.wordWrap": "on",
     "editor.renderWhitespace": "all",
     "editor.copyWithSyntaxHighlighting": false,
@@ -23,5 +20,12 @@
         "editor.tabSize": 2,
         "editor.insertSpaces": true
     },
-    "git.openRepositoryInParentFolders": "never"
+    "git.openRepositoryInParentFolders": "never",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "yaml": false
+    }
 }
