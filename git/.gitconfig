@@ -96,5 +96,3 @@
 	guitool = code
 [mergetool "code"]
 	cmd = "code --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\""
-[credential "https://reamine.ndensan.co.jp"]
-	provider = generic

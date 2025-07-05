@@ -219,8 +219,8 @@ F13 & 1::^1
 Insert & 1::^1
 F13 & 2::^2
 Insert & 2::^2
-F13 & 3::^3
-Insert & 3::^3
+;F13 & 3::^3
+;Insert & 3::^3
 F13 & 4::^4
 Insert & 4::^4
 F13 & 5::^5
@@ -512,4 +512,29 @@ Insert & u::
     return
   }
   return
+}
+
+; CapsLock + 3 で選択したパスを開く
+F13 & 3::
+Insert & 3::
+{
+  ; 選択されたテキストをクリップボードにコピー
+  Sleep(100)
+  Send("^c")
+  Sleep(100)
+  ; クリップボードの更新を待機
+  ClipWait(1)
+
+  path := ""
+  Loop Parse, A_Clipboard, "`n", "`r"
+  {
+    path := Format("{1}{2}", path, StrReplace(A_LoopField, "`r`n"))  ; 改行除去
+  }
+
+  ; エクスプローラーを開く
+  runCmd := Format("explorer {1} ", path)
+  ;MsgBox(runCmd)  ; DEBUG!
+  Run(runCmd)
+
+  Return
 }
