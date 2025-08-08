@@ -505,7 +505,7 @@ Insert & u::
       Sleep(100)
       Send("{Up}{Up}{Enter}")
       Sleep(100)
-      Send("{Up}{Up}")
+      Send("{Up}{Up}{Up}")
       return
     }
     Send("^m")
