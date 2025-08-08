@@ -1,18 +1,16 @@
 {
     "extensions.ignoreRecommendations": true,
+    "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "editor.rulers": [
-        80
-    ],
     "editor.wordWrap": "on",
     "editor.renderWhitespace": "all",
     "editor.copyWithSyntaxHighlighting": false,
-    "explorer.confirmDelete": false,
     "editor.bracketPairColorization.enabled": true,
     "editor.minimap.maxColumn": 60,
-    "redhat.telemetry.enabled": false,
-    "editor.unicodeHighlight.ambiguousCharacters": false,
     "editor.minimap.showSlider": "always",
+    "editor.minimap.showRegionSectionHeaders": true,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "redhat.telemetry.enabled": false,
     "workbench.tree.indent": 14,
     "workbench.tree.renderIndentGuides": "always",
     "[python]": {
@@ -23,5 +21,12 @@
         "editor.tabSize": 2,
         "editor.insertSpaces": true
     },
-    "git.openRepositoryInParentFolders": "never"
+    "git.openRepositoryInParentFolders": "never",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "yaml": false
+    }
 }

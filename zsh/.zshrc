@@ -91,10 +91,10 @@ fi
 
 # MacOS
 if [[ `uname` = "Darwin" ]]; then
-  alias python=/opt/homebrew/bin/python3
-  alias python3=/opt/homebrew/bin/python3
-  alias pip=/opt/homebrew/bin/pip3
-  alias pip3=/opt/homebrew/bin/pip3
+  alias python=/opt/homebrew/bin/python3.12
+  alias python3=/opt/homebrew/bin/python3.12
+  alias pip=/opt/homebrew/bin/pip3.12
+  alias pip3=/opt/homebrew/bin/pip3.12
 fi
 
 
