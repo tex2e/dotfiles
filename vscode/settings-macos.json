@@ -22,13 +22,6 @@
         "editor.insertSpaces": true
     },
     "git.openRepositoryInParentFolders": "never",
-    "github.copilot.enable": {
-        "*": false,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false,
-        "yaml": false
-    },
     "diffEditor.maxComputationTime": 0,
     "workbench.editor.wrapTabs": true,
     "geminicodeassist.project": "knitted-house-34fs3",
