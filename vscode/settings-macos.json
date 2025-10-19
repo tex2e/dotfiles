@@ -28,5 +28,9 @@
         "markdown": false,
         "scminput": false,
         "yaml": false
-    }
+    },
+    "diffEditor.maxComputationTime": 0,
+    "workbench.editor.wrapTabs": true,
+    "geminicodeassist.project": "knitted-house-34fs3",
+    "geminicodeassist.inlineSuggestions.enableAuto": false
 }
