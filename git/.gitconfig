@@ -42,7 +42,7 @@
 	ap = add -p
 	b = branch
 	ba = branch -a
-	bclean = "!f() { git branch --merged ${1-master} | grep -v \\" ${1-master}$\\" | xargs git branch -d; }; f"
+	bclean = "!f() { git branch --merged ${1:-main} | grep -v \\ ${1:-main} | xargs git branch -d; }; f"
 	c = commit
 	ch = checkout
 	chb = checkout -b
