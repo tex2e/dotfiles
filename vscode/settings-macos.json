@@ -28,5 +28,6 @@
     "geminicodeassist.inlineSuggestions.enableAuto": false,
     "geminicodeassist.displayInlineContextHint": false,
     "diffEditor.codeLens": true,
-    "claudeCode.preferredLocation": "panel"
+    "claudeCode.preferredLocation": "panel",
+    "claudeCode.hideOnboarding": true
 }
