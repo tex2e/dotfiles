@@ -27,5 +27,6 @@
     "geminicodeassist.project": "knitted-house-34fs3",
     "geminicodeassist.inlineSuggestions.enableAuto": false,
     "geminicodeassist.displayInlineContextHint": false,
-    "diffEditor.codeLens": true
+    "diffEditor.codeLens": true,
+    "claudeCode.preferredLocation": "panel"
 }
